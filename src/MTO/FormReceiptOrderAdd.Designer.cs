@@ -43,12 +43,12 @@ namespace MTO
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,13 +172,6 @@ namespace MTO
             this.label6.TabIndex = 105;
             this.label6.Text = "Номер договора";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(460, 151);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 20);
-            this.textBox1.TabIndex = 106;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -220,13 +213,23 @@ namespace MTO
             this.DocumentAmount.Name = "DocumentAmount";
             this.DocumentAmount.ReadOnly = true;
             // 
+            // comboBox3
+            // 
+            this.comboBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(460, 151);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(147, 21);
+            this.comboBox3.TabIndex = 108;
+            // 
             // FormReceiptOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 421);
+            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -242,7 +245,7 @@ namespace MTO
             this.Controls.Add(this.textBoxActNumber);
             this.Controls.Add(this.label1);
             this.Name = "FormReceiptOrderAdd";
-            this.Text = "FormReceiptOrderAdd";
+            this.Text = "Добавление приходного ордера";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -265,11 +268,11 @@ namespace MTO
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcceptedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DocumentAmount;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

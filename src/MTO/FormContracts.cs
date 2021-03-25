@@ -42,5 +42,17 @@ namespace MTO
                 dateTimePicker2.CustomFormat = " ";
             }
         }
+
+        private void FormContracts_Load(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add();
+            dataGridView1[0, 0].Value = "000001";
+            dataGridView1[1, 0].Value = "24/03/2020";
+            dataGridView1[2, 0].Value = "24/03/2021";
+            dataGridView1[3, 0].Value = "ООО Фисташка";
+            dataGridView1[4, 0].Value = "Открыт";
+            dataGridView1[5, 0].Value = "Есть";
+
+        }
     }
 }

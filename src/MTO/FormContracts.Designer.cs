@@ -30,7 +30,6 @@ namespace MTO
         private void InitializeComponent()
         {
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -38,7 +37,17 @@ namespace MTO
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,7 +55,6 @@ namespace MTO
             this.ContractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContractCreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContractSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContractAnalyzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DictResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DictUnitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,18 +64,9 @@ namespace MTO
             this.AccountingReceiptOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AccountingReceiptOrderListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AccountingReceiptOrderAddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_view = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,13 +83,6 @@ namespace MTO
             this.label7.Text = "Номер договора";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(113, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(363, 20);
-            this.textBox1.TabIndex = 26;
-            // 
             // label6
             // 
             this.label6.Location = new System.Drawing.Point(6, 54);
@@ -103,6 +95,8 @@ namespace MTO
             // 
             // comboBox1
             // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(113, 54);
             this.comboBox1.Name = "comboBox1";
@@ -172,8 +166,45 @@ namespace MTO
             this.dataGridView1.Size = new System.Drawing.Size(897, 235);
             this.dataGridView1.TabIndex = 23;
             // 
+            // ContractNumber
+            // 
+            this.ContractNumber.HeaderText = "Номер договора";
+            this.ContractNumber.Name = "ContractNumber";
+            this.ContractNumber.ReadOnly = true;
+            // 
+            // ConclusionDate
+            // 
+            this.ConclusionDate.HeaderText = "Дата заключения";
+            this.ConclusionDate.Name = "ConclusionDate";
+            this.ConclusionDate.ReadOnly = true;
+            // 
+            // ExpiredDate
+            // 
+            this.ExpiredDate.HeaderText = "Дата истечения";
+            this.ExpiredDate.Name = "ExpiredDate";
+            this.ExpiredDate.ReadOnly = true;
+            // 
+            // ProviderAgent
+            // 
+            this.ProviderAgent.HeaderText = "Поставщик";
+            this.ProviderAgent.Name = "ProviderAgent";
+            this.ProviderAgent.ReadOnly = true;
+            // 
+            // State
+            // 
+            this.State.HeaderText = "Статус";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            // 
+            // Underdelivery
+            // 
+            this.Underdelivery.HeaderText = "Недопоставки";
+            this.Underdelivery.Name = "Underdelivery";
+            this.Underdelivery.ReadOnly = true;
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -185,13 +216,55 @@ namespace MTO
             this.groupBox1.Controls.Add(this.dateTimePicker3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(6, 36);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(482, 184);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(413, 156);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(63, 17);
+            this.radioButton3.TabIndex = 35;
+            this.radioButton3.Text = "Закрыт";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(260, 156);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(63, 17);
+            this.radioButton2.TabIndex = 34;
+            this.radioButton2.Text = "Открыт";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(112, 156);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(59, 17);
+            this.radioButton1.TabIndex = 33;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Любой";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 156);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Статус договора";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
@@ -237,8 +310,7 @@ namespace MTO
             // 
             this.ContractToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ContractCreateToolStripMenuItem,
-            this.ContractSearchToolStripMenuItem,
-            this.ContractAnalyzeToolStripMenuItem});
+            this.ContractSearchToolStripMenuItem});
             this.ContractToolStripMenuItem.Name = "ContractToolStripMenuItem";
             this.ContractToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.ContractToolStripMenuItem.Text = "Договора";
@@ -246,20 +318,14 @@ namespace MTO
             // ContractCreateToolStripMenuItem
             // 
             this.ContractCreateToolStripMenuItem.Name = "ContractCreateToolStripMenuItem";
-            this.ContractCreateToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.ContractCreateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ContractCreateToolStripMenuItem.Text = "Добавление";
             // 
             // ContractSearchToolStripMenuItem
             // 
             this.ContractSearchToolStripMenuItem.Name = "ContractSearchToolStripMenuItem";
-            this.ContractSearchToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.ContractSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ContractSearchToolStripMenuItem.Text = "Поиск";
-            // 
-            // ContractAnalyzeToolStripMenuItem
-            // 
-            this.ContractAnalyzeToolStripMenuItem.Name = "ContractAnalyzeToolStripMenuItem";
-            this.ContractAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.ContractAnalyzeToolStripMenuItem.Text = "Анализ выполнения";
             // 
             // DictToolStripMenuItem
             // 
@@ -316,61 +382,17 @@ namespace MTO
             // AccountingReceiptOrderListToolStripMenuItem
             // 
             this.AccountingReceiptOrderListToolStripMenuItem.Name = "AccountingReceiptOrderListToolStripMenuItem";
-            this.AccountingReceiptOrderListToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.AccountingReceiptOrderListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AccountingReceiptOrderListToolStripMenuItem.Text = "Список";
             // 
             // AccountingReceiptOrderAddToolStripMenuItem
             // 
             this.AccountingReceiptOrderAddToolStripMenuItem.Name = "AccountingReceiptOrderAddToolStripMenuItem";
-            this.AccountingReceiptOrderAddToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.AccountingReceiptOrderAddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AccountingReceiptOrderAddToolStripMenuItem.Text = "Добавление";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 156);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Статус договора";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(112, 156);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 17);
-            this.radioButton1.TabIndex = 33;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Любой";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(260, 156);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 17);
-            this.radioButton2.TabIndex = 34;
-            this.radioButton2.Text = "Открыт";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(413, 156);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(63, 17);
-            this.radioButton3.TabIndex = 35;
-            this.radioButton3.Text = "Закрыт";
-            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(494, 230);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 33);
@@ -378,58 +400,31 @@ namespace MTO
             this.button2.Text = "Анализ";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btn_view
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(701, 230);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(202, 33);
-            this.button3.TabIndex = 37;
-            this.button3.Text = "Просмотр";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_view.Location = new System.Drawing.Point(701, 230);
+            this.btn_view.Name = "btn_view";
+            this.btn_view.Size = new System.Drawing.Size(202, 33);
+            this.btn_view.TabIndex = 37;
+            this.btn_view.Text = "Просмотр";
+            this.btn_view.UseVisualStyleBackColor = true;
             // 
-            // ContractNumber
+            // comboBox2
             // 
-            this.ContractNumber.HeaderText = "Номер договора";
-            this.ContractNumber.Name = "ContractNumber";
-            this.ContractNumber.ReadOnly = true;
-            // 
-            // ConclusionDate
-            // 
-            this.ConclusionDate.HeaderText = "Дата заключения";
-            this.ConclusionDate.Name = "ConclusionDate";
-            this.ConclusionDate.ReadOnly = true;
-            // 
-            // ExpiredDate
-            // 
-            this.ExpiredDate.HeaderText = "Дата истечения";
-            this.ExpiredDate.Name = "ExpiredDate";
-            this.ExpiredDate.ReadOnly = true;
-            // 
-            // ProviderAgent
-            // 
-            this.ProviderAgent.HeaderText = "Поставщик";
-            this.ProviderAgent.Name = "ProviderAgent";
-            this.ProviderAgent.ReadOnly = true;
-            // 
-            // State
-            // 
-            this.State.HeaderText = "Статус";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            // 
-            // Underdelivery
-            // 
-            this.Underdelivery.HeaderText = "Недопоставки";
-            this.Underdelivery.Name = "Underdelivery";
-            this.Underdelivery.ReadOnly = true;
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(113, 19);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(363, 21);
+            this.comboBox2.TabIndex = 36;
             // 
             // FormContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 515);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_view);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
@@ -439,6 +434,7 @@ namespace MTO
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormContracts";
             this.Text = "Модуль договоров";
+            this.Load += new System.EventHandler(this.FormContracts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -453,7 +449,6 @@ namespace MTO
         #endregion
 
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label5;
@@ -469,7 +464,6 @@ namespace MTO
         private System.Windows.Forms.ToolStripMenuItem ContractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ContractCreateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ContractSearchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ContractAnalyzeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DictToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DictResourcesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DictUnitToolStripMenuItem;
@@ -484,12 +478,13 @@ namespace MTO
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_view;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConclusionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpiredDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProviderAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn Underdelivery;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
