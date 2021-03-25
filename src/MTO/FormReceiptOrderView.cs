@@ -16,5 +16,11 @@ namespace MTO
         {
             InitializeComponent();
         }
+
+        private void tsmi_editChange_Click(object sender, EventArgs e)
+        {
+            FormReceiptOrderAdd form = new FormReceiptOrderAdd();
+            form.ShowDialog();
+        }
     }
 }

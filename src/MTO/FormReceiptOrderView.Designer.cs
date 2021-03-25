@@ -246,6 +246,7 @@ namespace MTO
             this.tsmi_editChange.Name = "tsmi_editChange";
             this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editChange.Text = "Редактирование";
+            this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
             // 
             // tsmi_editDelete
             // 

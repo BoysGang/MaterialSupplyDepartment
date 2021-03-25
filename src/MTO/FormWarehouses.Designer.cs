@@ -133,7 +133,7 @@ namespace MTO
             this.btn_add.TabIndex = 14;
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.button2_Click);
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // btn_delete
             // 
@@ -143,7 +143,6 @@ namespace MTO
             this.btn_delete.TabIndex = 15;
             this.btn_delete.Text = "Удалить";
             this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.button3_Click);
             // 
             // btn_change
             // 
@@ -153,7 +152,7 @@ namespace MTO
             this.btn_change.TabIndex = 16;
             this.btn_change.Text = "Изменить";
             this.btn_change.UseVisualStyleBackColor = true;
-            this.btn_change.Click += new System.EventHandler(this.button4_Click);
+            this.btn_change.Click += new System.EventHandler(this.btn_change_Click);
             // 
             // groupBox1
             // 
@@ -167,7 +166,6 @@ namespace MTO
             this.groupBox1.Size = new System.Drawing.Size(654, 85);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // FormWarehouses
             // 

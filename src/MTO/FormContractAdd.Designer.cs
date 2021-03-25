@@ -433,6 +433,7 @@ namespace MTO
             this.btn_cancelAdd.TabIndex = 91;
             this.btn_cancelAdd.Text = "Отменить";
             this.btn_cancelAdd.UseVisualStyleBackColor = true;
+            this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
             // 
             // FormContractAdd
             // 

@@ -207,6 +207,7 @@ namespace MTO
             this.btn_change.TabIndex = 24;
             this.btn_change.Text = "Изменить";
             this.btn_change.UseVisualStyleBackColor = true;
+            this.btn_change.Click += new System.EventHandler(this.btn_change_Click);
             // 
             // btn_delete
             // 
@@ -225,6 +226,7 @@ namespace MTO
             this.btn_add.TabIndex = 22;
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // FormResources
             // 

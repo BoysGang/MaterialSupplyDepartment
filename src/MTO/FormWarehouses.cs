@@ -22,24 +22,16 @@ namespace MTO
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btn_change_Click(object sender, EventArgs e)
         {
-
+            FormWarehousesAdd form = new FormWarehousesAdd();
+            form.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_add_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            FormWarehousesAdd form = new FormWarehousesAdd();
+            form.ShowDialog();
         }
     }
 }

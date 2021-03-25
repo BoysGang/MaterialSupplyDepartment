@@ -77,7 +77,7 @@ namespace MTO
             this.btn_login.TabIndex = 4;
             this.btn_login.Text = "Войти";
             this.btn_login.UseVisualStyleBackColor = true;
-            this.btn_login.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // FormLogin
             // 

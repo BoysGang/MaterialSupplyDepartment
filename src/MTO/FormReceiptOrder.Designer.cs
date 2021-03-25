@@ -31,7 +31,7 @@ namespace MTO
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
             this.ReceiptOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,8 +62,9 @@ namespace MTO
             this.tsmi_accountingReceiptOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_viewReceiptOrder = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -87,23 +88,23 @@ namespace MTO
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация";
             // 
-            // dataGridView1
+            // dgv_receiptOrders
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_receiptOrders.AllowUserToAddRows = false;
+            this.dgv_receiptOrders.AllowUserToDeleteRows = false;
+            this.dgv_receiptOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_receiptOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_receiptOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ReceiptOrderNumber,
             this.DeliveryDate,
             this.Warehouse,
             this.ProviderAgent,
             this.Contract});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 232);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(898, 297);
-            this.dataGridView1.TabIndex = 36;
+            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 232);
+            this.dgv_receiptOrders.Name = "dgv_receiptOrders";
+            this.dgv_receiptOrders.ReadOnly = true;
+            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 297);
+            this.dgv_receiptOrders.TabIndex = 36;
             // 
             // ReceiptOrderNumber
             // 
@@ -205,9 +206,9 @@ namespace MTO
             // 
             // btn_findReceiptOrder
             // 
-            this.btn_findReceiptOrder.Location = new System.Drawing.Point(548, 185);
+            this.btn_findReceiptOrder.Location = new System.Drawing.Point(500, 185);
             this.btn_findReceiptOrder.Name = "btn_findReceiptOrder";
-            this.btn_findReceiptOrder.Size = new System.Drawing.Size(297, 41);
+            this.btn_findReceiptOrder.Size = new System.Drawing.Size(201, 27);
             this.btn_findReceiptOrder.TabIndex = 38;
             this.btn_findReceiptOrder.Text = "Найти";
             this.btn_findReceiptOrder.UseVisualStyleBackColor = true;
@@ -289,6 +290,7 @@ namespace MTO
             this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
             this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
             this.tsmi_ContractSearch.Text = "Поиск";
+            this.tsmi_ContractSearch.Click += new System.EventHandler(this.tsmi_ContractSearch_Click);
             // 
             // tsmi_dict
             // 
@@ -304,26 +306,30 @@ namespace MTO
             // tsmi_dictResources
             // 
             this.tsmi_dictResources.Name = "tsmi_dictResources";
-            this.tsmi_dictResources.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictResources.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictResources.Text = "Ресурсы";
+            this.tsmi_dictResources.Click += new System.EventHandler(this.tsmi_dictResources_Click);
             // 
             // tsmi_dictUnit
             // 
             this.tsmi_dictUnit.Name = "tsmi_dictUnit";
-            this.tsmi_dictUnit.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictUnit.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictUnit.Text = "Ед. измерения";
+            this.tsmi_dictUnit.Click += new System.EventHandler(this.tsmi_dictUnit_Click);
             // 
             // tsmi_dictProvider
             // 
             this.tsmi_dictProvider.Name = "tsmi_dictProvider";
-            this.tsmi_dictProvider.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictProvider.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictProvider.Text = "Поставщики";
+            this.tsmi_dictProvider.Click += new System.EventHandler(this.tsmi_dictProvider_Click);
             // 
             // tsmi_dictWarehouses
             // 
             this.tsmi_dictWarehouses.Name = "tsmi_dictWarehouses";
-            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictWarehouses.Text = "Склады";
+            this.tsmi_dictWarehouses.Click += new System.EventHandler(this.tsmi_dictWarehouses_Click);
             // 
             // tsmi_accounting
             // 
@@ -339,35 +345,48 @@ namespace MTO
             this.tsmi_accountingReceiptOrderList,
             this.tsmi_accountingReceiptOrderAdd});
             this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
-            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(173, 22);
+            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(180, 22);
             this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
             // 
             // tsmi_accountingReceiptOrderList
             // 
             this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
-            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(180, 22);
             this.tsmi_accountingReceiptOrderList.Text = "Список";
             // 
             // tsmi_accountingReceiptOrderAdd
             // 
             this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
-            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(180, 22);
             this.tsmi_accountingReceiptOrderAdd.Text = "Добавление";
+            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
+            // 
+            // btn_viewReceiptOrder
+            // 
+            this.btn_viewReceiptOrder.Location = new System.Drawing.Point(718, 185);
+            this.btn_viewReceiptOrder.Name = "btn_viewReceiptOrder";
+            this.btn_viewReceiptOrder.Size = new System.Drawing.Size(192, 27);
+            this.btn_viewReceiptOrder.TabIndex = 41;
+            this.btn_viewReceiptOrder.Text = "Просмотр";
+            this.btn_viewReceiptOrder.UseVisualStyleBackColor = true;
+            this.btn_viewReceiptOrder.Click += new System.EventHandler(this.btn_viewReceiptOrder_Click);
             // 
             // FormReceiptOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 541);
+            this.Controls.Add(this.btn_viewReceiptOrder);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_receiptOrders);
             this.Controls.Add(this.btn_findReceiptOrder);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormReceiptOrder";
             this.Text = "Приходный ордер";
+            this.Load += new System.EventHandler(this.FormReceiptOrder_Load);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -380,7 +399,7 @@ namespace MTO
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_receiptOrders;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -411,5 +430,6 @@ namespace MTO
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrder;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
+        private System.Windows.Forms.Button btn_viewReceiptOrder;
     }
 }
