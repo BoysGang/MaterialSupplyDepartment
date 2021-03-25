@@ -16,5 +16,17 @@ namespace MTO
         {
             InitializeComponent();
         }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            FormProvidersAdd form = new FormProvidersAdd();
+            form.ShowDialog();
+        }
+
+        private void btn_change_Click(object sender, EventArgs e)
+        {
+            FormProvidersAdd form = new FormProvidersAdd();
+            form.ShowDialog();
+        }
     }
 }

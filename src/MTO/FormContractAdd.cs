@@ -31,5 +31,10 @@ namespace MTO
         {
 
         }
+
+        private void btn_cancelAdd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

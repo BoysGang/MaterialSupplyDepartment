@@ -19,12 +19,14 @@ namespace MTO
             InitializeComponent();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void btn_login_Click(object sender, EventArgs e)
         {
-            formContracts = new FormContracts();
-            formContracts.Show();
-
             this.Hide();
+            
+            formContracts = new FormContracts();
+            formContracts.Closed += (s, args) => this.Close();
+
+            formContracts.Show();
         }
     }
 }
