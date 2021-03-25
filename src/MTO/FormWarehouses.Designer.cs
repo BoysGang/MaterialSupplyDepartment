@@ -29,48 +29,50 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_warehouses = new System.Windows.Forms.DataGridView();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tb_cipher = new System.Windows.Forms.TextBox();
+            this.btn_find = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_change = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_warehouses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_warehouses
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_warehouses.AllowUserToAddRows = false;
+            this.dgv_warehouses.AllowUserToDeleteRows = false;
+            this.dgv_warehouses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_warehouses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_warehouses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCipher,
             this.ColumnName});
-            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 164);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(654, 256);
-            this.dataGridView1.TabIndex = 6;
+            this.dgv_warehouses.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgv_warehouses.Location = new System.Drawing.Point(12, 164);
+            this.dgv_warehouses.Name = "dgv_warehouses";
+            this.dgv_warehouses.ReadOnly = true;
+            this.dgv_warehouses.Size = new System.Drawing.Size(654, 256);
+            this.dgv_warehouses.TabIndex = 6;
             // 
             // ColumnCipher
             // 
             this.ColumnCipher.HeaderText = "Шифр";
             this.ColumnCipher.Name = "ColumnCipher";
+            this.ColumnCipher.ReadOnly = true;
             // 
             // ColumnName
             // 
             this.ColumnName.HeaderText = "Наименование";
             this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
             // 
             // label1
             // 
@@ -82,21 +84,21 @@ namespace MTO
             this.label1.TabIndex = 7;
             this.label1.Text = "Склады";
             // 
-            // textBox1
+            // tb_cipher
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 20);
-            this.textBox1.TabIndex = 8;
+            this.tb_cipher.Location = new System.Drawing.Point(9, 40);
+            this.tb_cipher.Name = "tb_cipher";
+            this.tb_cipher.Size = new System.Drawing.Size(271, 20);
+            this.tb_cipher.TabIndex = 8;
             // 
-            // button1
+            // btn_find
             // 
-            this.button1.Location = new System.Drawing.Point(563, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Найти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_find.Location = new System.Drawing.Point(563, 38);
+            this.btn_find.Name = "btn_find";
+            this.btn_find.Size = new System.Drawing.Size(83, 23);
+            this.btn_find.TabIndex = 10;
+            this.btn_find.Text = "Найти";
+            this.btn_find.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -116,50 +118,50 @@ namespace MTO
             this.label3.TabIndex = 12;
             this.label3.Text = "Наименование";
             // 
-            // textBox2
+            // tb_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(286, 40);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(271, 20);
-            this.textBox2.TabIndex = 13;
+            this.tb_name.Location = new System.Drawing.Point(286, 40);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(271, 20);
+            this.tb_name.TabIndex = 13;
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(12, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_add.Location = new System.Drawing.Point(12, 135);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 14;
+            this.btn_add.Text = "Добавить";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btn_delete
             // 
-            this.button3.Location = new System.Drawing.Point(93, 135);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_delete.Location = new System.Drawing.Point(93, 135);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete.TabIndex = 15;
+            this.btn_delete.Text = "Удалить";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // btn_change
             // 
-            this.button4.Location = new System.Drawing.Point(174, 135);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Изменить";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_change.Location = new System.Drawing.Point(174, 135);
+            this.btn_change.Name = "btn_change";
+            this.btn_change.Size = new System.Drawing.Size(75, 23);
+            this.btn_change.TabIndex = 16;
+            this.btn_change.Text = "Изменить";
+            this.btn_change.UseVisualStyleBackColor = true;
+            this.btn_change.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tb_cipher);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tb_name);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btn_find);
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(654, 85);
@@ -173,15 +175,15 @@ namespace MTO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 431);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btn_change);
+            this.Controls.Add(this.btn_delete);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.dgv_warehouses);
             this.Controls.Add(this.label1);
             this.Name = "FormWarehouses";
             this.Text = "Справочник \"Склады\"";
             this.Load += new System.EventHandler(this.FormWarehouses_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_warehouses)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -191,18 +193,18 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_warehouses;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tb_cipher;
+        private System.Windows.Forms.Button btn_find;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox tb_name;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_change;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

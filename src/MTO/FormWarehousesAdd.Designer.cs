@@ -29,20 +29,20 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_cipher = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tb_cipher
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 20);
-            this.textBox1.TabIndex = 15;
+            this.tb_cipher.Location = new System.Drawing.Point(12, 28);
+            this.tb_cipher.Name = "tb_cipher";
+            this.tb_cipher.Size = new System.Drawing.Size(271, 20);
+            this.tb_cipher.TabIndex = 15;
             // 
             // label2
             // 
@@ -53,12 +53,12 @@ namespace MTO
             this.label2.TabIndex = 16;
             this.label2.Text = "Шифр";
             // 
-            // textBox2
+            // tb_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 78);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(271, 20);
-            this.textBox2.TabIndex = 18;
+            this.tb_name.Location = new System.Drawing.Point(12, 78);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(271, 20);
+            this.tb_name.TabIndex = 18;
             // 
             // label3
             // 
@@ -69,35 +69,35 @@ namespace MTO
             this.label3.TabIndex = 17;
             this.label3.Text = "Наименование";
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(127, 115);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_add.Location = new System.Drawing.Point(127, 115);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 19;
+            this.btn_add.Text = "Добавить";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_cancel
             // 
-            this.button1.Location = new System.Drawing.Point(208, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_cancel.Location = new System.Drawing.Point(208, 115);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 20;
+            this.btn_cancel.Text = "Отмена";
+            this.btn_cancel.UseVisualStyleBackColor = true;
             // 
             // FormWarehousesAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 151);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.tb_cipher);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_add);
             this.Name = "FormWarehousesAdd";
             this.Text = "Добавление склада";
             this.ResumeLayout(false);
@@ -107,11 +107,11 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_cipher;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_cancel;
     }
 }

@@ -29,33 +29,33 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_type = new System.Windows.Forms.ComboBox();
+            this.cb_unit = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_cipher = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox2
+            // cb_type
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(12, 153);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(313, 21);
-            this.comboBox2.TabIndex = 27;
+            this.cb_type.FormattingEnabled = true;
+            this.cb_type.Location = new System.Drawing.Point(12, 153);
+            this.cb_type.Name = "cb_type";
+            this.cb_type.Size = new System.Drawing.Size(313, 21);
+            this.cb_type.TabIndex = 27;
             // 
-            // comboBox1
+            // cb_unit
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 112);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(313, 21);
-            this.comboBox1.TabIndex = 26;
+            this.cb_unit.FormattingEnabled = true;
+            this.cb_unit.Location = new System.Drawing.Point(12, 112);
+            this.cb_unit.Name = "cb_unit";
+            this.cb_unit.Size = new System.Drawing.Size(313, 21);
+            this.cb_unit.TabIndex = 26;
             // 
             // label5
             // 
@@ -75,12 +75,12 @@ namespace MTO
             this.label4.TabIndex = 24;
             this.label4.Text = "Ед. измерения";
             // 
-            // textBox1
+            // tb_cipher
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 20);
-            this.textBox1.TabIndex = 20;
+            this.tb_cipher.Location = new System.Drawing.Point(12, 29);
+            this.tb_cipher.Name = "tb_cipher";
+            this.tb_cipher.Size = new System.Drawing.Size(313, 20);
+            this.tb_cipher.TabIndex = 20;
             // 
             // label2
             // 
@@ -91,12 +91,12 @@ namespace MTO
             this.label2.TabIndex = 21;
             this.label2.Text = "Шифр";
             // 
-            // textBox2
+            // tb_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(313, 20);
-            this.textBox2.TabIndex = 23;
+            this.tb_name.Location = new System.Drawing.Point(12, 72);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(313, 20);
+            this.tb_name.TabIndex = 23;
             // 
             // label3
             // 
@@ -107,38 +107,38 @@ namespace MTO
             this.label3.TabIndex = 22;
             this.label3.Text = "Наименование";
             // 
-            // button1
+            // btn_cancel
             // 
-            this.button1.Location = new System.Drawing.Point(250, 196);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_cancel.Location = new System.Drawing.Point(250, 196);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 29;
+            this.btn_cancel.Text = "Отмена";
+            this.btn_cancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(169, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_add.Location = new System.Drawing.Point(169, 196);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 28;
+            this.btn_add.Text = "Добавить";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
             // FormResourcesAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 232);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.cb_type);
+            this.Controls.Add(this.cb_unit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_cipher);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label3);
             this.Name = "FormResourcesAdd";
             this.Text = "Добавление ресурса";
@@ -149,15 +149,15 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_type;
+        private System.Windows.Forms.ComboBox cb_unit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_cipher;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_add;
     }
 }

@@ -34,14 +34,14 @@ namespace MTO
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_cipher = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_find = new System.Windows.Forms.Button();
+            this.btn_change = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,11 +66,13 @@ namespace MTO
             // 
             this.ColumnCipher.HeaderText = "Шифр";
             this.ColumnCipher.Name = "ColumnCipher";
+            this.ColumnCipher.ReadOnly = true;
             // 
             // ColumnName
             // 
             this.ColumnName.HeaderText = "Наименование";
             this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
             // 
             // label1
             // 
@@ -84,23 +86,23 @@ namespace MTO
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tb_cipher);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tb_name);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btn_find);
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(654, 85);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // tb_cipher
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 20);
-            this.textBox1.TabIndex = 8;
+            this.tb_cipher.Location = new System.Drawing.Point(9, 40);
+            this.tb_cipher.Name = "tb_cipher";
+            this.tb_cipher.Size = new System.Drawing.Size(271, 20);
+            this.tb_cipher.TabIndex = 8;
             // 
             // label2
             // 
@@ -111,12 +113,12 @@ namespace MTO
             this.label2.TabIndex = 11;
             this.label2.Text = "Шифр";
             // 
-            // textBox2
+            // tb_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(286, 40);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(271, 20);
-            this.textBox2.TabIndex = 13;
+            this.tb_name.Location = new System.Drawing.Point(286, 40);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(271, 20);
+            this.tb_name.TabIndex = 13;
             // 
             // label3
             // 
@@ -127,41 +129,41 @@ namespace MTO
             this.label3.TabIndex = 12;
             this.label3.Text = "Наименование";
             // 
-            // button1
+            // btn_find
             // 
-            this.button1.Location = new System.Drawing.Point(563, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Найти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_find.Location = new System.Drawing.Point(563, 38);
+            this.btn_find.Name = "btn_find";
+            this.btn_find.Size = new System.Drawing.Size(83, 23);
+            this.btn_find.TabIndex = 10;
+            this.btn_find.Text = "Найти";
+            this.btn_find.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_change
             // 
-            this.button4.Location = new System.Drawing.Point(174, 135);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Изменить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_change.Location = new System.Drawing.Point(174, 135);
+            this.btn_change.Name = "btn_change";
+            this.btn_change.Size = new System.Drawing.Size(75, 23);
+            this.btn_change.TabIndex = 20;
+            this.btn_change.Text = "Изменить";
+            this.btn_change.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btn_delete
             // 
-            this.button3.Location = new System.Drawing.Point(93, 135);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_delete.Location = new System.Drawing.Point(93, 135);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete.TabIndex = 19;
+            this.btn_delete.Text = "Удалить";
+            this.btn_delete.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(12, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_add.Location = new System.Drawing.Point(12, 135);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 18;
+            this.btn_add.Text = "Добавить";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
             // FormUnit
             // 
@@ -169,9 +171,9 @@ namespace MTO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 431);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_change);
+            this.Controls.Add(this.btn_delete);
+            this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormUnit";
@@ -191,13 +193,13 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_cipher;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_find;
+        private System.Windows.Forms.Button btn_change;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_add;
     }
 }
