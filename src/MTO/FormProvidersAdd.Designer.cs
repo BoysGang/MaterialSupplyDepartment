@@ -29,37 +29,37 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_BIK = new System.Windows.Forms.TextBox();
+            this.tb_phoneNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_address = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_correspondentAccount = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tb_INN = new System.Windows.Forms.TextBox();
+            this.tb_checkingAccount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox7
+            // tb_BIK
             // 
-            this.textBox7.Location = new System.Drawing.Point(12, 280);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(313, 20);
-            this.textBox7.TabIndex = 40;
+            this.tb_BIK.Location = new System.Drawing.Point(12, 280);
+            this.tb_BIK.Name = "tb_BIK";
+            this.tb_BIK.Size = new System.Drawing.Size(313, 20);
+            this.tb_BIK.TabIndex = 40;
             // 
-            // textBox5
+            // tb_phoneNumber
             // 
-            this.textBox5.Location = new System.Drawing.Point(12, 112);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(313, 20);
-            this.textBox5.TabIndex = 36;
+            this.tb_phoneNumber.Location = new System.Drawing.Point(12, 112);
+            this.tb_phoneNumber.Name = "tb_phoneNumber";
+            this.tb_phoneNumber.Size = new System.Drawing.Size(313, 20);
+            this.tb_phoneNumber.TabIndex = 36;
             // 
             // label8
             // 
@@ -70,12 +70,12 @@ namespace MTO
             this.label8.TabIndex = 39;
             this.label8.Text = "БИК";
             // 
-            // textBox3
+            // tb_address
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 70);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(313, 20);
-            this.textBox3.TabIndex = 33;
+            this.tb_address.Location = new System.Drawing.Point(12, 70);
+            this.tb_address.Name = "tb_address";
+            this.tb_address.Size = new System.Drawing.Size(313, 20);
+            this.tb_address.TabIndex = 33;
             // 
             // label5
             // 
@@ -95,19 +95,19 @@ namespace MTO
             this.label4.TabIndex = 31;
             this.label4.Text = "Адрес";
             // 
-            // textBox6
+            // tb_correspondentAccount
             // 
-            this.textBox6.Location = new System.Drawing.Point(12, 238);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(313, 20);
-            this.textBox6.TabIndex = 38;
+            this.tb_correspondentAccount.Location = new System.Drawing.Point(12, 238);
+            this.tb_correspondentAccount.Name = "tb_correspondentAccount";
+            this.tb_correspondentAccount.Size = new System.Drawing.Size(313, 20);
+            this.tb_correspondentAccount.TabIndex = 38;
             // 
-            // textBox1
+            // tb_name
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 20);
-            this.textBox1.TabIndex = 26;
+            this.tb_name.Location = new System.Drawing.Point(12, 29);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(313, 20);
+            this.tb_name.TabIndex = 26;
             // 
             // label7
             // 
@@ -127,19 +127,19 @@ namespace MTO
             this.label2.TabIndex = 28;
             this.label2.Text = "ИНН";
             // 
-            // textBox2
+            // tb_INN
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 153);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(313, 20);
-            this.textBox2.TabIndex = 30;
+            this.tb_INN.Location = new System.Drawing.Point(12, 153);
+            this.tb_INN.Name = "tb_INN";
+            this.tb_INN.Size = new System.Drawing.Size(313, 20);
+            this.tb_INN.TabIndex = 30;
             // 
-            // textBox4
+            // tb_checkingAccount
             // 
-            this.textBox4.Location = new System.Drawing.Point(12, 197);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(313, 20);
-            this.textBox4.TabIndex = 34;
+            this.tb_checkingAccount.Location = new System.Drawing.Point(12, 197);
+            this.tb_checkingAccount.Name = "tb_checkingAccount";
+            this.tb_checkingAccount.Size = new System.Drawing.Size(313, 20);
+            this.tb_checkingAccount.TabIndex = 34;
             // 
             // label3
             // 
@@ -159,43 +159,43 @@ namespace MTO
             this.label6.TabIndex = 35;
             this.label6.Text = "Расчетный счет";
             // 
-            // button1
+            // btn_cancel
             // 
-            this.button1.Location = new System.Drawing.Point(250, 318);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_cancel.Location = new System.Drawing.Point(250, 318);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 42;
+            this.btn_cancel.Text = "Отмена";
+            this.btn_cancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(169, 318);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_add.Location = new System.Drawing.Point(169, 318);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 41;
+            this.btn_add.Text = "Добавить";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
             // FormProvidersAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 352);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.tb_BIK);
+            this.Controls.Add(this.tb_phoneNumber);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tb_address);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_correspondentAccount);
+            this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.tb_INN);
+            this.Controls.Add(this.tb_checkingAccount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Name = "FormProvidersAdd";
@@ -207,21 +207,21 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tb_BIK;
+        private System.Windows.Forms.TextBox tb_phoneNumber;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_address;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_correspondentAccount;
+        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_INN;
+        private System.Windows.Forms.TextBox tb_checkingAccount;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_add;
     }
 }
