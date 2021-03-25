@@ -29,9 +29,9 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_cancelAdd = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_addNClose = new System.Windows.Forms.Button();
             this.textBoxActNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,32 +52,32 @@ namespace MTO
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button3
+            // btn_cancelAdd
             // 
-            this.button3.Location = new System.Drawing.Point(241, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 23);
-            this.button3.TabIndex = 96;
-            this.button3.Text = "Отменить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_cancelAdd.Location = new System.Drawing.Point(241, 48);
+            this.btn_cancelAdd.Name = "btn_cancelAdd";
+            this.btn_cancelAdd.Size = new System.Drawing.Size(92, 23);
+            this.btn_cancelAdd.TabIndex = 96;
+            this.btn_cancelAdd.Text = "Отменить";
+            this.btn_cancelAdd.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(143, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 95;
-            this.button2.Text = "Записать";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_add.Location = new System.Drawing.Point(143, 48);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(92, 23);
+            this.btn_add.TabIndex = 95;
+            this.btn_add.Text = "Записать";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_addNClose
             // 
-            this.button1.Location = new System.Drawing.Point(12, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 94;
-            this.button1.Text = "Записать и закрыть";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_addNClose.Location = new System.Drawing.Point(12, 48);
+            this.btn_addNClose.Name = "btn_addNClose";
+            this.btn_addNClose.Size = new System.Drawing.Size(125, 23);
+            this.btn_addNClose.TabIndex = 94;
+            this.btn_addNClose.Text = "Записать и закрыть";
+            this.btn_addNClose.UseVisualStyleBackColor = true;
             // 
             // textBoxActNumber
             // 
@@ -239,9 +239,9 @@ namespace MTO
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_cancelAdd);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.btn_addNClose);
             this.Controls.Add(this.textBoxActNumber);
             this.Controls.Add(this.label1);
             this.Name = "FormReceiptOrderAdd";
@@ -254,9 +254,9 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_cancelAdd;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_addNClose;
         private System.Windows.Forms.TextBox textBoxActNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

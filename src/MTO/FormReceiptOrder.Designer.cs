@@ -44,24 +44,24 @@ namespace MTO
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_findReceiptOrder = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.ContractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContractCreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContractSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DictResourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DictUnitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DictProviderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DictWarehousesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountingReceiptOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountingReceiptOrderListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountingReceiptOrderAddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_contracts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_ContractSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_dict = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_dictResources = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_dictUnit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_dictProvider = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_dictWarehouses = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -203,14 +203,14 @@ namespace MTO
             this.textBox1.Size = new System.Drawing.Size(364, 20);
             this.textBox1.TabIndex = 26;
             // 
-            // button1
+            // btn_findReceiptOrder
             // 
-            this.button1.Location = new System.Drawing.Point(548, 185);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(297, 41);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Найти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_findReceiptOrder.Location = new System.Drawing.Point(548, 185);
+            this.btn_findReceiptOrder.Name = "btn_findReceiptOrder";
+            this.btn_findReceiptOrder.Size = new System.Drawing.Size(297, 41);
+            this.btn_findReceiptOrder.TabIndex = 38;
+            this.btn_findReceiptOrder.Text = "Найти";
+            this.btn_findReceiptOrder.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -260,99 +260,99 @@ namespace MTO
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ContractToolStripMenuItem,
-            this.DictToolStripMenuItem,
-            this.AccountingToolStripMenuItem});
+            this.tsmi_contracts,
+            this.tsmi_dict,
+            this.tsmi_accounting});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(924, 24);
-            this.menuStrip.TabIndex = 36;
+            this.menuStrip.TabIndex = 40;
             this.menuStrip.Text = "menuStrip1";
             // 
-            // ContractToolStripMenuItem
+            // tsmi_contracts
             // 
-            this.ContractToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ContractCreateToolStripMenuItem,
-            this.ContractSearchToolStripMenuItem});
-            this.ContractToolStripMenuItem.Name = "ContractToolStripMenuItem";
-            this.ContractToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.ContractToolStripMenuItem.Text = "Договора";
+            this.tsmi_contracts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_contractCreate,
+            this.tsmi_ContractSearch});
+            this.tsmi_contracts.Name = "tsmi_contracts";
+            this.tsmi_contracts.Size = new System.Drawing.Size(72, 20);
+            this.tsmi_contracts.Text = "Договора";
             // 
-            // ContractCreateToolStripMenuItem
+            // tsmi_contractCreate
             // 
-            this.ContractCreateToolStripMenuItem.Name = "ContractCreateToolStripMenuItem";
-            this.ContractCreateToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.ContractCreateToolStripMenuItem.Text = "Добавление";
+            this.tsmi_contractCreate.Name = "tsmi_contractCreate";
+            this.tsmi_contractCreate.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_contractCreate.Text = "Добавление";
             // 
-            // ContractSearchToolStripMenuItem
+            // tsmi_ContractSearch
             // 
-            this.ContractSearchToolStripMenuItem.Name = "ContractSearchToolStripMenuItem";
-            this.ContractSearchToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.ContractSearchToolStripMenuItem.Text = "Поиск";
+            this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
+            this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_ContractSearch.Text = "Поиск";
             // 
-            // DictToolStripMenuItem
+            // tsmi_dict
             // 
-            this.DictToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DictResourcesToolStripMenuItem,
-            this.DictUnitToolStripMenuItem,
-            this.DictProviderToolStripMenuItem,
-            this.DictWarehousesToolStripMenuItem});
-            this.DictToolStripMenuItem.Name = "DictToolStripMenuItem";
-            this.DictToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.DictToolStripMenuItem.Text = "Справочники";
+            this.tsmi_dict.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_dictResources,
+            this.tsmi_dictUnit,
+            this.tsmi_dictProvider,
+            this.tsmi_dictWarehouses});
+            this.tsmi_dict.Name = "tsmi_dict";
+            this.tsmi_dict.Size = new System.Drawing.Size(94, 20);
+            this.tsmi_dict.Text = "Справочники";
             // 
-            // DictResourcesToolStripMenuItem
+            // tsmi_dictResources
             // 
-            this.DictResourcesToolStripMenuItem.Name = "DictResourcesToolStripMenuItem";
-            this.DictResourcesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.DictResourcesToolStripMenuItem.Text = "Ресурсы";
+            this.tsmi_dictResources.Name = "tsmi_dictResources";
+            this.tsmi_dictResources.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictResources.Text = "Ресурсы";
             // 
-            // DictUnitToolStripMenuItem
+            // tsmi_dictUnit
             // 
-            this.DictUnitToolStripMenuItem.Name = "DictUnitToolStripMenuItem";
-            this.DictUnitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.DictUnitToolStripMenuItem.Text = "Ед. измерения";
+            this.tsmi_dictUnit.Name = "tsmi_dictUnit";
+            this.tsmi_dictUnit.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictUnit.Text = "Ед. измерения";
             // 
-            // DictProviderToolStripMenuItem
+            // tsmi_dictProvider
             // 
-            this.DictProviderToolStripMenuItem.Name = "DictProviderToolStripMenuItem";
-            this.DictProviderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.DictProviderToolStripMenuItem.Text = "Поставщики";
+            this.tsmi_dictProvider.Name = "tsmi_dictProvider";
+            this.tsmi_dictProvider.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictProvider.Text = "Поставщики";
             // 
-            // DictWarehousesToolStripMenuItem
+            // tsmi_dictWarehouses
             // 
-            this.DictWarehousesToolStripMenuItem.Name = "DictWarehousesToolStripMenuItem";
-            this.DictWarehousesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.DictWarehousesToolStripMenuItem.Text = "Склады";
+            this.tsmi_dictWarehouses.Name = "tsmi_dictWarehouses";
+            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictWarehouses.Text = "Склады";
             // 
-            // AccountingToolStripMenuItem
+            // tsmi_accounting
             // 
-            this.AccountingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AccountingReceiptOrderToolStripMenuItem});
-            this.AccountingToolStripMenuItem.Name = "AccountingToolStripMenuItem";
-            this.AccountingToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.AccountingToolStripMenuItem.Text = "Учет";
+            this.tsmi_accounting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_accountingReceiptOrder});
+            this.tsmi_accounting.Name = "tsmi_accounting";
+            this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
+            this.tsmi_accounting.Text = "Учет";
             // 
-            // AccountingReceiptOrderToolStripMenuItem
+            // tsmi_accountingReceiptOrder
             // 
-            this.AccountingReceiptOrderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AccountingReceiptOrderListToolStripMenuItem,
-            this.AccountingReceiptOrderAddToolStripMenuItem});
-            this.AccountingReceiptOrderToolStripMenuItem.Name = "AccountingReceiptOrderToolStripMenuItem";
-            this.AccountingReceiptOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.AccountingReceiptOrderToolStripMenuItem.Text = "Приходной ордер";
+            this.tsmi_accountingReceiptOrder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_accountingReceiptOrderList,
+            this.tsmi_accountingReceiptOrderAdd});
+            this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
+            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(173, 22);
+            this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
             // 
-            // AccountingReceiptOrderListToolStripMenuItem
+            // tsmi_accountingReceiptOrderList
             // 
-            this.AccountingReceiptOrderListToolStripMenuItem.Name = "AccountingReceiptOrderListToolStripMenuItem";
-            this.AccountingReceiptOrderListToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.AccountingReceiptOrderListToolStripMenuItem.Text = "Список";
+            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_accountingReceiptOrderList.Text = "Список";
             // 
-            // AccountingReceiptOrderAddToolStripMenuItem
+            // tsmi_accountingReceiptOrderAdd
             // 
-            this.AccountingReceiptOrderAddToolStripMenuItem.Name = "AccountingReceiptOrderAddToolStripMenuItem";
-            this.AccountingReceiptOrderAddToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.AccountingReceiptOrderAddToolStripMenuItem.Text = "Добавление";
+            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление";
             // 
             // FormReceiptOrder
             // 
@@ -362,7 +362,7 @@ namespace MTO
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_findReceiptOrder);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormReceiptOrder";
             this.Text = "Приходный ордер";
@@ -388,7 +388,7 @@ namespace MTO
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_findReceiptOrder;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceiptOrderNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
@@ -399,17 +399,17 @@ namespace MTO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem ContractToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ContractCreateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ContractSearchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DictToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DictResourcesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DictUnitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DictProviderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DictWarehousesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AccountingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AccountingReceiptOrderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AccountingReceiptOrderListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AccountingReceiptOrderAddToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_contracts;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_contractCreate;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_ContractSearch;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_dict;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_dictResources;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_dictUnit;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_dictProvider;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_dictWarehouses;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accounting;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrder;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
     }
 }

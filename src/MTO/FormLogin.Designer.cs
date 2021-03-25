@@ -33,7 +33,7 @@ namespace MTO
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonLogin = new System.Windows.Forms.Button();
+            this.btn_login = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxLogin
@@ -69,22 +69,22 @@ namespace MTO
             this.label2.TabIndex = 3;
             this.label2.Text = "Пароль";
             // 
-            // buttonLogin
+            // btn_login
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(165, 152);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogin.TabIndex = 4;
-            this.buttonLogin.Text = "Войти";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.btn_login.Location = new System.Drawing.Point(165, 152);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(75, 23);
+            this.btn_login.TabIndex = 4;
+            this.btn_login.Text = "Войти";
+            this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 213);
-            this.Controls.Add(this.buttonLogin);
+            this.Controls.Add(this.btn_login);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPassword);
@@ -104,7 +104,7 @@ namespace MTO
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Button btn_login;
     }
 }
 
