@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,11 +44,11 @@ namespace MTO
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.экспортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.редактированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -122,7 +122,7 @@ namespace MTO
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(634, 365);
+            this.tabPage2.Size = new System.Drawing.Size(470, 362);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Спецификация";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@ namespace MTO
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(628, 359);
+            this.dataGridView1.Size = new System.Drawing.Size(464, 356);
             this.dataGridView1.TabIndex = 1;
             // 
             // ColumnName
@@ -184,9 +184,9 @@ namespace MTO
             // 
             // ColumnDeliveryDate
             // 
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnDeliveryDate.HeaderText = "Срок поставки";
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             this.ColumnDeliveryDate.ReadOnly = true;
@@ -194,48 +194,48 @@ namespace MTO
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.правкаToolStripMenuItem});
+            this.tsmi_file,
+            this.tsmi_edit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "ms_menuContracts";
             // 
-            // файлToolStripMenuItem
+            // tsmi_file
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.экспортToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.tsmi_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_fileExport});
+            this.tsmi_file.Name = "tsmi_file";
+            this.tsmi_file.Size = new System.Drawing.Size(48, 20);
+            this.tsmi_file.Text = "Файл";
             // 
-            // экспортToolStripMenuItem
+            // tsmi_fileExport
             // 
-            this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.экспортToolStripMenuItem.Text = "Экспорт";
+            this.tsmi_fileExport.Name = "tsmi_fileExport";
+            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_fileExport.Text = "Экспорт";
             // 
-            // редактированиеToolStripMenuItem
+            // tsmi_edit
             // 
-            this.редактированиеToolStripMenuItem.Name = "редактированиеToolStripMenuItem";
-            this.редактированиеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.редактированиеToolStripMenuItem.Text = "Редактирование";
+            this.tsmi_edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_editChange,
+            this.tsmi_editDelete});
+            this.tsmi_edit.Name = "tsmi_edit";
+            this.tsmi_edit.Size = new System.Drawing.Size(59, 20);
+            this.tsmi_edit.Text = "Правка";
             // 
-            // удалениеToolStripMenuItem
+            // tsmi_editChange
             // 
-            this.удалениеToolStripMenuItem.Name = "удалениеToolStripMenuItem";
-            this.удалениеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.удалениеToolStripMenuItem.Text = "Удаление";
+            this.tsmi_editChange.Name = "tsmi_editChange";
+            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_editChange.Text = "Редактирование";
             // 
-            // правкаToolStripMenuItem
+            // tsmi_editDelete
             // 
-            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.редактированиеToolStripMenuItem,
-            this.удалениеToolStripMenuItem});
-            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.правкаToolStripMenuItem.Text = "Правка";
+            this.tsmi_editDelete.Name = "tsmi_editDelete";
+            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_editDelete.Text = "Удаление";
             // 
             // FormContractView
             // 
@@ -278,10 +278,10 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem экспортToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem редактированиеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_file;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_fileExport;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_edit;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_editChange;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_editDelete;
     }
 }

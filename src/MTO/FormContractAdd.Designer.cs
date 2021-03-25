@@ -65,9 +65,9 @@ namespace MTO
             this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_AddNClose = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_cancelAdd = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -407,41 +407,41 @@ namespace MTO
             this.ColumnDeliveryDate.HeaderText = "Срок поставки";
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             // 
-            // button1
+            // btn_AddNClose
             // 
-            this.button1.Location = new System.Drawing.Point(12, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 89;
-            this.button1.Text = "Записать и закрыть";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_AddNClose.Location = new System.Drawing.Point(12, 42);
+            this.btn_AddNClose.Name = "btn_AddNClose";
+            this.btn_AddNClose.Size = new System.Drawing.Size(125, 23);
+            this.btn_AddNClose.TabIndex = 89;
+            this.btn_AddNClose.Text = "Записать и закрыть";
+            this.btn_AddNClose.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_add
             // 
-            this.button2.Location = new System.Drawing.Point(143, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 90;
-            this.button2.Text = "Записать";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_add.Location = new System.Drawing.Point(143, 42);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(92, 23);
+            this.btn_add.TabIndex = 90;
+            this.btn_add.Text = "Записать";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btn_cancelAdd
             // 
-            this.button3.Location = new System.Drawing.Point(241, 42);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 23);
-            this.button3.TabIndex = 91;
-            this.button3.Text = "Отменить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_cancelAdd.Location = new System.Drawing.Point(241, 42);
+            this.btn_cancelAdd.Name = "btn_cancelAdd";
+            this.btn_cancelAdd.Size = new System.Drawing.Size(92, 23);
+            this.btn_cancelAdd.TabIndex = 91;
+            this.btn_cancelAdd.Text = "Отменить";
+            this.btn_cancelAdd.UseVisualStyleBackColor = true;
             // 
             // FormContractAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 560);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_cancelAdd);
+            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.btn_AddNClose);
             this.Controls.Add(this.textBoxActNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
@@ -496,9 +496,9 @@ namespace MTO
         private System.Windows.Forms.DateTimePicker dateTimeCreateDate;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_AddNClose;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_cancelAdd;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnUnit;
