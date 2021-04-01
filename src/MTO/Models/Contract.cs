@@ -22,23 +22,17 @@ namespace MTO.Models
         [Key]
         public int PK_Contract { get; set; }
 
-
         public string ContractNumber { get; set; }
-
 
         [Column(TypeName = "Date")]
         public DateTime ConclusionDate { get; set; }
 
-
         [Column(TypeName = "Date")]
         public DateTime ExpiredDate { get; set; }
 
-
         public string ConclusionCity { get; set; }
 
-
         public Decimal SupplierPenalty { get; set; }
-
 
         public Decimal CustomerPenalty { get; set; }
 
@@ -55,10 +49,9 @@ namespace MTO.Models
         public OrganizationDescription OrganizationDescription
         {
             get 
-        {
+            {
                 return Program.db.OrganizationDescriptions.Find(PK_OrganizationDescription); 
             }
         }
-
     }
 }

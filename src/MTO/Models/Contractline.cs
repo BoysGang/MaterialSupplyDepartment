@@ -22,19 +22,14 @@ namespace MTO.Models
         [Key]
         public int PK_ContractLine { get; set; }
 
-
         public int PK_Resource { get; set; }
-
 
         public float Amount { get; set; }
 
-
         public Decimal UnitPrice { get; set; }
-
 
         [Column(TypeName = "Date")]
         public DateTime DeliveryDate { get; set; }
-
 
         public int PK_Contract { get; set; }
         public Contract Contract
@@ -44,6 +39,5 @@ namespace MTO.Models
                 return Program.db.Contracts.Find(PK_Contract);
             }
         }
-
     }
 }
