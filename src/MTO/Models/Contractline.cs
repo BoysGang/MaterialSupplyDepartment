@@ -12,12 +12,12 @@ namespace MTO.Models
 {
     public partial class MTOContext : DbContext
     {
-        public DbSet<Contractline> Contractlines { get; set; }
+        public DbSet<ContractLine> ContractLines { get; set; }
 
     }
 
     [Table("contractline")]
-    public class Contractline
+    public class ContractLine
     {
         [Key]
         public int PK_ContractLine { get; set; }
