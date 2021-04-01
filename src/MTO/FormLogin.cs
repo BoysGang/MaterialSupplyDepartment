@@ -18,17 +18,6 @@ namespace MTO
         public FormLogin()
         {
             InitializeComponent();
-
-
-            var Contractlines = Program.db.Contractlines.Find(1);
-            
-            //MessageBox.Show(Contractlines.Count.ToString());
-            MessageBox.Show(Contractlines.Contract.ConclusionCity + " " + Contractlines.Contract.ContractNumber.ToString());
-            //Unit unit = new Unit() { Name = "Zhenya", Cipher = "3333" };
-
-            //Program.db.Add(unit);
-            //Program.db.SaveChanges();
-
         }
 
         private void btn_login_Click(object sender, EventArgs e)
