@@ -8,13 +8,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MTO.Models;
+
 namespace MTO
 {
     public partial class FormUnitAdd : Form
     {
-        public FormUnitAdd()
+        private Unit editingUnit = null;
+
+        public FormUnitAdd(Unit editingUnit = null)
         {
             InitializeComponent();
+
+            if (editingUnit != null)
+            {
+                this.Text = "Редактирование единицы измерения";
+
+                tb_cipher.Text = editingUnit.Cipher;
+                tb_name.Text = editingUnit.Name;
+
+                btn_add.Text = "Изменить";
+
+                this.editingUnit = editingUnit;
+            }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            if (editingUnit != null)
+            {
+                editingUnit.Name = tb_name.Text;
+                editingUnit.Cipher = tb_cipher.Text;
+
+                Program.db.Units.Update(editingUnit);
+            }
+            else
+            {
+                Unit newUnit = new Unit() { Name = tb_name.Text, Cipher = tb_cipher.Text };
+                Program.db.Units.Add(newUnit);
+            }
+
+            Program.db.SaveChanges();
+            this.Close();
         }
     }
 }
