@@ -20,10 +20,11 @@ namespace MTO.Models
     {
         [Key]
         public int PK_Resource { get; set; }
+
         public string Name { get; set; }
+
         public string Cipher { get; set; }
 
-        
         public int PK_Unit { get; set; }
         public Unit Unit 
         { 

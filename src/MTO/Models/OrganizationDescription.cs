@@ -12,22 +12,24 @@ namespace MTO.Models
 {
     public partial class MTOContext : DbContext
     {
-        public DbSet<Provider> Providers { get; set; }
+        public DbSet<OrganizationDescription> OrganizationDescriptions { get; set; }
     }
 
-    [Table("provider")]
-    public class Provider
+    [Table("organizationdescription")]
+    public class OrganizationDescription
     {
         [Key]
-        public int PK_Provider { get; set; }
+        public int PK_OrganizationDescription { get; set; }
 
         public string Name { get; set; }
 
-        public string INN { get; set; }
+        public string DirectorName { get; set; }
 
         public string Address { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public string INN { get; set; }
 
         public string CheckingAccount { get; set; }
 

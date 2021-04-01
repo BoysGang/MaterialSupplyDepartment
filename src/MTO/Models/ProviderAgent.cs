@@ -20,7 +20,9 @@ namespace MTO.Models
     {
         [Key]
         public int PK_ProviderAgent { get; set; }
+
         public string Name { get; set; }
+
         public string Role { get; set; }
 
         public int PK_Provider { get; set; }
