@@ -12,14 +12,14 @@ namespace MTO.Models
 {
     public partial class MTOContext : DbContext
     {
-        public DbSet<Unit> Units { get; set; }
+        public DbSet<Warehouse> Warehouses { get; set; }
     }
 
-    [Table("unit")]
-    public class Unit
+    [Table("warehouse")]
+    public class Warehouse
     {
         [Key]
-        public int PK_Unit { get; set; }
+        public int PK_Warehouse { get; set; }
         public string Name { get; set; }
         public string Cipher { get; set; }
     }

@@ -18,12 +18,6 @@ namespace MTO
         public FormLogin()
         {
             InitializeComponent();
-
-            Unit unit = new Unit() { Name = "Artyom", Cipher = "123" };
-
-            Program.db.Add(unit);
-            Program.db.SaveChanges();
-
         }
 
         private void btn_login_Click(object sender, EventArgs e)
