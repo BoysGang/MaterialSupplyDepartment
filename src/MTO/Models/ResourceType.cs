@@ -20,6 +20,7 @@ namespace MTO.Models
     {
         [Key]
         public int PK_ResourceType { get; set; }
+
         public string Name { get; set; }
     }
 }
