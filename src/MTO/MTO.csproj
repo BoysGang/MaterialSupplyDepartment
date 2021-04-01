@@ -232,7 +232,12 @@
       <DependentUpon>FormWarehousesAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\MTOContext.cs" />
+    <Compile Include="Models\Provider.cs" />
+    <Compile Include="Models\ProviderAgent.cs" />
+    <Compile Include="Models\Resource.cs" />
+    <Compile Include="Models\ResourceType.cs" />
     <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAnalysis.resx">
