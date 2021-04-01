@@ -19,10 +19,15 @@ namespace MTO
         {
             InitializeComponent();
 
-            Unit unit = new Unit() { Name = "Artyom", Cipher = "123" };
 
-            Program.db.Add(unit);
-            Program.db.SaveChanges();
+            var Contractlines = Program.db.Contractlines.Find(1);
+            
+            //MessageBox.Show(Contractlines.Count.ToString());
+            MessageBox.Show(Contractlines.Contract.ConclusionCity + " " + Contractlines.Contract.ContractNumber.ToString());
+            //Unit unit = new Unit() { Name = "Zhenya", Cipher = "3333" };
+
+            //Program.db.Add(unit);
+            //Program.db.SaveChanges();
 
         }
 

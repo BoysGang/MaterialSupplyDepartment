@@ -231,6 +231,8 @@
     <Compile Include="FormWarehousesAdd.Designer.cs">
       <DependentUpon>FormWarehousesAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\Contractline.cs" />
     <Compile Include="Models\MTOContext.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Program.cs" />
