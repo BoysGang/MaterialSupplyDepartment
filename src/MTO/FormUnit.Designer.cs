@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_units = new System.Windows.Forms.DataGridView();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,25 +42,29 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.PK_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_units)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_units
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_units.AllowUserToAddRows = false;
+            this.dgv_units.AllowUserToDeleteRows = false;
+            this.dgv_units.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_units.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_units.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCipher,
-            this.ColumnName});
-            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 164);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(654, 255);
-            this.dataGridView1.TabIndex = 0;
+            this.ColumnName,
+            this.PK_Unit});
+            this.dgv_units.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgv_units.Location = new System.Drawing.Point(12, 164);
+            this.dgv_units.MultiSelect = false;
+            this.dgv_units.Name = "dgv_units";
+            this.dgv_units.ReadOnly = true;
+            this.dgv_units.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_units.Size = new System.Drawing.Size(654, 255);
+            this.dgv_units.TabIndex = 0;
             // 
             // ColumnCipher
             // 
@@ -156,6 +160,7 @@ namespace MTO
             this.btn_delete.TabIndex = 19;
             this.btn_delete.Text = "Удалить";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_add
             // 
@@ -167,6 +172,13 @@ namespace MTO
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // PK_Unit
+            // 
+            this.PK_Unit.HeaderText = "PK_Unit";
+            this.PK_Unit.Name = "PK_Unit";
+            this.PK_Unit.ReadOnly = true;
+            this.PK_Unit.Visible = false;
+            // 
             // FormUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,10 +189,12 @@ namespace MTO
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_units);
             this.Name = "FormUnit";
             this.Text = "Справочник \"Ед. измерения\"";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Activated += new System.EventHandler(this.FormUnit_Activated);
+            this.Load += new System.EventHandler(this.FormUnit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_units)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -190,7 +204,7 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_units;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.Label label1;
@@ -203,5 +217,6 @@ namespace MTO
         private System.Windows.Forms.Button btn_change;
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_Unit;
     }
 }
