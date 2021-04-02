@@ -105,9 +105,9 @@ namespace MTO
             dgv_receiptOrders.Columns[0].DataPropertyName = "PK_ReceiptOrder";
             dgv_receiptOrders.Columns[1].DataPropertyName = "ReceiptOrderNumber";
             dgv_receiptOrders.Columns[2].DataPropertyName = "DeliveryDate";
-            dgv_receiptOrders.Columns[3].DataPropertyName = "Warehouse_Cipher";
-            dgv_receiptOrders.Columns[4].DataPropertyName = "Provider_Name";
-            dgv_receiptOrders.Columns[5].DataPropertyName = "Contract_ContractNumber";
+            dgv_receiptOrders.Columns[3].DataPropertyName = "Warehouse";
+            dgv_receiptOrders.Columns[4].DataPropertyName = "Provider";
+            dgv_receiptOrders.Columns[5].DataPropertyName = "Contract";
         }
 
         private void dgv_receiptOrders_SelectionChanged(object sender, EventArgs e)

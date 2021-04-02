@@ -51,30 +51,6 @@ namespace MTO.Models
                 return Program.db.Providers.Find(PK_Provider);
             }
         }
-
-        public string Provider_Name
-        {
-            get
-            {
-                return Provider.Name;
-            }
-        }
-
-        public string Warehouse_Cipher
-        {
-            get
-            {
-                return Warehouse.Cipher;
-            }
-        }
-
-        public string Contract_ContractNumber
-        {
-            get
-            {
-                return Contract.ContractNumber;
-            }
-        }
     }
     
 }
