@@ -23,11 +23,11 @@ namespace MTO
         private void btn_change_Click(object sender, EventArgs e)
         {
             int PK_Unit = Convert.ToInt32(dgv_units.SelectedRows[0].Cells[2].Value);
-            Unit deletingUnit = Program.db.Units.Find(PK_Unit);
+            Unit changingUnit = Program.db.Units.Find(PK_Unit);
 
-            if (deletingUnit != null)
+            if (changingUnit != null)
             {
-                FormUnitAdd form = new FormUnitAdd(deletingUnit);
+                FormUnitAdd form = new FormUnitAdd(changingUnit);
                 form.ShowDialog();
             }
         }
