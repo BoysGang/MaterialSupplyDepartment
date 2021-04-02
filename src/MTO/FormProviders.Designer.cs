@@ -57,6 +57,7 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.PK_Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_providers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,13 +75,17 @@ namespace MTO
             this.ColumnPhoneNumber,
             this.ColumnCheckingAccount,
             this.ColumnCorrespondentAccount,
-            this.ColumnBIK});
+            this.ColumnBIK,
+            this.PK_Provider});
             this.dgv_providers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgv_providers.Location = new System.Drawing.Point(12, 280);
+            this.dgv_providers.MultiSelect = false;
             this.dgv_providers.Name = "dgv_providers";
             this.dgv_providers.ReadOnly = true;
+            this.dgv_providers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_providers.Size = new System.Drawing.Size(665, 247);
             this.dgv_providers.TabIndex = 4;
+            this.dgv_providers.SelectionChanged += new System.EventHandler(this.dgv_providers_SelectionChanged);
             // 
             // ColumnName
             // 
@@ -296,6 +301,7 @@ namespace MTO
             this.btn_delete.TabIndex = 28;
             this.btn_delete.Text = "Удалить";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_add
             // 
@@ -306,6 +312,13 @@ namespace MTO
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // PK_Provider
+            // 
+            this.PK_Provider.HeaderText = "PK_Provider";
+            this.PK_Provider.Name = "PK_Provider";
+            this.PK_Provider.ReadOnly = true;
+            this.PK_Provider.Visible = false;
             // 
             // FormProviders
             // 
@@ -320,6 +333,8 @@ namespace MTO
             this.Controls.Add(this.label1);
             this.Name = "FormProviders";
             this.Text = "Справочник \"Поставщики\"";
+            this.Activated += new System.EventHandler(this.FormProviders_Activated);
+            this.Load += new System.EventHandler(this.FormProviders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_providers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -358,5 +373,6 @@ namespace MTO
         private System.Windows.Forms.Button btn_change;
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_Provider;
     }
 }

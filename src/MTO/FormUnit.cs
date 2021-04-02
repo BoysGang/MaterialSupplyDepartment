@@ -41,7 +41,6 @@ namespace MTO
         private void FormUnit_Load(object sender, EventArgs e)
         {
             dgv_units.AutoGenerateColumns = false;
-
         }
 
         private void FormUnit_Activated(object sender, EventArgs e)
@@ -60,7 +59,7 @@ namespace MTO
                 {
                     Unit deletingUnit = Program.db.Units.Find(PK_Unit);
 
-                    if(deletingUnit != null)
+                    if (deletingUnit != null)
                     {
                         Program.db.Units.Remove(deletingUnit);
                         Program.db.SaveChanges();
@@ -71,11 +70,10 @@ namespace MTO
                 updateUnitTable();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ошибка удаления, " + ex.ToString());
             }
-            
         }
 
         private void updateUnitTable()
