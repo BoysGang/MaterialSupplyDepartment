@@ -29,6 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_providers = new System.Windows.Forms.DataGridView();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnINN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,6 +38,7 @@ namespace MTO
             this.ColumnCheckingAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCorrespondentAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBIK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PK_Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_BIK = new System.Windows.Forms.TextBox();
@@ -57,7 +59,6 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.PK_Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_providers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +83,8 @@ namespace MTO
             this.dgv_providers.MultiSelect = false;
             this.dgv_providers.Name = "dgv_providers";
             this.dgv_providers.ReadOnly = true;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_providers.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_providers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_providers.Size = new System.Drawing.Size(665, 247);
             this.dgv_providers.TabIndex = 4;
@@ -128,6 +131,13 @@ namespace MTO
             this.ColumnBIK.HeaderText = "БИК";
             this.ColumnBIK.Name = "ColumnBIK";
             this.ColumnBIK.ReadOnly = true;
+            // 
+            // PK_Provider
+            // 
+            this.PK_Provider.HeaderText = "PK_Provider";
+            this.PK_Provider.Name = "PK_Provider";
+            this.PK_Provider.ReadOnly = true;
+            this.PK_Provider.Visible = false;
             // 
             // label1
             // 
@@ -312,13 +322,6 @@ namespace MTO
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // PK_Provider
-            // 
-            this.PK_Provider.HeaderText = "PK_Provider";
-            this.PK_Provider.Name = "PK_Provider";
-            this.PK_Provider.ReadOnly = true;
-            this.PK_Provider.Visible = false;
             // 
             // FormProviders
             // 
