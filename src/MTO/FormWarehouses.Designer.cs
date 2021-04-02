@@ -30,8 +30,6 @@ namespace MTO
         private void InitializeComponent()
         {
             this.dgv_warehouses = new System.Windows.Forms.DataGridView();
-            this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_cipher = new System.Windows.Forms.TextBox();
             this.btn_find = new System.Windows.Forms.Button();
@@ -42,6 +40,9 @@ namespace MTO
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_change = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PK_Warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_warehouses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -54,25 +55,17 @@ namespace MTO
             this.dgv_warehouses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_warehouses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCipher,
-            this.ColumnName});
+            this.ColumnName,
+            this.PK_Warehouse});
             this.dgv_warehouses.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgv_warehouses.Location = new System.Drawing.Point(12, 164);
+            this.dgv_warehouses.MultiSelect = false;
             this.dgv_warehouses.Name = "dgv_warehouses";
             this.dgv_warehouses.ReadOnly = true;
+            this.dgv_warehouses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_warehouses.Size = new System.Drawing.Size(654, 256);
             this.dgv_warehouses.TabIndex = 6;
-            // 
-            // ColumnCipher
-            // 
-            this.ColumnCipher.HeaderText = "Шифр";
-            this.ColumnCipher.Name = "ColumnCipher";
-            this.ColumnCipher.ReadOnly = true;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Наименование";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
+            this.dgv_warehouses.SelectionChanged += new System.EventHandler(this.dgv_warehouses_SelectionChanged);
             // 
             // label1
             // 
@@ -143,6 +136,7 @@ namespace MTO
             this.btn_delete.TabIndex = 15;
             this.btn_delete.Text = "Удалить";
             this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_change
             // 
@@ -167,6 +161,25 @@ namespace MTO
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
+            // ColumnCipher
+            // 
+            this.ColumnCipher.HeaderText = "Шифр";
+            this.ColumnCipher.Name = "ColumnCipher";
+            this.ColumnCipher.ReadOnly = true;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Наименование";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // PK_Warehouse
+            // 
+            this.PK_Warehouse.HeaderText = "PK_Warehouse";
+            this.PK_Warehouse.Name = "PK_Warehouse";
+            this.PK_Warehouse.ReadOnly = true;
+            this.PK_Warehouse.Visible = false;
+            // 
             // FormWarehouses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +193,7 @@ namespace MTO
             this.Controls.Add(this.label1);
             this.Name = "FormWarehouses";
             this.Text = "Справочник \"Склады\"";
+            this.Activated += new System.EventHandler(this.FormWarehouses_Activated);
             this.Load += new System.EventHandler(this.FormWarehouses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_warehouses)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -193,8 +207,6 @@ namespace MTO
 
         private System.Windows.Forms.DataGridView dgv_warehouses;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCipher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.TextBox tb_cipher;
         private System.Windows.Forms.Button btn_find;
         private System.Windows.Forms.Label label2;
@@ -204,5 +216,8 @@ namespace MTO
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_change;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCipher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_Warehouse;
     }
 }
