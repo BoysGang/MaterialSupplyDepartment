@@ -31,14 +31,13 @@ namespace MTO
         {
             this.lbl_receiptOrderNumber = new System.Windows.Forms.Label();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
+            this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WarehouseCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_receiptOrderLines = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStripReceiptOrder = new System.Windows.Forms.MenuStrip();
-            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,12 +47,13 @@ namespace MTO
             this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WarehouseCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.menuStripReceiptOrder = new System.Windows.Forms.MenuStrip();
+            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrderLines)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -91,6 +91,44 @@ namespace MTO
             this.dgv_receiptOrders.RowHeadersVisible = false;
             this.dgv_receiptOrders.Size = new System.Drawing.Size(770, 100);
             this.dgv_receiptOrders.TabIndex = 4;
+            this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
+            // 
+            // PK_ReceiptOrder
+            // 
+            this.PK_ReceiptOrder.HeaderText = "PK_ReceiptOrder";
+            this.PK_ReceiptOrder.Name = "PK_ReceiptOrder";
+            this.PK_ReceiptOrder.ReadOnly = true;
+            this.PK_ReceiptOrder.Visible = false;
+            // 
+            // DeliveryDate
+            // 
+            this.DeliveryDate.HeaderText = "Дата поставки";
+            this.DeliveryDate.Name = "DeliveryDate";
+            this.DeliveryDate.ReadOnly = true;
+            // 
+            // WarehouseCipher
+            // 
+            this.WarehouseCipher.HeaderText = "Шифр склада";
+            this.WarehouseCipher.Name = "WarehouseCipher";
+            this.WarehouseCipher.ReadOnly = true;
+            // 
+            // Provider
+            // 
+            this.Provider.HeaderText = "Поставщик";
+            this.Provider.Name = "Provider";
+            this.Provider.ReadOnly = true;
+            // 
+            // ProviderCipher
+            // 
+            this.ProviderCipher.HeaderText = "Шифр поставщика";
+            this.ProviderCipher.Name = "ProviderCipher";
+            this.ProviderCipher.ReadOnly = true;
+            // 
+            // ContractNumber
+            // 
+            this.ContractNumber.HeaderText = "Шифр сопроводительного документа";
+            this.ContractNumber.Name = "ContractNumber";
+            this.ContractNumber.ReadOnly = true;
             // 
             // dgv_receiptOrderLines
             // 
@@ -114,6 +152,62 @@ namespace MTO
             this.dgv_receiptOrderLines.ReadOnly = true;
             this.dgv_receiptOrderLines.Size = new System.Drawing.Size(770, 367);
             this.dgv_receiptOrderLines.TabIndex = 5;
+            this.dgv_receiptOrderLines.SelectionChanged += new System.EventHandler(this.dgv_receiptOrderLines_SelectionChanged);
+            // 
+            // PK_ReceiptOrderLine
+            // 
+            this.PK_ReceiptOrderLine.HeaderText = "PK_ReceiptOrderLine";
+            this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
+            this.PK_ReceiptOrderLine.ReadOnly = true;
+            this.PK_ReceiptOrderLine.Visible = false;
+            // 
+            // ResourceName
+            // 
+            this.ResourceName.HeaderText = "Наименование ресурса";
+            this.ResourceName.Name = "ResourceName";
+            this.ResourceName.ReadOnly = true;
+            // 
+            // ResourceCipher
+            // 
+            this.ResourceCipher.HeaderText = "Шифр ресурса";
+            this.ResourceCipher.Name = "ResourceCipher";
+            this.ResourceCipher.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Ед. измерения";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // UnitCipher
+            // 
+            this.UnitCipher.HeaderText = "Шифр ед. измерения";
+            this.UnitCipher.Name = "UnitCipher";
+            this.UnitCipher.ReadOnly = true;
+            // 
+            // DocumentAmount
+            // 
+            this.DocumentAmount.HeaderText = "Кол-во по документу";
+            this.DocumentAmount.Name = "DocumentAmount";
+            this.DocumentAmount.ReadOnly = true;
+            // 
+            // AcceptedAmount
+            // 
+            this.AcceptedAmount.HeaderText = "Кол-во принято";
+            this.AcceptedAmount.Name = "AcceptedAmount";
+            this.AcceptedAmount.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "Цена за единицу, руб.";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Общая цена, руб.";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -179,98 +273,6 @@ namespace MTO
             this.tsmi_editDelete.Name = "tsmi_editDelete";
             this.tsmi_editDelete.Size = new System.Drawing.Size(163, 22);
             this.tsmi_editDelete.Text = "Удаление";
-            // 
-            // PK_ReceiptOrderLine
-            // 
-            this.PK_ReceiptOrderLine.HeaderText = "PK_ReceiptOrderLine";
-            this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
-            this.PK_ReceiptOrderLine.ReadOnly = true;
-            this.PK_ReceiptOrderLine.Visible = false;
-            // 
-            // ResourceName
-            // 
-            this.ResourceName.HeaderText = "Наименование ресурса";
-            this.ResourceName.Name = "ResourceName";
-            this.ResourceName.ReadOnly = true;
-            // 
-            // ResourceCipher
-            // 
-            this.ResourceCipher.HeaderText = "Шифр ресурса";
-            this.ResourceCipher.Name = "ResourceCipher";
-            this.ResourceCipher.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Ед. измерения";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            // 
-            // UnitCipher
-            // 
-            this.UnitCipher.HeaderText = "Шифр ед. измерения";
-            this.UnitCipher.Name = "UnitCipher";
-            this.UnitCipher.ReadOnly = true;
-            // 
-            // DocumentAmount
-            // 
-            this.DocumentAmount.HeaderText = "Кол-во по документу";
-            this.DocumentAmount.Name = "DocumentAmount";
-            this.DocumentAmount.ReadOnly = true;
-            // 
-            // AcceptedAmount
-            // 
-            this.AcceptedAmount.HeaderText = "Кол-во принято";
-            this.AcceptedAmount.Name = "AcceptedAmount";
-            this.AcceptedAmount.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.HeaderText = "Цена за единицу, руб.";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Общая цена, руб.";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // PK_ReceiptOrder
-            // 
-            this.PK_ReceiptOrder.HeaderText = "PK_ReceiptOrder";
-            this.PK_ReceiptOrder.Name = "PK_ReceiptOrder";
-            this.PK_ReceiptOrder.ReadOnly = true;
-            this.PK_ReceiptOrder.Visible = false;
-            // 
-            // DeliveryDate
-            // 
-            this.DeliveryDate.HeaderText = "Дата поставки";
-            this.DeliveryDate.Name = "DeliveryDate";
-            this.DeliveryDate.ReadOnly = true;
-            // 
-            // WarehouseCipher
-            // 
-            this.WarehouseCipher.HeaderText = "Шифр склада";
-            this.WarehouseCipher.Name = "WarehouseCipher";
-            this.WarehouseCipher.ReadOnly = true;
-            // 
-            // Provider
-            // 
-            this.Provider.HeaderText = "Поставщик";
-            this.Provider.Name = "Provider";
-            this.Provider.ReadOnly = true;
-            // 
-            // ProviderCipher
-            // 
-            this.ProviderCipher.HeaderText = "Шифр поставщика";
-            this.ProviderCipher.Name = "ProviderCipher";
-            this.ProviderCipher.ReadOnly = true;
-            // 
-            // ContractNumber
-            // 
-            this.ContractNumber.HeaderText = "Шифр сопроводительного документа";
-            this.ContractNumber.Name = "ContractNumber";
-            this.ContractNumber.ReadOnly = true;
             // 
             // FormReceiptOrderView
             // 
