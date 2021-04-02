@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MTO.Models;
+
 namespace MTO
 {
     public partial class FormReceiptOrder : Form
@@ -79,18 +81,45 @@ namespace MTO
 
         private void FormReceiptOrder_Load(object sender, EventArgs e)
         {
-            dgv_receiptOrders.Rows.Add();
-            dgv_receiptOrders[0, 0].Value = "000001";
-            dgv_receiptOrders[1, 0].Value = "24/03/2020";
-            dgv_receiptOrders[2, 0].Value = "001";
-            dgv_receiptOrders[3, 0].Value = "ООО Фисташка";
-            dgv_receiptOrders[4, 0].Value = "123154";
+            dgv_receiptOrders.AutoGenerateColumns = false;
+            dgv_receiptOrders.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
         }
 
         private void btn_viewReceiptOrder_Click(object sender, EventArgs e)
         {
             FormReceiptOrderView form = new FormReceiptOrderView();
             form.ShowDialog();
+        }
+
+        private void FormReceiptOrder_Activated(object sender, EventArgs e)
+        {
+            updateReceiptOrderTable();
+        }
+
+        private void updateReceiptOrderTable()
+        {
+            List<ReceiptOrder> orders = Program.db.ReceiptOrders.ToList();
+            dgv_receiptOrders.DataSource = orders;
+
+            dgv_receiptOrders.Columns[0].DataPropertyName = "PK_ReceiptOrder";
+            dgv_receiptOrders.Columns[1].DataPropertyName = "ReceiptOrderNumber";
+            dgv_receiptOrders.Columns[2].DataPropertyName = "DeliveryDate";
+            dgv_receiptOrders.Columns[3].DataPropertyName = "Warehouse";
+            dgv_receiptOrders.Columns[4].DataPropertyName = "Provider";
+            dgv_receiptOrders.Columns[5].DataPropertyName = "Contract";
+        }
+
+        private void dgv_receiptOrders_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_receiptOrders.SelectedRows != null)
+            {
+                btn_viewReceiptOrder.Enabled = true;
+            }
+            else
+            {
+                btn_viewReceiptOrder.Enabled = false;
+            }
         }
     }
 }

@@ -42,6 +42,15 @@ namespace MTO.Models
                 return Program.db.Contracts.Find(PK_Contract);
             }
         }
+
+        public int PK_Provider { get; set; }
+        public Provider Provider
+        {
+            get
+            {
+                return Program.db.Providers.Find(PK_Provider);
+            }
+        }
     }
     
 }

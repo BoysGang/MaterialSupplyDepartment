@@ -18,6 +18,12 @@ namespace MTO.Models
     [Table("provider")]
     public class Provider
     {
+        public override string ToString()
+        {
+            return Name;
+        }
+        
+
         [Key]
         public int PK_Provider { get; set; }
 

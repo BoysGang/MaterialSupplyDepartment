@@ -18,6 +18,11 @@ namespace MTO.Models
     [Table("warehouse")]
     public class Warehouse
     {
+        public override string ToString()
+        {
+            return Cipher;
+        }
+
         [Key]
         public int PK_Warehouse { get; set; }
 

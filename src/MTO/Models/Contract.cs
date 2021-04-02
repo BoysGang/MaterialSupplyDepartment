@@ -19,6 +19,10 @@ namespace MTO.Models
     [Table("contract")]
     public class Contract
     {
+        public override string ToString()
+        {
+            return ContractNumber;
+        }
         [Key]
         public int PK_Contract { get; set; }
 
