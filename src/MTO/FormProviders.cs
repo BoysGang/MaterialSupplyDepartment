@@ -22,6 +22,7 @@ namespace MTO
         private void FormProviders_Load(object sender, EventArgs e)
         {
             dgv_providers.AutoGenerateColumns = false;
+            dgv_providers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void FormProviders_Activated(object sender, EventArgs e)

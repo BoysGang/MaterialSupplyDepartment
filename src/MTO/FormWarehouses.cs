@@ -22,6 +22,7 @@ namespace MTO
         private void FormWarehouses_Load(object sender, EventArgs e)
         {
             dgv_warehouses.AutoGenerateColumns = false;
+            dgv_warehouses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void btn_change_Click(object sender, EventArgs e)

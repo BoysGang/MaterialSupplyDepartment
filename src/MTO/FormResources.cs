@@ -44,6 +44,7 @@ namespace MTO
         private void FormResources_Load(object sender, EventArgs e)
         {
             dgv_resources.AutoGenerateColumns = false;
+            dgv_resources.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void updateResourceTable()

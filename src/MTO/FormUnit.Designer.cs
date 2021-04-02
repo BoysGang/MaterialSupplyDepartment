@@ -29,9 +29,11 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_units = new System.Windows.Forms.DataGridView();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PK_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_cipher = new System.Windows.Forms.TextBox();
@@ -42,7 +44,6 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.PK_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_units)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,8 @@ namespace MTO
             this.dgv_units.MultiSelect = false;
             this.dgv_units.Name = "dgv_units";
             this.dgv_units.ReadOnly = true;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_units.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_units.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_units.Size = new System.Drawing.Size(654, 255);
             this.dgv_units.TabIndex = 0;
@@ -77,6 +80,13 @@ namespace MTO
             this.ColumnName.HeaderText = "Наименование";
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
+            // 
+            // PK_Unit
+            // 
+            this.PK_Unit.HeaderText = "PK_Unit";
+            this.PK_Unit.Name = "PK_Unit";
+            this.PK_Unit.ReadOnly = true;
+            this.PK_Unit.Visible = false;
             // 
             // label1
             // 
@@ -171,13 +181,6 @@ namespace MTO
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // PK_Unit
-            // 
-            this.PK_Unit.HeaderText = "PK_Unit";
-            this.PK_Unit.Name = "PK_Unit";
-            this.PK_Unit.ReadOnly = true;
-            this.PK_Unit.Visible = false;
             // 
             // FormUnit
             // 

@@ -29,7 +29,13 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_resources = new System.Windows.Forms.DataGridView();
+            this.PK_Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cb_type = new System.Windows.Forms.ComboBox();
@@ -44,11 +50,6 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.PK_Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resources)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -70,11 +71,46 @@ namespace MTO
             this.dgv_resources.MultiSelect = false;
             this.dgv_resources.Name = "dgv_resources";
             this.dgv_resources.ReadOnly = true;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_resources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_resources.Size = new System.Drawing.Size(657, 247);
             this.dgv_resources.TabIndex = 2;
             this.dgv_resources.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
             this.dgv_resources.SelectionChanged += new System.EventHandler(this.dgv_resources_SelectionChanged);
+            // 
+            // PK_Resource
+            // 
+            this.PK_Resource.HeaderText = "PK_Resource";
+            this.PK_Resource.Name = "PK_Resource";
+            this.PK_Resource.ReadOnly = true;
+            this.PK_Resource.Visible = false;
+            // 
+            // ColumnCipher
+            // 
+            this.ColumnCipher.HeaderText = "Шифр";
+            this.ColumnCipher.Name = "ColumnCipher";
+            this.ColumnCipher.ReadOnly = true;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Наименование";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.HeaderText = "Ед. измерения";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            // 
+            // ColumnResourceType
+            // 
+            this.ColumnResourceType.HeaderText = "Тип";
+            this.ColumnResourceType.Name = "ColumnResourceType";
+            this.ColumnResourceType.ReadOnly = true;
+            this.ColumnResourceType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnResourceType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label1
             // 
@@ -209,39 +245,6 @@ namespace MTO
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // PK_Resource
-            // 
-            this.PK_Resource.HeaderText = "PK_Resource";
-            this.PK_Resource.Name = "PK_Resource";
-            this.PK_Resource.ReadOnly = true;
-            this.PK_Resource.Visible = false;
-            // 
-            // ColumnCipher
-            // 
-            this.ColumnCipher.HeaderText = "Шифр";
-            this.ColumnCipher.Name = "ColumnCipher";
-            this.ColumnCipher.ReadOnly = true;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Наименование";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.HeaderText = "Ед. измерения";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.ReadOnly = true;
-            // 
-            // ColumnResourceType
-            // 
-            this.ColumnResourceType.HeaderText = "Тип";
-            this.ColumnResourceType.Name = "ColumnResourceType";
-            this.ColumnResourceType.ReadOnly = true;
-            this.ColumnResourceType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnResourceType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormResources
             // 
