@@ -76,5 +76,15 @@ namespace MTO
             dgv_receiptOrderLines.AutoGenerateColumns = false;
             dgv_receiptOrderLines.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
+
+        private void dgv_receiptOrders_SelectionChanged(object sender, EventArgs e)
+        {
+            dgv_receiptOrders.ClearSelection();
+        }
+
+        private void dgv_receiptOrderLines_SelectionChanged(object sender, EventArgs e)
+        {
+            dgv_receiptOrderLines.ClearSelection();
+        }
     }
 }
