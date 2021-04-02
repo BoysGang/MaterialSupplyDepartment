@@ -24,5 +24,10 @@ namespace MTO.Models
         public string Name { get; set; }
 
         public string Cipher { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
