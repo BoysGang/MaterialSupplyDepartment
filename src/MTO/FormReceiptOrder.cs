@@ -88,8 +88,14 @@ namespace MTO
 
         private void btn_viewReceiptOrder_Click(object sender, EventArgs e)
         {
-            FormReceiptOrderView form = new FormReceiptOrderView();
-            form.ShowDialog();
+            int PK_ReceiptOrder = Convert.ToInt32(dgv_receiptOrders.SelectedRows[0].Cells[0].Value);
+            ReceiptOrder viewingReceiptOrder = Program.db.ReceiptOrders.Find(PK_ReceiptOrder);
+
+            if (viewingReceiptOrder != null)
+            {
+                FormReceiptOrderView form = new FormReceiptOrderView(viewingReceiptOrder);
+                form.ShowDialog();
+            }
         }
 
         private void FormReceiptOrder_Activated(object sender, EventArgs e)
