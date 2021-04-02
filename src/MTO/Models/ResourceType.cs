@@ -22,5 +22,10 @@ namespace MTO.Models
         public int PK_ResourceType { get; set; }
 
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

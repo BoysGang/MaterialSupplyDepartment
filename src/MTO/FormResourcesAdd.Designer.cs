@@ -115,6 +115,7 @@ namespace MTO
             this.btn_cancel.TabIndex = 29;
             this.btn_cancel.Text = "Отмена";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_add
             // 
@@ -124,6 +125,7 @@ namespace MTO
             this.btn_add.TabIndex = 28;
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // FormResourcesAdd
             // 
