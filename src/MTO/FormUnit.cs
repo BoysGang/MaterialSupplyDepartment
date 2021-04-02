@@ -41,6 +41,7 @@ namespace MTO
         private void FormUnit_Load(object sender, EventArgs e)
         {
             dgv_units.AutoGenerateColumns = false;
+            dgv_units.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void FormUnit_Activated(object sender, EventArgs e)
