@@ -39,5 +39,50 @@ namespace MTO.Models
                 return Program.db.Resources.Find(PK_Resource);
             }
         }
+
+        public decimal Price
+        {
+            get
+            { var line = ReceiptOrder.Contract.getContractLines()
+                .Find(b => b.PK_Resource == PK_Resource && b.DeliveryDate == ReceiptOrder.DeliveryDate);
+
+                if (line == null)
+                    return 0;
+
+                return line.UnitPrice; 
+            }
+        }
+
+        public string Resource_Cipher
+        {
+            get
+            {
+                return Resource.Cipher;
+            }
+        }
+
+        public Unit Resource_Unit
+        {
+            get
+            {
+                return Resource.Unit;
+            }
+        }
+
+        public string Resource_Unit_Cipher
+        {
+            get
+            {
+                return Resource.Unit.Cipher;
+            }
+        }
+
+        public decimal TotalPrice
+        {
+            get
+            {
+                return Price * (decimal)AcceptedAmount;
+            }
+        }
     }
 }

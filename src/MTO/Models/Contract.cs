@@ -57,5 +57,12 @@ namespace MTO.Models
                 return Program.db.OrganizationDescriptions.Find(PK_OrganizationDescription); 
             }
         }
+
+        public List<ContractLine> getContractLines()
+        {
+            return Program.db.ContractLines
+                    .Where(b => b.PK_Contract == PK_Contract)
+                    .ToList();
+        }
     }
 }

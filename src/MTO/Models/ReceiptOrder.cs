@@ -51,6 +51,20 @@ namespace MTO.Models
                 return Program.db.Providers.Find(PK_Provider);
             }
         }
+
+        public string Provider_INN
+        {
+            get
+            {
+                return Provider.INN;
+            }
+        }
+
+        public List<ReceiptOrderLine> getReceiptOrderLines()
+        {
+            return Program.db.ReceiptOrderLines
+                    .Where(b => b.PK_ReceiptOrder == PK_ReceiptOrder)
+                    .ToList();
+        }
     }
-    
 }

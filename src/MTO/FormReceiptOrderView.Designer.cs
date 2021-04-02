@@ -29,14 +29,17 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WarehouseCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.lbl_receiptOrderNumber = new System.Windows.Forms.Label();
+            this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
+            this.dgv_receiptOrderLines = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.menuStripReceiptOrder = new System.Windows.Forms.MenuStrip();
+            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,87 +48,58 @@ namespace MTO
             this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStripReceiptOrder = new System.Windows.Forms.MenuStrip();
-            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WarehouseCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrderLines)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStripReceiptOrder.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lbl_receiptOrderNumber
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(298, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Приходной ордер №";
+            this.lbl_receiptOrderNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_receiptOrderNumber.AutoSize = true;
+            this.lbl_receiptOrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_receiptOrderNumber.Location = new System.Drawing.Point(298, 16);
+            this.lbl_receiptOrderNumber.Name = "lbl_receiptOrderNumber";
+            this.lbl_receiptOrderNumber.Size = new System.Drawing.Size(180, 20);
+            this.lbl_receiptOrderNumber.TabIndex = 3;
+            this.lbl_receiptOrderNumber.Text = "Приходной ордер №";
             // 
-            // dataGridView1
+            // dgv_receiptOrders
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_receiptOrders.AllowUserToAddRows = false;
+            this.dgv_receiptOrders.AllowUserToDeleteRows = false;
+            this.dgv_receiptOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_receiptOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_receiptOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PK_ReceiptOrder,
             this.DeliveryDate,
             this.WarehouseCipher,
             this.Provider,
             this.ProviderCipher,
             this.ContractNumber});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 56);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(770, 100);
-            this.dataGridView1.TabIndex = 4;
+            this.dgv_receiptOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_receiptOrders.Location = new System.Drawing.Point(3, 56);
+            this.dgv_receiptOrders.Name = "dgv_receiptOrders";
+            this.dgv_receiptOrders.ReadOnly = true;
+            this.dgv_receiptOrders.RowHeadersVisible = false;
+            this.dgv_receiptOrders.Size = new System.Drawing.Size(770, 100);
+            this.dgv_receiptOrders.TabIndex = 4;
             // 
-            // DeliveryDate
+            // dgv_receiptOrderLines
             // 
-            this.DeliveryDate.HeaderText = "Дата поставки";
-            this.DeliveryDate.Name = "DeliveryDate";
-            this.DeliveryDate.ReadOnly = true;
-            // 
-            // WarehouseCipher
-            // 
-            this.WarehouseCipher.HeaderText = "Шифр склада";
-            this.WarehouseCipher.Name = "WarehouseCipher";
-            this.WarehouseCipher.ReadOnly = true;
-            // 
-            // Provider
-            // 
-            this.Provider.HeaderText = "Поставщик";
-            this.Provider.Name = "Provider";
-            this.Provider.ReadOnly = true;
-            // 
-            // ProviderCipher
-            // 
-            this.ProviderCipher.HeaderText = "Шифр поставщика";
-            this.ProviderCipher.Name = "ProviderCipher";
-            this.ProviderCipher.ReadOnly = true;
-            // 
-            // ContractNumber
-            // 
-            this.ContractNumber.HeaderText = "Шифр сопроводительного документа";
-            this.ContractNumber.Name = "ContractNumber";
-            this.ContractNumber.ReadOnly = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_receiptOrderLines.AllowUserToAddRows = false;
+            this.dgv_receiptOrderLines.AllowUserToDeleteRows = false;
+            this.dgv_receiptOrderLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_receiptOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_receiptOrderLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PK_ReceiptOrderLine,
             this.ResourceName,
             this.ResourceCipher,
             this.Unit,
@@ -134,12 +108,84 @@ namespace MTO
             this.AcceptedAmount,
             this.UnitPrice,
             this.Price});
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 162);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(770, 367);
-            this.dataGridView2.TabIndex = 5;
+            this.dgv_receiptOrderLines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_receiptOrderLines.Location = new System.Drawing.Point(3, 162);
+            this.dgv_receiptOrderLines.Name = "dgv_receiptOrderLines";
+            this.dgv_receiptOrderLines.ReadOnly = true;
+            this.dgv_receiptOrderLines.Size = new System.Drawing.Size(770, 367);
+            this.dgv_receiptOrderLines.TabIndex = 5;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.dgv_receiptOrders, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_receiptOrderNumber, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgv_receiptOrderLines, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(776, 532);
+            this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // menuStripReceiptOrder
+            // 
+            this.menuStripReceiptOrder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_file,
+            this.tsmi_edit});
+            this.menuStripReceiptOrder.Location = new System.Drawing.Point(0, 0);
+            this.menuStripReceiptOrder.Name = "menuStripReceiptOrder";
+            this.menuStripReceiptOrder.Size = new System.Drawing.Size(776, 24);
+            this.menuStripReceiptOrder.TabIndex = 7;
+            this.menuStripReceiptOrder.Text = "menuStrip1";
+            // 
+            // tsmi_file
+            // 
+            this.tsmi_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_fileExport});
+            this.tsmi_file.Name = "tsmi_file";
+            this.tsmi_file.Size = new System.Drawing.Size(48, 20);
+            this.tsmi_file.Text = "Файл";
+            // 
+            // tsmi_fileExport
+            // 
+            this.tsmi_fileExport.Name = "tsmi_fileExport";
+            this.tsmi_fileExport.Size = new System.Drawing.Size(119, 22);
+            this.tsmi_fileExport.Text = "Экспорт";
+            // 
+            // tsmi_edit
+            // 
+            this.tsmi_edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_editChange,
+            this.tsmi_editDelete});
+            this.tsmi_edit.Name = "tsmi_edit";
+            this.tsmi_edit.Size = new System.Drawing.Size(59, 20);
+            this.tsmi_edit.Text = "Правка";
+            // 
+            // tsmi_editChange
+            // 
+            this.tsmi_editChange.Name = "tsmi_editChange";
+            this.tsmi_editChange.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editChange.Text = "Редактирование";
+            this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
+            // 
+            // tsmi_editDelete
+            // 
+            this.tsmi_editDelete.Name = "tsmi_editDelete";
+            this.tsmi_editDelete.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editDelete.Text = "Удаление";
+            // 
+            // PK_ReceiptOrderLine
+            // 
+            this.PK_ReceiptOrderLine.HeaderText = "PK_ReceiptOrderLine";
+            this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
+            this.PK_ReceiptOrderLine.ReadOnly = true;
+            this.PK_ReceiptOrderLine.Visible = false;
             // 
             // ResourceName
             // 
@@ -189,70 +235,42 @@ namespace MTO
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
             // 
-            // tableLayoutPanel1
+            // PK_ReceiptOrder
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView2, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(776, 532);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.PK_ReceiptOrder.HeaderText = "PK_ReceiptOrder";
+            this.PK_ReceiptOrder.Name = "PK_ReceiptOrder";
+            this.PK_ReceiptOrder.ReadOnly = true;
+            this.PK_ReceiptOrder.Visible = false;
             // 
-            // menuStripReceiptOrder
+            // DeliveryDate
             // 
-            this.menuStripReceiptOrder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_file,
-            this.tsmi_edit});
-            this.menuStripReceiptOrder.Location = new System.Drawing.Point(0, 0);
-            this.menuStripReceiptOrder.Name = "menuStripReceiptOrder";
-            this.menuStripReceiptOrder.Size = new System.Drawing.Size(776, 24);
-            this.menuStripReceiptOrder.TabIndex = 7;
-            this.menuStripReceiptOrder.Text = "menuStrip1";
+            this.DeliveryDate.HeaderText = "Дата поставки";
+            this.DeliveryDate.Name = "DeliveryDate";
+            this.DeliveryDate.ReadOnly = true;
             // 
-            // tsmi_file
+            // WarehouseCipher
             // 
-            this.tsmi_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_fileExport});
-            this.tsmi_file.Name = "tsmi_file";
-            this.tsmi_file.Size = new System.Drawing.Size(48, 20);
-            this.tsmi_file.Text = "Файл";
+            this.WarehouseCipher.HeaderText = "Шифр склада";
+            this.WarehouseCipher.Name = "WarehouseCipher";
+            this.WarehouseCipher.ReadOnly = true;
             // 
-            // tsmi_fileExport
+            // Provider
             // 
-            this.tsmi_fileExport.Name = "tsmi_fileExport";
-            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_fileExport.Text = "Экспорт";
+            this.Provider.HeaderText = "Поставщик";
+            this.Provider.Name = "Provider";
+            this.Provider.ReadOnly = true;
             // 
-            // tsmi_edit
+            // ProviderCipher
             // 
-            this.tsmi_edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_editChange,
-            this.tsmi_editDelete});
-            this.tsmi_edit.Name = "tsmi_edit";
-            this.tsmi_edit.Size = new System.Drawing.Size(59, 20);
-            this.tsmi_edit.Text = "Правка";
+            this.ProviderCipher.HeaderText = "Шифр поставщика";
+            this.ProviderCipher.Name = "ProviderCipher";
+            this.ProviderCipher.ReadOnly = true;
             // 
-            // tsmi_editChange
+            // ContractNumber
             // 
-            this.tsmi_editChange.Name = "tsmi_editChange";
-            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_editChange.Text = "Редактирование";
-            this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
-            // 
-            // tsmi_editDelete
-            // 
-            this.tsmi_editDelete.Name = "tsmi_editDelete";
-            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_editDelete.Text = "Удаление";
+            this.ContractNumber.HeaderText = "Шифр сопроводительного документа";
+            this.ContractNumber.Name = "ContractNumber";
+            this.ContractNumber.ReadOnly = true;
             // 
             // FormReceiptOrderView
             // 
@@ -263,8 +281,10 @@ namespace MTO
             this.Controls.Add(this.menuStripReceiptOrder);
             this.Name = "FormReceiptOrderView";
             this.Text = "Просмотр приходного ордера";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Activated += new System.EventHandler(this.FormReceiptOrderView_Activated);
+            this.Load += new System.EventHandler(this.FormReceiptOrderView_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrderLines)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.menuStripReceiptOrder.ResumeLayout(false);
@@ -276,14 +296,17 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WarehouseCipher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Provider;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProviderCipher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContractNumber;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label lbl_receiptOrderNumber;
+        private System.Windows.Forms.DataGridView dgv_receiptOrders;
+        private System.Windows.Forms.DataGridView dgv_receiptOrderLines;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.MenuStrip menuStripReceiptOrder;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_file;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_fileExport;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_edit;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_editChange;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_editDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_ReceiptOrderLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
@@ -292,12 +315,11 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn AcceptedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.MenuStrip menuStripReceiptOrder;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_file;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_fileExport;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_edit;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_editChange;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_editDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_ReceiptOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WarehouseCipher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Provider;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProviderCipher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContractNumber;
     }
 }

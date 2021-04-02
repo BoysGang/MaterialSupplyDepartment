@@ -42,5 +42,10 @@ namespace MTO.Models
                 return Program.db.ResourceTypes.Find(PK_ResourceType);
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
