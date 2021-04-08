@@ -22,7 +22,20 @@ namespace MTO
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            User currUser = Program.db.Users.Where(p => p.Username == textBoxLogin.Text).First();
+            if(textBoxLogin.Text == String.Empty)
+            {
+                MessageBox.Show("Введите логин!");
+                return;
+            }
+
+            if(textBoxPassword.Text == String.Empty)
+            {
+                MessageBox.Show("Введите пароль!");
+                return;
+            }
+
+            User currUser = Program.db.Users
+                .Where(p => p.Username == textBoxLogin.Text).FirstOrDefault();
 
             if(currUser != null && currUser.Password == textBoxPassword.Text)
             {
