@@ -13,7 +13,7 @@ namespace MTO
 {
     public partial class FormLogin : Form
     {
-        private FormContracts formContracts;
+        private Form mainForm;
 
         public FormLogin()
         {
@@ -37,16 +37,29 @@ namespace MTO
             User currUser = Program.db.Users
                 .Where(p => p.Username == textBoxLogin.Text).FirstOrDefault();
 
-            if(currUser != null && currUser.Password == textBoxPassword.Text)
+            if (currUser != null && currUser.Password == textBoxPassword.Text)
             {
                 Program.user = currUser;
 
                 this.Hide();
 
-                formContracts = new FormContracts();
-                formContracts.Closed += (s, args) => this.Close();
+                if (Program.user.isAdmin() || Program.user.isContract())
+                {
 
-                formContracts.Show();
+                    mainForm = new FormContracts();
+                    mainForm.Closed += (s, args) => this.Close();
+
+                    mainForm.Show();
+                }
+                else if (Program.user.isAccounting())
+                {
+                    mainForm = new FormReceiptOrder();
+                    mainForm.Closed += (s, args) => this.Close();
+
+                    mainForm.Show();
+                }
+                else
+                    MessageBox.Show("Ошибка роли пользователя", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

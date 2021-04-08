@@ -7,7 +7,11 @@ using MTO.Models;
 
 namespace MTO
 {
-
+    enum UserRoles {
+        ADMIN = 0,
+        CONTRACT_EMPLOYEE = 1,
+        ACCOUNTING_EMPLOYEE = 2,
+    };
     static class Program
     {
         public static MTOContext db;

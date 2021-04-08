@@ -31,6 +31,22 @@ namespace MTO.Models
         public string Password { get; set; }
 
         public int Role { get; set;  }
+
+
+        public bool isAdmin()
+        {
+            return Role == (int)UserRoles.ADMIN;
+        }
+
+        public bool isContract()
+        {
+            return Role == (int)UserRoles.CONTRACT_EMPLOYEE;
+        }
+
+        public bool isAccounting()
+        {
+            return Role == (int)UserRoles.ACCOUNTING_EMPLOYEE;
+        }
         
     }
 }
