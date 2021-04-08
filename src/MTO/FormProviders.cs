@@ -14,6 +14,8 @@ namespace MTO
 {
     public partial class FormProviders : Form
     {
+        private bool isReadOnly = false;
+
         public FormProviders()
         {
             InitializeComponent();
@@ -23,6 +25,12 @@ namespace MTO
         {
             dgv_providers.AutoGenerateColumns = false;
             dgv_providers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            if (!(Program.user.isAdmin() || Program.user.isContract()))
+            {
+                btn_add.Enabled = false;
+                isReadOnly = true;
+            }
         }
 
         private void FormProviders_Activated(object sender, EventArgs e)
@@ -32,7 +40,7 @@ namespace MTO
 
         private void dgv_providers_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgv_providers.SelectedRows != null)
+            if (dgv_providers.SelectedRows != null && !isReadOnly)
             {
                 btn_delete.Enabled = true;
                 btn_change.Enabled = true;
