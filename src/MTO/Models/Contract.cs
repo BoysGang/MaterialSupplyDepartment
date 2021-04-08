@@ -29,10 +29,13 @@ namespace MTO.Models
         public string ContractNumber { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime ConclusionDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime ExpiredDate { get; set; }
+        public DateTime? ConclusionDate { get; set; }
+
+        [Column(TypeName = "Date")]
+        public DateTime? ExpiredDate { get; set; }
 
         public string ConclusionCity { get; set; }
 
@@ -40,12 +43,20 @@ namespace MTO.Models
 
         public Decimal CustomerPenalty { get; set; }
 
-        public int PK_ProviderAgent { get; set; }
-        public ProviderAgent ProviderAgent
+        public string ProviderAgentName { get; set; }
+        
+        public string ProviderAgentRole { get; set; }
+        
+        public string CustomerAgentName { get; set; }
+        
+        public string CustomerAgentRole { get; set; }
+
+        public int PK_Provider { get; set; }
+        public Provider Provider
         {
-            get 
+            get
             {
-                return Program.db.ProviderAgents.Find(PK_ProviderAgent);  
+                return Program.db.Providers.Find(PK_Provider);
             }
         }
 

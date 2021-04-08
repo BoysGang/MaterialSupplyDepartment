@@ -236,7 +236,6 @@
     <Compile Include="Models\MTOContext.cs" />
     <Compile Include="Models\OrganizationDescription.cs" />
     <Compile Include="Models\Provider.cs" />
-    <Compile Include="Models\ProviderAgent.cs" />
     <Compile Include="Models\ReceiptOrder.cs" />
     <Compile Include="Models\ReceiptOrderLine.cs" />
     <Compile Include="Models\Resource.cs" />
