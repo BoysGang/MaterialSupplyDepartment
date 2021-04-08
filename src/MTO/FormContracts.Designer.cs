@@ -29,6 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -161,8 +162,12 @@ namespace MTO
             this.State,
             this.Underdelivery});
             this.dgv_contracts.Location = new System.Drawing.Point(6, 275);
+            this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
             // 
@@ -328,7 +333,7 @@ namespace MTO
             // tsmi_contractCreate
             // 
             this.tsmi_contractCreate.Name = "tsmi_contractCreate";
-            this.tsmi_contractCreate.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_contractCreate.Size = new System.Drawing.Size(141, 22);
             this.tsmi_contractCreate.Text = "Добавление";
             this.tsmi_contractCreate.Click += new System.EventHandler(this.tsmi_contractCreate_Click);
             // 
@@ -352,28 +357,28 @@ namespace MTO
             // tsmi_dictResources
             // 
             this.tsmi_dictResources.Name = "tsmi_dictResources";
-            this.tsmi_dictResources.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictResources.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictResources.Text = "Ресурсы";
             this.tsmi_dictResources.Click += new System.EventHandler(this.tsmi_dictResources_Click);
             // 
             // tsmi_dictUnit
             // 
             this.tsmi_dictUnit.Name = "tsmi_dictUnit";
-            this.tsmi_dictUnit.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictUnit.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictUnit.Text = "Ед. измерения";
             this.tsmi_dictUnit.Click += new System.EventHandler(this.tsmi_dictUnit_Click);
             // 
             // tsmi_dictProvider
             // 
             this.tsmi_dictProvider.Name = "tsmi_dictProvider";
-            this.tsmi_dictProvider.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictProvider.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictProvider.Text = "Поставщики";
             this.tsmi_dictProvider.Click += new System.EventHandler(this.tsmi_dictProvider_Click);
             // 
             // tsmi_dictWarehouses
             // 
             this.tsmi_dictWarehouses.Name = "tsmi_dictWarehouses";
-            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictWarehouses.Text = "Склады";
             this.tsmi_dictWarehouses.Click += new System.EventHandler(this.tsmi_dictWarehouses_Click);
             // 
@@ -391,20 +396,20 @@ namespace MTO
             this.tsmi_accountingReceiptOrderList,
             this.tsmi_accountingReceiptOrderAdd});
             this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
-            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(173, 22);
             this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
             // 
             // tsmi_accountingReceiptOrderList
             // 
             this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
-            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(141, 22);
             this.tsmi_accountingReceiptOrderList.Text = "Список";
             this.tsmi_accountingReceiptOrderList.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderList_Click);
             // 
             // tsmi_accountingReceiptOrderAdd
             // 
             this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
-            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(141, 22);
             this.tsmi_accountingReceiptOrderAdd.Text = "Добавление";
             this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
             // 

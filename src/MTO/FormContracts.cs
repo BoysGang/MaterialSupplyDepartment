@@ -45,6 +45,8 @@ namespace MTO
 
         private void FormContracts_Load(object sender, EventArgs e)
         {
+            dgv_contracts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
             dgv_contracts.Rows.Add();
             dgv_contracts[0, 0].Value = "000001";
             dgv_contracts[1, 0].Value = "24/03/2020";
