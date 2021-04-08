@@ -29,6 +29,8 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_receiptOrderNumber = new System.Windows.Forms.Label();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
             this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +91,8 @@ namespace MTO
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersVisible = false;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_receiptOrders.Size = new System.Drawing.Size(770, 100);
             this.dgv_receiptOrders.TabIndex = 4;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
@@ -148,8 +152,11 @@ namespace MTO
             this.Price});
             this.dgv_receiptOrderLines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_receiptOrderLines.Location = new System.Drawing.Point(3, 162);
+            this.dgv_receiptOrderLines.MultiSelect = false;
             this.dgv_receiptOrderLines.Name = "dgv_receiptOrderLines";
             this.dgv_receiptOrderLines.ReadOnly = true;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrderLines.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_receiptOrderLines.Size = new System.Drawing.Size(770, 367);
             this.dgv_receiptOrderLines.TabIndex = 5;
             this.dgv_receiptOrderLines.SelectionChanged += new System.EventHandler(this.dgv_receiptOrderLines_SelectionChanged);
@@ -264,14 +271,14 @@ namespace MTO
             // tsmi_editChange
             // 
             this.tsmi_editChange.Name = "tsmi_editChange";
-            this.tsmi_editChange.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editChange.Text = "Редактирование";
             this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
             // 
             // tsmi_editDelete
             // 
             this.tsmi_editDelete.Name = "tsmi_editDelete";
-            this.tsmi_editDelete.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editDelete.Text = "Удаление";
             // 
             // FormReceiptOrderView
