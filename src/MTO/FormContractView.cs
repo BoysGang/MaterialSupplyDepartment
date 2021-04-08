@@ -25,7 +25,7 @@ namespace MTO
 
             this.contract = contract;
         }
-
+        
         private void FormContractView_Load(object sender, EventArgs e)
         {
             dgv_contractLines.AutoGenerateColumns = false;
