@@ -68,6 +68,9 @@ namespace MTO
             this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_analizeContract = new System.Windows.Forms.Button();
             this.btn_viewContract = new System.Windows.Forms.Button();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,12 +110,12 @@ namespace MTO
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 123);
+            this.label5.Location = new System.Drawing.Point(6, 160);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 13);
+            this.label5.Size = new System.Drawing.Size(89, 13);
             this.label5.TabIndex = 30;
-            this.label5.Text = "Дата истечения";
+            this.label5.Text = "Дата окончания";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dateTimePicker3
@@ -141,7 +144,7 @@ namespace MTO
             // 
             this.dateTimePicker2.CustomFormat = " ";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(112, 123);
+            this.dateTimePicker2.Location = new System.Drawing.Point(112, 160);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(364, 20);
             this.dateTimePicker2.TabIndex = 25;
@@ -161,7 +164,7 @@ namespace MTO
             this.ProviderAgent,
             this.State,
             this.Underdelivery});
-            this.dgv_contracts.Location = new System.Drawing.Point(6, 275);
+            this.dgv_contracts.Location = new System.Drawing.Point(6, 324);
             this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
@@ -209,6 +212,8 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cb_contractNumber);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
@@ -223,7 +228,7 @@ namespace MTO
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(482, 184);
+            this.groupBox1.Size = new System.Drawing.Size(482, 234);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
@@ -241,7 +246,7 @@ namespace MTO
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(413, 156);
+            this.radioButton3.Location = new System.Drawing.Point(413, 200);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(63, 17);
             this.radioButton3.TabIndex = 35;
@@ -251,7 +256,7 @@ namespace MTO
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(260, 156);
+            this.radioButton2.Location = new System.Drawing.Point(260, 200);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(63, 17);
             this.radioButton2.TabIndex = 34;
@@ -262,7 +267,7 @@ namespace MTO
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(112, 156);
+            this.radioButton1.Location = new System.Drawing.Point(112, 200);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(59, 17);
             this.radioButton1.TabIndex = 33;
@@ -273,7 +278,7 @@ namespace MTO
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 156);
+            this.label2.Location = new System.Drawing.Point(6, 200);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
@@ -283,9 +288,9 @@ namespace MTO
             // 
             // btn_findContracts
             // 
-            this.btn_findContracts.Location = new System.Drawing.Point(6, 230);
+            this.btn_findContracts.Location = new System.Drawing.Point(6, 276);
             this.btn_findContracts.Name = "btn_findContracts";
-            this.btn_findContracts.Size = new System.Drawing.Size(482, 33);
+            this.btn_findContracts.Size = new System.Drawing.Size(238, 33);
             this.btn_findContracts.TabIndex = 33;
             this.btn_findContracts.Text = "Найти";
             this.btn_findContracts.UseVisualStyleBackColor = true;
@@ -295,7 +300,7 @@ namespace MTO
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(494, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 184);
+            this.groupBox2.Size = new System.Drawing.Size(410, 234);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация";
@@ -415,7 +420,7 @@ namespace MTO
             // 
             // btn_analizeContract
             // 
-            this.btn_analizeContract.Location = new System.Drawing.Point(494, 230);
+            this.btn_analizeContract.Location = new System.Drawing.Point(494, 276);
             this.btn_analizeContract.Name = "btn_analizeContract";
             this.btn_analizeContract.Size = new System.Drawing.Size(202, 33);
             this.btn_analizeContract.TabIndex = 36;
@@ -425,7 +430,7 @@ namespace MTO
             // 
             // btn_viewContract
             // 
-            this.btn_viewContract.Location = new System.Drawing.Point(701, 230);
+            this.btn_viewContract.Location = new System.Drawing.Point(701, 276);
             this.btn_viewContract.Name = "btn_viewContract";
             this.btn_viewContract.Size = new System.Drawing.Size(202, 33);
             this.btn_viewContract.TabIndex = 37;
@@ -433,15 +438,45 @@ namespace MTO
             this.btn_viewContract.UseVisualStyleBackColor = true;
             this.btn_viewContract.Click += new System.EventHandler(this.btn_viewContract_Click);
             // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(250, 276);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(238, 33);
+            this.btn_resetSearch.TabIndex = 38;
+            this.btn_resetSearch.Text = "Сбросить фильтры";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = " ";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(112, 124);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(364, 20);
+            this.dateTimePicker1.TabIndex = 37;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 124);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 13);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Дата начала";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 515);
+            this.ClientSize = new System.Drawing.Size(908, 571);
+            this.Controls.Add(this.btn_resetSearch);
             this.Controls.Add(this.btn_viewContract);
+            this.Controls.Add(this.btn_findContracts);
             this.Controls.Add(this.btn_analizeContract);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btn_findContracts);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_contracts);
             this.Controls.Add(this.menuStrip);
@@ -502,5 +537,8 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn Underdelivery;
         private System.Windows.Forms.ComboBox cb_contractNumber;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_resetSearch;
     }
 }
