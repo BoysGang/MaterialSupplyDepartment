@@ -33,6 +33,12 @@ namespace MTO
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
+            this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReceiptOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -59,12 +65,6 @@ namespace MTO
             this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_viewReceiptOrder = new System.Windows.Forms.Button();
-            this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReceiptOrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Warehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -114,6 +114,48 @@ namespace MTO
             this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 297);
             this.dgv_receiptOrders.TabIndex = 36;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
+            // 
+            // PK_ReceiptOrder
+            // 
+            this.PK_ReceiptOrder.HeaderText = "PK_ReceiptOrder";
+            this.PK_ReceiptOrder.Name = "PK_ReceiptOrder";
+            this.PK_ReceiptOrder.ReadOnly = true;
+            this.PK_ReceiptOrder.Visible = false;
+            // 
+            // ReceiptOrderNumber
+            // 
+            this.ReceiptOrderNumber.HeaderText = "Номер приходного ордера";
+            this.ReceiptOrderNumber.MinimumWidth = 6;
+            this.ReceiptOrderNumber.Name = "ReceiptOrderNumber";
+            this.ReceiptOrderNumber.ReadOnly = true;
+            // 
+            // DeliveryDate
+            // 
+            this.DeliveryDate.HeaderText = "Дата поставки";
+            this.DeliveryDate.MinimumWidth = 6;
+            this.DeliveryDate.Name = "DeliveryDate";
+            this.DeliveryDate.ReadOnly = true;
+            // 
+            // Warehouse
+            // 
+            this.Warehouse.HeaderText = "Шифр склада";
+            this.Warehouse.MinimumWidth = 6;
+            this.Warehouse.Name = "Warehouse";
+            this.Warehouse.ReadOnly = true;
+            // 
+            // ProviderAgent
+            // 
+            this.ProviderAgent.HeaderText = "Поставщик";
+            this.ProviderAgent.MinimumWidth = 6;
+            this.ProviderAgent.Name = "ProviderAgent";
+            this.ProviderAgent.ReadOnly = true;
+            // 
+            // Contract
+            // 
+            this.Contract.HeaderText = "Номер договора";
+            this.Contract.MinimumWidth = 6;
+            this.Contract.Name = "Contract";
+            this.Contract.ReadOnly = true;
             // 
             // label7
             // 
@@ -242,8 +284,8 @@ namespace MTO
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_contracts,
-            this.tsmi_dict,
-            this.tsmi_accounting});
+            this.tsmi_accounting,
+            this.tsmi_dict});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -288,28 +330,28 @@ namespace MTO
             // tsmi_dictResources
             // 
             this.tsmi_dictResources.Name = "tsmi_dictResources";
-            this.tsmi_dictResources.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictResources.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictResources.Text = "Ресурсы";
             this.tsmi_dictResources.Click += new System.EventHandler(this.tsmi_dictResources_Click);
             // 
             // tsmi_dictUnit
             // 
             this.tsmi_dictUnit.Name = "tsmi_dictUnit";
-            this.tsmi_dictUnit.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictUnit.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictUnit.Text = "Ед. измерения";
             this.tsmi_dictUnit.Click += new System.EventHandler(this.tsmi_dictUnit_Click);
             // 
             // tsmi_dictProvider
             // 
             this.tsmi_dictProvider.Name = "tsmi_dictProvider";
-            this.tsmi_dictProvider.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictProvider.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictProvider.Text = "Поставщики";
             this.tsmi_dictProvider.Click += new System.EventHandler(this.tsmi_dictProvider_Click);
             // 
             // tsmi_dictWarehouses
             // 
             this.tsmi_dictWarehouses.Name = "tsmi_dictWarehouses";
-            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(152, 22);
+            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(180, 22);
             this.tsmi_dictWarehouses.Text = "Склады";
             this.tsmi_dictWarehouses.Click += new System.EventHandler(this.tsmi_dictWarehouses_Click);
             // 
@@ -327,7 +369,7 @@ namespace MTO
             this.tsmi_accountingReceiptOrderList,
             this.tsmi_accountingReceiptOrderAdd});
             this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
-            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(173, 22);
+            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(180, 22);
             this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
             // 
             // tsmi_accountingReceiptOrderList
@@ -352,48 +394,6 @@ namespace MTO
             this.btn_viewReceiptOrder.Text = "Просмотр";
             this.btn_viewReceiptOrder.UseVisualStyleBackColor = true;
             this.btn_viewReceiptOrder.Click += new System.EventHandler(this.btn_viewReceiptOrder_Click);
-            // 
-            // PK_ReceiptOrder
-            // 
-            this.PK_ReceiptOrder.HeaderText = "PK_ReceiptOrder";
-            this.PK_ReceiptOrder.Name = "PK_ReceiptOrder";
-            this.PK_ReceiptOrder.ReadOnly = true;
-            this.PK_ReceiptOrder.Visible = false;
-            // 
-            // ReceiptOrderNumber
-            // 
-            this.ReceiptOrderNumber.HeaderText = "Номер приходного ордера";
-            this.ReceiptOrderNumber.MinimumWidth = 6;
-            this.ReceiptOrderNumber.Name = "ReceiptOrderNumber";
-            this.ReceiptOrderNumber.ReadOnly = true;
-            // 
-            // DeliveryDate
-            // 
-            this.DeliveryDate.HeaderText = "Дата поставки";
-            this.DeliveryDate.MinimumWidth = 6;
-            this.DeliveryDate.Name = "DeliveryDate";
-            this.DeliveryDate.ReadOnly = true;
-            // 
-            // Warehouse
-            // 
-            this.Warehouse.HeaderText = "Шифр склада";
-            this.Warehouse.MinimumWidth = 6;
-            this.Warehouse.Name = "Warehouse";
-            this.Warehouse.ReadOnly = true;
-            // 
-            // ProviderAgent
-            // 
-            this.ProviderAgent.HeaderText = "Поставщик";
-            this.ProviderAgent.MinimumWidth = 6;
-            this.ProviderAgent.Name = "ProviderAgent";
-            this.ProviderAgent.ReadOnly = true;
-            // 
-            // Contract
-            // 
-            this.Contract.HeaderText = "Номер договора";
-            this.Contract.MinimumWidth = 6;
-            this.Contract.Name = "Contract";
-            this.Contract.ReadOnly = true;
             // 
             // FormReceiptOrder
             // 

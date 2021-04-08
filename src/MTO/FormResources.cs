@@ -13,6 +13,8 @@ namespace MTO
 {
     public partial class FormResources : Form
     {
+        private bool isReadOnly = false;
+
         public FormResources()
         {
             InitializeComponent();
@@ -45,6 +47,13 @@ namespace MTO
         {
             dgv_resources.AutoGenerateColumns = false;
             dgv_resources.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+            if (!Program.user.isAdmin() && !Program.user.isContract())
+            {
+                btn_add.Enabled = false;
+                isReadOnly = true;
+            }
         }
 
         private void updateResourceTable()
@@ -94,7 +103,7 @@ namespace MTO
 
         private void dgv_resources_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgv_resources.SelectedRows != null)
+            if (dgv_resources.SelectedRows != null && !isReadOnly)
             {
                 btn_delete.Enabled = true;
                 btn_change.Enabled = true;

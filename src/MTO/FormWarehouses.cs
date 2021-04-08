@@ -14,6 +14,8 @@ namespace MTO
 {
     public partial class FormWarehouses : Form
     {
+        private bool isReadOnly = false;
+
         public FormWarehouses()
         {
             InitializeComponent();
@@ -23,6 +25,14 @@ namespace MTO
         {
             dgv_warehouses.AutoGenerateColumns = false;
             dgv_warehouses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+            if (!Program.user.isAdmin() 
+                && !Program.user.isContract())
+            {
+                btn_add.Enabled = false;
+                isReadOnly = true;
+            }
         }
 
         private void btn_change_Click(object sender, EventArgs e)
@@ -90,7 +100,7 @@ namespace MTO
 
         private void dgv_warehouses_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgv_warehouses.SelectedRows != null)
+            if (dgv_warehouses.SelectedRows != null && !isReadOnly)
             {
                 btn_delete.Enabled = true;
                 btn_change.Enabled = true;

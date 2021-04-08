@@ -14,6 +14,8 @@ namespace MTO
 {
     public partial class FormUnit : Form
     {
+        private bool isReadOnly = false;
+
         public FormUnit()
         {
             InitializeComponent();
@@ -42,6 +44,12 @@ namespace MTO
         {
             dgv_units.AutoGenerateColumns = false;
             dgv_units.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            if (!Program.user.isAdmin())
+            {
+                btn_add.Enabled = false;
+                isReadOnly = true;
+            }
         }
 
         private void FormUnit_Activated(object sender, EventArgs e)
@@ -86,6 +94,20 @@ namespace MTO
             dgv_units.Columns[1].DataPropertyName = "Name";
             dgv_units.Columns[0].DataPropertyName = "Cipher";
 
+        }
+
+        private void dgv_units_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_units.SelectedRows != null && !isReadOnly)
+            {
+                btn_delete.Enabled = true;
+                btn_change.Enabled = true;
+            }
+            else
+            {
+                btn_delete.Enabled = false;
+                btn_change.Enabled = false;
+            }
         }
     }
 }

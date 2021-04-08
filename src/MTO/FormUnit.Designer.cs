@@ -68,6 +68,7 @@ namespace MTO
             this.dgv_units.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_units.Size = new System.Drawing.Size(654, 255);
             this.dgv_units.TabIndex = 0;
+            this.dgv_units.SelectionChanged += new System.EventHandler(this.dgv_units_SelectionChanged);
             // 
             // ColumnCipher
             // 
