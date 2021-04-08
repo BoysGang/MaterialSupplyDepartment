@@ -22,12 +22,23 @@ namespace MTO
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            
-            formContracts = new FormContracts();
-            formContracts.Closed += (s, args) => this.Close();
+            User currUser = Program.db.Users.Where(p => p.Username == textBoxLogin.Text).First();
 
-            formContracts.Show();
+            if(currUser != null && currUser.Password == textBoxPassword.Text)
+            {
+                Program.user = currUser;
+
+                this.Hide();
+
+                formContracts = new FormContracts();
+                formContracts.Closed += (s, args) => this.Close();
+
+                formContracts.Show();
+            }
+            else
+            {
+                MessageBox.Show("Неверные входные данные!");
+            }
         }
     }
 }
