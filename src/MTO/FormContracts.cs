@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MTO.Models;
+
 namespace MTO
 {
     public partial class FormContracts : Form
@@ -45,6 +47,7 @@ namespace MTO
 
         private void FormContracts_Load(object sender, EventArgs e)
         {
+            dgv_contracts.AutoGenerateColumns = false;
             dgv_contracts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             if (Program.user.isContract())
@@ -52,20 +55,28 @@ namespace MTO
                 tsmi_accounting.Visible = false;
             }
 
-            dgv_contracts.Rows.Add();
-            dgv_contracts[0, 0].Value = "000001";
-            dgv_contracts[1, 0].Value = "24/03/2020";
-            dgv_contracts[2, 0].Value = "24/03/2021";
-            dgv_contracts[3, 0].Value = "ООО Фисташка";
-            dgv_contracts[4, 0].Value = "Открыт";
-            dgv_contracts[5, 0].Value = "Есть";
+            //dgv_contracts.Rows.Add();
+            //dgv_contracts[0, 0].Value = "000001";
+            //dgv_contracts[1, 0].Value = "24/03/2020";
+            //dgv_contracts[2, 0].Value = "24/03/2020";
+            //dgv_contracts[3, 0].Value = "24/03/2021";
+            //dgv_contracts[4, 0].Value = "ООО Фисташка";
+            //dgv_contracts[5, 0].Value = "Открыт";
+            //dgv_contracts[6, 0].Value = "Есть";
 
         }
 
         private void btn_viewContract_Click(object sender, EventArgs e)
         {
-            FormContractView formContractView = new FormContractView();
-            formContractView.ShowDialog();
+            int PK_Contract = Convert.ToInt32(dgv_contracts.SelectedRows[0].Cells[0].Value);
+            Contract viewingContract = Program.db.Contracts.Find(PK_Contract);
+
+            if (viewingContract != null)
+            {
+                FormContractView formContractView = new FormContractView(viewingContract);
+                formContractView.ShowDialog();
+            }
+
         }
 
         private void btn_analizeContract_Click(object sender, EventArgs e)
@@ -118,6 +129,41 @@ namespace MTO
         {
             FormReceiptOrderAdd form = new FormReceiptOrderAdd();
             form.ShowDialog();
+        }
+
+        private void btn_resetSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormContracts_Activated(object sender, EventArgs e)
+        {
+            updateContractTable();
+        }
+
+        private void updateContractTable()
+        {
+            List<Contract> contracts = Program.db.Contracts.ToList();
+            dgv_contracts.DataSource = contracts;
+
+            dgv_contracts.Columns[0].DataPropertyName = "PK_Contract";
+            dgv_contracts.Columns[1].DataPropertyName = "ContractNumber";
+            dgv_contracts.Columns[2].DataPropertyName = "ConclusionDate";
+            dgv_contracts.Columns[3].DataPropertyName = "StartDate";
+            dgv_contracts.Columns[4].DataPropertyName = "ExpiredDate";
+            dgv_contracts.Columns[5].DataPropertyName = "Provider";
+        }
+
+        private void dgv_contracts_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_contracts.SelectedRows != null)
+            {
+                btn_viewContract.Enabled = true;
+            }
+            else
+            {
+                btn_viewContract.Enabled = false;
+            }
         }
     }
 }

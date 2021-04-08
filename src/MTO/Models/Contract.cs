@@ -23,20 +23,19 @@ namespace MTO.Models
         {
             return ContractNumber;
         }
-
         [Key]
         public int PK_Contract { get; set; }
 
         public string ContractNumber { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime? ConclusionDate { get; set; }
+        public DateTime ConclusionDate { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime? ExpiredDate { get; set; }
+        public DateTime ExpiredDate { get; set; }
 
         public string ConclusionCity { get; set; }
 
@@ -76,5 +75,6 @@ namespace MTO.Models
                     .Where(b => b.PK_Contract == PK_Contract)
                     .ToList();
         }
+
     }
 }

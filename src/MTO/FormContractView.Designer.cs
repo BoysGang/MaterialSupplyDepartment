@@ -29,49 +29,53 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtb_document = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_header = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_contractLines = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.PK_ContractLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractLines)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // rtb_document
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(464, 356);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.rtb_document.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_document.Location = new System.Drawing.Point(3, 3);
+            this.rtb_document.Name = "rtb_document";
+            this.rtb_document.ReadOnly = true;
+            this.rtb_document.Size = new System.Drawing.Size(464, 356);
+            this.rtb_document.TabIndex = 0;
+            this.rtb_document.Text = "";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_header, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
@@ -83,16 +87,16 @@ namespace MTO
             this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 437);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // label1
+            // lbl_header
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(150, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Договор поставки №";
+            this.lbl_header.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_header.AutoSize = true;
+            this.lbl_header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_header.Location = new System.Drawing.Point(150, 11);
+            this.lbl_header.Name = "lbl_header";
+            this.lbl_header.Size = new System.Drawing.Size(184, 20);
+            this.lbl_header.TabIndex = 2;
+            this.lbl_header.Text = "Договор поставки №";
             // 
             // tabControl1
             // 
@@ -107,7 +111,7 @@ namespace MTO
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Controls.Add(this.rtb_document);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -118,7 +122,7 @@ namespace MTO
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dgv_contractLines);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -127,69 +131,31 @@ namespace MTO
             this.tabPage2.Text = "Спецификация";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgv_contractLines
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_contractLines.AllowUserToAddRows = false;
+            this.dgv_contractLines.AllowUserToDeleteRows = false;
+            this.dgv_contractLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_contractLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_contractLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PK_ContractLine,
             this.ColumnName,
+            this.ResourceCipher,
             this.ColumnAmount,
             this.ColumnUnit,
+            this.UnitCipher,
             this.ColumnUnitPrice,
             this.ColumnPrice,
             this.ColumnDeliveryDate});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(464, 356);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Наименование";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            this.ColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.HeaderText = "Кол-во";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.HeaderText = "Ед. измерения";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.ReadOnly = true;
-            this.ColumnUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnUnitPrice
-            // 
-            this.ColumnUnitPrice.HeaderText = "Цена за единицу, руб.";
-            this.ColumnUnitPrice.Name = "ColumnUnitPrice";
-            this.ColumnUnitPrice.ReadOnly = true;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.HeaderText = "Общая цена партии, руб.";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnDeliveryDate
-            // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnDeliveryDate.HeaderText = "Срок поставки";
-            this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
-            this.ColumnDeliveryDate.ReadOnly = true;
+            this.dgv_contractLines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_contractLines.Location = new System.Drawing.Point(3, 3);
+            this.dgv_contractLines.Name = "dgv_contractLines";
+            this.dgv_contractLines.ReadOnly = true;
+            this.dgv_contractLines.RowHeadersVisible = false;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contractLines.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_contractLines.Size = new System.Drawing.Size(464, 356);
+            this.dgv_contractLines.TabIndex = 1;
             // 
             // menuStrip1
             // 
@@ -213,7 +179,7 @@ namespace MTO
             // tsmi_fileExport
             // 
             this.tsmi_fileExport.Name = "tsmi_fileExport";
-            this.tsmi_fileExport.Size = new System.Drawing.Size(119, 22);
+            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
             this.tsmi_fileExport.Text = "Экспорт";
             // 
             // tsmi_edit
@@ -237,6 +203,67 @@ namespace MTO
             this.tsmi_editDelete.Name = "tsmi_editDelete";
             this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editDelete.Text = "Удаление";
+            this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
+            // 
+            // PK_ContractLine
+            // 
+            this.PK_ContractLine.HeaderText = "PK_ContractLine";
+            this.PK_ContractLine.Name = "PK_ContractLine";
+            this.PK_ContractLine.ReadOnly = true;
+            this.PK_ContractLine.Visible = false;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Наименование";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            this.ColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ResourceCipher
+            // 
+            this.ResourceCipher.HeaderText = "Шифр ресурса";
+            this.ResourceCipher.Name = "ResourceCipher";
+            this.ResourceCipher.ReadOnly = true;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.HeaderText = "Кол-во";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.HeaderText = "Ед. измерения";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            this.ColumnUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // UnitCipher
+            // 
+            this.UnitCipher.HeaderText = "Шифр ед. измерения";
+            this.UnitCipher.Name = "UnitCipher";
+            this.UnitCipher.ReadOnly = true;
+            // 
+            // ColumnUnitPrice
+            // 
+            this.ColumnUnitPrice.HeaderText = "Цена за единицу, руб.";
+            this.ColumnUnitPrice.Name = "ColumnUnitPrice";
+            this.ColumnUnitPrice.ReadOnly = true;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.HeaderText = "Общая цена партии, руб.";
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
+            // 
+            // ColumnDeliveryDate
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnDeliveryDate.HeaderText = "Срок поставки";
+            this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
+            this.ColumnDeliveryDate.ReadOnly = true;
             // 
             // FormContractView
             // 
@@ -255,7 +282,7 @@ namespace MTO
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractLines)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -265,24 +292,27 @@ namespace MTO
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb_document;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_header;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
+        private System.Windows.Forms.DataGridView dgv_contractLines;
         private System.Windows.Forms.ToolStripMenuItem tsmi_file;
         private System.Windows.Forms.ToolStripMenuItem tsmi_fileExport;
         private System.Windows.Forms.ToolStripMenuItem tsmi_edit;
         private System.Windows.Forms.ToolStripMenuItem tsmi_editChange;
         private System.Windows.Forms.ToolStripMenuItem tsmi_editDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_ContractLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCipher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCipher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
     }
 }
