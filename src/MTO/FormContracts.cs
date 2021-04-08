@@ -47,6 +47,11 @@ namespace MTO
         {
             dgv_contracts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
+            if (Program.user.isContract())
+            {
+                tsmi_accounting.Visible = false;
+            }
+
             dgv_contracts.Rows.Add();
             dgv_contracts[0, 0].Value = "000001";
             dgv_contracts[1, 0].Value = "24/03/2020";
