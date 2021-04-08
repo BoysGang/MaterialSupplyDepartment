@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MTO.Models;
+
 namespace MTO
 {
     public partial class FormContractView : Form
     {
-        public FormContractView()
+        Contract contract;
+
+        public FormContractView(Contract contract)
         {
             InitializeComponent();
+
+            this.contract = contract;
         }
 
         private void FormContractView_Load(object sender, EventArgs e)
@@ -29,7 +35,7 @@ namespace MTO
 
         private void tsmi_editChange_Click(object sender, EventArgs e)
         {
-            FormContractAdd form = new FormContractAdd();
+            FormContractAdd form = new FormContractAdd(contract);
             form.ShowDialog();
         }
     }

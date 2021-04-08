@@ -38,13 +38,6 @@ namespace MTO
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dgv_contracts = new System.Windows.Forms.DataGridView();
-            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,18 +53,26 @@ namespace MTO
             this.tsmi_contracts = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_ContractSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dict = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictResources = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictUnit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictProvider = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictWarehouses = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accountingReceiptOrder = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_analizeContract = new System.Windows.Forms.Button();
             this.btn_viewContract = new System.Windows.Forms.Button();
             this.btn_resetSearch = new System.Windows.Forms.Button();
+            this.PK_Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -159,6 +160,7 @@ namespace MTO
             this.dgv_contracts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_contracts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_contracts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PK_Contract,
             this.ContractNumber,
             this.ConclusionDate,
             this.StartDate,
@@ -175,48 +177,7 @@ namespace MTO
             this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
-            // 
-            // ContractNumber
-            // 
-            this.ContractNumber.HeaderText = "Номер договора";
-            this.ContractNumber.Name = "ContractNumber";
-            this.ContractNumber.ReadOnly = true;
-            // 
-            // ConclusionDate
-            // 
-            this.ConclusionDate.HeaderText = "Дата заключения";
-            this.ConclusionDate.Name = "ConclusionDate";
-            this.ConclusionDate.ReadOnly = true;
-            // 
-            // StartDate
-            // 
-            this.StartDate.HeaderText = "Дата начала";
-            this.StartDate.Name = "StartDate";
-            this.StartDate.ReadOnly = true;
-            // 
-            // ExpiredDate
-            // 
-            this.ExpiredDate.HeaderText = "Дата окончания";
-            this.ExpiredDate.Name = "ExpiredDate";
-            this.ExpiredDate.ReadOnly = true;
-            // 
-            // ProviderAgent
-            // 
-            this.ProviderAgent.HeaderText = "Поставщик";
-            this.ProviderAgent.Name = "ProviderAgent";
-            this.ProviderAgent.ReadOnly = true;
-            // 
-            // State
-            // 
-            this.State.HeaderText = "Статус";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            // 
-            // Underdelivery
-            // 
-            this.Underdelivery.HeaderText = "Недопоставки";
-            this.Underdelivery.Name = "Underdelivery";
-            this.Underdelivery.ReadOnly = true;
+            this.dgv_contracts.SelectionChanged += new System.EventHandler(this.dgv_contracts_SelectionChanged);
             // 
             // groupBox1
             // 
@@ -376,6 +337,37 @@ namespace MTO
             this.tsmi_ContractSearch.Size = new System.Drawing.Size(141, 22);
             this.tsmi_ContractSearch.Text = "Поиск";
             // 
+            // tsmi_accounting
+            // 
+            this.tsmi_accounting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_accountingReceiptOrder});
+            this.tsmi_accounting.Name = "tsmi_accounting";
+            this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
+            this.tsmi_accounting.Text = "Учет";
+            // 
+            // tsmi_accountingReceiptOrder
+            // 
+            this.tsmi_accountingReceiptOrder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_accountingReceiptOrderList,
+            this.tsmi_accountingReceiptOrderAdd});
+            this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
+            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(173, 22);
+            this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
+            // 
+            // tsmi_accountingReceiptOrderList
+            // 
+            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_accountingReceiptOrderList.Text = "Список";
+            this.tsmi_accountingReceiptOrderList.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderList_Click);
+            // 
+            // tsmi_accountingReceiptOrderAdd
+            // 
+            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление";
+            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
+            // 
             // tsmi_dict
             // 
             this.tsmi_dict.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -415,37 +407,6 @@ namespace MTO
             this.tsmi_dictWarehouses.Text = "Склады";
             this.tsmi_dictWarehouses.Click += new System.EventHandler(this.tsmi_dictWarehouses_Click);
             // 
-            // tsmi_accounting
-            // 
-            this.tsmi_accounting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_accountingReceiptOrder});
-            this.tsmi_accounting.Name = "tsmi_accounting";
-            this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
-            this.tsmi_accounting.Text = "Учет";
-            // 
-            // tsmi_accountingReceiptOrder
-            // 
-            this.tsmi_accountingReceiptOrder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_accountingReceiptOrderList,
-            this.tsmi_accountingReceiptOrderAdd});
-            this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
-            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
-            // 
-            // tsmi_accountingReceiptOrderList
-            // 
-            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
-            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_accountingReceiptOrderList.Text = "Список";
-            this.tsmi_accountingReceiptOrderList.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderList_Click);
-            // 
-            // tsmi_accountingReceiptOrderAdd
-            // 
-            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
-            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление";
-            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
-            // 
             // btn_analizeContract
             // 
             this.btn_analizeContract.Location = new System.Drawing.Point(494, 276);
@@ -474,6 +435,56 @@ namespace MTO
             this.btn_resetSearch.TabIndex = 38;
             this.btn_resetSearch.Text = "Сбросить фильтры";
             this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
+            // 
+            // PK_Contract
+            // 
+            this.PK_Contract.HeaderText = "PK_Contract";
+            this.PK_Contract.Name = "PK_Contract";
+            this.PK_Contract.ReadOnly = true;
+            this.PK_Contract.Visible = false;
+            // 
+            // ContractNumber
+            // 
+            this.ContractNumber.HeaderText = "Номер договора";
+            this.ContractNumber.Name = "ContractNumber";
+            this.ContractNumber.ReadOnly = true;
+            // 
+            // ConclusionDate
+            // 
+            this.ConclusionDate.HeaderText = "Дата заключения";
+            this.ConclusionDate.Name = "ConclusionDate";
+            this.ConclusionDate.ReadOnly = true;
+            // 
+            // StartDate
+            // 
+            this.StartDate.HeaderText = "Дата начала";
+            this.StartDate.Name = "StartDate";
+            this.StartDate.ReadOnly = true;
+            // 
+            // ExpiredDate
+            // 
+            this.ExpiredDate.HeaderText = "Дата окончания";
+            this.ExpiredDate.Name = "ExpiredDate";
+            this.ExpiredDate.ReadOnly = true;
+            // 
+            // ProviderAgent
+            // 
+            this.ProviderAgent.HeaderText = "Поставщик";
+            this.ProviderAgent.Name = "ProviderAgent";
+            this.ProviderAgent.ReadOnly = true;
+            // 
+            // State
+            // 
+            this.State.HeaderText = "Статус";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            // 
+            // Underdelivery
+            // 
+            this.Underdelivery.HeaderText = "Недопоставки";
+            this.Underdelivery.Name = "Underdelivery";
+            this.Underdelivery.ReadOnly = true;
             // 
             // FormContracts
             // 
@@ -493,6 +504,7 @@ namespace MTO
             this.MaximizeBox = false;
             this.Name = "FormContracts";
             this.Text = "Модуль договоров";
+            this.Activated += new System.EventHandler(this.FormContracts_Activated);
             this.Load += new System.EventHandler(this.FormContracts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -542,6 +554,7 @@ namespace MTO
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_resetSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_Contract;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConclusionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;

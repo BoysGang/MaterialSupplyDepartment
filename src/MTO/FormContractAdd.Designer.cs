@@ -31,39 +31,34 @@ namespace MTO
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxActNumber = new System.Windows.Forms.TextBox();
+            this.tb_actNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_startDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.nud_customerPenalty = new System.Windows.Forms.NumericUpDown();
+            this.nud_supplierPenalty = new System.Windows.Forms.NumericUpDown();
+            this.dtp_expiredDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_customerAgentRole = new System.Windows.Forms.TextBox();
+            this.tb_customerAgentName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_providerAgentRole = new System.Windows.Forms.TextBox();
+            this.tb_providerAgentName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_provider = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_conclusionCity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dateTimeCreateDate = new System.Windows.Forms.DateTimePicker();
-            this.btn_AddNClose = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.btn_cancelAdd = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.ColumnName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CipherResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,11 +67,16 @@ namespace MTO
             this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtp_conclusionDate = new System.Windows.Forms.DateTimePicker();
+            this.btn_AddNClose = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_cancelAdd = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_customerPenalty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_supplierPenalty)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -92,14 +92,13 @@ namespace MTO
             this.label1.Size = new System.Drawing.Size(184, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Договор поставки №";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBoxActNumber
+            // tb_actNumber
             // 
-            this.textBoxActNumber.Location = new System.Drawing.Point(303, 11);
-            this.textBoxActNumber.Name = "textBoxActNumber";
-            this.textBoxActNumber.Size = new System.Drawing.Size(118, 20);
-            this.textBoxActNumber.TabIndex = 2;
+            this.tb_actNumber.Location = new System.Drawing.Point(303, 11);
+            this.tb_actNumber.Name = "tb_actNumber";
+            this.tb_actNumber.Size = new System.Drawing.Size(118, 20);
+            this.tb_actNumber.TabIndex = 2;
             // 
             // tabControl1
             // 
@@ -113,16 +112,16 @@ namespace MTO
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dateTimePicker2);
+            this.tabPage1.Controls.Add(this.dtp_startDate);
             this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.dtp_expiredDate);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.cb_provider);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.tb_conclusionCity);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -132,19 +131,19 @@ namespace MTO
             this.tabPage1.Text = "Основное";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
+            // dtp_startDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(545, 51);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(147, 20);
-            this.dateTimePicker2.TabIndex = 89;
+            this.dtp_startDate.Location = new System.Drawing.Point(545, 51);
+            this.dtp_startDate.Name = "dtp_startDate";
+            this.dtp_startDate.Size = new System.Drawing.Size(147, 20);
+            this.dtp_startDate.TabIndex = 89;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.numericUpDown2);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Controls.Add(this.nud_customerPenalty);
+            this.groupBox3.Controls.Add(this.nud_supplierPenalty);
             this.groupBox3.Location = new System.Drawing.Point(54, 318);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(638, 90);
@@ -172,28 +171,28 @@ namespace MTO
             this.label10.TabIndex = 73;
             this.label10.Text = "Штраф поставщику, в %";
             // 
-            // numericUpDown2
+            // nud_customerPenalty
             // 
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(541, 39);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(69, 20);
-            this.numericUpDown2.TabIndex = 1;
+            this.nud_customerPenalty.DecimalPlaces = 2;
+            this.nud_customerPenalty.Location = new System.Drawing.Point(541, 39);
+            this.nud_customerPenalty.Name = "nud_customerPenalty";
+            this.nud_customerPenalty.Size = new System.Drawing.Size(69, 20);
+            this.nud_customerPenalty.TabIndex = 1;
             // 
-            // numericUpDown1
+            // nud_supplierPenalty
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(149, 39);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(69, 20);
-            this.numericUpDown1.TabIndex = 0;
+            this.nud_supplierPenalty.DecimalPlaces = 2;
+            this.nud_supplierPenalty.Location = new System.Drawing.Point(149, 39);
+            this.nud_supplierPenalty.Name = "nud_supplierPenalty";
+            this.nud_supplierPenalty.Size = new System.Drawing.Size(69, 20);
+            this.nud_supplierPenalty.TabIndex = 0;
             // 
-            // dateTimePicker1
+            // dtp_expiredDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(545, 101);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(147, 20);
-            this.dateTimePicker1.TabIndex = 87;
+            this.dtp_expiredDate.Location = new System.Drawing.Point(545, 101);
+            this.dtp_expiredDate.Name = "dtp_expiredDate";
+            this.dtp_expiredDate.Size = new System.Drawing.Size(147, 20);
+            this.dtp_expiredDate.TabIndex = 87;
             // 
             // label9
             // 
@@ -217,8 +216,8 @@ namespace MTO
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.tb_customerAgentRole);
+            this.groupBox2.Controls.Add(this.tb_customerAgentName);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(408, 142);
@@ -228,19 +227,19 @@ namespace MTO
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Представитель заказчика";
             // 
-            // textBox4
+            // tb_customerAgentRole
             // 
-            this.textBox4.Location = new System.Drawing.Point(79, 70);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(199, 20);
-            this.textBox4.TabIndex = 72;
+            this.tb_customerAgentRole.Location = new System.Drawing.Point(79, 70);
+            this.tb_customerAgentRole.Name = "tb_customerAgentRole";
+            this.tb_customerAgentRole.Size = new System.Drawing.Size(199, 20);
+            this.tb_customerAgentRole.TabIndex = 72;
             // 
-            // textBox5
+            // tb_customerAgentName
             // 
-            this.textBox5.Location = new System.Drawing.Point(79, 34);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(199, 20);
-            this.textBox5.TabIndex = 70;
+            this.tb_customerAgentName.Location = new System.Drawing.Point(79, 34);
+            this.tb_customerAgentName.Name = "tb_customerAgentName";
+            this.tb_customerAgentName.Size = new System.Drawing.Size(199, 20);
+            this.tb_customerAgentName.TabIndex = 70;
             // 
             // label6
             // 
@@ -264,8 +263,8 @@ namespace MTO
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tb_providerAgentRole);
+            this.groupBox1.Controls.Add(this.tb_providerAgentName);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(54, 142);
@@ -275,19 +274,19 @@ namespace MTO
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Представитель поставщика";
             // 
-            // textBox3
+            // tb_providerAgentRole
             // 
-            this.textBox3.Location = new System.Drawing.Point(79, 70);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(201, 20);
-            this.textBox3.TabIndex = 72;
+            this.tb_providerAgentRole.Location = new System.Drawing.Point(79, 70);
+            this.tb_providerAgentRole.Name = "tb_providerAgentRole";
+            this.tb_providerAgentRole.Size = new System.Drawing.Size(201, 20);
+            this.tb_providerAgentRole.TabIndex = 72;
             // 
-            // textBox2
+            // tb_providerAgentName
             // 
-            this.textBox2.Location = new System.Drawing.Point(79, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(201, 20);
-            this.textBox2.TabIndex = 70;
+            this.tb_providerAgentName.Location = new System.Drawing.Point(79, 34);
+            this.tb_providerAgentName.Name = "tb_providerAgentName";
+            this.tb_providerAgentName.Size = new System.Drawing.Size(201, 20);
+            this.tb_providerAgentName.TabIndex = 70;
             // 
             // label5
             // 
@@ -309,13 +308,13 @@ namespace MTO
             this.label4.TabIndex = 70;
             this.label4.Text = "ФИО";
             // 
-            // comboBox1
+            // cb_provider
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(210, 93);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(113, 21);
-            this.comboBox1.TabIndex = 82;
+            this.cb_provider.FormattingEnabled = true;
+            this.cb_provider.Location = new System.Drawing.Point(210, 93);
+            this.cb_provider.Name = "cb_provider";
+            this.cb_provider.Size = new System.Drawing.Size(113, 21);
+            this.cb_provider.TabIndex = 82;
             // 
             // label3
             // 
@@ -327,12 +326,12 @@ namespace MTO
             this.label3.TabIndex = 81;
             this.label3.Text = "Поставщик";
             // 
-            // textBox1
+            // tb_conclusionCity
             // 
-            this.textBox1.Location = new System.Drawing.Point(210, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(113, 20);
-            this.textBox1.TabIndex = 80;
+            this.tb_conclusionCity.Location = new System.Drawing.Point(210, 54);
+            this.tb_conclusionCity.Name = "tb_conclusionCity";
+            this.tb_conclusionCity.Size = new System.Drawing.Size(113, 20);
+            this.tb_conclusionCity.TabIndex = 80;
             // 
             // label2
             // 
@@ -374,51 +373,6 @@ namespace MTO
             this.dataGridView1.Size = new System.Drawing.Size(731, 450);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // dateTimeCreateDate
-            // 
-            this.dateTimeCreateDate.Location = new System.Drawing.Point(481, 12);
-            this.dateTimeCreateDate.Name = "dateTimeCreateDate";
-            this.dateTimeCreateDate.Size = new System.Drawing.Size(147, 20);
-            this.dateTimeCreateDate.TabIndex = 78;
-            // 
-            // btn_AddNClose
-            // 
-            this.btn_AddNClose.Location = new System.Drawing.Point(12, 42);
-            this.btn_AddNClose.Name = "btn_AddNClose";
-            this.btn_AddNClose.Size = new System.Drawing.Size(125, 23);
-            this.btn_AddNClose.TabIndex = 89;
-            this.btn_AddNClose.Text = "Записать и закрыть";
-            this.btn_AddNClose.UseVisualStyleBackColor = true;
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(143, 42);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(92, 23);
-            this.btn_add.TabIndex = 90;
-            this.btn_add.Text = "Записать";
-            this.btn_add.UseVisualStyleBackColor = true;
-            // 
-            // btn_cancelAdd
-            // 
-            this.btn_cancelAdd.Location = new System.Drawing.Point(241, 42);
-            this.btn_cancelAdd.Name = "btn_cancelAdd";
-            this.btn_cancelAdd.Size = new System.Drawing.Size(92, 23);
-            this.btn_cancelAdd.TabIndex = 91;
-            this.btn_cancelAdd.Text = "Отменить";
-            this.btn_cancelAdd.UseVisualStyleBackColor = true;
-            this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(435, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 20);
-            this.label12.TabIndex = 92;
-            this.label12.Text = "от";
             // 
             // ColumnName
             // 
@@ -468,6 +422,53 @@ namespace MTO
             this.ColumnDeliveryDate.HeaderText = "Срок поставки";
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             // 
+            // dtp_conclusionDate
+            // 
+            this.dtp_conclusionDate.Location = new System.Drawing.Point(481, 12);
+            this.dtp_conclusionDate.Name = "dtp_conclusionDate";
+            this.dtp_conclusionDate.Size = new System.Drawing.Size(147, 20);
+            this.dtp_conclusionDate.TabIndex = 78;
+            // 
+            // btn_AddNClose
+            // 
+            this.btn_AddNClose.Location = new System.Drawing.Point(12, 42);
+            this.btn_AddNClose.Name = "btn_AddNClose";
+            this.btn_AddNClose.Size = new System.Drawing.Size(125, 23);
+            this.btn_AddNClose.TabIndex = 89;
+            this.btn_AddNClose.Text = "Записать и закрыть";
+            this.btn_AddNClose.UseVisualStyleBackColor = true;
+            this.btn_AddNClose.Click += new System.EventHandler(this.btn_AddNClose_Click);
+            // 
+            // btn_add
+            // 
+            this.btn_add.Location = new System.Drawing.Point(143, 42);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(92, 23);
+            this.btn_add.TabIndex = 90;
+            this.btn_add.Text = "Записать";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // btn_cancelAdd
+            // 
+            this.btn_cancelAdd.Location = new System.Drawing.Point(241, 42);
+            this.btn_cancelAdd.Name = "btn_cancelAdd";
+            this.btn_cancelAdd.Size = new System.Drawing.Size(92, 23);
+            this.btn_cancelAdd.TabIndex = 91;
+            this.btn_cancelAdd.Text = "Отменить";
+            this.btn_cancelAdd.UseVisualStyleBackColor = true;
+            this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(435, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 20);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "от";
+            // 
             // FormContractAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,10 +478,10 @@ namespace MTO
             this.Controls.Add(this.btn_cancelAdd);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_AddNClose);
-            this.Controls.Add(this.textBoxActNumber);
+            this.Controls.Add(this.tb_actNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.dateTimeCreateDate);
+            this.Controls.Add(this.dtp_conclusionDate);
             this.Name = "FormContractAdd";
             this.Text = "Добавление договора";
             this.tabControl1.ResumeLayout(false);
@@ -488,8 +489,8 @@ namespace MTO
             this.tabPage1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_customerPenalty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_supplierPenalty)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -504,38 +505,38 @@ namespace MTO
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxActNumber;
+        private System.Windows.Forms.TextBox tb_actNumber;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.NumericUpDown nud_customerPenalty;
+        private System.Windows.Forms.NumericUpDown nud_supplierPenalty;
+        private System.Windows.Forms.DateTimePicker dtp_expiredDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tb_customerAgentRole;
+        private System.Windows.Forms.TextBox tb_customerAgentName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_providerAgentRole;
+        private System.Windows.Forms.TextBox tb_providerAgentName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_provider;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_conclusionCity;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimeCreateDate;
+        private System.Windows.Forms.DateTimePicker dtp_conclusionDate;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_AddNClose;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_cancelAdd;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CipherResource;
