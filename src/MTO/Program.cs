@@ -12,6 +12,8 @@ namespace MTO
     {
         public static MTOContext db;
 
+        public static User user;
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
