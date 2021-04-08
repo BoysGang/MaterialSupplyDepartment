@@ -93,8 +93,7 @@ namespace MTO
 
         private void btn_viewReceiptOrder_Click(object sender, EventArgs e)
         {
-            int PK_ReceiptOrder = Convert.ToInt32(dgv_receiptOrders.SelectedRows[0].Cells[0].Value);
-            ReceiptOrder viewingReceiptOrder = Program.db.ReceiptOrders.Find(PK_ReceiptOrder);
+            ReceiptOrder viewingReceiptOrder = getSelectedReceiptOrder();
 
             if (viewingReceiptOrder != null)
             {
@@ -131,6 +130,13 @@ namespace MTO
             {
                 btn_viewReceiptOrder.Enabled = false;
             }
+        }
+
+        private ReceiptOrder getSelectedReceiptOrder()
+        {
+            int PK_ReceiptOrder = Convert.ToInt32(dgv_receiptOrders.SelectedRows[0].Cells[0].Value);
+
+            return Program.db.ReceiptOrders.Find(PK_ReceiptOrder);
         }
     }
 }

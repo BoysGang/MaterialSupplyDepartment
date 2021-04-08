@@ -23,6 +23,7 @@ namespace MTO.Models
         {
             return ContractNumber;
         }
+
         [Key]
         public int PK_Contract { get; set; }
 

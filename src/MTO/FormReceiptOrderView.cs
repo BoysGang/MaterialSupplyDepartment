@@ -26,7 +26,7 @@ namespace MTO
 
         private void tsmi_editChange_Click(object sender, EventArgs e)
         {
-            FormReceiptOrderAdd form = new FormReceiptOrderAdd();
+            FormReceiptOrderAdd form = new FormReceiptOrderAdd(receiptOrder);
             form.ShowDialog();
         }
 
