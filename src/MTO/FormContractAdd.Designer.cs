@@ -34,6 +34,7 @@ namespace MTO
             this.textBoxActNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -56,18 +57,21 @@ namespace MTO
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimeCreateDate = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimeCreateDate = new System.Windows.Forms.DateTimePicker();
             this.btn_AddNClose = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_cancelAdd = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ColumnName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CipherResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CipherUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,7 +87,7 @@ namespace MTO
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(162, 7);
+            this.label1.Location = new System.Drawing.Point(114, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 20);
             this.label1.TabIndex = 0;
@@ -92,9 +96,9 @@ namespace MTO
             // 
             // textBoxActNumber
             // 
-            this.textBoxActNumber.Location = new System.Drawing.Point(352, 7);
+            this.textBoxActNumber.Location = new System.Drawing.Point(303, 11);
             this.textBoxActNumber.Name = "textBoxActNumber";
-            this.textBoxActNumber.Size = new System.Drawing.Size(147, 20);
+            this.textBoxActNumber.Size = new System.Drawing.Size(118, 20);
             this.textBoxActNumber.TabIndex = 2;
             // 
             // tabControl1
@@ -109,6 +113,7 @@ namespace MTO
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dateTimePicker2);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.dateTimePicker1);
             this.tabPage1.Controls.Add(this.label9);
@@ -119,7 +124,6 @@ namespace MTO
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.dateTimeCreateDate);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -127,6 +131,13 @@ namespace MTO
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Основное";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(545, 51);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(147, 20);
+            this.dateTimePicker2.TabIndex = 89;
             // 
             // groupBox3
             // 
@@ -200,9 +211,9 @@ namespace MTO
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(405, 54);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 13);
+            this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 85;
-            this.label7.Text = "Дата заключения";
+            this.label7.Text = "Дата начала";
             // 
             // groupBox2
             // 
@@ -333,13 +344,6 @@ namespace MTO
             this.label2.TabIndex = 79;
             this.label2.Text = "Место заключения договора";
             // 
-            // dateTimeCreateDate
-            // 
-            this.dateTimeCreateDate.Location = new System.Drawing.Point(545, 50);
-            this.dateTimeCreateDate.Name = "dateTimeCreateDate";
-            this.dateTimeCreateDate.Size = new System.Drawing.Size(147, 20);
-            this.dateTimeCreateDate.TabIndex = 78;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView1);
@@ -357,8 +361,10 @@ namespace MTO
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnName,
+            this.CipherResource,
             this.ColumnAmount,
             this.ColumnUnit,
+            this.CipherUnit,
             this.ColumnUnitPrice,
             this.ColumnPrice,
             this.ColumnDeliveryDate});
@@ -369,43 +375,12 @@ namespace MTO
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // ColumnName
+            // dateTimeCreateDate
             // 
-            this.ColumnName.HeaderText = "Наименование";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.HeaderText = "Кол-во";
-            this.ColumnAmount.Name = "ColumnAmount";
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.HeaderText = "Ед. измерения";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnUnitPrice
-            // 
-            this.ColumnUnitPrice.HeaderText = "Цена за единицу, руб.";
-            this.ColumnUnitPrice.Name = "ColumnUnitPrice";
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.HeaderText = "Общая цена партии, руб.";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnDeliveryDate
-            // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnDeliveryDate.HeaderText = "Срок поставки";
-            this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
+            this.dateTimeCreateDate.Location = new System.Drawing.Point(481, 12);
+            this.dateTimeCreateDate.Name = "dateTimeCreateDate";
+            this.dateTimeCreateDate.Size = new System.Drawing.Size(147, 20);
+            this.dateTimeCreateDate.TabIndex = 78;
             // 
             // btn_AddNClose
             // 
@@ -435,17 +410,77 @@ namespace MTO
             this.btn_cancelAdd.UseVisualStyleBackColor = true;
             this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(435, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 20);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "от";
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Наименование";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CipherResource
+            // 
+            this.CipherResource.HeaderText = "Шифр ресурса";
+            this.CipherResource.Name = "CipherResource";
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.HeaderText = "Кол-во";
+            this.ColumnAmount.Name = "ColumnAmount";
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.HeaderText = "Ед. измерения";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CipherUnit
+            // 
+            this.CipherUnit.HeaderText = "Шифр ед. измерения";
+            this.CipherUnit.Name = "CipherUnit";
+            // 
+            // ColumnUnitPrice
+            // 
+            this.ColumnUnitPrice.HeaderText = "Цена за единицу, руб.";
+            this.ColumnUnitPrice.Name = "ColumnUnitPrice";
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.HeaderText = "Общая цена партии, руб.";
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
+            // 
+            // ColumnDeliveryDate
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnDeliveryDate.HeaderText = "Срок поставки";
+            this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
+            // 
             // FormContractAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 560);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btn_cancelAdd);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_AddNClose);
             this.Controls.Add(this.textBoxActNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.dateTimeCreateDate);
             this.Name = "FormContractAdd";
             this.Text = "Добавление договора";
             this.tabControl1.ResumeLayout(false);
@@ -500,9 +535,13 @@ namespace MTO
         private System.Windows.Forms.Button btn_AddNClose;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_cancelAdd;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CipherResource;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CipherUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;

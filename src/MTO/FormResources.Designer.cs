@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_resources = new System.Windows.Forms.DataGridView();
             this.PK_Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,8 +71,8 @@ namespace MTO
             this.dgv_resources.MultiSelect = false;
             this.dgv_resources.Name = "dgv_resources";
             this.dgv_resources.ReadOnly = true;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_resources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_resources.Size = new System.Drawing.Size(657, 247);
             this.dgv_resources.TabIndex = 2;
@@ -260,6 +260,7 @@ namespace MTO
             this.Name = "FormResources";
             this.Text = "Справочник \"Ресурсы\"";
             this.Activated += new System.EventHandler(this.FormResources_Activated);
+            this.Load += new System.EventHandler(this.FormResources_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resources)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
