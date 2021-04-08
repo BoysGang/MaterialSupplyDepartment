@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MTO.Models;
 
 using MTO.Models;
 
@@ -109,7 +108,8 @@ namespace MTO
                     rtb_document.SelectedText = rtb_document.SelectedText.Replace(keyValue.Key, keyValue.Value);
                 }
             }
-            
+        }
+
         private void tsmi_editDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Вы уверены что хотите удалить данный договор?", "Подтвердите действие", 
