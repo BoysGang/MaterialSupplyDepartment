@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTO.Models;
 
-using MTO.Models;
-
 namespace MTO
 {
     public partial class FormContractView : Form
@@ -106,9 +104,17 @@ namespace MTO
                     if (found == -1)
                         break;
 
-                    rtb_document.SelectedText = rtb_document.SelectedText.Replace(keyValue.Key, keyValue.Value);
+                    if (keyValue.Value == null || keyValue.Value == String.Empty)
+                    {
+                        rtb_document.SelectedText = rtb_document.SelectedText.Replace(keyValue.Key, " ");
+                    }
+                    else
+                    {
+                        rtb_document.SelectedText = rtb_document.SelectedText.Replace(keyValue.Key, keyValue.Value);
+                    }
                 }
             }
+        }
             
         private void tsmi_editDelete_Click(object sender, EventArgs e)
         {
