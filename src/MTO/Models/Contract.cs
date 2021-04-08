@@ -29,13 +29,13 @@ namespace MTO.Models
         public string ContractNumber { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime? ConclusionDate { get; set; }
+        public DateTime ConclusionDate { get; set; }
 
         [Column(TypeName = "Date")]
-        public DateTime? ExpiredDate { get; set; }
+        public DateTime ExpiredDate { get; set; }
 
         public string ConclusionCity { get; set; }
 
