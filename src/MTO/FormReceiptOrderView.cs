@@ -26,7 +26,7 @@ namespace MTO
 
         private void tsmi_editChange_Click(object sender, EventArgs e)
         {
-            FormReceiptOrderAdd form = new FormReceiptOrderAdd();
+            FormReceiptOrderAdd form = new FormReceiptOrderAdd(receiptOrder);
             form.ShowDialog();
         }
 
@@ -38,9 +38,7 @@ namespace MTO
 
         private void updateReceiptOrderTable()
         {
-
-            List<ReceiptOrder> orders = Program.db.ReceiptOrders.ToList();
-            dgv_receiptOrders.DataSource = orders;
+            dgv_receiptOrders.DataSource = new List<ReceiptOrder> { receiptOrder };
 
             dgv_receiptOrders.Columns[0].DataPropertyName = "PK_ReceiptOrder";
             dgv_receiptOrders.Columns[1].DataPropertyName = "DeliveryDate";
