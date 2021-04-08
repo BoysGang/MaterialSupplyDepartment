@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTO.Models;
 
+using MTO.Models;
+
 namespace MTO
 {
     public partial class FormContractView : Form
@@ -38,7 +40,7 @@ namespace MTO
 
         private void tsmi_editChange_Click(object sender, EventArgs e)
         {
-            FormContractAdd form = new FormContractAdd();
+            FormContractAdd form = new FormContractAdd(contract);
             form.ShowDialog();
         }
 
@@ -105,6 +107,29 @@ namespace MTO
                         break;
 
                     rtb_document.SelectedText = rtb_document.SelectedText.Replace(keyValue.Key, keyValue.Value);
+                }
+            }
+            
+        private void tsmi_editDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены что хотите удалить данный договор?", "Подтвердите действие", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            //удаляем запись
+            if(result == DialogResult.Yes)
+            {
+                try
+                {
+                        if (contract != null)
+                        {
+                            Program.db.Contracts.Remove(contract);
+                            Program.db.SaveChanges();
+                        }
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка удаления, " + ex.ToString());
                 }
             }
         }
