@@ -24,13 +24,13 @@ namespace MTO
         {
             if(textBoxLogin.Text == String.Empty)
             {
-                MessageBox.Show("Введите логин!");
+                MessageBox.Show("Введите логин!", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if(textBoxPassword.Text == String.Empty)
             {
-                MessageBox.Show("Введите пароль!");
+                MessageBox.Show("Введите пароль!", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -50,7 +50,7 @@ namespace MTO
             }
             else
             {
-                MessageBox.Show("Неверные входные данные!");
+                MessageBox.Show("Неверные входные данные!", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
