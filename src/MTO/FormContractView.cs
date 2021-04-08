@@ -38,5 +38,30 @@ namespace MTO
             FormContractAdd form = new FormContractAdd(contract);
             form.ShowDialog();
         }
+
+        private void tsmi_editDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены что хотите удалить данный договор?", "Подтвердите действие", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            //удаляем запись
+            if(result == DialogResult.Yes)
+            {
+                try
+                {
+                        if (contract != null)
+                        {
+                            Program.db.Contracts.Remove(contract);
+                            Program.db.SaveChanges();
+                        }
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка удаления, " + ex.ToString());
+                }
+            }
+
+        }
     }
 }

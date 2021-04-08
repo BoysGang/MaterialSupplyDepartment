@@ -31,6 +31,7 @@ namespace MTO
                 this.currContract = contract;
                 this.Text = formHeaderText;
                 btn_AddNClose.Text = btnAddText;
+                btn_cancelAdd.Location = btn_add.Location;
                 btn_add.Visible = false;
 
                 fillDataFromSource();
