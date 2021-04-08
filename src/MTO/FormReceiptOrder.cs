@@ -84,6 +84,11 @@ namespace MTO
             dgv_receiptOrders.AutoGenerateColumns = false;
             dgv_receiptOrders.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
+            if (Program.user.isAccounting())
+            {
+                tsmi_contracts.Visible = false;
+            }
+
         }
 
         private void btn_viewReceiptOrder_Click(object sender, EventArgs e)
