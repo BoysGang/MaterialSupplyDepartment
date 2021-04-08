@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
@@ -37,7 +38,7 @@ namespace MTO
             User currUser = Program.db.Users
                 .Where(p => p.Username == textBoxLogin.Text).FirstOrDefault();
 
-            if(currUser != null && currUser.Password == textBoxPassword.Text)
+            if (currUser != null && Hashing.ValidatePassword(textBoxPassword.Text, currUser.Password))
             {
                 Program.user = currUser;
 
