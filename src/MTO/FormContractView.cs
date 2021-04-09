@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MTO.Models;
 
 namespace MTO
 {
@@ -24,7 +23,7 @@ namespace MTO
 
             this.contract = contract;
         }
-
+        
         private void FormContractView_Load(object sender, EventArgs e)
         {
             dgv_contractLines.AutoGenerateColumns = false;
@@ -115,7 +114,7 @@ namespace MTO
                 }
             }
         }
-            
+
         private void tsmi_editDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Вы уверены что хотите удалить данный договор?", "Подтвердите действие", 
