@@ -93,7 +93,6 @@ namespace MTO
             dgv_units.Columns[2].DataPropertyName = "PK_Unit";
             dgv_units.Columns[1].DataPropertyName = "Name";
             dgv_units.Columns[0].DataPropertyName = "Cipher";
-
         }
 
         private void dgv_units_SelectionChanged(object sender, EventArgs e)

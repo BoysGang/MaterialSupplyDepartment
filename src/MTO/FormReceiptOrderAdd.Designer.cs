@@ -29,27 +29,28 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_cancelAdd = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_addNClose = new System.Windows.Forms.Button();
-            this.textBoxActNumber = new System.Windows.Forms.TextBox();
+            this.tb_receiptOrderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.dtp_delivaryDate = new System.Windows.Forms.DateTimePicker();
+            this.cb_warehouseCipher = new System.Windows.Forms.ComboBox();
+            this.cb_provider = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_orderLines = new System.Windows.Forms.DataGridView();
+            this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cb_contractNumber = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_orderLines)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_cancelAdd
@@ -60,6 +61,7 @@ namespace MTO
             this.btn_cancelAdd.TabIndex = 96;
             this.btn_cancelAdd.Text = "Отменить";
             this.btn_cancelAdd.UseVisualStyleBackColor = true;
+            this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
             // 
             // btn_add
             // 
@@ -69,6 +71,7 @@ namespace MTO
             this.btn_add.TabIndex = 95;
             this.btn_add.Text = "Записать";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // btn_addNClose
             // 
@@ -78,40 +81,24 @@ namespace MTO
             this.btn_addNClose.TabIndex = 94;
             this.btn_addNClose.Text = "Записать и закрыть";
             this.btn_addNClose.UseVisualStyleBackColor = true;
+            this.btn_addNClose.Click += new System.EventHandler(this.btn_addNClose_Click);
             // 
-            // textBoxActNumber
+            // tb_receiptOrderNumber
             // 
-            this.textBoxActNumber.Location = new System.Drawing.Point(264, 12);
-            this.textBoxActNumber.Name = "textBoxActNumber";
-            this.textBoxActNumber.Size = new System.Drawing.Size(147, 20);
-            this.textBoxActNumber.TabIndex = 93;
+            this.tb_receiptOrderNumber.Location = new System.Drawing.Point(360, 12);
+            this.tb_receiptOrderNumber.Name = "tb_receiptOrderNumber";
+            this.tb_receiptOrderNumber.Size = new System.Drawing.Size(147, 20);
+            this.tb_receiptOrderNumber.TabIndex = 93;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(74, 12);
+            this.label1.Location = new System.Drawing.Point(170, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 20);
             this.label1.TabIndex = 92;
             this.label1.Text = "Приходный ордер №";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(417, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 20);
-            this.label2.TabIndex = 97;
-            this.label2.Text = "от";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(452, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(147, 20);
-            this.dateTimePicker1.TabIndex = 98;
             // 
             // label3
             // 
@@ -140,28 +127,30 @@ namespace MTO
             this.label5.TabIndex = 101;
             this.label5.Text = "Шифр склада";
             // 
-            // dateTimePicker2
+            // dtp_delivaryDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(130, 101);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(147, 20);
-            this.dateTimePicker2.TabIndex = 102;
+            this.dtp_delivaryDate.Location = new System.Drawing.Point(130, 101);
+            this.dtp_delivaryDate.Name = "dtp_delivaryDate";
+            this.dtp_delivaryDate.Size = new System.Drawing.Size(147, 20);
+            this.dtp_delivaryDate.TabIndex = 102;
             // 
-            // comboBox1
+            // cb_warehouseCipher
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(130, 151);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
-            this.comboBox1.TabIndex = 103;
+            this.cb_warehouseCipher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_warehouseCipher.FormattingEnabled = true;
+            this.cb_warehouseCipher.Location = new System.Drawing.Point(130, 151);
+            this.cb_warehouseCipher.Name = "cb_warehouseCipher";
+            this.cb_warehouseCipher.Size = new System.Drawing.Size(147, 21);
+            this.cb_warehouseCipher.TabIndex = 103;
             // 
-            // comboBox2
+            // cb_provider
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(460, 100);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(147, 21);
-            this.comboBox2.TabIndex = 104;
+            this.cb_provider.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_provider.FormattingEnabled = true;
+            this.cb_provider.Location = new System.Drawing.Point(460, 100);
+            this.cb_provider.Name = "cb_provider";
+            this.cb_provider.Size = new System.Drawing.Size(147, 21);
+            this.cb_provider.TabIndex = 104;
             // 
             // label6
             // 
@@ -172,81 +161,100 @@ namespace MTO
             this.label6.TabIndex = 105;
             this.label6.Text = "Номер договора";
             // 
-            // dataGridView1
+            // dgv_orderLines
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_orderLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_orderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_orderLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Resource,
+            this.ResourceCipher,
             this.Unit,
+            this.UnitCipher,
             this.AcceptedAmount,
             this.DocumentAmount});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 197);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(639, 214);
-            this.dataGridView1.TabIndex = 107;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_orderLines.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_orderLines.Location = new System.Drawing.Point(12, 197);
+            this.dgv_orderLines.Name = "dgv_orderLines";
+            this.dgv_orderLines.Size = new System.Drawing.Size(639, 214);
+            this.dgv_orderLines.TabIndex = 107;
+            this.dgv_orderLines.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_orderLines_CellEndEdit);
+            this.dgv_orderLines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_orderLines_CellValueChanged);
+            this.dgv_orderLines.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_orderLines_CurrentCellDirtyStateChanged);
             // 
             // Resource
             // 
             this.Resource.HeaderText = "Ресурс";
             this.Resource.Name = "Resource";
-            this.Resource.ReadOnly = true;
+            this.Resource.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Resource.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ResourceCipher
+            // 
+            this.ResourceCipher.HeaderText = "Шифр ресурса";
+            this.ResourceCipher.Name = "ResourceCipher";
             // 
             // Unit
             // 
             this.Unit.HeaderText = "Ед. измерения";
             this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
+            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // UnitCipher
+            // 
+            this.UnitCipher.HeaderText = "Шифр ед. измерения";
+            this.UnitCipher.Name = "UnitCipher";
             // 
             // AcceptedAmount
             // 
             this.AcceptedAmount.HeaderText = "Кол-во принято";
             this.AcceptedAmount.Name = "AcceptedAmount";
-            this.AcceptedAmount.ReadOnly = true;
             // 
             // DocumentAmount
             // 
             this.DocumentAmount.HeaderText = "Кол-во по документу";
             this.DocumentAmount.Name = "DocumentAmount";
-            this.DocumentAmount.ReadOnly = true;
             // 
-            // comboBox3
+            // cb_contractNumber
             // 
-            this.comboBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(460, 151);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(147, 21);
-            this.comboBox3.TabIndex = 108;
+            this.cb_contractNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_contractNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cb_contractNumber.FormattingEnabled = true;
+            this.cb_contractNumber.Location = new System.Drawing.Point(460, 151);
+            this.cb_contractNumber.Name = "cb_contractNumber";
+            this.cb_contractNumber.Size = new System.Drawing.Size(147, 21);
+            this.cb_contractNumber.TabIndex = 108;
             // 
             // FormReceiptOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 421);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.cb_contractNumber);
+            this.Controls.Add(this.dgv_orderLines);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.cb_provider);
+            this.Controls.Add(this.cb_warehouseCipher);
+            this.Controls.Add(this.dtp_delivaryDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_cancelAdd);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_addNClose);
-            this.Controls.Add(this.textBoxActNumber);
+            this.Controls.Add(this.tb_receiptOrderNumber);
             this.Controls.Add(this.label1);
             this.Name = "FormReceiptOrderAdd";
             this.Text = "Добавление приходного ордера";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormReceiptOrderAdd_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_orderLines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,22 +265,22 @@ namespace MTO
         private System.Windows.Forms.Button btn_cancelAdd;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_addNClose;
-        private System.Windows.Forms.TextBox textBoxActNumber;
+        private System.Windows.Forms.TextBox tb_receiptOrderNumber;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dtp_delivaryDate;
+        private System.Windows.Forms.ComboBox cb_warehouseCipher;
+        private System.Windows.Forms.ComboBox cb_provider;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Resource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridView dgv_orderLines;
+        private System.Windows.Forms.ComboBox cb_contractNumber;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Resource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCipher;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcceptedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DocumentAmount;
-        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

@@ -75,5 +75,6 @@ namespace MTO.Models
                     .Where(b => b.PK_Contract == PK_Contract)
                     .ToList();
         }
+
     }
 }
