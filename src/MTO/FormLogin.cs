@@ -48,14 +48,14 @@ namespace MTO
                 if (Program.user.isAdmin() || Program.user.isContract())
                 {
 
-                    mainForm = new FormContracts();
+                    mainForm = new FormStartContract();
                     mainForm.Closed += (s, args) => this.Close();
 
                     mainForm.Show();
                 }
                 else if (Program.user.isAccounting())
                 {
-                    mainForm = new FormReceiptOrder();
+                    mainForm = new FormStartAccounting();
                     mainForm.Closed += (s, args) => this.Close();
 
                     mainForm.Show();

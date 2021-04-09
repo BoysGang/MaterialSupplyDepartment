@@ -210,6 +210,18 @@
     <Compile Include="FormResourcesAdd.Designer.cs">
       <DependentUpon>FormResourcesAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStartAccounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStartAccounting.Designer.cs">
+      <DependentUpon>FormStartAccounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStartContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStartContract.Designer.cs">
+      <DependentUpon>FormStartContract.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUnit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +296,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormResourcesAdd.resx">
       <DependentUpon>FormResourcesAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStartAccounting.resx">
+      <DependentUpon>FormStartAccounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStartContract.resx">
+      <DependentUpon>FormStartContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUnit.resx">
       <DependentUpon>FormUnit.cs</DependentUpon>

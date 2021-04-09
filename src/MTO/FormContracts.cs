@@ -85,7 +85,7 @@ namespace MTO
             form.ShowDialog();
         }
 
-        private void tsmi_contractCreate_Click(object sender, EventArgs e)
+        public void tsmi_contractCreate_Click(object sender, EventArgs e)
         {
             FormContractAdd form = new FormContractAdd();
             form.ShowDialog();

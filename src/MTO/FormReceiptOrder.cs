@@ -73,7 +73,7 @@ namespace MTO
             form.ShowDialog();
         }
 
-        private void tsmi_accountingReceiptOrderAdd_Click(object sender, EventArgs e)
+        public void tsmi_accountingReceiptOrderAdd_Click(object sender, EventArgs e)
         {
             FormReceiptOrderAdd form = new FormReceiptOrderAdd();
             form.ShowDialog();
