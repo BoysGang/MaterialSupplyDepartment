@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -171,8 +171,8 @@ namespace MTO
             this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
@@ -366,8 +366,8 @@ namespace MTO
             // tsmi_contracts
             // 
             this.tsmi_contracts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_contractCreate,
-            this.tsmi_ContractSearch});
+            this.tsmi_ContractSearch,
+            this.tsmi_contractCreate});
             this.tsmi_contracts.Name = "tsmi_contracts";
             this.tsmi_contracts.Size = new System.Drawing.Size(72, 20);
             this.tsmi_contracts.Text = "Договора";
@@ -382,8 +382,9 @@ namespace MTO
             // tsmi_ContractSearch
             // 
             this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
-            this.tsmi_ContractSearch.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_ContractSearch.Text = "Поиск";
+            this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_ContractSearch.Text = "Список";
+            this.tsmi_ContractSearch.Visible = false;
             // 
             // tsmi_accounting
             // 

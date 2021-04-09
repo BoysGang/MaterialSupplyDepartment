@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
@@ -107,8 +107,8 @@ namespace MTO
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_receiptOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 297);
             this.dgv_receiptOrders.TabIndex = 36;
@@ -295,8 +295,8 @@ namespace MTO
             // tsmi_contracts
             // 
             this.tsmi_contracts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_contractCreate,
-            this.tsmi_ContractSearch});
+            this.tsmi_ContractSearch,
+            this.tsmi_contractCreate});
             this.tsmi_contracts.Name = "tsmi_contracts";
             this.tsmi_contracts.Size = new System.Drawing.Size(72, 20);
             this.tsmi_contracts.Text = "Договора";
@@ -311,8 +311,8 @@ namespace MTO
             // tsmi_ContractSearch
             // 
             this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
-            this.tsmi_ContractSearch.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_ContractSearch.Text = "Поиск";
+            this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_ContractSearch.Text = "Список";
             this.tsmi_ContractSearch.Click += new System.EventHandler(this.tsmi_ContractSearch_Click);
             // 
             // tsmi_accounting
@@ -378,6 +378,7 @@ namespace MTO
             this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
             this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(252, 22);
             this.tsmi_accountingReceiptOrderList.Text = "Список приходных ордеров";
+            this.tsmi_accountingReceiptOrderList.Visible = false;
             // 
             // tsmi_accountingReceiptOrderAdd
             // 
