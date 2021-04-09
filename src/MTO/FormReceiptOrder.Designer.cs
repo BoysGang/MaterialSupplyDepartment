@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
@@ -55,16 +55,15 @@ namespace MTO
             this.tsmi_contracts = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_ContractSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dict = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictResources = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictUnit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictProvider = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictWarehouses = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accountingReceiptOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_viewReceiptOrder = new System.Windows.Forms.Button();
             this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_viewReceiptOrder = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,8 +107,8 @@ namespace MTO
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_receiptOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 297);
             this.dgv_receiptOrders.TabIndex = 36;
@@ -296,8 +295,8 @@ namespace MTO
             // tsmi_contracts
             // 
             this.tsmi_contracts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_contractCreate,
-            this.tsmi_ContractSearch});
+            this.tsmi_ContractSearch,
+            this.tsmi_contractCreate});
             this.tsmi_contracts.Name = "tsmi_contracts";
             this.tsmi_contracts.Size = new System.Drawing.Size(72, 20);
             this.tsmi_contracts.Text = "Договора";
@@ -312,9 +311,18 @@ namespace MTO
             // tsmi_ContractSearch
             // 
             this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
-            this.tsmi_ContractSearch.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_ContractSearch.Text = "Поиск";
+            this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_ContractSearch.Text = "Список";
             this.tsmi_ContractSearch.Click += new System.EventHandler(this.tsmi_ContractSearch_Click);
+            // 
+            // tsmi_accounting
+            // 
+            this.tsmi_accounting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_accountingReceiptOrderList,
+            this.tsmi_accountingReceiptOrderAdd});
+            this.tsmi_accounting.Name = "tsmi_accounting";
+            this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
+            this.tsmi_accounting.Text = "Учет";
             // 
             // tsmi_dict
             // 
@@ -330,60 +338,30 @@ namespace MTO
             // tsmi_dictResources
             // 
             this.tsmi_dictResources.Name = "tsmi_dictResources";
-            this.tsmi_dictResources.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictResources.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictResources.Text = "Ресурсы";
             this.tsmi_dictResources.Click += new System.EventHandler(this.tsmi_dictResources_Click);
             // 
             // tsmi_dictUnit
             // 
             this.tsmi_dictUnit.Name = "tsmi_dictUnit";
-            this.tsmi_dictUnit.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictUnit.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictUnit.Text = "Ед. измерения";
             this.tsmi_dictUnit.Click += new System.EventHandler(this.tsmi_dictUnit_Click);
             // 
             // tsmi_dictProvider
             // 
             this.tsmi_dictProvider.Name = "tsmi_dictProvider";
-            this.tsmi_dictProvider.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictProvider.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictProvider.Text = "Поставщики";
             this.tsmi_dictProvider.Click += new System.EventHandler(this.tsmi_dictProvider_Click);
             // 
             // tsmi_dictWarehouses
             // 
             this.tsmi_dictWarehouses.Name = "tsmi_dictWarehouses";
-            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_dictWarehouses.Size = new System.Drawing.Size(152, 22);
             this.tsmi_dictWarehouses.Text = "Склады";
             this.tsmi_dictWarehouses.Click += new System.EventHandler(this.tsmi_dictWarehouses_Click);
-            // 
-            // tsmi_accounting
-            // 
-            this.tsmi_accounting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_accountingReceiptOrder});
-            this.tsmi_accounting.Name = "tsmi_accounting";
-            this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
-            this.tsmi_accounting.Text = "Учет";
-            // 
-            // tsmi_accountingReceiptOrder
-            // 
-            this.tsmi_accountingReceiptOrder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_accountingReceiptOrderList,
-            this.tsmi_accountingReceiptOrderAdd});
-            this.tsmi_accountingReceiptOrder.Name = "tsmi_accountingReceiptOrder";
-            this.tsmi_accountingReceiptOrder.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_accountingReceiptOrder.Text = "Приходной ордер";
-            // 
-            // tsmi_accountingReceiptOrderList
-            // 
-            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
-            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_accountingReceiptOrderList.Text = "Список";
-            // 
-            // tsmi_accountingReceiptOrderAdd
-            // 
-            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
-            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(141, 22);
-            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление";
-            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
             // 
             // btn_viewReceiptOrder
             // 
@@ -394,6 +372,20 @@ namespace MTO
             this.btn_viewReceiptOrder.Text = "Просмотр";
             this.btn_viewReceiptOrder.UseVisualStyleBackColor = true;
             this.btn_viewReceiptOrder.Click += new System.EventHandler(this.btn_viewReceiptOrder_Click);
+            // 
+            // tsmi_accountingReceiptOrderList
+            // 
+            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(252, 22);
+            this.tsmi_accountingReceiptOrderList.Text = "Список приходных ордеров";
+            this.tsmi_accountingReceiptOrderList.Visible = false;
+            // 
+            // tsmi_accountingReceiptOrderAdd
+            // 
+            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(252, 22);
+            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление приходного ордера";
+            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
             // 
             // FormReceiptOrder
             // 
@@ -447,9 +439,6 @@ namespace MTO
         private System.Windows.Forms.ToolStripMenuItem tsmi_dictProvider;
         private System.Windows.Forms.ToolStripMenuItem tsmi_dictWarehouses;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accounting;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrder;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
         private System.Windows.Forms.Button btn_viewReceiptOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_ReceiptOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceiptOrderNumber;
@@ -457,5 +446,7 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn Warehouse;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProviderAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contract;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
     }
 }
