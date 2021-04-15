@@ -280,6 +280,7 @@ namespace MTO
             this.tsmi_editDelete.Name = "tsmi_editDelete";
             this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editDelete.Text = "Удаление";
+            this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
             // 
             // FormReceiptOrderView
             // 
