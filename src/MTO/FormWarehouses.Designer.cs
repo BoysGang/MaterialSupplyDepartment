@@ -102,9 +102,11 @@ namespace MTO
             // tb_cipher
             // 
             this.tb_cipher.Location = new System.Drawing.Point(9, 40);
+            this.tb_cipher.MaxLength = 50;
             this.tb_cipher.Name = "tb_cipher";
             this.tb_cipher.Size = new System.Drawing.Size(271, 20);
             this.tb_cipher.TabIndex = 8;
+            this.tb_cipher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cipher_KeyPress);
             // 
             // btn_find
             // 
@@ -114,6 +116,7 @@ namespace MTO
             this.btn_find.TabIndex = 10;
             this.btn_find.Text = "Найти";
             this.btn_find.UseVisualStyleBackColor = true;
+            this.btn_find.Click += new System.EventHandler(this.btn_find_Click);
             // 
             // label2
             // 
@@ -136,6 +139,7 @@ namespace MTO
             // tb_name
             // 
             this.tb_name.Location = new System.Drawing.Point(286, 40);
+            this.tb_name.MaxLength = 50;
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(271, 20);
             this.tb_name.TabIndex = 13;
@@ -196,7 +200,6 @@ namespace MTO
             this.Controls.Add(this.label1);
             this.Name = "FormWarehouses";
             this.Text = "Справочник \"Склады\"";
-            this.Activated += new System.EventHandler(this.FormWarehouses_Activated);
             this.Load += new System.EventHandler(this.FormWarehouses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_warehouses)).EndInit();
             this.groupBox1.ResumeLayout(false);

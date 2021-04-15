@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_cancelAdd = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_addNClose = new System.Windows.Forms.Button();
@@ -43,13 +43,15 @@ namespace MTO
             this.cb_provider = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgv_orderLines = new System.Windows.Forms.DataGridView();
+            this.cb_contractNumber = new System.Windows.Forms.ComboBox();
+            this.btn_deleteLine = new System.Windows.Forms.Button();
+            this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cb_contractNumber = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_orderLines)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,29 +170,57 @@ namespace MTO
             this.dgv_orderLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_orderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_orderLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PK_ReceiptOrderLine,
             this.Resource,
             this.ResourceCipher,
             this.Unit,
             this.UnitCipher,
             this.AcceptedAmount,
             this.DocumentAmount});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_orderLines.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_orderLines.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_orderLines.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgv_orderLines.Location = new System.Drawing.Point(12, 197);
+            this.dgv_orderLines.Location = new System.Drawing.Point(12, 226);
+            this.dgv_orderLines.MultiSelect = false;
             this.dgv_orderLines.Name = "dgv_orderLines";
-            this.dgv_orderLines.Size = new System.Drawing.Size(639, 214);
+            this.dgv_orderLines.Size = new System.Drawing.Size(639, 185);
             this.dgv_orderLines.TabIndex = 107;
             this.dgv_orderLines.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_orderLines_CellEndEdit);
             this.dgv_orderLines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_orderLines_CellValueChanged);
             this.dgv_orderLines.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_orderLines_CurrentCellDirtyStateChanged);
             this.dgv_orderLines.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_orderLines_EditingControlShowing);
+            // 
+            // cb_contractNumber
+            // 
+            this.cb_contractNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_contractNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cb_contractNumber.FormattingEnabled = true;
+            this.cb_contractNumber.Location = new System.Drawing.Point(460, 151);
+            this.cb_contractNumber.Name = "cb_contractNumber";
+            this.cb_contractNumber.Size = new System.Drawing.Size(147, 21);
+            this.cb_contractNumber.TabIndex = 108;
+            // 
+            // btn_deleteLine
+            // 
+            this.btn_deleteLine.Location = new System.Drawing.Point(12, 197);
+            this.btn_deleteLine.Name = "btn_deleteLine";
+            this.btn_deleteLine.Size = new System.Drawing.Size(125, 23);
+            this.btn_deleteLine.TabIndex = 109;
+            this.btn_deleteLine.Text = "Удалить строку";
+            this.btn_deleteLine.UseVisualStyleBackColor = true;
+            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
+            // 
+            // PK_ReceiptOrderLine
+            // 
+            this.PK_ReceiptOrderLine.HeaderText = "PK";
+            this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
+            this.PK_ReceiptOrderLine.Visible = false;
             // 
             // Resource
             // 
@@ -209,7 +239,6 @@ namespace MTO
             this.Unit.HeaderText = "Ед. измерения";
             this.Unit.Name = "Unit";
             this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // UnitCipher
             // 
@@ -226,21 +255,12 @@ namespace MTO
             this.DocumentAmount.HeaderText = "Кол-во по документу";
             this.DocumentAmount.Name = "DocumentAmount";
             // 
-            // cb_contractNumber
-            // 
-            this.cb_contractNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cb_contractNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cb_contractNumber.FormattingEnabled = true;
-            this.cb_contractNumber.Location = new System.Drawing.Point(460, 151);
-            this.cb_contractNumber.Name = "cb_contractNumber";
-            this.cb_contractNumber.Size = new System.Drawing.Size(147, 21);
-            this.cb_contractNumber.TabIndex = 108;
-            // 
             // FormReceiptOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 421);
+            this.Controls.Add(this.btn_deleteLine);
             this.Controls.Add(this.cb_contractNumber);
             this.Controls.Add(this.dgv_orderLines);
             this.Controls.Add(this.label6);
@@ -280,9 +300,11 @@ namespace MTO
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgv_orderLines;
         private System.Windows.Forms.ComboBox cb_contractNumber;
+        private System.Windows.Forms.Button btn_deleteLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_ReceiptOrderLine;
         private System.Windows.Forms.DataGridViewComboBoxColumn Resource;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCipher;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcceptedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DocumentAmount;

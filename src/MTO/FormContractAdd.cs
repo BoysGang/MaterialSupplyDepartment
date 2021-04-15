@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
@@ -443,6 +444,12 @@ namespace MTO
                 deletedLines.Add(Int32.Parse(dgv_contractlines.Rows[selectedItem].Cells[0].Value.ToString()));
 
             dgv_contractlines.Rows.RemoveAt(selectedItem);
+         }
+
+        private void tb_actNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isNumber(e.KeyChar.ToString());
         }
     }
 }

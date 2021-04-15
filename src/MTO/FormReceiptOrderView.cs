@@ -84,5 +84,30 @@ namespace MTO
         {
             dgv_receiptOrderLines.ClearSelection();
         }
+
+        private void tsmi_editDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены что хотите удалить данный приходной ордер?",
+                "Подтвердите действие",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            // Удаляем запись
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    if (receiptOrder != null)
+                    {
+                        Program.db.ReceiptOrders.Remove(receiptOrder);
+                        Program.db.SaveChanges();
+                    }
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка удаления, " + ex.ToString());
+                }
+            }
+        }
     }
 }

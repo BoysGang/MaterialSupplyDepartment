@@ -101,9 +101,11 @@ namespace MTO
             // tb_actNumber
             // 
             this.tb_actNumber.Location = new System.Drawing.Point(303, 11);
+            this.tb_actNumber.MaxLength = 50;
             this.tb_actNumber.Name = "tb_actNumber";
             this.tb_actNumber.Size = new System.Drawing.Size(118, 20);
             this.tb_actNumber.TabIndex = 2;
+            this.tb_actNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_actNumber_KeyPress);
             // 
             // tabControl1
             // 
@@ -235,6 +237,7 @@ namespace MTO
             // tb_customerAgentRole
             // 
             this.tb_customerAgentRole.Location = new System.Drawing.Point(79, 70);
+            this.tb_customerAgentRole.MaxLength = 50;
             this.tb_customerAgentRole.Name = "tb_customerAgentRole";
             this.tb_customerAgentRole.Size = new System.Drawing.Size(199, 20);
             this.tb_customerAgentRole.TabIndex = 72;
@@ -242,6 +245,7 @@ namespace MTO
             // tb_customerAgentName
             // 
             this.tb_customerAgentName.Location = new System.Drawing.Point(79, 34);
+            this.tb_customerAgentName.MaxLength = 125;
             this.tb_customerAgentName.Name = "tb_customerAgentName";
             this.tb_customerAgentName.Size = new System.Drawing.Size(199, 20);
             this.tb_customerAgentName.TabIndex = 70;
@@ -282,6 +286,7 @@ namespace MTO
             // tb_providerAgentRole
             // 
             this.tb_providerAgentRole.Location = new System.Drawing.Point(79, 70);
+            this.tb_providerAgentRole.MaxLength = 50;
             this.tb_providerAgentRole.Name = "tb_providerAgentRole";
             this.tb_providerAgentRole.Size = new System.Drawing.Size(201, 20);
             this.tb_providerAgentRole.TabIndex = 72;
@@ -289,6 +294,7 @@ namespace MTO
             // tb_providerAgentName
             // 
             this.tb_providerAgentName.Location = new System.Drawing.Point(79, 34);
+            this.tb_providerAgentName.MaxLength = 125;
             this.tb_providerAgentName.Name = "tb_providerAgentName";
             this.tb_providerAgentName.Size = new System.Drawing.Size(201, 20);
             this.tb_providerAgentName.TabIndex = 70;
@@ -336,6 +342,7 @@ namespace MTO
             // tb_conclusionCity
             // 
             this.tb_conclusionCity.Location = new System.Drawing.Point(210, 54);
+            this.tb_conclusionCity.MaxLength = 50;
             this.tb_conclusionCity.Name = "tb_conclusionCity";
             this.tb_conclusionCity.Size = new System.Drawing.Size(130, 20);
             this.tb_conclusionCity.TabIndex = 80;

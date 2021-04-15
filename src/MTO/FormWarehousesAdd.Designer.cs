@@ -40,9 +40,11 @@ namespace MTO
             // tb_cipher
             // 
             this.tb_cipher.Location = new System.Drawing.Point(12, 28);
+            this.tb_cipher.MaxLength = 50;
             this.tb_cipher.Name = "tb_cipher";
             this.tb_cipher.Size = new System.Drawing.Size(271, 20);
             this.tb_cipher.TabIndex = 15;
+            this.tb_cipher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cipher_KeyPress);
             // 
             // label2
             // 
@@ -56,6 +58,7 @@ namespace MTO
             // tb_name
             // 
             this.tb_name.Location = new System.Drawing.Point(12, 78);
+            this.tb_name.MaxLength = 50;
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(271, 20);
             this.tb_name.TabIndex = 18;
