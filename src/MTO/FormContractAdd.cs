@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 using MTO.Models;
 using MTO.Utils;
@@ -173,13 +174,21 @@ namespace MTO
                         //добавляем в бд, если нет ключа
                         if (dgv_contractlines.Rows[i].Cells[0].Value == null)
                         {
+                            float amount = 0;
+                            if (dgv_contractlines.Rows[i].Cells["Amount"].Value != null)
+                                float.TryParse(dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString(),
+                                    NumberStyles.Float, CultureInfo.InvariantCulture, out amount);
+
+                            Decimal unitPrice = 0;
+                            if (dgv_contractlines.Rows[i].Cells["UnitPrice"].Value != null)
+                                Decimal.TryParse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString(),
+                                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out unitPrice);
+
                             ContractLine line = new ContractLine()
                             {
                                 PK_Contract = currContract.PK_Contract,
-                                Amount = float.Parse(dgv_contractlines.Rows[i].Cells["Amount"].Value == null ?
-                                                            "0" : dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString()),
-                                UnitPrice = Decimal.Parse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value == null ?
-                                                            "0" : dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString()),
+                                Amount = amount,
+                                UnitPrice = unitPrice,
                                 DeliveryDate = DateTime.Parse(dgv_contractlines.Rows[i].Cells["DeliveryDate"].Value == null ?
                                                             DateTime.Now.ToString() : dgv_contractlines.Rows[i].Cells["DeliveryDate"].Value.ToString()),
                                 PK_Resource = (int)dgv_contractlines.Rows[i].Cells["Resource"].Value
@@ -194,10 +203,17 @@ namespace MTO
                             int pk_line = int.Parse(dgv_contractlines.Rows[i].Cells[0].Value.ToString());
 
                             int pk_resource = (int)dgv_contractlines.Rows[i].Cells[1].Value;
-                            float amount = float.Parse(dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString() == String.Empty ?
-                                                            "0" : dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString());
-                            Decimal unitPrice = Decimal.Parse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString() == String.Empty ?
-                                                            "0" : dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString());
+                            
+                            float amount = 0;
+                            if(dgv_contractlines.Rows[i].Cells["Amount"].Value != null)
+                                float.TryParse(dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString(),
+                                    NumberStyles.Float, CultureInfo.InvariantCulture, out amount);
+
+                            Decimal unitPrice = 0;
+                            if (dgv_contractlines.Rows[i].Cells["UnitPrice"].Value != null)
+                                Decimal.TryParse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString(),
+                                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out unitPrice);
+                           
                             DateTime deliveryDate = DateTime.Parse(dgv_contractlines.Rows[i].Cells["DeliveryDate"].Value.ToString() == String.Empty ?
                                                             DateTime.Now.ToString() : dgv_contractlines.Rows[i].Cells["DeliveryDate"].Value.ToString());
 
@@ -252,14 +268,21 @@ namespace MTO
                     //add contractLines
                     for(int i = 0; i < dgv_contractlines.Rows.Count - 1; i++)
                     {
+                        float amount = 0;
+                        if (dgv_contractlines.Rows[i].Cells["Amount"].Value != null)
+                            float.TryParse(dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString(),
+                                NumberStyles.Float, CultureInfo.InvariantCulture, out amount);
+                        Decimal unitPrice = 0;
+                        if (dgv_contractlines.Rows[i].Cells["UnitPrice"].Value != null)
+                            Decimal.TryParse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString(),
+                                NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out unitPrice);
+
 
                         ContractLine currLine = new ContractLine()
                         {
                             PK_Resource = (int)dgv_contractlines.Rows[i].Cells["Resource"].Value,
-                            Amount = float.Parse(dgv_contractlines.Rows[i].Cells["Amount"].Value == null ?
-                                                            "0" : dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString()),
-                            UnitPrice = Decimal.Parse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value == null ?
-                                                            "0" : dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString()),
+                            Amount = amount,
+                            UnitPrice = unitPrice,
                             DeliveryDate = DateTime.Parse(dgv_contractlines.Rows[i].Cells["DeliveryDate"].Value == null ?
                                                             DateTime.Now.ToString() : dgv_contractlines.Rows[i].Cells["DeliveryDate"].Value.ToString()),
                             PK_Contract = newContract.PK_Contract
@@ -379,11 +402,14 @@ namespace MTO
             {
                 try
                 {
-                    double unitPrice = dgv_contractlines.Rows[e.RowIndex].Cells["UnitPrice"].Value == null ?
-                        0 : Double.Parse(dgv_contractlines.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString());
+                    float unitPrice = 0, amount = 0;
+                    if (dgv_contractlines.Rows[e.RowIndex].Cells["UnitPrice"].Value != null)
+                        float.TryParse(dgv_contractlines.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString(),
+                            NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out unitPrice);
 
-                    double amount = dgv_contractlines.Rows[e.RowIndex].Cells["Amount"].Value == null ?
-                        0 : Double.Parse(dgv_contractlines.Rows[e.RowIndex].Cells["Amount"].Value.ToString());
+                    if (dgv_contractlines.Rows[e.RowIndex].Cells["Amount"].Value != null)
+                        float.TryParse(dgv_contractlines.Rows[e.RowIndex].Cells["Amount"].Value.ToString(),
+                            NumberStyles.Float, CultureInfo.InvariantCulture, out amount);
 
                     dgv_contractlines.Rows[e.RowIndex].Cells["TotalPrice"].Value = (unitPrice * amount).ToString();
                 }
@@ -409,6 +435,33 @@ namespace MTO
             {
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            }
+
+
+            // Amount fields KeyPress
+            e.Control.KeyPress -= new KeyPressEventHandler(floatFieldsKeyPress);
+            if (dgv_contractlines.CurrentCell.ColumnIndex == 3 || dgv_contractlines.CurrentCell.ColumnIndex == 6)
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(floatFieldsKeyPress);
+                }
+            }
+        }
+
+        private void floatFieldsKeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
 
