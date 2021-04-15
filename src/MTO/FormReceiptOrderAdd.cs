@@ -311,7 +311,7 @@ namespace MTO
         {
             int selectedIndex = dgv_orderLines.CurrentCell.RowIndex;
 
-            if (order != null)
+            if (order != null && dgv_orderLines.Rows[selectedIndex].Cells[0].Value != null)
             {
                 int pk_line = Int32.Parse(dgv_orderLines.Rows[selectedIndex].Cells[0].Value.ToString());
                 deletedLines.Add(pk_line);
