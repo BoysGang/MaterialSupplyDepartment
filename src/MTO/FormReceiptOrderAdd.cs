@@ -1,4 +1,5 @@
 ﻿using MTO.Models;
+using MTO.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -260,12 +261,39 @@ namespace MTO
         }
 
         private void dgv_orderLines_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
+        {   
+            // Suggest in comboboxcell
             var comboBox = e.Control as DataGridViewComboBoxEditingControl;
             if (comboBox != null)
             {
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            }
+
+            // Amount fields KeyPress
+            e.Control.KeyPress -= new KeyPressEventHandler(amountFieldsKeyPress);
+            if (dgv_orderLines.CurrentCell.ColumnIndex == 5)
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(amountFieldsKeyPress);
+                }
+            }
+        }
+
+        private void amountFieldsKeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
 
@@ -311,7 +339,7 @@ namespace MTO
         {
             int selectedIndex = dgv_orderLines.CurrentCell.RowIndex;
 
-            if (order != null)
+            if (order != null && dgv_orderLines.Rows[selectedIndex].Cells[0].Value != null)
             {
                 int pk_line = Int32.Parse(dgv_orderLines.Rows[selectedIndex].Cells[0].Value.ToString());
                 deletedLines.Add(pk_line);
