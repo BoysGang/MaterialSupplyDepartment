@@ -238,12 +238,14 @@ namespace MTO
             // 
             this.Unit.HeaderText = "Ед. измерения";
             this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
             this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // UnitCipher
             // 
             this.UnitCipher.HeaderText = "Шифр ед. измерения";
             this.UnitCipher.Name = "UnitCipher";
+            this.UnitCipher.ReadOnly = true;
             // 
             // AcceptedAmount
             // 
