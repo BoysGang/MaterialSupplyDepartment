@@ -40,6 +40,10 @@ namespace MTO
         {
             FormContractAdd form = new FormContractAdd(contract);
             form.ShowDialog();
+
+            lbl_header.Text = header + contract.ContractNumber;
+            fillDocument();
+            fillSpecification();
         }
 
         private void fillSpecification()
