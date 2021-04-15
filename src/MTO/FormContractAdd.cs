@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
@@ -204,6 +205,12 @@ namespace MTO
 
                 this.Close();
             }
+        }
+
+        private void tb_actNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isNumber(e.KeyChar.ToString());
         }
     }
 }

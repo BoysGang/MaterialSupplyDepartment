@@ -16,6 +16,8 @@ namespace MTO
     {
         private bool isReadOnly = false;
 
+        List<Provider> providers;
+
         public FormProviders()
         {
             InitializeComponent();
@@ -31,10 +33,7 @@ namespace MTO
                 btn_add.Enabled = false;
                 isReadOnly = true;
             }
-        }
 
-        private void FormProviders_Activated(object sender, EventArgs e)
-        {
             updateProvidersTable();
         }
 
@@ -56,6 +55,8 @@ namespace MTO
         {
             FormProvidersAdd form = new FormProvidersAdd();
             form.ShowDialog();
+
+            updateProvidersTable();
         }
 
         private void btn_change_Click(object sender, EventArgs e)
@@ -67,6 +68,8 @@ namespace MTO
             {
                 FormProvidersAdd form = new FormProvidersAdd(deletingProvider);
                 form.ShowDialog();
+
+                updateProvidersTable();
             }
         }
 
@@ -99,7 +102,8 @@ namespace MTO
 
         private void updateProvidersTable()
         {
-            List<Provider> providers = Program.db.Providers.ToList();
+            findProviders();
+
             dgv_providers.DataSource = providers;
 
             dgv_providers.Columns[7].DataPropertyName = "PK_Provider";
@@ -110,6 +114,75 @@ namespace MTO
             dgv_providers.Columns[2].DataPropertyName = "Address";
             dgv_providers.Columns[1].DataPropertyName = "INN";
             dgv_providers.Columns[0].DataPropertyName = "Name";
+        }
+
+        private void btn_find_Click(object sender, EventArgs e)
+        {
+            updateProvidersTable();
+        }
+
+        private void findProviders()
+        {
+            List<Provider> foundProviders = new List<Provider>();
+
+            bool nameCriterium = tb_name.Text != string.Empty;
+            string name = tb_name.Text.ToLower();
+
+            bool addressCriterium = tb_address.Text != string.Empty;
+            string address = tb_address.Text.ToLower();
+
+            bool phoneNumberCriterium = tb_phoneNumber.Text != "+7 (   )    -  -";
+            string phoneNumber = tb_phoneNumber.Text.ToLower();
+
+            bool INNCriterium = tb_INN.Text != string.Empty;
+            string INN = tb_INN.Text.ToLower();
+
+            bool checkingAccountCriterium = tb_checkingAccount.Text != string.Empty;
+            string checkingAccount = tb_checkingAccount.Text.ToLower();
+
+            bool correspondentAccountCriterium = tb_correspondentAccount.Text != string.Empty;
+            string correspondentAccount = tb_correspondentAccount.Text.ToLower();
+
+            bool BIKCriterium = tb_BIK.Text != string.Empty;
+            string BIK = tb_BIK.Text.ToLower();
+
+            foreach (Provider provider in Program.db.Providers)
+            {
+                bool nameFound = !nameCriterium;
+                bool addressFound = !addressCriterium;
+                bool phoneNumberFound = !phoneNumberCriterium;
+                bool INNFound = !INNCriterium;
+                bool checkingAccountFound = !checkingAccountCriterium;
+                bool correspondentAccountFound = !correspondentAccountCriterium;
+                bool BIKFound = !BIKCriterium;
+
+                if (nameCriterium && provider.Name.ToLower().Contains(name))
+                    nameFound = true;
+
+                if (addressCriterium && provider.Address.ToLower().Contains(address))
+                    addressFound = true;
+
+                if (phoneNumberCriterium && provider.PhoneNumber.ToLower().Contains(phoneNumber))
+                    phoneNumberFound = true;
+
+                if (INNCriterium && provider.INN.ToLower().Contains(INN))
+                    INNFound = true;
+
+                if (checkingAccountCriterium && provider.CheckingAccount.ToLower().Contains(checkingAccount))
+                    checkingAccountFound = true;
+
+                if (correspondentAccountCriterium && provider.CorrespondentAccount.ToLower().Contains(correspondentAccount))
+                    correspondentAccountFound = true;
+
+                if (BIKCriterium && provider.BIK.ToLower().Contains(BIK))
+                    BIKFound = true;
+
+                if (nameFound && addressFound && phoneNumberFound && INNFound 
+                    && checkingAccountFound && correspondentAccountFound && BIKFound)
+                    foundProviders.Add(provider);
+            }
+
+            providers = foundProviders;
         }
     }
 }

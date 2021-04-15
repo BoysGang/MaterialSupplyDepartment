@@ -29,37 +29,23 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            this.tb_BIK = new System.Windows.Forms.TextBox();
-            this.tb_phoneNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_address = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.tb_correspondentAccount = new System.Windows.Forms.TextBox();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tb_INN = new System.Windows.Forms.TextBox();
-            this.tb_checkingAccount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.tb_phoneNumber = new System.Windows.Forms.MaskedTextBox();
+            this.tb_INN = new System.Windows.Forms.MaskedTextBox();
+            this.tb_checkingAccount = new System.Windows.Forms.MaskedTextBox();
+            this.tb_correspondentAccount = new System.Windows.Forms.MaskedTextBox();
+            this.tb_BIK = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
-            // 
-            // tb_BIK
-            // 
-            this.tb_BIK.Location = new System.Drawing.Point(12, 280);
-            this.tb_BIK.Name = "tb_BIK";
-            this.tb_BIK.Size = new System.Drawing.Size(313, 20);
-            this.tb_BIK.TabIndex = 40;
-            // 
-            // tb_phoneNumber
-            // 
-            this.tb_phoneNumber.Location = new System.Drawing.Point(12, 112);
-            this.tb_phoneNumber.Name = "tb_phoneNumber";
-            this.tb_phoneNumber.Size = new System.Drawing.Size(313, 20);
-            this.tb_phoneNumber.TabIndex = 36;
             // 
             // label8
             // 
@@ -73,6 +59,7 @@ namespace MTO
             // tb_address
             // 
             this.tb_address.Location = new System.Drawing.Point(12, 70);
+            this.tb_address.MaxLength = 100;
             this.tb_address.Name = "tb_address";
             this.tb_address.Size = new System.Drawing.Size(313, 20);
             this.tb_address.TabIndex = 33;
@@ -95,16 +82,10 @@ namespace MTO
             this.label4.TabIndex = 31;
             this.label4.Text = "Адрес";
             // 
-            // tb_correspondentAccount
-            // 
-            this.tb_correspondentAccount.Location = new System.Drawing.Point(12, 238);
-            this.tb_correspondentAccount.Name = "tb_correspondentAccount";
-            this.tb_correspondentAccount.Size = new System.Drawing.Size(313, 20);
-            this.tb_correspondentAccount.TabIndex = 38;
-            // 
             // tb_name
             // 
             this.tb_name.Location = new System.Drawing.Point(12, 29);
+            this.tb_name.MaxLength = 50;
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(313, 20);
             this.tb_name.TabIndex = 26;
@@ -126,20 +107,6 @@ namespace MTO
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 28;
             this.label2.Text = "ИНН";
-            // 
-            // tb_INN
-            // 
-            this.tb_INN.Location = new System.Drawing.Point(12, 153);
-            this.tb_INN.Name = "tb_INN";
-            this.tb_INN.Size = new System.Drawing.Size(313, 20);
-            this.tb_INN.TabIndex = 30;
-            // 
-            // tb_checkingAccount
-            // 
-            this.tb_checkingAccount.Location = new System.Drawing.Point(12, 197);
-            this.tb_checkingAccount.Name = "tb_checkingAccount";
-            this.tb_checkingAccount.Size = new System.Drawing.Size(313, 20);
-            this.tb_checkingAccount.TabIndex = 34;
             // 
             // label3
             // 
@@ -179,25 +146,65 @@ namespace MTO
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // tb_phoneNumber
+            // 
+            this.tb_phoneNumber.Location = new System.Drawing.Point(12, 112);
+            this.tb_phoneNumber.Mask = "+7 (000) 000-00-00";
+            this.tb_phoneNumber.Name = "tb_phoneNumber";
+            this.tb_phoneNumber.Size = new System.Drawing.Size(313, 20);
+            this.tb_phoneNumber.TabIndex = 43;
+            // 
+            // tb_INN
+            // 
+            this.tb_INN.Location = new System.Drawing.Point(12, 153);
+            this.tb_INN.Mask = "000000000000";
+            this.tb_INN.Name = "tb_INN";
+            this.tb_INN.Size = new System.Drawing.Size(313, 20);
+            this.tb_INN.TabIndex = 44;
+            // 
+            // tb_checkingAccount
+            // 
+            this.tb_checkingAccount.Location = new System.Drawing.Point(12, 197);
+            this.tb_checkingAccount.Mask = "00000000000000000000";
+            this.tb_checkingAccount.Name = "tb_checkingAccount";
+            this.tb_checkingAccount.Size = new System.Drawing.Size(313, 20);
+            this.tb_checkingAccount.TabIndex = 45;
+            // 
+            // tb_correspondentAccount
+            // 
+            this.tb_correspondentAccount.Location = new System.Drawing.Point(12, 238);
+            this.tb_correspondentAccount.Mask = "00000000000000000000";
+            this.tb_correspondentAccount.Name = "tb_correspondentAccount";
+            this.tb_correspondentAccount.Size = new System.Drawing.Size(313, 20);
+            this.tb_correspondentAccount.TabIndex = 46;
+            // 
+            // tb_BIK
+            // 
+            this.tb_BIK.Location = new System.Drawing.Point(12, 280);
+            this.tb_BIK.Mask = "000000000";
+            this.tb_BIK.Name = "tb_BIK";
+            this.tb_BIK.Size = new System.Drawing.Size(313, 20);
+            this.tb_BIK.TabIndex = 47;
+            // 
             // FormProvidersAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 352);
+            this.Controls.Add(this.tb_BIK);
+            this.Controls.Add(this.tb_correspondentAccount);
+            this.Controls.Add(this.tb_checkingAccount);
+            this.Controls.Add(this.tb_INN);
+            this.Controls.Add(this.tb_phoneNumber);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.tb_BIK);
-            this.Controls.Add(this.tb_phoneNumber);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tb_address);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tb_correspondentAccount);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_INN);
-            this.Controls.Add(this.tb_checkingAccount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Name = "FormProvidersAdd";
@@ -208,22 +215,21 @@ namespace MTO
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tb_BIK;
-        private System.Windows.Forms.TextBox tb_phoneNumber;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_address;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tb_correspondentAccount;
         private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_INN;
-        private System.Windows.Forms.TextBox tb_checkingAccount;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.MaskedTextBox tb_phoneNumber;
+        private System.Windows.Forms.MaskedTextBox tb_INN;
+        private System.Windows.Forms.MaskedTextBox tb_checkingAccount;
+        private System.Windows.Forms.MaskedTextBox tb_correspondentAccount;
+        private System.Windows.Forms.MaskedTextBox tb_BIK;
     }
 }

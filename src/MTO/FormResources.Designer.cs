@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_resources = new System.Windows.Forms.DataGridView();
             this.PK_Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,8 +71,8 @@ namespace MTO
             this.dgv_resources.MultiSelect = false;
             this.dgv_resources.Name = "dgv_resources";
             this.dgv_resources.ReadOnly = true;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_resources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_resources.Size = new System.Drawing.Size(657, 247);
             this.dgv_resources.TabIndex = 2;
@@ -141,6 +141,8 @@ namespace MTO
             // 
             // cb_type
             // 
+            this.cb_type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_type.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_type.FormattingEnabled = true;
             this.cb_type.Location = new System.Drawing.Point(328, 84);
             this.cb_type.Name = "cb_type";
@@ -149,6 +151,8 @@ namespace MTO
             // 
             // cb_unit
             // 
+            this.cb_unit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_unit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_unit.FormattingEnabled = true;
             this.cb_unit.Location = new System.Drawing.Point(9, 84);
             this.cb_unit.Name = "cb_unit";
@@ -176,9 +180,11 @@ namespace MTO
             // tb_cipher
             // 
             this.tb_cipher.Location = new System.Drawing.Point(9, 40);
+            this.tb_cipher.MaxLength = 50;
             this.tb_cipher.Name = "tb_cipher";
             this.tb_cipher.Size = new System.Drawing.Size(313, 20);
             this.tb_cipher.TabIndex = 8;
+            this.tb_cipher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cipher_KeyPress);
             // 
             // label2
             // 
@@ -192,6 +198,7 @@ namespace MTO
             // tb_name
             // 
             this.tb_name.Location = new System.Drawing.Point(328, 40);
+            this.tb_name.MaxLength = 50;
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(320, 20);
             this.tb_name.TabIndex = 13;
@@ -213,6 +220,7 @@ namespace MTO
             this.btn_find.TabIndex = 10;
             this.btn_find.Text = "Найти";
             this.btn_find.UseVisualStyleBackColor = true;
+            this.btn_find.Click += new System.EventHandler(this.btn_find_Click);
             // 
             // btn_change
             // 
@@ -259,7 +267,6 @@ namespace MTO
             this.Controls.Add(this.label1);
             this.Name = "FormResources";
             this.Text = "Справочник \"Ресурсы\"";
-            this.Activated += new System.EventHandler(this.FormResources_Activated);
             this.Load += new System.EventHandler(this.FormResources_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resources)).EndInit();
             this.groupBox1.ResumeLayout(false);

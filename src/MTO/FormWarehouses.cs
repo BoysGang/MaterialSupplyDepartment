@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
     public partial class FormWarehouses : Form
     {
         private bool isReadOnly = false;
+
+        List<Warehouse> warehouses;
 
         public FormWarehouses()
         {
@@ -26,13 +29,14 @@ namespace MTO
             dgv_warehouses.AutoGenerateColumns = false;
             dgv_warehouses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-
             if (!Program.user.isAdmin() 
                 && !Program.user.isContract())
             {
                 btn_add.Enabled = false;
                 isReadOnly = true;
             }
+
+            updateWarehouseTable();
         }
 
         private void btn_change_Click(object sender, EventArgs e)
@@ -44,6 +48,8 @@ namespace MTO
             {
                 FormWarehousesAdd form = new FormWarehousesAdd(changingWarehouse);
                 form.ShowDialog();
+
+                updateWarehouseTable();
             }
         }
 
@@ -51,6 +57,8 @@ namespace MTO
         {
             FormWarehousesAdd form = new FormWarehousesAdd();
             form.ShowDialog();
+
+            updateWarehouseTable();
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -79,23 +87,18 @@ namespace MTO
             {
                 MessageBox.Show("Ошибка удаления, " + ex.ToString());
             }
-
         }
 
         private void updateWarehouseTable()
         {
-            List<Warehouse> warehouses = Program.db.Warehouses.ToList();
+            findWarehouses();
+
             dgv_warehouses.DataSource = warehouses;
 
             dgv_warehouses.Columns[2].DataPropertyName = "PK_Warehouse";
             dgv_warehouses.Columns[1].DataPropertyName = "Name";
             dgv_warehouses.Columns[0].DataPropertyName = "Cipher";
 
-        }
-
-        private void FormWarehouses_Activated(object sender, EventArgs e)
-        {
-            updateWarehouseTable();
         }
 
         private void dgv_warehouses_SelectionChanged(object sender, EventArgs e)
@@ -110,6 +113,45 @@ namespace MTO
                 btn_delete.Enabled = false;
                 btn_change.Enabled = false;
             }
+        }
+
+        private void tb_cipher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isCipher(e.KeyChar.ToString());
+        }
+
+        private void btn_find_Click(object sender, EventArgs e)
+        {
+            updateWarehouseTable();
+        }
+
+        void findWarehouses()
+        {
+            List<Warehouse> foundWarehouses = new List<Warehouse>();
+
+            bool cipherCriterium = tb_cipher.Text != string.Empty;
+            bool nameCriterium = tb_name.Text != string.Empty;
+
+            string cipher = tb_cipher.Text.ToLower();
+            string name = tb_name.Text.ToLower();
+
+            foreach (Warehouse warehouse in Program.db.Warehouses)
+            {
+                bool cipherFound = !cipherCriterium;
+                bool nameFound = !nameCriterium;
+
+                if (cipherCriterium && warehouse.Cipher.ToLower().Contains(cipher))
+                    cipherFound = true;
+
+                if (nameCriterium && warehouse.Name.ToLower().Contains(name))
+                    nameFound = true;
+
+                if (cipherFound && nameFound)
+                    foundWarehouses.Add(warehouse);
+            }
+
+            warehouses = foundWarehouses;
         }
     }
 }
