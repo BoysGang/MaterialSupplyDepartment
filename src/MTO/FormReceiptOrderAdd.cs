@@ -272,7 +272,7 @@ namespace MTO
 
             // Amount fields KeyPress
             e.Control.KeyPress -= new KeyPressEventHandler(amountFieldsKeyPress);
-            if (dgv_orderLines.CurrentCell.ColumnIndex == 5)
+            if (dgv_orderLines.CurrentCell.ColumnIndex == 5 || dgv_orderLines.CurrentCell.ColumnIndex == 6)
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
