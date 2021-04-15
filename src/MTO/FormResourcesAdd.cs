@@ -1,4 +1,5 @@
 ﻿using MTO.Models;
+using MTO.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,6 +71,12 @@ namespace MTO
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tb_cipher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isCipher(e.KeyChar.ToString());
         }
     }
 }

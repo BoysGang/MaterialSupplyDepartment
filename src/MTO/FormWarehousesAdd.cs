@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
@@ -55,6 +56,12 @@ namespace MTO
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tb_cipher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isCipher(e.KeyChar.ToString());
         }
     }
 }

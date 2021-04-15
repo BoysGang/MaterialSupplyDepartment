@@ -39,6 +39,7 @@ namespace MTO
             // textBoxLogin
             // 
             this.textBoxLogin.Location = new System.Drawing.Point(137, 39);
+            this.textBoxLogin.MaxLength = 100;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(138, 20);
             this.textBoxLogin.TabIndex = 0;
@@ -46,6 +47,7 @@ namespace MTO
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(137, 95);
+            this.textBoxPassword.MaxLength = 100;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(138, 20);

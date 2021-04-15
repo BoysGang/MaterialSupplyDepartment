@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
@@ -16,10 +17,11 @@ namespace MTO
     {
         private bool isReadOnly = false;
 
+        List<Unit> units;
+
         public FormUnit()
         {
             InitializeComponent();
-            
         }
 
         private void btn_change_Click(object sender, EventArgs e)
@@ -31,6 +33,8 @@ namespace MTO
             {
                 FormUnitAdd form = new FormUnitAdd(changingUnit);
                 form.ShowDialog();
+
+                updateUnitTable();
             }
         }
 
@@ -38,6 +42,8 @@ namespace MTO
         {
             FormUnitAdd form = new FormUnitAdd();
             form.ShowDialog();
+
+            updateUnitTable();
         }
 
         private void FormUnit_Load(object sender, EventArgs e)
@@ -50,10 +56,7 @@ namespace MTO
                 btn_add.Enabled = false;
                 isReadOnly = true;
             }
-        }
 
-        private void FormUnit_Activated(object sender, EventArgs e)
-        {
             updateUnitTable();
         }
 
@@ -87,7 +90,8 @@ namespace MTO
 
         private void updateUnitTable()
         {
-            List<Unit> units = Program.db.Units.ToList();
+            findUnits();
+
             dgv_units.DataSource = units;
 
             dgv_units.Columns[2].DataPropertyName = "PK_Unit";
@@ -107,6 +111,45 @@ namespace MTO
                 btn_delete.Enabled = false;
                 btn_change.Enabled = false;
             }
+        }
+
+        private void tb_cipher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isCipher(e.KeyChar.ToString());
+        }
+
+        private void btn_find_Click(object sender, EventArgs e)
+        {
+            updateUnitTable();
+        }
+
+        private void findUnits()
+        {
+            List<Unit> foundUnits = new List<Unit>();
+
+            bool cipherCriterium = tb_cipher.Text != string.Empty;
+            bool nameCriterium = tb_name.Text != string.Empty;
+
+            string cipher = tb_cipher.Text.ToLower();
+            string name = tb_name.Text.ToLower();
+
+            foreach (Unit unit in Program.db.Units)
+            {
+                bool cipherFound = !cipherCriterium;
+                bool nameFound = !nameCriterium;
+
+                if (cipherCriterium && unit.Cipher.ToLower().Contains(cipher))
+                    cipherFound = true;
+
+                if (nameCriterium && unit.Name.ToLower().Contains(name))
+                    nameFound = true;
+
+                if (cipherFound && nameFound)
+                    foundUnits.Add(unit);
+            }
+
+            units = foundUnits;
         }
     }
 }
