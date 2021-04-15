@@ -259,6 +259,25 @@ namespace MTO
                 return false;
             }
 
+            for (int i = 0; i < dgv_orderLines.Rows.Count - 1; i++)
+            {
+                if (dgv_orderLines.Rows[i].Cells[1].Value == null)
+                {
+                    MessageBox.Show("Выберите ресурс", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (dgv_orderLines.Rows[i].Cells[5].Value == null)
+                {
+                    dgv_orderLines.Rows[i].Cells[5].Value = "0";
+                }
+
+                if (dgv_orderLines.Rows[i].Cells[6].Value == null)
+                {
+                    dgv_orderLines.Rows[i].Cells[6].Value = "0";
+                }
+            }
+
             return true;
         }
 
