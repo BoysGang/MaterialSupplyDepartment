@@ -14,10 +14,14 @@ namespace MTO
     public partial class FormReceiptOrderAdd : Form
     {
         private ReceiptOrder order = null;
+        private List<int> deletedLines = new List<int>();
 
         public FormReceiptOrderAdd(ReceiptOrder order = null)
         {
             InitializeComponent();
+
+            dgv_orderLines.AutoGenerateColumns = false;
+            dgv_orderLines.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             List<Provider> providers = Program.db.Providers.ToList();
             cb_provider.DataSource = providers;
@@ -42,6 +46,8 @@ namespace MTO
 
             if (order != null)
             {
+                this.order = order;
+
                 this.Text = "Редактирование приходного ордера";
                 btn_addNClose.Text = "Изменить";
                 
@@ -55,7 +61,7 @@ namespace MTO
                 cb_provider.Text = order.Provider.Name;
                 cb_warehouseCipher.Text = order.Warehouse.Cipher;
 
-                this.order = order;
+                fillLinesTable();
             }
         }
 
@@ -95,16 +101,16 @@ namespace MTO
 
             if (activeRow < 0) return;
 
-            if (currentColumn == 0)
+            if (currentColumn == 1)
             {
                 try
                 {   
-                    var PK_Resource = dgv_orderLines.Rows[currentRow].Cells[0].Value;
+                    var PK_Resource = dgv_orderLines.Rows[currentRow].Cells[1].Value;
 
                     if (PK_Resource != null)
                     {
                         string resourceCipher = Program.db.Resources.Find(PK_Resource).Cipher;
-                        dgv_orderLines.Rows[currentRow].Cells[1].Value = resourceCipher;
+                        dgv_orderLines.Rows[currentRow].Cells[2].Value = resourceCipher;
                     }
                 }
                 catch (Exception ex)
@@ -113,16 +119,16 @@ namespace MTO
                 }
             }
 
-            if (currentColumn == 2)
+            if (currentColumn == 3)
             {
                 try
                 {
-                    var PK_Unit = dgv_orderLines.Rows[currentRow].Cells[2].Value;
+                    var PK_Unit = dgv_orderLines.Rows[currentRow].Cells[3].Value;
 
                     if (PK_Unit != null)
                     {
                         string unitCipher = Program.db.Units.Find(PK_Unit).Cipher;
-                        dgv_orderLines.Rows[currentRow].Cells[3].Value = unitCipher;
+                        dgv_orderLines.Rows[currentRow].Cells[4].Value = unitCipher;
                     }
                     
                 }
@@ -153,6 +159,41 @@ namespace MTO
                 order.PK_Provider = ((Provider)cb_provider.SelectedItem).PK_Provider;
                 order.PK_Contract = ((Contract)cb_contractNumber.SelectedItem).PK_Contract;
 
+                List<ReceiptOrderLine> lines = order.getReceiptOrderLines();
+
+                // Save lines
+                for (int i = 0; i < dgv_orderLines.Rows.Count - 1; i++)
+                {
+                    if(dgv_orderLines.Rows[i].Cells[0].Value == null)
+                    {
+                        addLineToDb(i, order);
+                    }
+                    else
+                    {
+                        int pk_line = int.Parse(dgv_orderLines.Rows[i].Cells[0].Value.ToString());
+                        float acceptedAmount = float.Parse(dgv_orderLines.Rows[i].Cells[5].Value.ToString());
+                        float documentedAmount = float.Parse(dgv_orderLines.Rows[i].Cells[6].Value.ToString());
+                        int pk_resource = (int)dgv_orderLines.Rows[i].Cells[1].Value;
+
+                        ReceiptOrderLine line = lines.Find((item) => item.PK_ReceiptOrderLine == pk_line);
+
+                        line.AcceptedAmount = acceptedAmount;
+                        line.DocumentAmount = documentedAmount;
+                        line.PK_Resource = pk_resource;
+
+                        Program.db.ReceiptOrderLines.Update(line);
+                        Program.db.SaveChanges();
+                    }
+                }
+
+                // Delete deleted lines
+                foreach (int id in deletedLines)
+                {
+                    ReceiptOrderLine line = lines.Find((item) => item.PK_ReceiptOrderLine == id);
+                    Program.db.ReceiptOrderLines.Remove(line);
+                    Program.db.SaveChanges();
+                }
+
                 Program.db.ReceiptOrders.Update(order);
                 successMessage = "изменена.";
             }
@@ -174,16 +215,7 @@ namespace MTO
                 // Save lines
                 for (int i = 0; i < dgv_orderLines.Rows.Count - 1; i++)
                 {
-                    ReceiptOrderLine line = new ReceiptOrderLine()
-                    {
-                        PK_ReceiptOrder = receiptOrder.PK_ReceiptOrder,
-                        AcceptedAmount = float.Parse(dgv_orderLines.Rows[i].Cells[4].Value.ToString()),
-                        DocumentAmount = float.Parse(dgv_orderLines.Rows[i].Cells[5].Value.ToString()),
-                        PK_Resource = (int)dgv_orderLines.Rows[i].Cells[0].Value,
-                    };
-
-                    Program.db.ReceiptOrderLines.Add(line);
-                    Program.db.SaveChanges();
+                    addLineToDb(i, receiptOrder);
                 }
 
                 successMessage = "добавлена.";
@@ -200,6 +232,8 @@ namespace MTO
             cb_warehouseCipher.SelectedIndex = -1;
             cb_provider.SelectedIndex = -1;
             cb_contractNumber.SelectedIndex = -1;
+
+            dgv_orderLines.Rows.Clear();
         }
 
         private bool validateFields()
@@ -245,6 +279,48 @@ namespace MTO
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
+        }
+
+        private void fillLinesTable()
+        {
+            List<ReceiptOrderLine> lines = order.getReceiptOrderLines();
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                dgv_orderLines.Rows.Add();
+                dgv_orderLines.Rows[i].Cells[0].Value = lines[i].PK_ReceiptOrderLine;
+                dgv_orderLines.Rows[i].Cells[1].Value = lines[i].PK_Resource;
+                dgv_orderLines.Rows[i].Cells[3].Value = lines[i].Resource.PK_Unit;
+                dgv_orderLines.Rows[i].Cells[5].Value = lines[i].AcceptedAmount;
+                dgv_orderLines.Rows[i].Cells[6].Value = lines[i].DocumentAmount;
+            }
+        }
+
+        private void addLineToDb(int row, ReceiptOrder order)
+        {
+            ReceiptOrderLine line = new ReceiptOrderLine()
+            {
+                PK_ReceiptOrder = order.PK_ReceiptOrder,
+                AcceptedAmount = float.Parse(dgv_orderLines.Rows[row].Cells[5].Value.ToString()),
+                DocumentAmount = float.Parse(dgv_orderLines.Rows[row].Cells[6].Value.ToString()),
+                PK_Resource = (int)dgv_orderLines.Rows[row].Cells[1].Value,
+            };
+
+            Program.db.ReceiptOrderLines.Add(line);
+            Program.db.SaveChanges();
+        }
+
+        private void btn_deleteLine_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = dgv_orderLines.CurrentCell.RowIndex;
+
+            if (order != null)
+            {
+                int pk_line = Int32.Parse(dgv_orderLines.Rows[selectedIndex].Cells[0].Value.ToString());
+                deletedLines.Add(pk_line);
+            }
+
+            dgv_orderLines.Rows.RemoveAt(selectedIndex);
         }
     }
 }
