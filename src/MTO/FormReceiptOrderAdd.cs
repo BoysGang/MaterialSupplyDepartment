@@ -100,9 +100,12 @@ namespace MTO
                 try
                 {   
                     var PK_Resource = dgv_orderLines.Rows[currentRow].Cells[0].Value;
-                    string resourceCipher = Program.db.Resources.Find(PK_Resource).Cipher;
-                    
-                    dgv_orderLines.Rows[currentRow].Cells[1].Value = resourceCipher;
+
+                    if (PK_Resource != null)
+                    {
+                        string resourceCipher = Program.db.Resources.Find(PK_Resource).Cipher;
+                        dgv_orderLines.Rows[currentRow].Cells[1].Value = resourceCipher;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -115,9 +118,13 @@ namespace MTO
                 try
                 {
                     var PK_Unit = dgv_orderLines.Rows[currentRow].Cells[2].Value;
-                    string unitCipher = Program.db.Units.Find(PK_Unit).Cipher;
 
-                    dgv_orderLines.Rows[currentRow].Cells[3].Value = unitCipher;
+                    if (PK_Unit != null)
+                    {
+                        string unitCipher = Program.db.Units.Find(PK_Unit).Cipher;
+                        dgv_orderLines.Rows[currentRow].Cells[3].Value = unitCipher;
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -137,6 +144,7 @@ namespace MTO
 
         private void saveReceiptOrder()
         {
+            string successMessage = String.Empty;
             if (order != null)
             {
                 order.ReceiptOrderNumber = tb_receiptOrderNumber.Text;
@@ -146,10 +154,11 @@ namespace MTO
                 order.PK_Contract = ((Contract)cb_contractNumber.SelectedItem).PK_Contract;
 
                 Program.db.ReceiptOrders.Update(order);
-                MessageBox.Show("Запись изменена.", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                successMessage = "изменена.";
             }
             else
             {
+                // Save new ReceiptOrder
                 ReceiptOrder receiptOrder = new ReceiptOrder()
                 {
                     ReceiptOrderNumber = tb_receiptOrderNumber.Text,
@@ -160,11 +169,28 @@ namespace MTO
                 };
 
                 Program.db.ReceiptOrders.Add(receiptOrder);
-                MessageBox.Show("Запись добавлена.", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Program.db.SaveChanges();
+
+                // Save lines
+                for (int i = 0; i < dgv_orderLines.Rows.Count - 1; i++)
+                {
+                    ReceiptOrderLine line = new ReceiptOrderLine()
+                    {
+                        PK_ReceiptOrder = receiptOrder.PK_ReceiptOrder,
+                        AcceptedAmount = float.Parse(dgv_orderLines.Rows[i].Cells[4].Value.ToString()),
+                        DocumentAmount = float.Parse(dgv_orderLines.Rows[i].Cells[5].Value.ToString()),
+                        PK_Resource = (int)dgv_orderLines.Rows[i].Cells[0].Value,
+                    };
+
+                    Program.db.ReceiptOrderLines.Add(line);
+                    Program.db.SaveChanges();
+                }
+
+                successMessage = "добавлена.";
             }
 
-
             Program.db.SaveChanges();
+            MessageBox.Show("Запись " + successMessage, "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void clearAllFields()
@@ -208,6 +234,16 @@ namespace MTO
             {
                 saveReceiptOrder();
                 this.Close();
+            }
+        }
+
+        private void dgv_orderLines_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            var comboBox = e.Control as DataGridViewComboBoxEditingControl;
+            if (comboBox != null)
+            {
+                comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
         }
     }
