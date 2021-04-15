@@ -38,12 +38,6 @@ namespace MTO
             ((DataGridViewComboBoxColumn)dgv_orderLines.Columns["Resource"]).ValueMember = "PK_Resource";
             ((DataGridViewComboBoxColumn)dgv_orderLines.Columns["Resource"]).DataSource = resourcesData;
 
-            List<Unit> units = Program.db.Units.ToList();
-            var unitNames = units.Select(item => new { item.PK_Unit, item.Name }).ToList();
-            ((DataGridViewComboBoxColumn)dgv_orderLines.Columns["Unit"]).DisplayMember = "Name";
-            ((DataGridViewComboBoxColumn)dgv_orderLines.Columns["Unit"]).ValueMember = "PK_Unit";
-            ((DataGridViewComboBoxColumn)dgv_orderLines.Columns["Unit"]).DataSource = unitNames;
-
             if (order != null)
             {
                 this.order = order;
@@ -106,31 +100,14 @@ namespace MTO
                 try
                 {   
                     var PK_Resource = dgv_orderLines.Rows[currentRow].Cells[1].Value;
+                    Resource resource = Program.db.Resources.Find(PK_Resource);
 
                     if (PK_Resource != null)
                     {
-                        string resourceCipher = Program.db.Resources.Find(PK_Resource).Cipher;
-                        dgv_orderLines.Rows[currentRow].Cells[2].Value = resourceCipher;
+                        dgv_orderLines.Rows[currentRow].Cells[2].Value = resource.Cipher;
+                        dgv_orderLines.Rows[currentRow].Cells[3].Value = resource.Unit.Name;
+                        dgv_orderLines.Rows[currentRow].Cells[4].Value = resource.Unit.Cipher;
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-
-            if (currentColumn == 3)
-            {
-                try
-                {
-                    var PK_Unit = dgv_orderLines.Rows[currentRow].Cells[3].Value;
-
-                    if (PK_Unit != null)
-                    {
-                        string unitCipher = Program.db.Units.Find(PK_Unit).Cipher;
-                        dgv_orderLines.Rows[currentRow].Cells[4].Value = unitCipher;
-                    }
-                    
                 }
                 catch (Exception ex)
                 {
@@ -151,6 +128,7 @@ namespace MTO
         private void saveReceiptOrder()
         {
             string successMessage = String.Empty;
+            
             if (order != null)
             {
                 fillOrder(order);

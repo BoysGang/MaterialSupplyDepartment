@@ -44,14 +44,14 @@ namespace MTO
             this.label6 = new System.Windows.Forms.Label();
             this.dgv_orderLines = new System.Windows.Forms.DataGridView();
             this.cb_contractNumber = new System.Windows.Forms.ComboBox();
+            this.btn_deleteLine = new System.Windows.Forms.Button();
             this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_deleteLine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_orderLines)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,6 +206,16 @@ namespace MTO
             this.cb_contractNumber.Size = new System.Drawing.Size(147, 21);
             this.cb_contractNumber.TabIndex = 108;
             // 
+            // btn_deleteLine
+            // 
+            this.btn_deleteLine.Location = new System.Drawing.Point(12, 197);
+            this.btn_deleteLine.Name = "btn_deleteLine";
+            this.btn_deleteLine.Size = new System.Drawing.Size(125, 23);
+            this.btn_deleteLine.TabIndex = 109;
+            this.btn_deleteLine.Text = "Удалить строку";
+            this.btn_deleteLine.UseVisualStyleBackColor = true;
+            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
+            // 
             // PK_ReceiptOrderLine
             // 
             this.PK_ReceiptOrderLine.HeaderText = "PK";
@@ -229,7 +239,6 @@ namespace MTO
             this.Unit.HeaderText = "Ед. измерения";
             this.Unit.Name = "Unit";
             this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Unit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // UnitCipher
             // 
@@ -245,16 +254,6 @@ namespace MTO
             // 
             this.DocumentAmount.HeaderText = "Кол-во по документу";
             this.DocumentAmount.Name = "DocumentAmount";
-            // 
-            // btn_deleteLine
-            // 
-            this.btn_deleteLine.Location = new System.Drawing.Point(12, 197);
-            this.btn_deleteLine.Name = "btn_deleteLine";
-            this.btn_deleteLine.Size = new System.Drawing.Size(125, 23);
-            this.btn_deleteLine.TabIndex = 109;
-            this.btn_deleteLine.Text = "Удалить строку";
-            this.btn_deleteLine.UseVisualStyleBackColor = true;
-            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
             // 
             // FormReceiptOrderAdd
             // 
@@ -301,13 +300,13 @@ namespace MTO
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgv_orderLines;
         private System.Windows.Forms.ComboBox cb_contractNumber;
+        private System.Windows.Forms.Button btn_deleteLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_ReceiptOrderLine;
         private System.Windows.Forms.DataGridViewComboBoxColumn Resource;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCipher;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcceptedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DocumentAmount;
-        private System.Windows.Forms.Button btn_deleteLine;
     }
 }
