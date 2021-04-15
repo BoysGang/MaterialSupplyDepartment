@@ -29,7 +29,8 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_actNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -58,20 +59,23 @@ namespace MTO
             this.tb_conclusionCity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgv_contractlines = new System.Windows.Forms.DataGridView();
+            this.PK_Contractline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CipherResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CipherUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtp_conclusionDate = new System.Windows.Forms.DateTimePicker();
             this.btn_AddNClose = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_cancelAdd = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_deleteLine = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -80,7 +84,8 @@ namespace MTO
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractlines)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -310,10 +315,12 @@ namespace MTO
             // 
             // cb_provider
             // 
+            this.cb_provider.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_provider.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_provider.FormattingEnabled = true;
             this.cb_provider.Location = new System.Drawing.Point(210, 93);
             this.cb_provider.Name = "cb_provider";
-            this.cb_provider.Size = new System.Drawing.Size(113, 21);
+            this.cb_provider.Size = new System.Drawing.Size(130, 21);
             this.cb_provider.TabIndex = 82;
             // 
             // label3
@@ -330,7 +337,7 @@ namespace MTO
             // 
             this.tb_conclusionCity.Location = new System.Drawing.Point(210, 54);
             this.tb_conclusionCity.Name = "tb_conclusionCity";
-            this.tb_conclusionCity.Size = new System.Drawing.Size(113, 20);
+            this.tb_conclusionCity.Size = new System.Drawing.Size(130, 20);
             this.tb_conclusionCity.TabIndex = 80;
             // 
             // label2
@@ -345,7 +352,7 @@ namespace MTO
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -354,73 +361,95 @@ namespace MTO
             this.tabPage2.Text = "Спецификация";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgv_contractlines
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnName,
+            this.dgv_contractlines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_contractlines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_contractlines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PK_Contractline,
+            this.Resource,
             this.CipherResource,
-            this.ColumnAmount,
-            this.ColumnUnit,
+            this.Amount,
+            this.Unit,
             this.CipherUnit,
-            this.ColumnUnitPrice,
-            this.ColumnPrice,
-            this.ColumnDeliveryDate});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(731, 450);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.UnitPrice,
+            this.TotalPrice,
+            this.DeliveryDate});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contractlines.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_contractlines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_contractlines.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgv_contractlines.Location = new System.Drawing.Point(3, 33);
+            this.dgv_contractlines.Name = "dgv_contractlines";
+            this.dgv_contractlines.Size = new System.Drawing.Size(725, 414);
+            this.dgv_contractlines.TabIndex = 0;
+            this.dgv_contractlines.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_contractlines_CellBeginEdit);
+            this.dgv_contractlines.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_contractlines_CellEndEdit);
+            this.dgv_contractlines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_contractlines_CellValueChanged);
+            this.dgv_contractlines.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_contractlines_CurrentCellDirtyStateChanged);
+            this.dgv_contractlines.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_contractlines_EditingControlShowing);
             // 
-            // ColumnName
+            // PK_Contractline
             // 
-            this.ColumnName.HeaderText = "Наименование";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PK_Contractline.HeaderText = "PK_Contractline";
+            this.PK_Contractline.Name = "PK_Contractline";
+            this.PK_Contractline.Visible = false;
+            // 
+            // Resource
+            // 
+            this.Resource.HeaderText = "Наименование";
+            this.Resource.Name = "Resource";
+            this.Resource.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Resource.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CipherResource
             // 
             this.CipherResource.HeaderText = "Шифр ресурса";
             this.CipherResource.Name = "CipherResource";
             // 
-            // ColumnAmount
+            // Amount
             // 
-            this.ColumnAmount.HeaderText = "Кол-во";
-            this.ColumnAmount.Name = "ColumnAmount";
+            this.Amount.HeaderText = "Кол-во";
+            this.Amount.Name = "Amount";
             // 
-            // ColumnUnit
+            // Unit
             // 
-            this.ColumnUnit.HeaderText = "Ед. измерения";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Unit.HeaderText = "Ед. измерения";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // CipherUnit
             // 
             this.CipherUnit.HeaderText = "Шифр ед. измерения";
             this.CipherUnit.Name = "CipherUnit";
+            this.CipherUnit.ReadOnly = true;
             // 
-            // ColumnUnitPrice
+            // UnitPrice
             // 
-            this.ColumnUnitPrice.HeaderText = "Цена за единицу, руб.";
-            this.ColumnUnitPrice.Name = "ColumnUnitPrice";
+            this.UnitPrice.HeaderText = "Цена за единицу, руб.";
+            this.UnitPrice.Name = "UnitPrice";
             // 
-            // ColumnPrice
+            // TotalPrice
             // 
-            this.ColumnPrice.HeaderText = "Общая цена партии, руб.";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
+            this.TotalPrice.HeaderText = "Общая цена партии, руб.";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
             // 
-            // ColumnDeliveryDate
+            // DeliveryDate
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnDeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnDeliveryDate.HeaderText = "Срок поставки";
-            this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DeliveryDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DeliveryDate.HeaderText = "Срок поставки";
+            this.DeliveryDate.Name = "DeliveryDate";
             // 
             // dtp_conclusionDate
             // 
@@ -469,6 +498,31 @@ namespace MTO
             this.label12.TabIndex = 92;
             this.label12.Text = "от";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dgv_contractlines, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btn_deleteLine, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(731, 450);
+            this.tableLayoutPanel1.TabIndex = 93;
+            // 
+            // btn_deleteLine
+            // 
+            this.btn_deleteLine.Location = new System.Drawing.Point(3, 3);
+            this.btn_deleteLine.Name = "btn_deleteLine";
+            this.btn_deleteLine.Size = new System.Drawing.Size(75, 23);
+            this.btn_deleteLine.TabIndex = 1;
+            this.btn_deleteLine.Text = "Удалить строку";
+            this.btn_deleteLine.UseVisualStyleBackColor = true;
+            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
+            // 
             // FormContractAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,7 +550,8 @@ namespace MTO
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractlines)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,19 +587,22 @@ namespace MTO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtp_conclusionDate;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_contractlines;
         private System.Windows.Forms.Button btn_AddNClose;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_cancelAdd;
         private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PK_Contractline;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Resource;
         private System.Windows.Forms.DataGridViewTextBoxColumn CipherResource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn CipherUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_deleteLine;
     }
 }
