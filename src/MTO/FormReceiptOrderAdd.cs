@@ -153,11 +153,7 @@ namespace MTO
             string successMessage = String.Empty;
             if (order != null)
             {
-                order.ReceiptOrderNumber = tb_receiptOrderNumber.Text;
-                order.DeliveryDate = dtp_delivaryDate.Value;
-                order.PK_Warehouse = ((Warehouse)cb_warehouseCipher.SelectedItem).PK_Warehouse;
-                order.PK_Provider = ((Provider)cb_provider.SelectedItem).PK_Provider;
-                order.PK_Contract = ((Contract)cb_contractNumber.SelectedItem).PK_Contract;
+                fillOrder(order);
 
                 List<ReceiptOrderLine> lines = order.getReceiptOrderLines();
 
@@ -200,14 +196,8 @@ namespace MTO
             else
             {
                 // Save new ReceiptOrder
-                ReceiptOrder receiptOrder = new ReceiptOrder()
-                {
-                    ReceiptOrderNumber = tb_receiptOrderNumber.Text,
-                    DeliveryDate = dtp_delivaryDate.Value,
-                    PK_Warehouse = ((Warehouse)cb_warehouseCipher.SelectedItem).PK_Warehouse,
-                    PK_Provider = ((Provider)cb_provider.SelectedItem).PK_Provider,
-                    PK_Contract = ((Contract)cb_contractNumber.SelectedItem).PK_Contract,
-                };
+                ReceiptOrder receiptOrder = new ReceiptOrder();
+                fillOrder(receiptOrder);
 
                 Program.db.ReceiptOrders.Add(receiptOrder);
                 Program.db.SaveChanges();
@@ -229,6 +219,7 @@ namespace MTO
         {
             tb_receiptOrderNumber.Clear();
             dtp_delivaryDate.Value = DateTime.Now;
+            
             cb_warehouseCipher.SelectedIndex = -1;
             cb_provider.SelectedIndex = -1;
             cb_contractNumber.SelectedIndex = -1;
@@ -327,6 +318,15 @@ namespace MTO
 
             Program.db.ReceiptOrderLines.Add(line);
             Program.db.SaveChanges();
+        }
+
+        private void fillOrder(ReceiptOrder order)
+        {
+            order.ReceiptOrderNumber = tb_receiptOrderNumber.Text;
+            order.DeliveryDate = dtp_delivaryDate.Value;
+            order.PK_Warehouse = ((Warehouse)cb_warehouseCipher.SelectedItem).PK_Warehouse;
+            order.PK_Provider = ((Provider)cb_provider.SelectedItem).PK_Provider;
+            order.PK_Contract = ((Contract)cb_contractNumber.SelectedItem).PK_Contract;
         }
 
         private void btn_deleteLine_Click(object sender, EventArgs e)
