@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace MTO
 {
@@ -146,8 +147,18 @@ namespace MTO
                     else
                     {
                         int pk_line = int.Parse(dgv_orderLines.Rows[i].Cells[0].Value.ToString());
-                        float acceptedAmount = float.Parse(dgv_orderLines.Rows[i].Cells[5].Value.ToString());
-                        float documentedAmount = float.Parse(dgv_orderLines.Rows[i].Cells[6].Value.ToString());
+
+
+                        float acceptedAmount = 0;
+                        if (dgv_orderLines.Rows[i].Cells[5].Value != null)
+                            float.TryParse(dgv_orderLines.Rows[i].Cells[5].Value.ToString(),
+                                NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out acceptedAmount);
+
+                        float documentedAmount = 0;
+                        if (dgv_orderLines.Rows[i].Cells[6].Value != null)
+                            float.TryParse(dgv_orderLines.Rows[i].Cells[6].Value.ToString(),
+                                NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out documentedAmount);
+
                         int pk_resource = (int)dgv_orderLines.Rows[i].Cells[1].Value;
 
                         ReceiptOrderLine line = lines.Find((item) => item.PK_ReceiptOrderLine == pk_line);
@@ -314,11 +325,21 @@ namespace MTO
 
         private void addLineToDb(int row, ReceiptOrder order)
         {
+            float acceptedAmount = 0;
+            if (dgv_orderLines.Rows[row].Cells[5].Value != null)
+                float.TryParse(dgv_orderLines.Rows[row].Cells[5].Value.ToString(),
+                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out acceptedAmount);
+
+            float documentAmount = 0;
+            if (dgv_orderLines.Rows[row].Cells[6].Value != null)
+                float.TryParse(dgv_orderLines.Rows[row].Cells[6].Value.ToString(),
+                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out documentAmount);
+
             ReceiptOrderLine line = new ReceiptOrderLine()
             {
                 PK_ReceiptOrder = order.PK_ReceiptOrder,
-                AcceptedAmount = float.Parse(dgv_orderLines.Rows[row].Cells[5].Value.ToString()),
-                DocumentAmount = float.Parse(dgv_orderLines.Rows[row].Cells[6].Value.ToString()),
+                AcceptedAmount = acceptedAmount,
+                DocumentAmount = documentAmount,
                 PK_Resource = (int)dgv_orderLines.Rows[row].Cells[1].Value,
             };
 
