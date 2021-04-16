@@ -51,6 +51,8 @@ namespace MTO.Models
         
         public string CustomerAgentRole { get; set; }
 
+        public bool IsOpened { get; set; }
+
         public int PK_Provider { get; set; }
         public Provider Provider
         {
