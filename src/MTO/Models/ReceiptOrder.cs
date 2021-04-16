@@ -60,6 +60,14 @@ namespace MTO.Models
             }
         }
 
+        public string DeliveryDateWithoutTime
+        {
+            get
+            {
+                return DeliveryDate.ToString("dd-MM-yyyy");
+            }
+        }
+
         public List<ReceiptOrderLine> getReceiptOrderLines()
         {
             return Program.db.ReceiptOrderLines
