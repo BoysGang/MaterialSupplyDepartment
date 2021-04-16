@@ -78,6 +78,7 @@ namespace MTO
                 tsmi_accounting.Visible = false;
             }
 
+            
             this.contracts = contracts;
         }
 
