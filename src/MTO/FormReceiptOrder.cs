@@ -80,6 +80,8 @@ namespace MTO
         {
             FormReceiptOrderAdd form = new FormReceiptOrderAdd();
             form.ShowDialog();
+
+            updateReceiptOrderTable();
         }
 
         private void FormReceiptOrder_Load(object sender, EventArgs e)
@@ -129,6 +131,9 @@ namespace MTO
             {
                 FormReceiptOrderView form = new FormReceiptOrderView(viewingReceiptOrder);
                 form.ShowDialog();
+
+                updateReceiptOrderTable();
+
             }
         }
 
@@ -184,6 +189,8 @@ namespace MTO
             dtp_deliveryDate.CustomFormat = " ";
             cb_warehouse.SelectedIndex = -1;
             tb_contractNumber.Text = "";
+
+            updateReceiptOrderTable();
         }
 
         private void btn_findReceiptOrder_Click(object sender, EventArgs e)

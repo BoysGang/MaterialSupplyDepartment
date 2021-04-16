@@ -243,6 +243,7 @@ namespace MTO
                 {
                     Contract newContract = new Contract()
                     {
+                        IsOpened = true,
                         ContractNumber = tb_actNumber.Text,
                         ConclusionCity = tb_conclusionCity.Text,
 
