@@ -53,6 +53,17 @@ namespace MTO.Models
 
         public bool IsOpened { get; set; }
 
+        public string Status
+        {
+            get
+            {
+                if (IsOpened)
+                    return "Открыт";
+                else
+                    return "Закрыт";
+            }
+        }
+
         public int PK_Provider { get; set; }
         public Provider Provider
         {
