@@ -184,6 +184,8 @@ namespace MTO
             dtp_deliveryDate.CustomFormat = " ";
             cb_warehouse.SelectedIndex = -1;
             tb_contractNumber.Text = "";
+
+            updateReceiptOrderTable();
         }
 
         private void btn_findReceiptOrder_Click(object sender, EventArgs e)

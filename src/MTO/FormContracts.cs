@@ -162,6 +162,8 @@ namespace MTO
             dtp_expiredDate.CustomFormat = " ";
             dtp_startDate.CustomFormat = " ";
             rb_any.Checked = true;
+
+            updateContractTable();
         }
 
         private void updateContractTable()
