@@ -193,7 +193,8 @@ namespace MTO
                     return;
 
 
-                sheet.UsedRange.Rows.RowHeight = 30;
+                sheet.get_Range("A18", sheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing)).
+                    Rows.RowHeight = 30;
 
                 FileInfo fileInfo = new FileInfo(fileName_new);
                 if (fileInfo.Exists)
