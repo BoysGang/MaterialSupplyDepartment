@@ -130,7 +130,7 @@ namespace MTO
                 sheet = (Excel.Worksheet)book.Sheets[1];
 
                 //заполнение шапки
-                sheet.Cells[5, "BA"] = receiptOrder.ReceiptOrderNumber.ToString();
+                sheet.Cells[5, "AN"] = receiptOrder.ReceiptOrderNumber.ToString();
 
                 //organistaion description
                 sheet.Cells[8, "M"] = receiptOrder.Contract.OrganizationDescription.Name;
@@ -192,6 +192,8 @@ namespace MTO
                 else
                     return;
 
+
+                sheet.UsedRange.Rows.RowHeight = 30;
 
                 FileInfo fileInfo = new FileInfo(fileName_new);
                 if (fileInfo.Exists)
