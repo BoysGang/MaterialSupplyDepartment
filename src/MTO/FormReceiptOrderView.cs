@@ -211,7 +211,7 @@ namespace MTO
                 book.Close();
                 app.Quit();
 
-                MessageBox.Show("Файл упешно был сохранен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Файл успешно был сохранен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
