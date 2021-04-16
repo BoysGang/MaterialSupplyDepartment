@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
@@ -41,29 +41,30 @@ namespace MTO
             this.Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.cb_provider = new System.Windows.Forms.ComboBox();
+            this.dtp_deliveryDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_receiptOrderNumber = new System.Windows.Forms.TextBox();
             this.btn_findReceiptOrder = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_contractNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cb_warehouse = new System.Windows.Forms.ComboBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.tsmi_contracts = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_ContractSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dict = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictResources = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictUnit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictProvider = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictWarehouses = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_viewReceiptOrder = new System.Windows.Forms.Button();
-            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -84,7 +85,7 @@ namespace MTO
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(500, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 152);
+            this.groupBox2.Size = new System.Drawing.Size(410, 199);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация";
@@ -102,15 +103,15 @@ namespace MTO
             this.Warehouse,
             this.ProviderAgent,
             this.Contract});
-            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 232);
+            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 285);
             this.dgv_receiptOrders.MultiSelect = false;
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_receiptOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 297);
+            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 244);
             this.dgv_receiptOrders.TabIndex = 36;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
             // 
@@ -177,24 +178,24 @@ namespace MTO
             this.label5.Text = "Шифр склада";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // cb_provider
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(112, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(364, 21);
-            this.comboBox1.TabIndex = 27;
+            this.cb_provider.FormattingEnabled = true;
+            this.cb_provider.Location = new System.Drawing.Point(112, 54);
+            this.cb_provider.Name = "cb_provider";
+            this.cb_provider.Size = new System.Drawing.Size(364, 21);
+            this.cb_provider.TabIndex = 27;
             // 
-            // dateTimePicker3
+            // dtp_deliveryDate
             // 
-            this.dateTimePicker3.CustomFormat = " ";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(112, 88);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(364, 20);
-            this.dateTimePicker3.TabIndex = 24;
-            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            this.dateTimePicker3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
+            this.dtp_deliveryDate.CustomFormat = " ";
+            this.dtp_deliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_deliveryDate.Location = new System.Drawing.Point(112, 88);
+            this.dtp_deliveryDate.Name = "dtp_deliveryDate";
+            this.dtp_deliveryDate.Size = new System.Drawing.Size(364, 20);
+            this.dtp_deliveryDate.TabIndex = 24;
+            this.dtp_deliveryDate.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            this.dtp_deliveryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
             // 
             // label6
             // 
@@ -217,34 +218,37 @@ namespace MTO
             this.label3.Text = "Дата поставки";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // tb_receiptOrderNumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(112, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(364, 20);
-            this.textBox1.TabIndex = 26;
+            this.tb_receiptOrderNumber.Location = new System.Drawing.Point(112, 22);
+            this.tb_receiptOrderNumber.MaxLength = 50;
+            this.tb_receiptOrderNumber.Name = "tb_receiptOrderNumber";
+            this.tb_receiptOrderNumber.Size = new System.Drawing.Size(364, 20);
+            this.tb_receiptOrderNumber.TabIndex = 26;
+            this.tb_receiptOrderNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_receiptOrder_KeyPress);
             // 
             // btn_findReceiptOrder
             // 
-            this.btn_findReceiptOrder.Location = new System.Drawing.Point(500, 185);
+            this.btn_findReceiptOrder.Location = new System.Drawing.Point(12, 232);
             this.btn_findReceiptOrder.Name = "btn_findReceiptOrder";
-            this.btn_findReceiptOrder.Size = new System.Drawing.Size(201, 27);
+            this.btn_findReceiptOrder.Size = new System.Drawing.Size(238, 33);
             this.btn_findReceiptOrder.TabIndex = 38;
             this.btn_findReceiptOrder.Text = "Найти";
             this.btn_findReceiptOrder.UseVisualStyleBackColor = true;
+            this.btn_findReceiptOrder.Click += new System.EventHandler(this.btn_findReceiptOrder_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tb_contractNumber);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.cb_warehouse);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker3);
+            this.groupBox1.Controls.Add(this.cb_provider);
+            this.groupBox1.Controls.Add(this.dtp_deliveryDate);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tb_receiptOrderNumber);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(482, 199);
@@ -252,12 +256,14 @@ namespace MTO
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
             // 
-            // textBox2
+            // tb_contractNumber
             // 
-            this.textBox2.Location = new System.Drawing.Point(112, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(364, 20);
-            this.textBox2.TabIndex = 34;
+            this.tb_contractNumber.Location = new System.Drawing.Point(112, 155);
+            this.tb_contractNumber.MaxLength = 50;
+            this.tb_contractNumber.Name = "tb_contractNumber";
+            this.tb_contractNumber.Size = new System.Drawing.Size(364, 20);
+            this.tb_contractNumber.TabIndex = 34;
+            this.tb_contractNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_contract_KeyPress);
             // 
             // label2
             // 
@@ -270,13 +276,13 @@ namespace MTO
             this.label2.Text = "Номер договора";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox2
+            // cb_warehouse
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(112, 120);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(364, 21);
-            this.comboBox2.TabIndex = 32;
+            this.cb_warehouse.FormattingEnabled = true;
+            this.cb_warehouse.Location = new System.Drawing.Point(112, 120);
+            this.cb_warehouse.Name = "cb_warehouse";
+            this.cb_warehouse.Size = new System.Drawing.Size(364, 21);
+            this.cb_warehouse.TabIndex = 32;
             // 
             // menuStrip
             // 
@@ -301,19 +307,19 @@ namespace MTO
             this.tsmi_contracts.Size = new System.Drawing.Size(72, 20);
             this.tsmi_contracts.Text = "Договора";
             // 
+            // tsmi_ContractSearch
+            // 
+            this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
+            this.tsmi_ContractSearch.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_ContractSearch.Text = "Список";
+            this.tsmi_ContractSearch.Click += new System.EventHandler(this.tsmi_ContractSearch_Click);
+            // 
             // tsmi_contractCreate
             // 
             this.tsmi_contractCreate.Name = "tsmi_contractCreate";
             this.tsmi_contractCreate.Size = new System.Drawing.Size(141, 22);
             this.tsmi_contractCreate.Text = "Добавление";
             this.tsmi_contractCreate.Click += new System.EventHandler(this.tsmi_contractCreate_Click);
-            // 
-            // tsmi_ContractSearch
-            // 
-            this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
-            this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_ContractSearch.Text = "Список";
-            this.tsmi_ContractSearch.Click += new System.EventHandler(this.tsmi_ContractSearch_Click);
             // 
             // tsmi_accounting
             // 
@@ -323,6 +329,20 @@ namespace MTO
             this.tsmi_accounting.Name = "tsmi_accounting";
             this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
             this.tsmi_accounting.Text = "Учет";
+            // 
+            // tsmi_accountingReceiptOrderList
+            // 
+            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(252, 22);
+            this.tsmi_accountingReceiptOrderList.Text = "Список приходных ордеров";
+            this.tsmi_accountingReceiptOrderList.Visible = false;
+            // 
+            // tsmi_accountingReceiptOrderAdd
+            // 
+            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(252, 22);
+            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление приходного ордера";
+            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
             // 
             // tsmi_dict
             // 
@@ -365,33 +385,30 @@ namespace MTO
             // 
             // btn_viewReceiptOrder
             // 
-            this.btn_viewReceiptOrder.Location = new System.Drawing.Point(718, 185);
+            this.btn_viewReceiptOrder.Location = new System.Drawing.Point(500, 232);
             this.btn_viewReceiptOrder.Name = "btn_viewReceiptOrder";
-            this.btn_viewReceiptOrder.Size = new System.Drawing.Size(192, 27);
+            this.btn_viewReceiptOrder.Size = new System.Drawing.Size(410, 33);
             this.btn_viewReceiptOrder.TabIndex = 41;
             this.btn_viewReceiptOrder.Text = "Просмотр";
             this.btn_viewReceiptOrder.UseVisualStyleBackColor = true;
             this.btn_viewReceiptOrder.Click += new System.EventHandler(this.btn_viewReceiptOrder_Click);
             // 
-            // tsmi_accountingReceiptOrderList
+            // btn_resetSearch
             // 
-            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
-            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(252, 22);
-            this.tsmi_accountingReceiptOrderList.Text = "Список приходных ордеров";
-            this.tsmi_accountingReceiptOrderList.Visible = false;
-            // 
-            // tsmi_accountingReceiptOrderAdd
-            // 
-            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
-            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(252, 22);
-            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление приходного ордера";
-            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
+            this.btn_resetSearch.Location = new System.Drawing.Point(256, 232);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(238, 33);
+            this.btn_resetSearch.TabIndex = 42;
+            this.btn_resetSearch.Text = "Сбросить фильтры";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
             // FormReceiptOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 541);
+            this.Controls.Add(this.btn_resetSearch);
             this.Controls.Add(this.btn_viewReceiptOrder);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.groupBox2);
@@ -400,7 +417,6 @@ namespace MTO
             this.Controls.Add(this.groupBox1);
             this.Name = "FormReceiptOrder";
             this.Text = "Приходный ордер";
-            this.Activated += new System.EventHandler(this.FormReceiptOrder_Activated);
             this.Load += new System.EventHandler(this.FormReceiptOrder_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).EndInit();
@@ -419,16 +435,16 @@ namespace MTO
         private System.Windows.Forms.DataGridView dgv_receiptOrders;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.ComboBox cb_provider;
+        private System.Windows.Forms.DateTimePicker dtp_deliveryDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_receiptOrderNumber;
         private System.Windows.Forms.Button btn_findReceiptOrder;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_contractNumber;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cb_warehouse;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem tsmi_contracts;
         private System.Windows.Forms.ToolStripMenuItem tsmi_contractCreate;
@@ -448,5 +464,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn Contract;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
+        private System.Windows.Forms.Button btn_resetSearch;
     }
 }
