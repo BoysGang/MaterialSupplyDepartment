@@ -127,19 +127,16 @@ namespace MTO
                 //organistaion description
                 sheet.Cells[8, "M"] = receiptOrder.Contract.OrganizationDescription.Name;
 
-
                 sheet.Cells[13, "M"] = receiptOrder.DeliveryDate;
                 sheet.Cells[13, "U"] = receiptOrder.Warehouse.Cipher;
                 sheet.Cells[13, "AC"] = receiptOrder.Provider.Name;
                 sheet.Cells[13, "AO"] = receiptOrder.Provider.INN;
                 sheet.Cells[13, "AV"] = "№ " + receiptOrder.Contract.ContractNumber + " от " + receiptOrder.Contract.ConclusionDate.ToShortDateString();
 
-
                 List<ReceiptOrderLine> lines = receiptOrder.getReceiptOrderLines();
                 int extraStringsAmount = 0;
                 if (lines.Count > amountStringDefault)
                     extraStringsAmount = lines.Count - amountStringDefault;
-
 
                 int endStringInDoc = 26;
                 while (extraStringsAmount > 0)
@@ -164,8 +161,8 @@ namespace MTO
                 {
                     sheet.Cells[startTableIndex + i, "A"] = lines[i].Resource.Name;
                     sheet.Cells[startTableIndex + i, "R"] = lines[i].Resource.Cipher;
-                    sheet.Cells[startTableIndex + i, "AA"] = lines[i].Resource.Unit.Name;
-                    sheet.Cells[startTableIndex + i, "AG"] = lines[i].Resource.Unit.Cipher;
+                    sheet.Cells[startTableIndex + i, "AA"] = lines[i].Resource.Unit.Cipher;
+                    sheet.Cells[startTableIndex + i, "AG"] = lines[i].Resource.Unit.Name;
                     sheet.Cells[startTableIndex + i, "AT"] = lines[i].DocumentAmount.ToString();
                     sheet.Cells[startTableIndex + i, "BB"] = lines[i].AcceptedAmount.ToString();
                     sheet.Cells[startTableIndex + i, "BJ"] = lines[i].Price.ToString();
@@ -186,13 +183,13 @@ namespace MTO
         private Excel.Workbook book;
         private Excel.Worksheet sheet;
 
-
         async Task Export()
         {
             await Task.Run(() =>
                 export()
             );
         }
+
         private async void tsmi_fileExport_Click(object sender, EventArgs e)
         {
             System.Timers.Timer tmr_export = new System.Timers.Timer();
@@ -202,16 +199,12 @@ namespace MTO
             book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templatePath));
             sheet = (Excel.Worksheet)book.Sheets[1];
 
-
             pb_export.Value = 0;
             tmr_export.Elapsed += tmr_export_Tick;
             tmr_export.Interval = 100;
             tmr_export.Start();
-
-
-            
+                        
             await Export();
-
 
             tmr_export.Stop();
             pb_export.Value = 100;
@@ -221,6 +214,7 @@ namespace MTO
             saveFileDialog.Filter = "xls files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
             saveFileDialog.RestoreDirectory = true;
+            
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 fileName_new = saveFileDialog.FileName;
@@ -236,6 +230,7 @@ namespace MTO
             {
                 fileInfo.Delete();
             }
+            
             book.SaveAs(fileName_new, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing,
                 Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing,
@@ -249,16 +244,14 @@ namespace MTO
             MessageBox.Show("Файл успешно был сохранен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             pb_export.Value = 0;
-
         }
-
 
         private void tmr_export_Tick(object sender, EventArgs e)
         {
             if (pb_export.Value == pb_export.Maximum)
                 pb_export.Value = 0;
             else
-                pb_export.Value  += 10;
+                pb_export.Value  += 1;
         }
     }
 }
