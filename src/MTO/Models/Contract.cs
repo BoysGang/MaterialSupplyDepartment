@@ -30,6 +30,13 @@ namespace MTO.Models
 
         [Column(TypeName = "Date")]
         public DateTime StartDate { get; set; }
+        public string StartDateWithoutTime
+        {
+            get
+            {
+                return StartDate.ToString("dd-MM-yyyy");
+            }
+        }
 
         public string StartDateWithoutTime
         {
@@ -41,6 +48,13 @@ namespace MTO.Models
 
         [Column(TypeName = "Date")]
         public DateTime ConclusionDate { get; set; }
+        public string ConclusionDateWithoutTime
+        {
+            get
+            {
+                return ConclusionDate.ToString("dd-MM-yyyy");
+            }
+        }
 
         public string ConclusionDateWithoutTime
         {
@@ -73,6 +87,19 @@ namespace MTO.Models
         public string CustomerAgentName { get; set; }
         
         public string CustomerAgentRole { get; set; }
+
+        public bool IsOpened { get; set; }
+
+        public string Status
+        {
+            get
+            {
+                if (IsOpened)
+                    return "Открыт";
+                else
+                    return "Закрыт";
+            }
+        }
 
         public int PK_Provider { get; set; }
         public Provider Provider
