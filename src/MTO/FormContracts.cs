@@ -86,6 +86,8 @@ namespace MTO
             }
 
             this.contracts = contracts;
+
+            updateContractTable();
         }
 
         private void btn_viewContract_Click(object sender, EventArgs e)
