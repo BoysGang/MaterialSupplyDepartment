@@ -279,6 +279,7 @@ namespace MTO
             {
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                e.CellStyle.BackColor = dgv_orderLines.DefaultCellStyle.BackColor;
             }
 
             // Amount fields KeyPress
