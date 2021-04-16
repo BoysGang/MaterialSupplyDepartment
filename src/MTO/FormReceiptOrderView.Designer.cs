@@ -256,8 +256,9 @@ namespace MTO
             // tsmi_fileExport
             // 
             this.tsmi_fileExport.Name = "tsmi_fileExport";
-            this.tsmi_fileExport.Size = new System.Drawing.Size(119, 22);
+            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
             this.tsmi_fileExport.Text = "Экспорт";
+            this.tsmi_fileExport.Click += new System.EventHandler(this.tsmi_fileExport_Click);
             // 
             // tsmi_edit
             // 
@@ -271,14 +272,14 @@ namespace MTO
             // tsmi_editChange
             // 
             this.tsmi_editChange.Name = "tsmi_editChange";
-            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_editChange.Size = new System.Drawing.Size(163, 22);
             this.tsmi_editChange.Text = "Редактирование";
             this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
             // 
             // tsmi_editDelete
             // 
             this.tsmi_editDelete.Name = "tsmi_editDelete";
-            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_editDelete.Size = new System.Drawing.Size(163, 22);
             this.tsmi_editDelete.Text = "Удаление";
             this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
             // 
