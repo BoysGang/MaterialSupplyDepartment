@@ -33,19 +33,22 @@ namespace MTO
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActuallyDelivered = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDatePlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDateFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountFact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountUnderdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnderdeliveryPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_header = new System.Windows.Forms.Label();
+            this.btn_export = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tb_totalUndeliveryCost = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,18 +56,17 @@ namespace MTO
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(824, 545);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(824, 564);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -76,18 +78,19 @@ namespace MTO
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Resource,
             this.Unit,
-            this.DeliveryDate,
-            this.ContractDelivery,
-            this.ActuallyDelivered,
-            this.Underdelivery,
+            this.DeliveryDatePlan,
+            this.DeliveryDateFact,
+            this.AmountPlan,
+            this.AmountFact,
+            this.AmountUnderdelivery,
             this.UnitPrice,
             this.UnderdeliveryPrice});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 57);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 87);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(818, 430);
-            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.Size = new System.Drawing.Size(818, 417);
+            this.dataGridView1.TabIndex = 14;
             // 
             // Resource
             // 
@@ -101,29 +104,35 @@ namespace MTO
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
             // 
-            // DeliveryDate
+            // DeliveryDatePlan
             // 
-            this.DeliveryDate.HeaderText = "Дата поставки";
-            this.DeliveryDate.Name = "DeliveryDate";
-            this.DeliveryDate.ReadOnly = true;
+            this.DeliveryDatePlan.HeaderText = "Дата поставки план.";
+            this.DeliveryDatePlan.Name = "DeliveryDatePlan";
+            this.DeliveryDatePlan.ReadOnly = true;
             // 
-            // ContractDelivery
+            // DeliveryDateFact
             // 
-            this.ContractDelivery.HeaderText = "План поставки по договору";
-            this.ContractDelivery.Name = "ContractDelivery";
-            this.ContractDelivery.ReadOnly = true;
+            this.DeliveryDateFact.HeaderText = "Дата поставки факт.";
+            this.DeliveryDateFact.Name = "DeliveryDateFact";
+            this.DeliveryDateFact.ReadOnly = true;
             // 
-            // ActuallyDelivered
+            // AmountPlan
             // 
-            this.ActuallyDelivered.HeaderText = "Фактически отгружено";
-            this.ActuallyDelivered.Name = "ActuallyDelivered";
-            this.ActuallyDelivered.ReadOnly = true;
+            this.AmountPlan.HeaderText = "Поставка план.";
+            this.AmountPlan.Name = "AmountPlan";
+            this.AmountPlan.ReadOnly = true;
             // 
-            // Underdelivery
+            // AmountFact
             // 
-            this.Underdelivery.HeaderText = "Недопоставка";
-            this.Underdelivery.Name = "Underdelivery";
-            this.Underdelivery.ReadOnly = true;
+            this.AmountFact.HeaderText = "Поставка факт.";
+            this.AmountFact.Name = "AmountFact";
+            this.AmountFact.ReadOnly = true;
+            // 
+            // AmountUnderdelivery
+            // 
+            this.AmountUnderdelivery.HeaderText = "Недопоставка";
+            this.AmountUnderdelivery.Name = "AmountUnderdelivery";
+            this.AmountUnderdelivery.ReadOnly = true;
             // 
             // UnitPrice
             // 
@@ -137,67 +146,82 @@ namespace MTO
             this.UnderdeliveryPrice.Name = "UnderdeliveryPrice";
             this.UnderdeliveryPrice.ReadOnly = true;
             // 
-            // label3
+            // tableLayoutPanel2
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(320, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Договор поставки №";
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.lbl_header, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_export, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(818, 78);
+            this.tableLayoutPanel2.TabIndex = 15;
+            // 
+            // lbl_header
+            // 
+            this.lbl_header.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_header.AutoSize = true;
+            this.lbl_header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_header.Location = new System.Drawing.Point(198, 29);
+            this.lbl_header.Name = "lbl_header";
+            this.lbl_header.Size = new System.Drawing.Size(308, 20);
+            this.lbl_header.TabIndex = 11;
+            this.lbl_header.Text = "Анализ поставок по договору № от";
+            // 
+            // btn_export
+            // 
+            this.btn_export.Location = new System.Drawing.Point(708, 3);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(107, 38);
+            this.btn_export.TabIndex = 1;
+            this.btn_export.Text = "Экспорт в Excel";
+            this.btn_export.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 493);
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.tb_totalUndeliveryCost);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(621, 510);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(818, 49);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 51);
+            this.flowLayoutPanel1.TabIndex = 16;
             // 
-            // label4
+            // tb_totalUndeliveryCost
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 5);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Суммарный штраф: ";
+            this.tb_totalUndeliveryCost.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tb_totalUndeliveryCost.Location = new System.Drawing.Point(3, 16);
+            this.tb_totalUndeliveryCost.Name = "tb_totalUndeliveryCost";
+            this.tb_totalUndeliveryCost.ReadOnly = true;
+            this.tb_totalUndeliveryCost.Size = new System.Drawing.Size(100, 20);
+            this.tb_totalUndeliveryCost.TabIndex = 0;
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(118, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(224, 5);
-            this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "руб.";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(155, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Общая сумма недопоставок:";
             // 
             // FormAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 545);
+            this.ClientSize = new System.Drawing.Size(824, 564);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormAnalysis";
-            this.Text = "Анализ выполнения";
+            this.Text = "Анализ выполнения обязательств";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -207,19 +231,21 @@ namespace MTO
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContractDelivery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ActuallyDelivered;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Underdelivery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDatePlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDateFact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountFact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountUnderdelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnderdeliveryPrice;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label lbl_header;
+        private System.Windows.Forms.Button btn_export;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_totalUndeliveryCost;
     }
 }

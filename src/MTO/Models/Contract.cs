@@ -38,8 +38,24 @@ namespace MTO.Models
             }
         }
 
+        public string StartDateWithoutTime
+        {
+            get
+            {
+                return StartDate.ToString("dd-MM-yyyy");
+            }
+        }
+
         [Column(TypeName = "Date")]
         public DateTime ConclusionDate { get; set; }
+        public string ConclusionDateWithoutTime
+        {
+            get
+            {
+                return ConclusionDate.ToString("dd-MM-yyyy");
+            }
+        }
+
         public string ConclusionDateWithoutTime
         {
             get
