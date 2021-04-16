@@ -55,15 +55,6 @@ namespace MTO
                 tsmi_accounting.Visible = false;
             }
 
-            //dgv_contracts.Rows.Add();
-            //dgv_contracts[0, 0].Value = "000001";
-            //dgv_contracts[1, 0].Value = "24/03/2020";
-            //dgv_contracts[2, 0].Value = "24/03/2020";
-            //dgv_contracts[3, 0].Value = "24/03/2021";
-            //dgv_contracts[4, 0].Value = "ООО Фисташка";
-            //dgv_contracts[5, 0].Value = "Открыт";
-            //dgv_contracts[6, 0].Value = "Есть";
-
         }
 
         private void btn_viewContract_Click(object sender, EventArgs e)
@@ -148,9 +139,9 @@ namespace MTO
 
             dgv_contracts.Columns[0].DataPropertyName = "PK_Contract";
             dgv_contracts.Columns[1].DataPropertyName = "ContractNumber";
-            dgv_contracts.Columns[2].DataPropertyName = "ConclusionDate";
-            dgv_contracts.Columns[3].DataPropertyName = "StartDate";
-            dgv_contracts.Columns[4].DataPropertyName = "ExpiredDate";
+            dgv_contracts.Columns[2].DataPropertyName = "ConclusionDateWithoutTime";
+            dgv_contracts.Columns[3].DataPropertyName = "StartDateWithoutTime";
+            dgv_contracts.Columns[4].DataPropertyName = "ExpiredDateWithoutTime";
             dgv_contracts.Columns[5].DataPropertyName = "Provider";
         }
 

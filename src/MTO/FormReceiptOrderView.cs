@@ -118,77 +118,102 @@ namespace MTO
 
         private void tsmi_fileExport_Click(object sender, EventArgs e)
         {
-            Excel.Application app;
-            Excel.Workbook book;
-            Excel.Worksheet sheet;
-
-            app = new Excel.Application();
-            app.Visible = true;
-
-            book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templatePath));
-            sheet = (Excel.Worksheet)book.Sheets[1];
-
-            //заполнение шапки
-            sheet.Cells[5, "BA"] = receiptOrder.ReceiptOrderNumber.ToString();
-
-            //organistaion description
-            sheet.Cells[8, "M"] = receiptOrder.Contract.OrganizationDescription.Name;
-
-            //заполнить ОКПО?
-            //
-            //ИЛИ ЧТО??
-
-            sheet.Cells[13, "M"] = receiptOrder.DeliveryDate;
-            sheet.Cells[13, "U"] = receiptOrder.Warehouse.Cipher;
-            sheet.Cells[13, "AC"] = receiptOrder.Provider.Name;
-            sheet.Cells[13, "AO"] = receiptOrder.Provider.INN;
-            sheet.Cells[13, "AV"] = "№ " + receiptOrder.Contract.ContractNumber + " от " + receiptOrder.Contract.ConclusionDate.ToShortDateString();
-
-
-            List<ReceiptOrderLine> lines = receiptOrder.getReceiptOrderLines();
-            int extraStringsAmount = 0;
-            if (lines.Count > amountStringDefault)
-                extraStringsAmount = lines.Count - amountStringDefault;
-
-
-            int endStringInDoc = 26;
-            while(extraStringsAmount > 0)
+            try
             {
-                Excel.Range excel_str = sheet.get_Range("A" + 19.ToString(), "CA" + 22.ToString());
-                excel_str.Copy(Type.Missing);
+                Excel.Application app;
+                Excel.Workbook book;
+                Excel.Worksheet sheet;
 
-                Excel.Range r = (Excel.Range)sheet.Rows[endStringInDoc];
-                r.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
+                app = new Excel.Application();
 
-                Excel.Range paste = sheet.get_Range("A" + endStringInDoc.ToString(), "CA" + (endStringInDoc + 3).ToString());
-                paste.PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteAll,
-                    Microsoft.Office.Interop.Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone,
-                    Type.Missing, Type.Missing);
+                book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templatePath));
+                sheet = (Excel.Worksheet)book.Sheets[1];
 
-                extraStringsAmount -= 4;
-                endStringInDoc += 4;
+                //заполнение шапки
+                sheet.Cells[5, "BA"] = receiptOrder.ReceiptOrderNumber.ToString();
+
+                //organistaion description
+                sheet.Cells[8, "M"] = receiptOrder.Contract.OrganizationDescription.Name;
+
+
+                sheet.Cells[13, "M"] = receiptOrder.DeliveryDate;
+                sheet.Cells[13, "U"] = receiptOrder.Warehouse.Cipher;
+                sheet.Cells[13, "AC"] = receiptOrder.Provider.Name;
+                sheet.Cells[13, "AO"] = receiptOrder.Provider.INN;
+                sheet.Cells[13, "AV"] = "№ " + receiptOrder.Contract.ContractNumber + " от " + receiptOrder.Contract.ConclusionDate.ToShortDateString();
+
+
+                List<ReceiptOrderLine> lines = receiptOrder.getReceiptOrderLines();
+                int extraStringsAmount = 0;
+                if (lines.Count > amountStringDefault)
+                    extraStringsAmount = lines.Count - amountStringDefault;
+
+
+                int endStringInDoc = 26;
+                while (extraStringsAmount > 0)
+                {
+                    Excel.Range excel_str = sheet.get_Range("A" + 19.ToString(), "CA" + 22.ToString());
+                    excel_str.Copy(Type.Missing);
+
+                    Excel.Range r = (Excel.Range)sheet.Rows[endStringInDoc];
+                    r.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
+
+                    Excel.Range paste = sheet.get_Range("A" + endStringInDoc.ToString(), "CA" + (endStringInDoc + 3).ToString());
+                    paste.PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteAll,
+                        Microsoft.Office.Interop.Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone,
+                        Type.Missing, Type.Missing);
+
+                    extraStringsAmount -= 4;
+                    endStringInDoc += 4;
+                }
+
+                int startTableIndex = 18;
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    sheet.Cells[startTableIndex + i, "A"] = lines[i].Resource.Name;
+                    sheet.Cells[startTableIndex + i, "R"] = lines[i].Resource.Cipher;
+                    sheet.Cells[startTableIndex + i, "AA"] = lines[i].Resource.Unit.Name;
+                    sheet.Cells[startTableIndex + i, "AG"] = lines[i].Resource.Unit.Cipher;
+                    sheet.Cells[startTableIndex + i, "AT"] = lines[i].DocumentAmount.ToString();
+                    sheet.Cells[startTableIndex + i, "BB"] = lines[i].AcceptedAmount.ToString();
+                    sheet.Cells[startTableIndex + i, "BJ"] = lines[i].Price.ToString();
+                    sheet.Cells[startTableIndex + i, "BR"] = lines[i].TotalPrice.ToString();
+                }
+
+                string fileName_new = String.Empty;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "xls files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileName_new = saveFileDialog.FileName;
+                }
+                else
+                    return;
+
+
+                FileInfo fileInfo = new FileInfo(fileName_new);
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+                book.SaveAs(fileName_new, Type.Missing, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing,
+                    Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing,
+                    Type.Missing, Type.Missing, Type.Missing);
+
+                saveFileDialog.Dispose();
+
+                book.Close();
+                app.Quit();
+
+                MessageBox.Show("Файл упешно был сохранен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            int startTableIndex = 18;
-            for(int i = 0; i < lines.Count; i++)
+            catch(Exception ex)
             {
-                sheet.Cells[startTableIndex + i, "A"] = lines[i].Resource.Name;
-                sheet.Cells[startTableIndex + i, "R"] = lines[i].Resource.Cipher;
-                sheet.Cells[startTableIndex + i, "AA"] = lines[i].Resource.Unit.Name;
-                sheet.Cells[startTableIndex + i, "AG"] = lines[i].Resource.Unit.Cipher;
-                sheet.Cells[startTableIndex + i, "AT"] = lines[i].DocumentAmount.ToString();
-                sheet.Cells[startTableIndex + i, "BB"] = lines[i].AcceptedAmount.ToString();
-                sheet.Cells[startTableIndex + i, "BJ"] = lines[i].Price.ToString();
-                sheet.Cells[startTableIndex + i, "BR"] = lines[i].TotalPrice.ToString();
+                MessageBox.Show(ex.ToString(), "Errors!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-            book.SaveAs(Path.Combine(Environment.CurrentDirectory, "file.xlsx"), Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            book.Close();
-            app.Quit();
-
-
         }
     }
 }
