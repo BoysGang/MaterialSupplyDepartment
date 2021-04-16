@@ -29,14 +29,14 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_provider = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_conclusionDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_expiredDate = new System.Windows.Forms.DateTimePicker();
             this.dgv_contracts = new System.Windows.Forms.DataGridView();
             this.PK_Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,21 +47,23 @@ namespace MTO
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_startDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cb_contractNumber = new System.Windows.Forms.ComboBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rb_closed = new System.Windows.Forms.RadioButton();
+            this.rb_opened = new System.Windows.Forms.RadioButton();
+            this.rb_any = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_findContracts = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.tsmi_contracts = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_ContractSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_contractCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_accounting = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dict = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictResources = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_dictUnit = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +72,6 @@ namespace MTO
             this.btn_analizeContract = new System.Windows.Forms.Button();
             this.btn_viewContract = new System.Windows.Forms.Button();
             this.btn_resetSearch = new System.Windows.Forms.Button();
-            this.tsmi_accountingReceiptOrderList = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_accountingReceiptOrderAdd = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,15 +98,15 @@ namespace MTO
             this.label6.Text = "Поставщик";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // cb_provider
             // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(113, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(363, 21);
-            this.comboBox1.TabIndex = 27;
+            this.cb_provider.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_provider.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cb_provider.FormattingEnabled = true;
+            this.cb_provider.Location = new System.Drawing.Point(113, 54);
+            this.cb_provider.Name = "cb_provider";
+            this.cb_provider.Size = new System.Drawing.Size(363, 21);
+            this.cb_provider.TabIndex = 27;
             // 
             // label5
             // 
@@ -119,16 +119,16 @@ namespace MTO
             this.label5.Text = "Дата окончания";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker3
+            // dtp_conclusionDate
             // 
-            this.dateTimePicker3.CustomFormat = " ";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(112, 88);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(364, 20);
-            this.dateTimePicker3.TabIndex = 24;
-            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            this.dateTimePicker3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
+            this.dtp_conclusionDate.CustomFormat = " ";
+            this.dtp_conclusionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_conclusionDate.Location = new System.Drawing.Point(112, 88);
+            this.dtp_conclusionDate.Name = "dtp_conclusionDate";
+            this.dtp_conclusionDate.Size = new System.Drawing.Size(364, 20);
+            this.dtp_conclusionDate.TabIndex = 24;
+            this.dtp_conclusionDate.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            this.dtp_conclusionDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
             // 
             // label3
             // 
@@ -141,16 +141,16 @@ namespace MTO
             this.label3.Text = "Дата заключения";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker2
+            // dtp_expiredDate
             // 
-            this.dateTimePicker2.CustomFormat = " ";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(112, 160);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(364, 20);
-            this.dateTimePicker2.TabIndex = 25;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            this.dateTimePicker2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker2_KeyDown);
+            this.dtp_expiredDate.CustomFormat = " ";
+            this.dtp_expiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_expiredDate.Location = new System.Drawing.Point(112, 160);
+            this.dtp_expiredDate.Name = "dtp_expiredDate";
+            this.dtp_expiredDate.Size = new System.Drawing.Size(364, 20);
+            this.dtp_expiredDate.TabIndex = 25;
+            this.dtp_expiredDate.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dtp_expiredDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker2_KeyDown);
             // 
             // dgv_contracts
             // 
@@ -171,8 +171,8 @@ namespace MTO
             this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
@@ -229,18 +229,18 @@ namespace MTO
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtp_startDate);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cb_contractNumber);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rb_closed);
+            this.groupBox1.Controls.Add(this.rb_opened);
+            this.groupBox1.Controls.Add(this.rb_any);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.dtp_expiredDate);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker3);
+            this.groupBox1.Controls.Add(this.cb_provider);
+            this.groupBox1.Controls.Add(this.dtp_conclusionDate);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 36);
@@ -250,14 +250,14 @@ namespace MTO
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
             // 
-            // dateTimePicker1
+            // dtp_startDate
             // 
-            this.dateTimePicker1.CustomFormat = " ";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(112, 124);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(364, 20);
-            this.dateTimePicker1.TabIndex = 37;
+            this.dtp_startDate.CustomFormat = " ";
+            this.dtp_startDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_startDate.Location = new System.Drawing.Point(112, 124);
+            this.dtp_startDate.Name = "dtp_startDate";
+            this.dtp_startDate.Size = new System.Drawing.Size(364, 20);
+            this.dtp_startDate.TabIndex = 37;
             // 
             // label4
             // 
@@ -280,37 +280,37 @@ namespace MTO
             this.cb_contractNumber.Size = new System.Drawing.Size(363, 21);
             this.cb_contractNumber.TabIndex = 36;
             // 
-            // radioButton3
+            // rb_closed
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(413, 200);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(63, 17);
-            this.radioButton3.TabIndex = 35;
-            this.radioButton3.Text = "Закрыт";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rb_closed.AutoSize = true;
+            this.rb_closed.Location = new System.Drawing.Point(413, 200);
+            this.rb_closed.Name = "rb_closed";
+            this.rb_closed.Size = new System.Drawing.Size(63, 17);
+            this.rb_closed.TabIndex = 35;
+            this.rb_closed.Text = "Закрыт";
+            this.rb_closed.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rb_opened
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(260, 200);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 17);
-            this.radioButton2.TabIndex = 34;
-            this.radioButton2.Text = "Открыт";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rb_opened.AutoSize = true;
+            this.rb_opened.Location = new System.Drawing.Point(260, 200);
+            this.rb_opened.Name = "rb_opened";
+            this.rb_opened.Size = new System.Drawing.Size(63, 17);
+            this.rb_opened.TabIndex = 34;
+            this.rb_opened.Text = "Открыт";
+            this.rb_opened.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rb_any
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(112, 200);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 17);
-            this.radioButton1.TabIndex = 33;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Любой";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rb_any.AutoSize = true;
+            this.rb_any.Checked = true;
+            this.rb_any.Location = new System.Drawing.Point(112, 200);
+            this.rb_any.Name = "rb_any";
+            this.rb_any.Size = new System.Drawing.Size(59, 17);
+            this.rb_any.TabIndex = 33;
+            this.rb_any.TabStop = true;
+            this.rb_any.Text = "Любой";
+            this.rb_any.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -372,19 +372,19 @@ namespace MTO
             this.tsmi_contracts.Size = new System.Drawing.Size(72, 20);
             this.tsmi_contracts.Text = "Договора";
             // 
+            // tsmi_ContractSearch
+            // 
+            this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
+            this.tsmi_ContractSearch.Size = new System.Drawing.Size(141, 22);
+            this.tsmi_ContractSearch.Text = "Список";
+            this.tsmi_ContractSearch.Visible = false;
+            // 
             // tsmi_contractCreate
             // 
             this.tsmi_contractCreate.Name = "tsmi_contractCreate";
             this.tsmi_contractCreate.Size = new System.Drawing.Size(141, 22);
             this.tsmi_contractCreate.Text = "Добавление";
             this.tsmi_contractCreate.Click += new System.EventHandler(this.tsmi_contractCreate_Click);
-            // 
-            // tsmi_ContractSearch
-            // 
-            this.tsmi_ContractSearch.Name = "tsmi_ContractSearch";
-            this.tsmi_ContractSearch.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_ContractSearch.Text = "Список";
-            this.tsmi_ContractSearch.Visible = false;
             // 
             // tsmi_accounting
             // 
@@ -394,6 +394,20 @@ namespace MTO
             this.tsmi_accounting.Name = "tsmi_accounting";
             this.tsmi_accounting.Size = new System.Drawing.Size(44, 20);
             this.tsmi_accounting.Text = "Учет";
+            // 
+            // tsmi_accountingReceiptOrderList
+            // 
+            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
+            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(252, 22);
+            this.tsmi_accountingReceiptOrderList.Text = "Список приходных ордеров";
+            this.tsmi_accountingReceiptOrderList.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderList_Click);
+            // 
+            // tsmi_accountingReceiptOrderAdd
+            // 
+            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
+            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(252, 22);
+            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление приходного оредра";
+            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
             // 
             // tsmi_dict
             // 
@@ -464,20 +478,6 @@ namespace MTO
             this.btn_resetSearch.UseVisualStyleBackColor = true;
             this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
-            // tsmi_accountingReceiptOrderList
-            // 
-            this.tsmi_accountingReceiptOrderList.Name = "tsmi_accountingReceiptOrderList";
-            this.tsmi_accountingReceiptOrderList.Size = new System.Drawing.Size(252, 22);
-            this.tsmi_accountingReceiptOrderList.Text = "Список приходных ордеров";
-            this.tsmi_accountingReceiptOrderList.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderList_Click);
-            // 
-            // tsmi_accountingReceiptOrderAdd
-            // 
-            this.tsmi_accountingReceiptOrderAdd.Name = "tsmi_accountingReceiptOrderAdd";
-            this.tsmi_accountingReceiptOrderAdd.Size = new System.Drawing.Size(252, 22);
-            this.tsmi_accountingReceiptOrderAdd.Text = "Добавление приходного оредра";
-            this.tsmi_accountingReceiptOrderAdd.Click += new System.EventHandler(this.tsmi_accountingReceiptOrderAdd_Click);
-            // 
             // FormContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,11 +513,11 @@ namespace MTO
 
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_provider;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dtp_conclusionDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtp_expiredDate;
         private System.Windows.Forms.DataGridView dgv_contracts;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_findContracts;
@@ -533,14 +533,14 @@ namespace MTO
         private System.Windows.Forms.ToolStripMenuItem tsmi_dictProvider;
         private System.Windows.Forms.ToolStripMenuItem tsmi_dictWarehouses;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accounting;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rb_closed;
+        private System.Windows.Forms.RadioButton rb_opened;
+        private System.Windows.Forms.RadioButton rb_any;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_analizeContract;
         private System.Windows.Forms.Button btn_viewContract;
         private System.Windows.Forms.ComboBox cb_contractNumber;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_resetSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_Contract;

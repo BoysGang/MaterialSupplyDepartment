@@ -21,19 +21,19 @@ namespace MTO
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePicker3.CustomFormat = "dd/MM/yyyy";
+            dtp_conclusionDate.CustomFormat = "dd/MM/yyyy";
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePicker2.CustomFormat = "dd/MM/yyyy";
+            dtp_expiredDate.CustomFormat = "dd/MM/yyyy";
         }
 
         private void dateTimePicker3_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
-                dateTimePicker3.CustomFormat = " ";
+                dtp_conclusionDate.CustomFormat = " ";
             }
         }
 
@@ -41,7 +41,7 @@ namespace MTO
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
-                dateTimePicker2.CustomFormat = " ";
+                dtp_expiredDate.CustomFormat = " ";
             }
         }
 
@@ -54,16 +54,6 @@ namespace MTO
             {
                 tsmi_accounting.Visible = false;
             }
-
-            //dgv_contracts.Rows.Add();
-            //dgv_contracts[0, 0].Value = "000001";
-            //dgv_contracts[1, 0].Value = "24/03/2020";
-            //dgv_contracts[2, 0].Value = "24/03/2020";
-            //dgv_contracts[3, 0].Value = "24/03/2021";
-            //dgv_contracts[4, 0].Value = "ООО Фисташка";
-            //dgv_contracts[5, 0].Value = "Открыт";
-            //dgv_contracts[6, 0].Value = "Есть";
-
         }
 
         private void btn_viewContract_Click(object sender, EventArgs e)
