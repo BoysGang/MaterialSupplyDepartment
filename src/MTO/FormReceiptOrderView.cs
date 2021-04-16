@@ -251,7 +251,7 @@ namespace MTO
             if (pb_export.Value == pb_export.Maximum)
                 pb_export.Value = 0;
             else
-                pb_export.Value  += 10;
+                pb_export.Value  += 1;
         }
     }
 }
