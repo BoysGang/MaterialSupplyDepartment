@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cb_provider = new System.Windows.Forms.ComboBox();
@@ -49,7 +49,7 @@ namespace MTO
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtp_startDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.cb_contractNumber = new System.Windows.Forms.ComboBox();
+            this.cb_contract = new System.Windows.Forms.ComboBox();
             this.rb_closed = new System.Windows.Forms.RadioButton();
             this.rb_opened = new System.Windows.Forms.RadioButton();
             this.rb_any = new System.Windows.Forms.RadioButton();
@@ -127,8 +127,8 @@ namespace MTO
             this.dtp_conclusionDate.Name = "dtp_conclusionDate";
             this.dtp_conclusionDate.Size = new System.Drawing.Size(364, 20);
             this.dtp_conclusionDate.TabIndex = 24;
-            this.dtp_conclusionDate.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            this.dtp_conclusionDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
+            this.dtp_conclusionDate.ValueChanged += new System.EventHandler(this.dtp_conclusionDate_ValueChanged);
+            this.dtp_conclusionDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtp_conclusionDate_KeyDown);
             // 
             // label3
             // 
@@ -149,8 +149,8 @@ namespace MTO
             this.dtp_expiredDate.Name = "dtp_expiredDate";
             this.dtp_expiredDate.Size = new System.Drawing.Size(364, 20);
             this.dtp_expiredDate.TabIndex = 25;
-            this.dtp_expiredDate.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            this.dtp_expiredDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker2_KeyDown);
+            this.dtp_expiredDate.ValueChanged += new System.EventHandler(this.dtp_expiredDate_ValueChanged);
+            this.dtp_expiredDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtp_expiredDate_KeyDown);
             // 
             // dgv_contracts
             // 
@@ -171,8 +171,8 @@ namespace MTO
             this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
@@ -231,7 +231,7 @@ namespace MTO
             // 
             this.groupBox1.Controls.Add(this.dtp_startDate);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cb_contractNumber);
+            this.groupBox1.Controls.Add(this.cb_contract);
             this.groupBox1.Controls.Add(this.rb_closed);
             this.groupBox1.Controls.Add(this.rb_opened);
             this.groupBox1.Controls.Add(this.rb_any);
@@ -258,6 +258,8 @@ namespace MTO
             this.dtp_startDate.Name = "dtp_startDate";
             this.dtp_startDate.Size = new System.Drawing.Size(364, 20);
             this.dtp_startDate.TabIndex = 37;
+            this.dtp_startDate.ValueChanged += new System.EventHandler(this.dtp_startDate_ValueChanged);
+            this.dtp_startDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtp_startDate_KeyDown);
             // 
             // label4
             // 
@@ -270,15 +272,15 @@ namespace MTO
             this.label4.Text = "Дата начала";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cb_contractNumber
+            // cb_contract
             // 
-            this.cb_contractNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cb_contractNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cb_contractNumber.FormattingEnabled = true;
-            this.cb_contractNumber.Location = new System.Drawing.Point(113, 19);
-            this.cb_contractNumber.Name = "cb_contractNumber";
-            this.cb_contractNumber.Size = new System.Drawing.Size(363, 21);
-            this.cb_contractNumber.TabIndex = 36;
+            this.cb_contract.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_contract.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cb_contract.FormattingEnabled = true;
+            this.cb_contract.Location = new System.Drawing.Point(113, 19);
+            this.cb_contract.Name = "cb_contract";
+            this.cb_contract.Size = new System.Drawing.Size(363, 21);
+            this.cb_contract.TabIndex = 36;
             // 
             // rb_closed
             // 
@@ -331,6 +333,7 @@ namespace MTO
             this.btn_findContracts.TabIndex = 33;
             this.btn_findContracts.Text = "Найти";
             this.btn_findContracts.UseVisualStyleBackColor = true;
+            this.btn_findContracts.Click += new System.EventHandler(this.btn_findContracts_Click);
             // 
             // groupBox2
             // 
@@ -539,7 +542,7 @@ namespace MTO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_analizeContract;
         private System.Windows.Forms.Button btn_viewContract;
-        private System.Windows.Forms.ComboBox cb_contractNumber;
+        private System.Windows.Forms.ComboBox cb_contract;
         private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_resetSearch;

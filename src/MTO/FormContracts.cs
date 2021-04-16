@@ -14,22 +14,29 @@ namespace MTO
 {
     public partial class FormContracts : Form
     {
+        private List<Contract> contracts;
+
         public FormContracts()
         {
             InitializeComponent();
         }
 
-        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        private void dtp_conclusionDate_ValueChanged(object sender, EventArgs e)
         {
-            dtp_conclusionDate.CustomFormat = "dd/MM/yyyy";
+            dtp_conclusionDate.CustomFormat = "dd-MM-yyyy";
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        private void dtp_expiredDate_ValueChanged(object sender, EventArgs e)
         {
-            dtp_expiredDate.CustomFormat = "dd/MM/yyyy";
+            dtp_expiredDate.CustomFormat = "dd-MM-yyyy";
         }
 
-        private void dateTimePicker3_KeyDown(object sender, KeyEventArgs e)
+        private void dtp_startDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_startDate.CustomFormat = "dd-MM-yyyy";
+        }
+
+        private void dtp_conclusionDate_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
@@ -37,11 +44,19 @@ namespace MTO
             }
         }
 
-        private void dateTimePicker2_KeyDown(object sender, KeyEventArgs e)
+        private void dtp_expiredDate_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
                 dtp_expiredDate.CustomFormat = " ";
+            }
+        }
+
+        private void dtp_startDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtp_startDate.CustomFormat = " ";
             }
         }
 
@@ -50,10 +65,20 @@ namespace MTO
             dgv_contracts.AutoGenerateColumns = false;
             dgv_contracts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
+            List<Contract> contracts = Program.db.Contracts.ToList();
+            cb_contract.DataSource = contracts;
+            cb_contract.SelectedIndex = -1;
+
+            List<Provider> providers = Program.db.Providers.ToList();
+            cb_provider.DataSource = providers;
+            cb_provider.SelectedIndex = -1;
+
             if (Program.user.isContract())
             {
                 tsmi_accounting.Visible = false;
             }
+
+            this.contracts = contracts;
         }
 
         private void btn_viewContract_Click(object sender, EventArgs e)
@@ -123,7 +148,12 @@ namespace MTO
 
         private void btn_resetSearch_Click(object sender, EventArgs e)
         {
-
+            cb_contract.SelectedIndex = -1;
+            cb_provider.SelectedIndex = -1;
+            dtp_conclusionDate.CustomFormat = " ";
+            dtp_expiredDate.CustomFormat = " ";
+            dtp_startDate.CustomFormat = " ";
+            rb_any.Checked = true;
         }
 
         private void FormContracts_Activated(object sender, EventArgs e)
@@ -133,15 +163,17 @@ namespace MTO
 
         private void updateContractTable()
         {
-            List<Contract> contracts = Program.db.Contracts.ToList();
+            findContracts();
+
             dgv_contracts.DataSource = contracts;
 
             dgv_contracts.Columns[0].DataPropertyName = "PK_Contract";
             dgv_contracts.Columns[1].DataPropertyName = "ContractNumber";
-            dgv_contracts.Columns[2].DataPropertyName = "ConclusionDate";
-            dgv_contracts.Columns[3].DataPropertyName = "StartDate";
-            dgv_contracts.Columns[4].DataPropertyName = "ExpiredDate";
+            dgv_contracts.Columns[2].DataPropertyName = "ConclusionDateWithoutTime";
+            dgv_contracts.Columns[3].DataPropertyName = "StartDateWithoutTime";
+            dgv_contracts.Columns[4].DataPropertyName = "ExpiredDateWithoutTime";
             dgv_contracts.Columns[5].DataPropertyName = "Provider";
+            dgv_contracts.Columns[6].DataPropertyName = "Status";
         }
 
         private void dgv_contracts_SelectionChanged(object sender, EventArgs e)
@@ -154,6 +186,81 @@ namespace MTO
             {
                 btn_viewContract.Enabled = false;
             }
+        }
+
+        private void btn_findContracts_Click(object sender, EventArgs e)
+        {
+            updateContractTable();
+        }
+
+        private void findContracts()
+        {
+            List<Contract> foundContracts = new List<Contract>();
+
+            Contract contractSelect = (Contract)cb_contract.SelectedItem;
+            bool contractCriterium = false;
+            int PK_Contract = -1;
+            if (contractSelect != null)
+            {
+                contractCriterium = true;
+                PK_Contract = contractSelect.PK_Contract;
+            }
+
+            Provider providerSelect = (Provider)cb_provider.SelectedItem;
+            bool providerCriterium = false;
+            int PK_Provider = -1;
+            if (providerSelect != null)
+            {
+                providerCriterium = true;
+                PK_Provider = providerSelect.PK_Provider;
+            }
+
+            var b = dtp_conclusionDate.CustomFormat.ToString();
+
+            bool conclusionCriterium = dtp_conclusionDate.CustomFormat.ToString() != " ";
+            string conclusionDate = dtp_conclusionDate.Value.ToString("dd-MM-yyyy");
+
+            bool startCriterium = dtp_startDate.CustomFormat.ToString() != " ";
+            string startDate = dtp_startDate.Value.ToString("dd-MM-yyyy");
+
+            bool expiredCriterium = dtp_expiredDate.CustomFormat.ToString() != " ";
+            string expiredDate = dtp_expiredDate.Value.ToString("dd-MM-yyyy");
+
+            bool statusCriterium = !rb_any.Checked;
+
+            foreach (Contract contract in Program.db.Contracts)
+            {
+                bool contractFound = !contractCriterium;
+                bool providerFound = !providerCriterium;
+                bool conclusionFound = !conclusionCriterium;
+                bool startFound = !startCriterium;
+                bool expiredFound = !expiredCriterium;
+                bool statusFound = !statusCriterium;
+
+                if (contractCriterium && contract.PK_Contract == PK_Contract)
+                    contractFound = true;
+
+                if (providerCriterium && contract.Provider.PK_Provider == PK_Provider)
+                    providerFound = true;
+
+                if (conclusionCriterium && contract.ConclusionDateWithoutTime.Contains(conclusionDate))
+                    conclusionFound = true;
+
+                if (startCriterium && contract.StartDateWithoutTime.Contains(startDate))
+                    startFound = true;
+
+                if (expiredCriterium && contract.ExpiredDateWithoutTime.Contains(expiredDate))
+                    expiredFound = true;
+
+                if (statusCriterium && (contract.IsOpened && rb_opened.Checked) || (!contract.IsOpened && rb_closed.Checked))
+                        statusFound = true;
+
+                if (contractFound && providerFound && conclusionFound && 
+                    startFound && expiredFound && statusFound)
+                    foundContracts.Add(contract);
+            }
+
+            contracts = foundContracts;
         }
     }
 }
