@@ -29,8 +29,8 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_receiptOrderNumber = new System.Windows.Forms.Label();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
             this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +50,7 @@ namespace MTO
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pb_export = new System.Windows.Forms.ProgressBar();
             this.menuStripReceiptOrder = new System.Windows.Forms.MenuStrip();
             this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,9 +92,9 @@ namespace MTO
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersVisible = false;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_receiptOrders.Size = new System.Drawing.Size(770, 100);
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_receiptOrders.Size = new System.Drawing.Size(770, 73);
             this.dgv_receiptOrders.TabIndex = 4;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
             // 
@@ -151,13 +152,13 @@ namespace MTO
             this.UnitPrice,
             this.Price});
             this.dgv_receiptOrderLines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_receiptOrderLines.Location = new System.Drawing.Point(3, 162);
+            this.dgv_receiptOrderLines.Location = new System.Drawing.Point(3, 135);
             this.dgv_receiptOrderLines.MultiSelect = false;
             this.dgv_receiptOrderLines.Name = "dgv_receiptOrderLines";
             this.dgv_receiptOrderLines.ReadOnly = true;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrderLines.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_receiptOrderLines.Size = new System.Drawing.Size(770, 367);
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrderLines.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_receiptOrderLines.Size = new System.Drawing.Size(770, 366);
             this.dgv_receiptOrderLines.TabIndex = 5;
             this.dgv_receiptOrderLines.SelectionChanged += new System.EventHandler(this.dgv_receiptOrderLines_SelectionChanged);
             // 
@@ -220,19 +221,28 @@ namespace MTO
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.dgv_receiptOrders, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbl_receiptOrderNumber, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgv_receiptOrderLines, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pb_export, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(776, 532);
             this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // pb_export
+            // 
+            this.pb_export.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb_export.Location = new System.Drawing.Point(3, 507);
+            this.pb_export.Name = "pb_export";
+            this.pb_export.Size = new System.Drawing.Size(770, 22);
+            this.pb_export.TabIndex = 6;
             // 
             // menuStripReceiptOrder
             // 
@@ -256,7 +266,7 @@ namespace MTO
             // tsmi_fileExport
             // 
             this.tsmi_fileExport.Name = "tsmi_fileExport";
-            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_fileExport.Size = new System.Drawing.Size(119, 22);
             this.tsmi_fileExport.Text = "Экспорт";
             this.tsmi_fileExport.Click += new System.EventHandler(this.tsmi_fileExport_Click);
             // 
@@ -332,5 +342,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn Provider;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProviderCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractNumber;
+        private System.Windows.Forms.ProgressBar pb_export;
     }
 }

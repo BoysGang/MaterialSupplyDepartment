@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -116,19 +117,10 @@ namespace MTO
             }
         }
 
-        private void tsmi_fileExport_Click(object sender, EventArgs e)
+        async void export()
         {
             try
             {
-                Excel.Application app;
-                Excel.Workbook book;
-                Excel.Worksheet sheet;
-
-                app = new Excel.Application();
-
-                book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templatePath));
-                sheet = (Excel.Worksheet)book.Sheets[1];
-
                 //заполнение шапки
                 sheet.Cells[5, "AN"] = receiptOrder.ReceiptOrderNumber.ToString();
 
@@ -180,43 +172,93 @@ namespace MTO
                     sheet.Cells[startTableIndex + i, "BR"] = lines[i].TotalPrice.ToString();
                 }
 
-                string fileName_new = String.Empty;
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "xls files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                saveFileDialog.FilterIndex = 1;
-                saveFileDialog.RestoreDirectory = true;
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    fileName_new = saveFileDialog.FileName;
-                }
-                else
-                    return;
-
-
                 sheet.get_Range("A18", sheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing)).
                     Rows.RowHeight = 30;
 
-                FileInfo fileInfo = new FileInfo(fileName_new);
-                if (fileInfo.Exists)
-                {
-                    fileInfo.Delete();
-                }
-                book.SaveAs(fileName_new, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing,
-                    Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing);
-
-                saveFileDialog.Dispose();
-
-                book.Close();
-                app.Quit();
-
-                MessageBox.Show("Файл успешно был сохранен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Errors!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private Excel.Application app;
+        private Excel.Workbook book;
+        private Excel.Worksheet sheet;
+
+
+        async Task Export()
+        {
+            await Task.Run(() =>
+                export()
+            );
+        }
+        private async void tsmi_fileExport_Click(object sender, EventArgs e)
+        {
+            System.Timers.Timer tmr_export = new System.Timers.Timer();
+
+            app = new Excel.Application();
+
+            book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templatePath));
+            sheet = (Excel.Worksheet)book.Sheets[1];
+
+
+            pb_export.Value = 0;
+            tmr_export.Elapsed += tmr_export_Tick;
+            tmr_export.Interval = 100;
+            tmr_export.Start();
+
+
+            
+            await Export();
+
+
+            tmr_export.Stop();
+            pb_export.Value = 100;
+
+            string fileName_new = String.Empty;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "xls files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                fileName_new = saveFileDialog.FileName;
+            }
+            else
+            {
+                pb_export.Value = 0;
+                return;
+            }
+
+            FileInfo fileInfo = new FileInfo(fileName_new);
+            if (fileInfo.Exists)
+            {
+                fileInfo.Delete();
+            }
+            book.SaveAs(fileName_new, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing,
+                Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing);
+
+            saveFileDialog.Dispose();
+
+            book.Close();
+            app.Quit();
+
+            MessageBox.Show("Файл успешно был сохранен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            pb_export.Value = 0;
+
+        }
+
+
+        private void tmr_export_Tick(object sender, EventArgs e)
+        {
+            if (pb_export.Value == pb_export.Maximum)
+                pb_export.Value = 0;
+            else
+                pb_export.Value  += 10;
         }
     }
 }
