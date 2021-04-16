@@ -99,6 +99,7 @@ namespace MTO
             {
                 FormContractView formContractView = new FormContractView(viewingContract);
                 formContractView.ShowDialog();
+                updateContractTable();
             }
         }
 
@@ -106,12 +107,14 @@ namespace MTO
         {
             FormAnalysis form = new FormAnalysis();
             form.ShowDialog();
+            updateContractTable();
         }
 
         public void tsmi_contractCreate_Click(object sender, EventArgs e)
         {
             FormContractAdd form = new FormContractAdd();
             form.ShowDialog();
+            updateContractTable();
         }
 
         private void tsmi_dictResources_Click(object sender, EventArgs e)
