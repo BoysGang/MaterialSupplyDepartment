@@ -47,7 +47,7 @@ namespace MTO
             dgv_receiptOrders.DataSource = new List<ReceiptOrder> { receiptOrder };
 
             dgv_receiptOrders.Columns[0].DataPropertyName = "PK_ReceiptOrder";
-            dgv_receiptOrders.Columns[1].DataPropertyName = "DeliveryDate";
+            dgv_receiptOrders.Columns[1].DataPropertyName = "DeliveryDateWithoutTime";
             dgv_receiptOrders.Columns[2].DataPropertyName = "Warehouse";
             dgv_receiptOrders.Columns[3].DataPropertyName = "Provider";
             dgv_receiptOrders.Columns[4].DataPropertyName = "Provider_INN";
