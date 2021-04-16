@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MTO.Models;
+using MTO.Utils;
 
 namespace MTO
 {
@@ -66,8 +67,14 @@ namespace MTO
             dgv_contracts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             List<Contract> contracts = Program.db.Contracts.ToList();
-            cb_contract.DataSource = contracts;
-            cb_contract.SelectedIndex = -1;
+
+            AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+            foreach (Contract contract in contracts)
+                source.Add(contract.ContractNumber);
+
+            tb_contractNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tb_contractNumber.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tb_contractNumber.AutoCompleteCustomSource = source;
 
             List<Provider> providers = Program.db.Providers.ToList();
             cb_provider.DataSource = providers;
@@ -78,7 +85,6 @@ namespace MTO
                 tsmi_accounting.Visible = false;
             }
 
-            
             this.contracts = contracts;
         }
 
@@ -92,7 +98,6 @@ namespace MTO
                 FormContractView formContractView = new FormContractView(viewingContract);
                 formContractView.ShowDialog();
             }
-
         }
 
         private void btn_analizeContract_Click(object sender, EventArgs e)
@@ -149,17 +154,12 @@ namespace MTO
 
         private void btn_resetSearch_Click(object sender, EventArgs e)
         {
-            cb_contract.SelectedIndex = -1;
+            tb_contractNumber.Text = "";
             cb_provider.SelectedIndex = -1;
             dtp_conclusionDate.CustomFormat = " ";
             dtp_expiredDate.CustomFormat = " ";
             dtp_startDate.CustomFormat = " ";
             rb_any.Checked = true;
-        }
-
-        private void FormContracts_Activated(object sender, EventArgs e)
-        {
-            updateContractTable();
         }
 
         private void updateContractTable()
@@ -198,14 +198,8 @@ namespace MTO
         {
             List<Contract> foundContracts = new List<Contract>();
 
-            Contract contractSelect = (Contract)cb_contract.SelectedItem;
-            bool contractCriterium = false;
-            int PK_Contract = -1;
-            if (contractSelect != null)
-            {
-                contractCriterium = true;
-                PK_Contract = contractSelect.PK_Contract;
-            }
+            bool contractNumberCriterium = tb_contractNumber.Text != string.Empty;
+            string contractNumber = tb_contractNumber.Text.ToLower();
 
             Provider providerSelect = (Provider)cb_provider.SelectedItem;
             bool providerCriterium = false;
@@ -215,8 +209,6 @@ namespace MTO
                 providerCriterium = true;
                 PK_Provider = providerSelect.PK_Provider;
             }
-
-            var b = dtp_conclusionDate.CustomFormat.ToString();
 
             bool conclusionCriterium = dtp_conclusionDate.CustomFormat.ToString() != " ";
             string conclusionDate = dtp_conclusionDate.Value.ToString("dd-MM-yyyy");
@@ -231,15 +223,15 @@ namespace MTO
 
             foreach (Contract contract in Program.db.Contracts)
             {
-                bool contractFound = !contractCriterium;
+                bool contractNumberFound = !contractNumberCriterium;
                 bool providerFound = !providerCriterium;
                 bool conclusionFound = !conclusionCriterium;
                 bool startFound = !startCriterium;
                 bool expiredFound = !expiredCriterium;
                 bool statusFound = !statusCriterium;
 
-                if (contractCriterium && contract.PK_Contract == PK_Contract)
-                    contractFound = true;
+                if (contractNumberCriterium && contract.ContractNumber.Contains(contractNumber))
+                    contractNumberFound = true;
 
                 if (providerCriterium && contract.Provider.PK_Provider == PK_Provider)
                     providerFound = true;
@@ -256,12 +248,18 @@ namespace MTO
                 if (statusCriterium && (contract.IsOpened && rb_opened.Checked) || (!contract.IsOpened && rb_closed.Checked))
                         statusFound = true;
 
-                if (contractFound && providerFound && conclusionFound && 
+                if (contractNumberFound && providerFound && conclusionFound && 
                     startFound && expiredFound && statusFound)
                     foundContracts.Add(contract);
             }
 
             contracts = foundContracts;
+        }
+
+        private void tb_contractNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!ModifierKeys.HasFlag(Keys.Control))
+                e.Handled = !TextValidator.isNumber(e.KeyChar.ToString());
         }
     }
 }

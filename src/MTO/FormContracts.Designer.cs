@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cb_provider = new System.Windows.Forms.ComboBox();
@@ -47,9 +47,9 @@ namespace MTO
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_contractNumber = new System.Windows.Forms.TextBox();
             this.dtp_startDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.cb_contract = new System.Windows.Forms.ComboBox();
             this.rb_closed = new System.Windows.Forms.RadioButton();
             this.rb_opened = new System.Windows.Forms.RadioButton();
             this.rb_any = new System.Windows.Forms.RadioButton();
@@ -171,8 +171,8 @@ namespace MTO
             this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
@@ -229,9 +229,9 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tb_contractNumber);
             this.groupBox1.Controls.Add(this.dtp_startDate);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cb_contract);
             this.groupBox1.Controls.Add(this.rb_closed);
             this.groupBox1.Controls.Add(this.rb_opened);
             this.groupBox1.Controls.Add(this.rb_any);
@@ -249,6 +249,15 @@ namespace MTO
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
+            // 
+            // tb_contractNumber
+            // 
+            this.tb_contractNumber.Location = new System.Drawing.Point(112, 19);
+            this.tb_contractNumber.MaxLength = 50;
+            this.tb_contractNumber.Name = "tb_contractNumber";
+            this.tb_contractNumber.Size = new System.Drawing.Size(364, 20);
+            this.tb_contractNumber.TabIndex = 39;
+            this.tb_contractNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_contractNumber_KeyPress);
             // 
             // dtp_startDate
             // 
@@ -271,16 +280,6 @@ namespace MTO
             this.label4.TabIndex = 38;
             this.label4.Text = "Дата начала";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cb_contract
-            // 
-            this.cb_contract.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cb_contract.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cb_contract.FormattingEnabled = true;
-            this.cb_contract.Location = new System.Drawing.Point(113, 19);
-            this.cb_contract.Name = "cb_contract";
-            this.cb_contract.Size = new System.Drawing.Size(363, 21);
-            this.cb_contract.TabIndex = 36;
             // 
             // rb_closed
             // 
@@ -499,7 +498,6 @@ namespace MTO
             this.MaximizeBox = false;
             this.Name = "FormContracts";
             this.Text = "Модуль договоров";
-            this.Activated += new System.EventHandler(this.FormContracts_Activated);
             this.Load += new System.EventHandler(this.FormContracts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -542,7 +540,6 @@ namespace MTO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_analizeContract;
         private System.Windows.Forms.Button btn_viewContract;
-        private System.Windows.Forms.ComboBox cb_contract;
         private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_resetSearch;
@@ -556,5 +553,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn Underdelivery;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
+        private System.Windows.Forms.TextBox tb_contractNumber;
     }
 }
