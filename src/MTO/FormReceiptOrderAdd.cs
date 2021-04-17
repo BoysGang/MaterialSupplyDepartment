@@ -59,8 +59,6 @@ namespace MTO
 
                 fillLinesTable();
             }
-
-
         }
 
         private void btn_cancelAdd_Click(object sender, EventArgs e)
@@ -325,6 +323,7 @@ namespace MTO
                 dgv_orderLines.Rows[i].Cells[3].Value = lines[i].Resource.PK_Unit;
                 dgv_orderLines.Rows[i].Cells[5].Value = lines[i].AcceptedAmount;
                 dgv_orderLines.Rows[i].Cells[6].Value = lines[i].DocumentAmount;
+                dgv_orderLines.Rows[i].Cells[7].Value = lines[i].UnitPrice;
             }
         }
 
