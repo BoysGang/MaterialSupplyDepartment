@@ -53,6 +53,7 @@ namespace MTO
             this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.pb_export = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -67,7 +68,7 @@ namespace MTO
             this.rtb_document.Location = new System.Drawing.Point(3, 3);
             this.rtb_document.Name = "rtb_document";
             this.rtb_document.ReadOnly = true;
-            this.rtb_document.Size = new System.Drawing.Size(464, 356);
+            this.rtb_document.Size = new System.Drawing.Size(464, 333);
             this.rtb_document.TabIndex = 0;
             this.rtb_document.Text = "";
             // 
@@ -77,13 +78,14 @@ namespace MTO
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.lbl_header, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pb_export, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 437);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -106,7 +108,7 @@ namespace MTO
             this.tabControl1.Location = new System.Drawing.Point(3, 46);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(478, 388);
+            this.tabControl1.Size = new System.Drawing.Size(478, 365);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -115,7 +117,7 @@ namespace MTO
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(470, 362);
+            this.tabPage1.Size = new System.Drawing.Size(470, 339);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Главное";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -266,6 +268,14 @@ namespace MTO
             this.tsmi_editDelete.Text = "Удаление";
             this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
             // 
+            // pb_export
+            // 
+            this.pb_export.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb_export.Location = new System.Drawing.Point(3, 417);
+            this.pb_export.Name = "pb_export";
+            this.pb_export.Size = new System.Drawing.Size(478, 17);
+            this.pb_export.TabIndex = 4;
+            // 
             // FormContractView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,5 +325,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
+        private System.Windows.Forms.ProgressBar pb_export;
     }
 }

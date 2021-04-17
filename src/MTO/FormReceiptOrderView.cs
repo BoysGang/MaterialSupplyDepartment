@@ -117,7 +117,7 @@ namespace MTO
             }
         }
 
-        async void export()
+        private void export()
         {
             try
             {
@@ -186,7 +186,9 @@ namespace MTO
         async Task Export()
         {
             await Task.Run(() =>
-                export()
+            {
+                export();
+            }
             );
         }
 
