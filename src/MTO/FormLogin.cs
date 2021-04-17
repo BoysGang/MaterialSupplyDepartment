@@ -45,7 +45,7 @@ namespace MTO
 
                 this.Hide();
 
-                if (Program.user.isAdmin() || Program.user.isContract())
+                if (Program.user.isContract())
                 {
 
                     mainForm = new FormStartContract();
@@ -56,6 +56,13 @@ namespace MTO
                 else if (Program.user.isAccounting())
                 {
                     mainForm = new FormStartAccounting();
+                    mainForm.Closed += (s, args) => this.Close();
+
+                    mainForm.Show();
+                }
+                else if(Program.user.isAdmin())
+                {
+                    mainForm = new FormContracts();
                     mainForm.Closed += (s, args) => this.Close();
 
                     mainForm.Show();
