@@ -29,8 +29,8 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_receiptOrderNumber = new System.Windows.Forms.Label();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
             this.PK_ReceiptOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,8 +92,8 @@ namespace MTO
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersVisible = false;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_receiptOrders.Size = new System.Drawing.Size(770, 73);
             this.dgv_receiptOrders.TabIndex = 4;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
@@ -156,8 +156,8 @@ namespace MTO
             this.dgv_receiptOrderLines.MultiSelect = false;
             this.dgv_receiptOrderLines.Name = "dgv_receiptOrderLines";
             this.dgv_receiptOrderLines.ReadOnly = true;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrderLines.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrderLines.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_receiptOrderLines.Size = new System.Drawing.Size(770, 366);
             this.dgv_receiptOrderLines.TabIndex = 5;
             this.dgv_receiptOrderLines.SelectionChanged += new System.EventHandler(this.dgv_receiptOrderLines_SelectionChanged);

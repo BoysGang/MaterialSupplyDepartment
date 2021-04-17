@@ -45,13 +45,14 @@ namespace MTO
             this.dgv_orderLines = new System.Windows.Forms.DataGridView();
             this.cb_contractNumber = new System.Windows.Forms.ComboBox();
             this.btn_deleteLine = new System.Windows.Forms.Button();
-            this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_orderLines)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +88,7 @@ namespace MTO
             // 
             // tb_receiptOrderNumber
             // 
-            this.tb_receiptOrderNumber.Location = new System.Drawing.Point(360, 12);
+            this.tb_receiptOrderNumber.Location = new System.Drawing.Point(429, 12);
             this.tb_receiptOrderNumber.Name = "tb_receiptOrderNumber";
             this.tb_receiptOrderNumber.Size = new System.Drawing.Size(147, 20);
             this.tb_receiptOrderNumber.TabIndex = 93;
@@ -96,7 +97,7 @@ namespace MTO
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(170, 12);
+            this.label1.Location = new System.Drawing.Point(239, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 20);
             this.label1.TabIndex = 92;
@@ -114,7 +115,7 @@ namespace MTO
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(363, 103);
+            this.label4.Location = new System.Drawing.Point(389, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 100;
@@ -133,7 +134,7 @@ namespace MTO
             // 
             this.dtp_delivaryDate.Location = new System.Drawing.Point(130, 101);
             this.dtp_delivaryDate.Name = "dtp_delivaryDate";
-            this.dtp_delivaryDate.Size = new System.Drawing.Size(147, 20);
+            this.dtp_delivaryDate.Size = new System.Drawing.Size(184, 20);
             this.dtp_delivaryDate.TabIndex = 102;
             // 
             // cb_warehouseCipher
@@ -143,7 +144,7 @@ namespace MTO
             this.cb_warehouseCipher.FormattingEnabled = true;
             this.cb_warehouseCipher.Location = new System.Drawing.Point(130, 151);
             this.cb_warehouseCipher.Name = "cb_warehouseCipher";
-            this.cb_warehouseCipher.Size = new System.Drawing.Size(147, 21);
+            this.cb_warehouseCipher.Size = new System.Drawing.Size(184, 21);
             this.cb_warehouseCipher.TabIndex = 103;
             // 
             // cb_provider
@@ -151,15 +152,15 @@ namespace MTO
             this.cb_provider.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cb_provider.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_provider.FormattingEnabled = true;
-            this.cb_provider.Location = new System.Drawing.Point(460, 100);
+            this.cb_provider.Location = new System.Drawing.Point(486, 100);
             this.cb_provider.Name = "cb_provider";
-            this.cb_provider.Size = new System.Drawing.Size(147, 21);
+            this.cb_provider.Size = new System.Drawing.Size(260, 21);
             this.cb_provider.TabIndex = 104;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(363, 154);
+            this.label6.Location = new System.Drawing.Point(389, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 13);
             this.label6.TabIndex = 105;
@@ -176,7 +177,8 @@ namespace MTO
             this.Unit,
             this.UnitCipher,
             this.AcceptedAmount,
-            this.DocumentAmount});
+            this.DocumentAmount,
+            this.UnitPrice});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -189,7 +191,7 @@ namespace MTO
             this.dgv_orderLines.Location = new System.Drawing.Point(12, 226);
             this.dgv_orderLines.MultiSelect = false;
             this.dgv_orderLines.Name = "dgv_orderLines";
-            this.dgv_orderLines.Size = new System.Drawing.Size(639, 185);
+            this.dgv_orderLines.Size = new System.Drawing.Size(760, 185);
             this.dgv_orderLines.TabIndex = 107;
             this.dgv_orderLines.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_orderLines_CellEndEdit);
             this.dgv_orderLines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_orderLines_CellValueChanged);
@@ -201,9 +203,9 @@ namespace MTO
             this.cb_contractNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cb_contractNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_contractNumber.FormattingEnabled = true;
-            this.cb_contractNumber.Location = new System.Drawing.Point(460, 151);
+            this.cb_contractNumber.Location = new System.Drawing.Point(486, 151);
             this.cb_contractNumber.Name = "cb_contractNumber";
-            this.cb_contractNumber.Size = new System.Drawing.Size(147, 21);
+            this.cb_contractNumber.Size = new System.Drawing.Size(260, 21);
             this.cb_contractNumber.TabIndex = 108;
             // 
             // btn_deleteLine
@@ -216,52 +218,69 @@ namespace MTO
             this.btn_deleteLine.UseVisualStyleBackColor = true;
             this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
             // 
+            // UnitPrice
+            // 
+            this.UnitPrice.FillWeight = 17.76649F;
+            this.UnitPrice.HeaderText = "Цена";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // DocumentAmount
+            // 
+            this.DocumentAmount.FillWeight = 17.76649F;
+            this.DocumentAmount.HeaderText = "Кол-во по документу";
+            this.DocumentAmount.Name = "DocumentAmount";
+            // 
+            // AcceptedAmount
+            // 
+            this.AcceptedAmount.FillWeight = 17.76649F;
+            this.AcceptedAmount.HeaderText = "Кол-во принято";
+            this.AcceptedAmount.Name = "AcceptedAmount";
+            // 
+            // UnitCipher
+            // 
+            this.UnitCipher.FillWeight = 17.76649F;
+            this.UnitCipher.HeaderText = "Шифр ед. измерения";
+            this.UnitCipher.Name = "UnitCipher";
+            this.UnitCipher.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            this.Unit.FillWeight = 17.76649F;
+            this.Unit.HeaderText = "Ед. измерения";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ResourceCipher
+            // 
+            this.ResourceCipher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ResourceCipher.FillWeight = 17.76649F;
+            this.ResourceCipher.HeaderText = "Шифр ресурса";
+            this.ResourceCipher.Name = "ResourceCipher";
+            this.ResourceCipher.Width = 70;
+            // 
+            // Resource
+            // 
+            this.Resource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Resource.FillWeight = 593.4008F;
+            this.Resource.HeaderText = "Ресурс";
+            this.Resource.MinimumWidth = 110;
+            this.Resource.Name = "Resource";
+            this.Resource.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Resource.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Resource.Width = 365;
+            // 
             // PK_ReceiptOrderLine
             // 
             this.PK_ReceiptOrderLine.HeaderText = "PK";
             this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
             this.PK_ReceiptOrderLine.Visible = false;
             // 
-            // Resource
-            // 
-            this.Resource.HeaderText = "Ресурс";
-            this.Resource.Name = "Resource";
-            this.Resource.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Resource.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ResourceCipher
-            // 
-            this.ResourceCipher.HeaderText = "Шифр ресурса";
-            this.ResourceCipher.Name = "ResourceCipher";
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Ед. измерения";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // UnitCipher
-            // 
-            this.UnitCipher.HeaderText = "Шифр ед. измерения";
-            this.UnitCipher.Name = "UnitCipher";
-            this.UnitCipher.ReadOnly = true;
-            // 
-            // AcceptedAmount
-            // 
-            this.AcceptedAmount.HeaderText = "Кол-во принято";
-            this.AcceptedAmount.Name = "AcceptedAmount";
-            // 
-            // DocumentAmount
-            // 
-            this.DocumentAmount.HeaderText = "Кол-во по документу";
-            this.DocumentAmount.Name = "DocumentAmount";
-            // 
             // FormReceiptOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 421);
+            this.ClientSize = new System.Drawing.Size(784, 421);
             this.Controls.Add(this.btn_deleteLine);
             this.Controls.Add(this.cb_contractNumber);
             this.Controls.Add(this.dgv_orderLines);
@@ -310,5 +329,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn AcceptedAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DocumentAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
     }
 }

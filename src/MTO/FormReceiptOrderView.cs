@@ -69,7 +69,7 @@ namespace MTO
             dgv_receiptOrderLines.Columns[4].DataPropertyName = "Resource_Unit_Cipher";
             dgv_receiptOrderLines.Columns[5].DataPropertyName = "AcceptedAmount";
             dgv_receiptOrderLines.Columns[6].DataPropertyName = "DocumentAmount";
-            dgv_receiptOrderLines.Columns[7].DataPropertyName = "Price";
+            dgv_receiptOrderLines.Columns[7].DataPropertyName = "UnitPrice";
             dgv_receiptOrderLines.Columns[8].DataPropertyName = "TotalPrice";
         }
 
@@ -165,7 +165,7 @@ namespace MTO
                     sheet.Cells[startTableIndex + i, "AG"] = lines[i].Resource.Unit.Name;
                     sheet.Cells[startTableIndex + i, "AT"] = lines[i].DocumentAmount.ToString();
                     sheet.Cells[startTableIndex + i, "BB"] = lines[i].AcceptedAmount.ToString();
-                    sheet.Cells[startTableIndex + i, "BJ"] = lines[i].Price.ToString();
+                    sheet.Cells[startTableIndex + i, "BJ"] = lines[i].UnitPrice.ToString();
                     sheet.Cells[startTableIndex + i, "BR"] = lines[i].TotalPrice.ToString();
                 }
 
