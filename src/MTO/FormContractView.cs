@@ -8,15 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace MTO
 {
     public partial class FormContractView : Form
     {
+        private const string templateSpecPath = "..//..//..//static//contract-spec.xlsx";
+        private string saveSpecName = "contract-spec.xlsx";
+        private int amountStringDefault = 8;
+
+        private string pathSave = String.Empty;
+
         private Contract contract;
         private string dateFormat = "dd.MM.yyyy";
         private string header = "Договор поставки № ";
-        private string templatePath = "..//..//..//static//contract.rtf";
+        private string templateContractPath = "..//..//..//static//contract.rtf";
+
 
         public FormContractView(Contract contract)
         {
@@ -95,7 +105,7 @@ namespace MTO
                 {"[CustomerAgentName]",  contract.CustomerAgentName},
             };
 
-            rtb_document.LoadFile(templatePath);
+            rtb_document.LoadFile(templateContractPath);
 
             foreach (KeyValuePair<string, string> keyValue in replace)
             {
@@ -142,6 +152,121 @@ namespace MTO
                     MessageBox.Show("Ошибка удаления, " + ex.ToString());
                 }
             }
+        }
+
+        private void tsmi_fileExport_Click(object sender, EventArgs e)
+        {
+            pathSave = String.Empty;
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+            folderDialog.Description = "Выберите папку для экспорта файлов";
+
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                pathSave = folderDialog.SelectedPath;
+            }
+            else
+            {
+                return;
+            }
+
+
+            saveContract();
+            saveSpecification();
+
+            MessageBox.Show("Успешно сохранены файлы:\n" + saveSpecName + " и ");
+        }
+
+        private void saveContract()
+        {
+        }
+
+        private Excel.Application app;
+        private Excel.Workbook book;
+        private Excel.Worksheet sheet;
+
+        private void saveSpecification()
+        {
+            app = new Excel.Application();
+
+            book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templateSpecPath));
+            sheet = (Excel.Worksheet)book.Sheets[1];
+
+
+            //шапка 
+            sheet.Cells[3, "BC"] = contract.ContractNumber.ToString();
+            sheet.Cells[4, "AX"] = contract.ConclusionDate.ToString(dateFormat);
+
+
+            //подвал
+            sheet.Cells[23, "C"] = contract.Provider.Name;
+            sheet.Cells[25, "C"] = contract.ProviderAgentRole;
+            sheet.Cells[25, "I"] = contract.ProviderAgentName;
+
+            sheet.Cells[23, "AO"] = contract.OrganizationDescription.Name;
+            sheet.Cells[25, "AO"] = contract.CustomerAgentRole;
+            sheet.Cells[25, "AU"] = contract.CustomerAgentName;
+
+            //..тело
+            List<ContractLine> lines = contract.getContractLines();
+            int extraStringsAmount = 0;
+            if (lines.Count > amountStringDefault)
+                extraStringsAmount = lines.Count - amountStringDefault;
+
+            int endStringInDoc = 19;
+            while (extraStringsAmount > 0)
+            {
+                Excel.Range excel_str = sheet.get_Range("A" + 12.ToString(), "BQ" + 15.ToString());
+                excel_str.Copy(Type.Missing);
+
+                Excel.Range r = (Excel.Range)sheet.Rows[endStringInDoc];
+                r.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
+
+                Excel.Range paste = sheet.get_Range("A" + endStringInDoc.ToString(), "BQ" + (endStringInDoc + 3).ToString());
+                paste.PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteAll,
+                    Microsoft.Office.Interop.Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone,
+                    Type.Missing, Type.Missing);
+
+                extraStringsAmount -= 4;
+                endStringInDoc += 4;
+            }
+
+            int startTableIndex = 11;
+            for (int i = 0; i < lines.Count; i++)
+            {
+                sheet.Cells[startTableIndex + i, "B"] = (i + 1).ToString();
+                sheet.Cells[startTableIndex + i, "E"] = lines[i].Resource.Name;
+                sheet.Cells[startTableIndex + i, "X"] = lines[i].Resource.Cipher;
+                sheet.Cells[startTableIndex + i, "AE"] = lines[i].Amount;
+
+                sheet.Cells[startTableIndex + i, "AJ"] = lines[i].Resource.Unit.Name;
+                sheet.Cells[startTableIndex + i, "AS"] = lines[i].Resource.Unit.Cipher;
+
+                sheet.Cells[startTableIndex + i, "AW"] = lines[i].UnitPrice.ToString();
+                sheet.Cells[startTableIndex + i, "BB"] = lines[i].TotalPrice.ToString();
+                sheet.Cells[startTableIndex + i, "BI"] = lines[i].DeliveryDate.ToString(dateFormat);
+            }
+
+            sheet.get_Range("A11", "BI" + (startTableIndex + lines.Count - 1).ToString()).
+                Rows.RowHeight = 30;
+
+            sheet.PageSetup.PrintArea = "";
+
+
+            //сохранение
+            FileInfo fileInfo = new FileInfo(Path.Combine(pathSave, saveSpecName));
+            if (fileInfo.Exists)
+            {
+                fileInfo.Delete();
+            }
+            
+            book.SaveAs(Path.Combine(pathSave, saveSpecName), Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing,
+                Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing);
+
+
+            book.Close();
+            app.Quit();
         }
     }
 }

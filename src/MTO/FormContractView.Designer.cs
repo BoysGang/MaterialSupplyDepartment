@@ -38,12 +38,6 @@ namespace MTO
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_contractLines = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.PK_ContractLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +47,12 @@ namespace MTO
             this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,54 +157,6 @@ namespace MTO
             this.dgv_contractLines.Size = new System.Drawing.Size(464, 356);
             this.dgv_contractLines.TabIndex = 1;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_file,
-            this.tsmi_edit});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "ms_menuContracts";
-            // 
-            // tsmi_file
-            // 
-            this.tsmi_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_fileExport});
-            this.tsmi_file.Name = "tsmi_file";
-            this.tsmi_file.Size = new System.Drawing.Size(48, 20);
-            this.tsmi_file.Text = "Файл";
-            // 
-            // tsmi_fileExport
-            // 
-            this.tsmi_fileExport.Name = "tsmi_fileExport";
-            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_fileExport.Text = "Экспорт";
-            // 
-            // tsmi_edit
-            // 
-            this.tsmi_edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmi_editChange,
-            this.tsmi_editDelete});
-            this.tsmi_edit.Name = "tsmi_edit";
-            this.tsmi_edit.Size = new System.Drawing.Size(59, 20);
-            this.tsmi_edit.Text = "Правка";
-            // 
-            // tsmi_editChange
-            // 
-            this.tsmi_editChange.Name = "tsmi_editChange";
-            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_editChange.Text = "Редактирование";
-            this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
-            // 
-            // tsmi_editDelete
-            // 
-            this.tsmi_editDelete.Name = "tsmi_editDelete";
-            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
-            this.tsmi_editDelete.Text = "Удаление";
-            this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
-            // 
             // PK_ContractLine
             // 
             this.PK_ContractLine.HeaderText = "PK_ContractLine";
@@ -264,6 +216,55 @@ namespace MTO
             this.ColumnDeliveryDate.HeaderText = "Срок поставки";
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             this.ColumnDeliveryDate.ReadOnly = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_file,
+            this.tsmi_edit});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "ms_menuContracts";
+            // 
+            // tsmi_file
+            // 
+            this.tsmi_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_fileExport});
+            this.tsmi_file.Name = "tsmi_file";
+            this.tsmi_file.Size = new System.Drawing.Size(48, 20);
+            this.tsmi_file.Text = "Файл";
+            // 
+            // tsmi_fileExport
+            // 
+            this.tsmi_fileExport.Name = "tsmi_fileExport";
+            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_fileExport.Text = "Экспорт";
+            this.tsmi_fileExport.Click += new System.EventHandler(this.tsmi_fileExport_Click);
+            // 
+            // tsmi_edit
+            // 
+            this.tsmi_edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_editChange,
+            this.tsmi_editDelete});
+            this.tsmi_edit.Name = "tsmi_edit";
+            this.tsmi_edit.Size = new System.Drawing.Size(59, 20);
+            this.tsmi_edit.Text = "Правка";
+            // 
+            // tsmi_editChange
+            // 
+            this.tsmi_editChange.Name = "tsmi_editChange";
+            this.tsmi_editChange.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editChange.Text = "Редактирование";
+            this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
+            // 
+            // tsmi_editDelete
+            // 
+            this.tsmi_editDelete.Name = "tsmi_editDelete";
+            this.tsmi_editDelete.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editDelete.Text = "Удаление";
+            this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
             // 
             // FormContractView
             // 
