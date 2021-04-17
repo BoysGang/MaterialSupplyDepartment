@@ -26,6 +26,7 @@ namespace MTO
         private string dateFormat = "dd.MM.yyyy";
         private string header = "Договор поставки № ";
         private string templateContractPath = "..//..//..//static//contract.rtf";
+        private string saveContractName = "contract.rtf";
 
 
         public FormContractView(Contract contract)
@@ -169,15 +170,16 @@ namespace MTO
                 return;
             }
 
-
             saveContract();
             saveSpecification();
 
-            MessageBox.Show("Успешно сохранены файлы:\n" + saveSpecName + " и ");
+            string message = "Успешно сохранены файлы:\n" + saveSpecName + " и " + saveContractName;
+            MessageBox.Show(message, "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void saveContract()
         {
+            rtb_document.SaveFile(Path.Combine(pathSave, saveContractName), RichTextBoxStreamType.RichNoOleObjs);
         }
 
         private Excel.Application app;
@@ -191,11 +193,9 @@ namespace MTO
             book = app.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, templateSpecPath));
             sheet = (Excel.Worksheet)book.Sheets[1];
 
-
             //шапка 
             sheet.Cells[3, "BC"] = contract.ContractNumber.ToString();
             sheet.Cells[4, "AX"] = contract.ConclusionDate.ToString(dateFormat);
-
 
             //подвал
             sheet.Cells[23, "C"] = contract.Provider.Name;
@@ -251,7 +251,6 @@ namespace MTO
 
             sheet.PageSetup.PrintArea = "";
 
-
             //сохранение
             FileInfo fileInfo = new FileInfo(Path.Combine(pathSave, saveSpecName));
             if (fileInfo.Exists)
@@ -263,7 +262,6 @@ namespace MTO
                 Type.Missing, Type.Missing, Type.Missing,
                 Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing);
-
 
             book.Close();
             app.Quit();
