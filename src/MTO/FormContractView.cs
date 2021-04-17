@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -155,8 +156,21 @@ namespace MTO
             }
         }
 
-        private void tsmi_fileExport_Click(object sender, EventArgs e)
+        async Task Export()
         {
+            await Task.Run(() =>
+            {
+                saveContract();
+                saveSpecification();
+            }
+            ) ;
+        }
+
+        private async void tsmi_fileExport_Click(object sender, EventArgs e)
+        {
+            System.Timers.Timer tmr_export = new System.Timers.Timer();
+
+
             pathSave = String.Empty;
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             folderDialog.Description = "Выберите папку для экспорта файлов";
@@ -170,14 +184,31 @@ namespace MTO
                 return;
             }
 
-            saveContract();
-            saveSpecification();
+            pb_export.Value = 0;
+            tmr_export.Elapsed += tmr_export_Tick;
+            tmr_export.Interval = 100;
+            tmr_export.Start();
+
+
+            await Export();
+
+            tmr_export.Stop();
+            pb_export.Value = 100;
 
             string message = "Успешно сохранены файлы:\n" + saveSpecName + " и " + saveContractName;
             MessageBox.Show(message, "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            pb_export.Value = 0;
         }
 
-        private void saveContract()
+        private void tmr_export_Tick(object sender, EventArgs e)
+        {
+            if (pb_export.Value == pb_export.Maximum)
+                pb_export.Value = 0;
+            else
+                pb_export.Value += 1;
+        }
+
+            private void saveContract()
         {
             rtb_document.SaveFile(Path.Combine(pathSave, saveContractName), RichTextBoxStreamType.RichNoOleObjs);
         }
