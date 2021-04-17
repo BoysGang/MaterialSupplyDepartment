@@ -70,6 +70,7 @@ namespace MTO
         {
             dgv_orderLines.AutoGenerateColumns = false;
             dgv_orderLines.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv_orderLines.Columns["Resource"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void dgv_orderLines_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -142,30 +143,19 @@ namespace MTO
                 {
                     if(dgv_orderLines.Rows[i].Cells[0].Value == null)
                     {
-                        addLineToDb(i, order);
+                        ReceiptOrderLine line = new ReceiptOrderLine();
+                        fillLine(i, line, order);
+
+                        Program.db.ReceiptOrderLines.Add(line);
+                        Program.db.SaveChanges();
                     }
                     else
                     {
                         int pk_line = int.Parse(dgv_orderLines.Rows[i].Cells[0].Value.ToString());
 
-
-                        float acceptedAmount = 0;
-                        if (dgv_orderLines.Rows[i].Cells[5].Value != null)
-                            float.TryParse(dgv_orderLines.Rows[i].Cells[5].Value.ToString(),
-                                NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out acceptedAmount);
-
-                        float documentedAmount = 0;
-                        if (dgv_orderLines.Rows[i].Cells[6].Value != null)
-                            float.TryParse(dgv_orderLines.Rows[i].Cells[6].Value.ToString(),
-                                NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out documentedAmount);
-
-                        int pk_resource = (int)dgv_orderLines.Rows[i].Cells[1].Value;
-
                         ReceiptOrderLine line = lines.Find((item) => item.PK_ReceiptOrderLine == pk_line);
 
-                        line.AcceptedAmount = acceptedAmount;
-                        line.DocumentAmount = documentedAmount;
-                        line.PK_Resource = pk_resource;
+                        fillLine(i, line, order);
 
                         Program.db.ReceiptOrderLines.Update(line);
                         Program.db.SaveChanges();
@@ -195,7 +185,11 @@ namespace MTO
                 // Save lines
                 for (int i = 0; i < dgv_orderLines.Rows.Count - 1; i++)
                 {
-                    addLineToDb(i, receiptOrder);
+                    ReceiptOrderLine line = new ReceiptOrderLine();
+                    fillLine(i, line, receiptOrder);
+
+                    Program.db.ReceiptOrderLines.Add(line);
+                    Program.db.SaveChanges();
                 }
 
                 successMessage = "добавлена.";
@@ -257,6 +251,11 @@ namespace MTO
                 {
                     dgv_orderLines.Rows[i].Cells[6].Value = "0";
                 }
+
+                if (dgv_orderLines.Rows[i].Cells[7].Value == null)
+                {
+                    dgv_orderLines.Rows[i].Cells[7].Value = "0";
+                }
             }
 
             return true;
@@ -282,19 +281,22 @@ namespace MTO
                 e.CellStyle.BackColor = dgv_orderLines.DefaultCellStyle.BackColor;
             }
 
-            // Amount fields KeyPress
-            e.Control.KeyPress -= new KeyPressEventHandler(amountFieldsKeyPress);
-            if (dgv_orderLines.CurrentCell.ColumnIndex == 5 || dgv_orderLines.CurrentCell.ColumnIndex == 6)
+            // Amount fields and Price field KeyPress
+            e.Control.KeyPress -= new KeyPressEventHandler(onlyFloatAllowedKeyPress);
+
+            int column = dgv_orderLines.CurrentCell.ColumnIndex;
+
+            if (column == 5 || column == 6 || column == 7)
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
                 {
-                    tb.KeyPress += new KeyPressEventHandler(amountFieldsKeyPress);
+                    tb.KeyPress += new KeyPressEventHandler(onlyFloatAllowedKeyPress);
                 }
             }
         }
 
-        private void amountFieldsKeyPress(object sender, KeyPressEventArgs e)
+        private void onlyFloatAllowedKeyPress(object sender, KeyPressEventArgs e)
         {
             // Verify that the pressed key isn't CTRL or any non-numeric digit
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -321,31 +323,33 @@ namespace MTO
                 dgv_orderLines.Rows[i].Cells[3].Value = lines[i].Resource.PK_Unit;
                 dgv_orderLines.Rows[i].Cells[5].Value = lines[i].AcceptedAmount;
                 dgv_orderLines.Rows[i].Cells[6].Value = lines[i].DocumentAmount;
+                dgv_orderLines.Rows[i].Cells[7].Value = lines[i].UnitPrice;
             }
         }
 
-        private void addLineToDb(int row, ReceiptOrder order)
+        private void fillLine(int row, ReceiptOrderLine line, ReceiptOrder order)
         {
             float acceptedAmount = 0;
             if (dgv_orderLines.Rows[row].Cells[5].Value != null)
                 float.TryParse(dgv_orderLines.Rows[row].Cells[5].Value.ToString(),
-                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out acceptedAmount);
+                    NumberStyles.Float, CultureInfo.InvariantCulture, out acceptedAmount);
 
             float documentAmount = 0;
             if (dgv_orderLines.Rows[row].Cells[6].Value != null)
                 float.TryParse(dgv_orderLines.Rows[row].Cells[6].Value.ToString(),
-                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out documentAmount);
+                    NumberStyles.Float, CultureInfo.InvariantCulture, out documentAmount);
 
-            ReceiptOrderLine line = new ReceiptOrderLine()
-            {
-                PK_ReceiptOrder = order.PK_ReceiptOrder,
-                AcceptedAmount = acceptedAmount,
-                DocumentAmount = documentAmount,
-                PK_Resource = (int)dgv_orderLines.Rows[row].Cells[1].Value,
-            };
+            decimal unitPrice = 0;
+            if (dgv_orderLines.Rows[row].Cells[7].Value != null)
+                decimal.TryParse(dgv_orderLines.Rows[row].Cells[7].Value.ToString(),
+                    NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out unitPrice);
 
-            Program.db.ReceiptOrderLines.Add(line);
-            Program.db.SaveChanges();
+
+            line.PK_ReceiptOrder = order.PK_ReceiptOrder;
+            line.AcceptedAmount = acceptedAmount;
+            line.DocumentAmount = documentAmount;
+            line.PK_Resource = (int)dgv_orderLines.Rows[row].Cells[1].Value;
+            line.UnitPrice = unitPrice;
         }
 
         private void fillOrder(ReceiptOrder order)
@@ -359,6 +363,14 @@ namespace MTO
 
         private void btn_deleteLine_Click(object sender, EventArgs e)
         {
+
+            if (dgv_orderLines.SelectedRows.Count == 0
+                || dgv_orderLines.CurrentCell.RowIndex == dgv_orderLines.Rows.Count - 1)
+            {
+                MessageBox.Show("Выберите строку для удаления", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             int selectedIndex = dgv_orderLines.CurrentCell.RowIndex;
 
             if (order != null && dgv_orderLines.Rows[selectedIndex].Cells[0].Value != null)
@@ -366,7 +378,7 @@ namespace MTO
                 int pk_line = Int32.Parse(dgv_orderLines.Rows[selectedIndex].Cells[0].Value.ToString());
                 deletedLines.Add(pk_line);
             }
-
+                                    
             dgv_orderLines.Rows.RemoveAt(selectedIndex);
         }
     }
