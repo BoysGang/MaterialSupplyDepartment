@@ -375,15 +375,18 @@ namespace MTO
                 try
                 {
                     int PK_Resource;
-                    if (!Int32.TryParse(dgv_contractlines.Rows[currRow].Cells[1].Value.ToString(), out PK_Resource))
+                    if (dgv_contractlines.Rows[currRow].Cells[1].Value != null)
                     {
-                        MessageBox.Show("Неверный PK для ресурса!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (!Int32.TryParse(dgv_contractlines.Rows[currRow].Cells[1].Value.ToString(), out PK_Resource))
+                        {
+                            MessageBox.Show("Неверный PK для ресурса!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        Resource res = Program.db.Resources.Find(PK_Resource);
+                        dgv_contractlines.Rows[currRow].Cells[2].Value = res.Cipher;
+                        dgv_contractlines.Rows[currRow].Cells[4].Value = res.Unit.Name;
+                        dgv_contractlines.Rows[currRow].Cells[5].Value = res.Unit.Cipher;
                     }
-                    Resource res = Program.db.Resources.Find(PK_Resource);
-                    dgv_contractlines.Rows[currRow].Cells[2].Value = res.Cipher;
-                    dgv_contractlines.Rows[currRow].Cells[4].Value = res.Unit.Name;
-                    dgv_contractlines.Rows[currRow].Cells[5].Value = res.Unit.Cipher;
 
 
                 }
@@ -504,6 +507,18 @@ namespace MTO
         {
             if (!ModifierKeys.HasFlag(Keys.Control))
                 e.Handled = !TextValidator.isNumber(e.KeyChar.ToString());
+        }
+
+        private void FormContractAdd_Load(object sender, EventArgs e)
+        {
+            dgv_contractlines.AutoGenerateColumns = false;
+            dgv_contractlines.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv_contractlines.Columns["Resource"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+
+        private void dgv_contractlines_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dtp.Visible = false;
         }
     }
 }
