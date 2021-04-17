@@ -363,6 +363,14 @@ namespace MTO
 
         private void btn_deleteLine_Click(object sender, EventArgs e)
         {
+
+            if (dgv_orderLines.SelectedRows.Count == 0
+                || dgv_orderLines.CurrentCell.RowIndex == dgv_orderLines.Rows.Count - 1)
+            {
+                MessageBox.Show("Выберите строку для удаления", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             int selectedIndex = dgv_orderLines.CurrentCell.RowIndex;
 
             if (order != null && dgv_orderLines.Rows[selectedIndex].Cells[0].Value != null)
@@ -370,7 +378,7 @@ namespace MTO
                 int pk_line = Int32.Parse(dgv_orderLines.Rows[selectedIndex].Cells[0].Value.ToString());
                 deletedLines.Add(pk_line);
             }
-
+                                    
             dgv_orderLines.Rows.RemoveAt(selectedIndex);
         }
     }
