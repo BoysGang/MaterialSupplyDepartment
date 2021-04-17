@@ -490,17 +490,25 @@ namespace MTO
 
         private void btn_deleteLine_Click(object sender, EventArgs e)
         {
-            if(dgv_contractlines.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Выберите строку для удаления!");
-                return;
+                if (dgv_contractlines.SelectedRows.Count == 0 
+                    || dgv_contractlines.Rows.Count - 1 == dgv_contractlines.CurrentCell.RowIndex)
+                {
+                    MessageBox.Show("Выберите строку для удаления!");
+                    return;
+                }
+                int selectedItem = dgv_contractlines.CurrentCell.RowIndex;
+
+                if (currContract != null && dgv_contractlines.Rows[selectedItem].Cells[0].Value != null)
+                    deletedLines.Add(Int32.Parse(dgv_contractlines.Rows[selectedItem].Cells[0].Value.ToString()));
+
+                dgv_contractlines.Rows.RemoveAt(selectedItem);
             }
-            int selectedItem = dgv_contractlines.CurrentCell.RowIndex;
-
-            if(currContract != null && dgv_contractlines.Rows[selectedItem].Cells[0].Value != null)
-                deletedLines.Add(Int32.Parse(dgv_contractlines.Rows[selectedItem].Cells[0].Value.ToString()));
-
-            dgv_contractlines.Rows.RemoveAt(selectedItem);
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
          }
 
         private void tb_actNumber_KeyPress(object sender, KeyPressEventArgs e)

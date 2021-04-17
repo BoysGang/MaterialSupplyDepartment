@@ -61,12 +61,6 @@ namespace MTO
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_contractlines = new System.Windows.Forms.DataGridView();
-            this.btn_deleteLine = new System.Windows.Forms.Button();
-            this.dtp_conclusionDate = new System.Windows.Forms.DateTimePicker();
-            this.btn_AddNClose = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.btn_cancelAdd = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.PK_Contractline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CipherResource = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +70,12 @@ namespace MTO
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_deleteLine = new System.Windows.Forms.Button();
+            this.dtp_conclusionDate = new System.Windows.Forms.DateTimePicker();
+            this.btn_AddNClose = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_cancelAdd = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -418,63 +418,6 @@ namespace MTO
             this.dgv_contractlines.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_contractlines_CurrentCellDirtyStateChanged);
             this.dgv_contractlines.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_contractlines_EditingControlShowing);
             // 
-            // btn_deleteLine
-            // 
-            this.btn_deleteLine.Location = new System.Drawing.Point(3, 3);
-            this.btn_deleteLine.Name = "btn_deleteLine";
-            this.btn_deleteLine.Size = new System.Drawing.Size(75, 23);
-            this.btn_deleteLine.TabIndex = 1;
-            this.btn_deleteLine.Text = "Удалить строку";
-            this.btn_deleteLine.UseVisualStyleBackColor = true;
-            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
-            // 
-            // dtp_conclusionDate
-            // 
-            this.dtp_conclusionDate.Location = new System.Drawing.Point(556, 12);
-            this.dtp_conclusionDate.Name = "dtp_conclusionDate";
-            this.dtp_conclusionDate.Size = new System.Drawing.Size(147, 20);
-            this.dtp_conclusionDate.TabIndex = 78;
-            // 
-            // btn_AddNClose
-            // 
-            this.btn_AddNClose.Location = new System.Drawing.Point(12, 42);
-            this.btn_AddNClose.Name = "btn_AddNClose";
-            this.btn_AddNClose.Size = new System.Drawing.Size(125, 23);
-            this.btn_AddNClose.TabIndex = 89;
-            this.btn_AddNClose.Text = "Записать и закрыть";
-            this.btn_AddNClose.UseVisualStyleBackColor = true;
-            this.btn_AddNClose.Click += new System.EventHandler(this.btn_AddNClose_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(143, 42);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(92, 23);
-            this.btn_add.TabIndex = 90;
-            this.btn_add.Text = "Записать";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // btn_cancelAdd
-            // 
-            this.btn_cancelAdd.Location = new System.Drawing.Point(241, 42);
-            this.btn_cancelAdd.Name = "btn_cancelAdd";
-            this.btn_cancelAdd.Size = new System.Drawing.Size(92, 23);
-            this.btn_cancelAdd.TabIndex = 91;
-            this.btn_cancelAdd.Text = "Отменить";
-            this.btn_cancelAdd.UseVisualStyleBackColor = true;
-            this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(510, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 20);
-            this.label12.TabIndex = 92;
-            this.label12.Text = "от";
-            // 
             // PK_Contractline
             // 
             this.PK_Contractline.HeaderText = "PK_Contractline";
@@ -531,6 +474,63 @@ namespace MTO
             this.DeliveryDate.HeaderText = "Срок поставки";
             this.DeliveryDate.MinimumWidth = 80;
             this.DeliveryDate.Name = "DeliveryDate";
+            // 
+            // btn_deleteLine
+            // 
+            this.btn_deleteLine.Location = new System.Drawing.Point(3, 3);
+            this.btn_deleteLine.Name = "btn_deleteLine";
+            this.btn_deleteLine.Size = new System.Drawing.Size(75, 23);
+            this.btn_deleteLine.TabIndex = 1;
+            this.btn_deleteLine.Text = "Удалить строку";
+            this.btn_deleteLine.UseVisualStyleBackColor = true;
+            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
+            // 
+            // dtp_conclusionDate
+            // 
+            this.dtp_conclusionDate.Location = new System.Drawing.Point(556, 12);
+            this.dtp_conclusionDate.Name = "dtp_conclusionDate";
+            this.dtp_conclusionDate.Size = new System.Drawing.Size(147, 20);
+            this.dtp_conclusionDate.TabIndex = 78;
+            // 
+            // btn_AddNClose
+            // 
+            this.btn_AddNClose.Location = new System.Drawing.Point(12, 42);
+            this.btn_AddNClose.Name = "btn_AddNClose";
+            this.btn_AddNClose.Size = new System.Drawing.Size(125, 23);
+            this.btn_AddNClose.TabIndex = 89;
+            this.btn_AddNClose.Text = "Записать и закрыть";
+            this.btn_AddNClose.UseVisualStyleBackColor = true;
+            this.btn_AddNClose.Click += new System.EventHandler(this.btn_AddNClose_Click);
+            // 
+            // btn_add
+            // 
+            this.btn_add.Location = new System.Drawing.Point(143, 42);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(92, 23);
+            this.btn_add.TabIndex = 90;
+            this.btn_add.Text = "Записать";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // btn_cancelAdd
+            // 
+            this.btn_cancelAdd.Location = new System.Drawing.Point(241, 42);
+            this.btn_cancelAdd.Name = "btn_cancelAdd";
+            this.btn_cancelAdd.Size = new System.Drawing.Size(92, 23);
+            this.btn_cancelAdd.TabIndex = 91;
+            this.btn_cancelAdd.Text = "Отменить";
+            this.btn_cancelAdd.UseVisualStyleBackColor = true;
+            this.btn_cancelAdd.Click += new System.EventHandler(this.btn_cancelAdd_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(510, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 20);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "от";
             // 
             // FormContractAdd
             // 
