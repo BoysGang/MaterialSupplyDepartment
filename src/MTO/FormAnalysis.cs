@@ -92,7 +92,7 @@ namespace MTO
                     CultureInfo.InvariantCulture,
                     out amountUnderdelivery))
                 {
-                    if (amountUnderdelivery < 0)
+                    if (amountUnderdelivery <= 0)
                     {
                         dgv_analysis.Rows[i].Cells[9].Value = "Отсутствуют";
                         dgv_analysis.Rows[i].Cells[11].Value = "-";
