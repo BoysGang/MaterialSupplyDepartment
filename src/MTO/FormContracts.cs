@@ -105,8 +105,18 @@ namespace MTO
 
         private void btn_analizeContract_Click(object sender, EventArgs e)
         {
-            FormAnalysis form = new FormAnalysis();
-            form.ShowDialog();
+            if (dgv_contracts.CurrentCell != null)
+            {
+                int pk_contract = Convert.ToInt32(dgv_contracts.SelectedRows[0].Cells[0].Value);
+                Contract currContract = Program.db.Contracts.Find(pk_contract);
+
+                if (currContract != null)
+                {
+                    FormAnalysis form = new FormAnalysis(currContract);
+
+                    form.ShowDialog();
+                }
+            }
             updateContractTable();
         }
 

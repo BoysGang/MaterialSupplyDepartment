@@ -39,6 +39,9 @@ namespace MTO
         
         private void FormContractView_Load(object sender, EventArgs e)
         {
+            if (!contract.IsOpened)
+                tsmi_closeContract.Visible = false;
+
             dgv_contractLines.AutoGenerateColumns = false;
             dgv_contractLines.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
@@ -296,6 +299,15 @@ namespace MTO
 
             book.Close();
             app.Quit();
+        }
+
+        private void tsmi_closeContract_Click(object sender, EventArgs e)
+        {
+            contract.IsOpened = false;
+            Program.db.Contracts.Update(contract);
+            Program.db.SaveChanges();
+
+            MessageBox.Show("Контракт успешно закрыт!");
         }
     }
 }
