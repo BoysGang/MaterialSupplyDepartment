@@ -54,6 +54,7 @@ namespace MTO
             this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_closeContract = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -257,7 +258,8 @@ namespace MTO
             // 
             this.tsmi_edit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_editChange,
-            this.tsmi_editDelete});
+            this.tsmi_editDelete,
+            this.tsmi_closeContract});
             this.tsmi_edit.Name = "tsmi_edit";
             this.tsmi_edit.Size = new System.Drawing.Size(59, 20);
             this.tsmi_edit.Text = "Правка";
@@ -265,16 +267,23 @@ namespace MTO
             // tsmi_editChange
             // 
             this.tsmi_editChange.Name = "tsmi_editChange";
-            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_editChange.Size = new System.Drawing.Size(181, 22);
             this.tsmi_editChange.Text = "Редактирование";
             this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
             // 
             // tsmi_editDelete
             // 
             this.tsmi_editDelete.Name = "tsmi_editDelete";
-            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_editDelete.Size = new System.Drawing.Size(181, 22);
             this.tsmi_editDelete.Text = "Удаление";
             this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
+            // 
+            // tsmi_closeContract
+            // 
+            this.tsmi_closeContract.Name = "tsmi_closeContract";
+            this.tsmi_closeContract.Size = new System.Drawing.Size(181, 22);
+            this.tsmi_closeContract.Text = "Закрытие договора";
+            this.tsmi_closeContract.Click += new System.EventHandler(this.tsmi_closeContract_Click);
             // 
             // FormContractView
             // 
@@ -326,5 +335,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
         private System.Windows.Forms.ProgressBar pb_export;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_closeContract;
     }
 }
