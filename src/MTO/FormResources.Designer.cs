@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_resources = new System.Windows.Forms.DataGridView();
             this.PK_Resource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +50,7 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resources)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -71,8 +72,8 @@ namespace MTO
             this.dgv_resources.MultiSelect = false;
             this.dgv_resources.Name = "dgv_resources";
             this.dgv_resources.ReadOnly = true;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resources.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_resources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_resources.Size = new System.Drawing.Size(657, 247);
             this.dgv_resources.TabIndex = 2;
@@ -124,6 +125,7 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_resetSearch);
             this.groupBox1.Controls.Add(this.cb_type);
             this.groupBox1.Controls.Add(this.cb_unit);
             this.groupBox1.Controls.Add(this.label5);
@@ -214,7 +216,7 @@ namespace MTO
             // 
             // btn_find
             // 
-            this.btn_find.Location = new System.Drawing.Point(565, 116);
+            this.btn_find.Location = new System.Drawing.Point(476, 123);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(83, 22);
             this.btn_find.TabIndex = 10;
@@ -253,6 +255,16 @@ namespace MTO
             this.btn_add.Text = "Добавить";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(565, 123);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(83, 22);
+            this.btn_resetSearch.TabIndex = 20;
+            this.btn_resetSearch.Text = "Сбросить";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
             // FormResources
             // 
@@ -298,5 +310,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnResourceType;
+        private System.Windows.Forms.Button btn_resetSearch;
     }
 }

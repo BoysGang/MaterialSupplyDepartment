@@ -59,6 +59,7 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_providers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +152,7 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_resetSearch);
             this.groupBox1.Controls.Add(this.tb_BIK);
             this.groupBox1.Controls.Add(this.tb_correspondentAccount);
             this.groupBox1.Controls.Add(this.tb_checkingAccount);
@@ -223,7 +225,7 @@ namespace MTO
             // 
             // btn_find
             // 
-            this.btn_find.Location = new System.Drawing.Point(565, 162);
+            this.btn_find.Location = new System.Drawing.Point(476, 162);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(83, 22);
             this.btn_find.TabIndex = 10;
@@ -331,6 +333,16 @@ namespace MTO
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(565, 162);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(83, 22);
+            this.btn_resetSearch.TabIndex = 31;
+            this.btn_resetSearch.Text = "Сбросить";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
+            // 
             // FormProviders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +396,6 @@ namespace MTO
         private System.Windows.Forms.MaskedTextBox tb_correspondentAccount;
         private System.Windows.Forms.MaskedTextBox tb_checkingAccount;
         private System.Windows.Forms.MaskedTextBox tb_BIK;
+        private System.Windows.Forms.Button btn_resetSearch;
     }
 }
