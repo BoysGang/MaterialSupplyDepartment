@@ -47,13 +47,13 @@ namespace MTO
             this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pb_export = new System.Windows.Forms.ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmi_file = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_fileExport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editChange = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi_editDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.pb_export = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -128,7 +128,7 @@ namespace MTO
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(470, 362);
+            this.tabPage2.Size = new System.Drawing.Size(470, 339);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Спецификация";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@ namespace MTO
             this.dgv_contractLines.RowHeadersVisible = false;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_contractLines.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_contractLines.Size = new System.Drawing.Size(464, 356);
+            this.dgv_contractLines.Size = new System.Drawing.Size(464, 333);
             this.dgv_contractLines.TabIndex = 1;
             // 
             // PK_ContractLine
@@ -219,6 +219,14 @@ namespace MTO
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             this.ColumnDeliveryDate.ReadOnly = true;
             // 
+            // pb_export
+            // 
+            this.pb_export.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pb_export.Location = new System.Drawing.Point(3, 417);
+            this.pb_export.Name = "pb_export";
+            this.pb_export.Size = new System.Drawing.Size(478, 17);
+            this.pb_export.TabIndex = 4;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -257,24 +265,16 @@ namespace MTO
             // tsmi_editChange
             // 
             this.tsmi_editChange.Name = "tsmi_editChange";
-            this.tsmi_editChange.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editChange.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editChange.Text = "Редактирование";
             this.tsmi_editChange.Click += new System.EventHandler(this.tsmi_editChange_Click);
             // 
             // tsmi_editDelete
             // 
             this.tsmi_editDelete.Name = "tsmi_editDelete";
-            this.tsmi_editDelete.Size = new System.Drawing.Size(163, 22);
+            this.tsmi_editDelete.Size = new System.Drawing.Size(180, 22);
             this.tsmi_editDelete.Text = "Удаление";
             this.tsmi_editDelete.Click += new System.EventHandler(this.tsmi_editDelete_Click);
-            // 
-            // pb_export
-            // 
-            this.pb_export.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_export.Location = new System.Drawing.Point(3, 417);
-            this.pb_export.Name = "pb_export";
-            this.pb_export.Size = new System.Drawing.Size(478, 17);
-            this.pb_export.TabIndex = 4;
             // 
             // FormContractView
             // 
