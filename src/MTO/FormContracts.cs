@@ -29,12 +29,22 @@ namespace MTO
 
         private void dtp_expiredDate_ValueChanged(object sender, EventArgs e)
         {
-            dtp_expiredDate.CustomFormat = "dd-MM-yyyy";
+            dtp_expiredDateFrom.CustomFormat = "dd-MM-yyyy";
         }
 
         private void dtp_startDate_ValueChanged(object sender, EventArgs e)
         {
-            dtp_startDate.CustomFormat = "dd-MM-yyyy";
+            dtp_startDateFrom.CustomFormat = "dd-MM-yyyy";
+        }
+
+        private void dtp_startDateTo_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_startDateTo.CustomFormat = "dd-MM-yyyy";
+        }
+
+        private void dtp_expiredDateTo_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_expiredDateTo.CustomFormat = "dd-MM-yyyy";
         }
 
         private void dtp_conclusionDate_KeyDown(object sender, KeyEventArgs e)
@@ -49,7 +59,7 @@ namespace MTO
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
-                dtp_expiredDate.CustomFormat = " ";
+                dtp_expiredDateFrom.CustomFormat = " ";
             }
         }
 
@@ -57,7 +67,23 @@ namespace MTO
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
-                dtp_startDate.CustomFormat = " ";
+                dtp_startDateFrom.CustomFormat = " ";
+            }
+        }
+
+        private void dtp_startDateTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtp_startDateTo.CustomFormat = " ";
+            }
+        }
+
+        private void dtp_expiredDateTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtp_expiredDateTo.CustomFormat = " ";
             }
         }
 
@@ -79,6 +105,10 @@ namespace MTO
             List<Provider> providers = Program.db.Providers.ToList();
             cb_provider.DataSource = providers;
             cb_provider.SelectedIndex = -1;
+
+            List<Resource> resources = Program.db.Resources.ToList();
+            cb_resource.DataSource = resources;
+            cb_resource.SelectedIndex = -1;
 
             if (Program.user.isContract())
             {
@@ -170,11 +200,16 @@ namespace MTO
         private void btn_resetSearch_Click(object sender, EventArgs e)
         {
             tb_contractNumber.Text = "";
+            tb_conclusionCity.Text = "";
+            cb_resource.SelectedIndex = -1;
             cb_provider.SelectedIndex = -1;
             dtp_conclusionDate.CustomFormat = " ";
-            dtp_expiredDate.CustomFormat = " ";
-            dtp_startDate.CustomFormat = " ";
+            dtp_expiredDateFrom.CustomFormat = " ";
+            dtp_startDateFrom.CustomFormat = " ";
+            dtp_expiredDateTo.CustomFormat = " ";
+            dtp_startDateTo.CustomFormat = " ";
             rb_any.Checked = true;
+            cb_hasUnderdelivery.Checked = false;
 
             updateContractTable();
         }
@@ -228,46 +263,89 @@ namespace MTO
                 PK_Provider = providerSelect.PK_Provider;
             }
 
+            Resource resourceSelect = (Resource)cb_resource.SelectedItem;
+            bool resourceCriterium = false;
+            if (resourceSelect != null)
+            {
+                resourceCriterium = true;
+            }
+
+            bool conclusionCityCriterium = tb_conclusionCity.Text != "";
+            string conclusionCity = tb_conclusionCity.Text;
+
             bool conclusionCriterium = dtp_conclusionDate.CustomFormat.ToString() != " ";
             string conclusionDate = dtp_conclusionDate.Value.ToString("dd-MM-yyyy");
 
-            bool startCriterium = dtp_startDate.CustomFormat.ToString() != " ";
-            string startDate = dtp_startDate.Value.ToString("dd-MM-yyyy");
+            bool startFromCriterium = dtp_startDateFrom.CustomFormat.ToString() != " ";
+            DateTime startFromDate = DateTime.Parse(dtp_startDateFrom.Value.ToString("dd-MM-yyyy"));
 
-            bool expiredCriterium = dtp_expiredDate.CustomFormat.ToString() != " ";
-            string expiredDate = dtp_expiredDate.Value.ToString("dd-MM-yyyy");
+            bool expiredFromCriterium = dtp_expiredDateFrom.CustomFormat.ToString() != " ";
+            DateTime expiredFromDate = DateTime.Parse(dtp_expiredDateFrom.Value.ToString("dd-MM-yyyy"));
+
+            bool startToCriterium = dtp_startDateTo.CustomFormat.ToString() != " ";
+            DateTime startToDate = DateTime.Parse(dtp_startDateTo.Value.ToString("dd-MM-yyyy"));
+
+            bool expiredToCriterium = dtp_expiredDateTo.CustomFormat.ToString() != " ";
+            DateTime expiredToDate = DateTime.Parse(dtp_expiredDateTo.Value.ToString("dd-MM-yyyy"));
 
             bool statusCriterium = !rb_any.Checked;
 
-            foreach (Contract contract in Program.db.Contracts)
+            bool hasUnderdeliveryCriterium = !cb_hasUnderdelivery.Checked;
+
+            foreach (Contract contract in Program.db.Contracts.ToList())
             {
                 bool contractNumberFound = !contractNumberCriterium;
                 bool providerFound = !providerCriterium;
+                bool resourceFound = !resourceCriterium;
+                bool conclusionCityFound = !conclusionCityCriterium;
                 bool conclusionFound = !conclusionCriterium;
-                bool startFound = !startCriterium;
-                bool expiredFound = !expiredCriterium;
+                bool startFromFound = !startFromCriterium;
+                bool expiredFromFound = !expiredFromCriterium;
+                bool startToFound = !startToCriterium;
+                bool expiredToFound = !expiredToCriterium;
                 bool statusFound = !statusCriterium;
 
+                // ContractNumber criterium
                 if (contractNumberCriterium && contract.ContractNumber.Contains(contractNumber))
                     contractNumberFound = true;
 
+                // Provider criterium
                 if (providerCriterium && contract.Provider.PK_Provider == PK_Provider)
                     providerFound = true;
 
+                // Resource criterium
+                if (resourceCriterium && contract.checkResourceInContract(resourceSelect))
+                    resourceFound = true;
+
+                // ConclusionCity criterium
+                if (conclusionCityCriterium && contract.ConclusionCity.Contains(conclusionCity))
+                    conclusionCityFound = true;
+
+                // Conclusion criterium
                 if (conclusionCriterium && contract.ConclusionDateWithoutTime.Contains(conclusionDate))
                     conclusionFound = true;
 
-                if (startCriterium && contract.StartDateWithoutTime.Contains(startDate))
-                    startFound = true;
+                // Start criterium
+                if (startFromCriterium && DateTime.Compare(contract.StartDate, startFromDate) >= 0)
+                    startFromFound = true;
 
-                if (expiredCriterium && contract.ExpiredDateWithoutTime.Contains(expiredDate))
-                    expiredFound = true;
+                if (startToCriterium && DateTime.Compare(contract.StartDate, startToDate) <= 0)
+                    startToFound = true;
 
+                // Expired criterium
+                if (expiredFromCriterium && DateTime.Compare(contract.ExpiredDate, expiredFromDate) >= 0)
+                    expiredFromFound = true;
+
+                if (expiredToCriterium && DateTime.Compare(contract.ExpiredDate, expiredToDate) <= 0)
+                    expiredToFound = true;
+
+                // Status criterium
                 if (statusCriterium && (contract.IsOpened && rb_opened.Checked) || (!contract.IsOpened && rb_closed.Checked))
-                        statusFound = true;
+                    statusFound = true;
 
-                if (contractNumberFound && providerFound && conclusionFound && 
-                    startFound && expiredFound && statusFound)
+                // Add this contract to foundContracts if it passed all criteriums
+                if (contractNumberFound && providerFound && conclusionFound &&
+                    startFromFound && expiredFromFound && statusFound && startToFound && expiredToFound && conclusionCityFound && resourceFound)
                     foundContracts.Add(contract);
             }
 

@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_units = new System.Windows.Forms.DataGridView();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +44,7 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_units)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,12 +60,12 @@ namespace MTO
             this.ColumnName,
             this.PK_Unit});
             this.dgv_units.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgv_units.Location = new System.Drawing.Point(12, 164);
+            this.dgv_units.Location = new System.Drawing.Point(12, 184);
             this.dgv_units.MultiSelect = false;
             this.dgv_units.Name = "dgv_units";
             this.dgv_units.ReadOnly = true;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_units.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_units.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_units.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_units.Size = new System.Drawing.Size(654, 255);
             this.dgv_units.TabIndex = 0;
@@ -101,6 +102,7 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_resetSearch);
             this.groupBox1.Controls.Add(this.tb_cipher);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_name);
@@ -108,7 +110,7 @@ namespace MTO
             this.groupBox1.Controls.Add(this.btn_find);
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(654, 85);
+            this.groupBox1.Size = new System.Drawing.Size(654, 109);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
@@ -117,7 +119,7 @@ namespace MTO
             this.tb_cipher.Location = new System.Drawing.Point(9, 40);
             this.tb_cipher.MaxLength = 50;
             this.tb_cipher.Name = "tb_cipher";
-            this.tb_cipher.Size = new System.Drawing.Size(271, 20);
+            this.tb_cipher.Size = new System.Drawing.Size(322, 20);
             this.tb_cipher.TabIndex = 8;
             this.tb_cipher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cipher_KeyPress);
             // 
@@ -132,16 +134,16 @@ namespace MTO
             // 
             // tb_name
             // 
-            this.tb_name.Location = new System.Drawing.Point(286, 40);
+            this.tb_name.Location = new System.Drawing.Point(337, 40);
             this.tb_name.MaxLength = 50;
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(271, 20);
+            this.tb_name.Size = new System.Drawing.Size(311, 20);
             this.tb_name.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(283, 24);
+            this.label3.Location = new System.Drawing.Point(336, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 12;
@@ -149,7 +151,7 @@ namespace MTO
             // 
             // btn_find
             // 
-            this.btn_find.Location = new System.Drawing.Point(563, 38);
+            this.btn_find.Location = new System.Drawing.Point(476, 78);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(83, 23);
             this.btn_find.TabIndex = 10;
@@ -159,7 +161,7 @@ namespace MTO
             // 
             // btn_change
             // 
-            this.btn_change.Location = new System.Drawing.Point(174, 135);
+            this.btn_change.Location = new System.Drawing.Point(174, 155);
             this.btn_change.Name = "btn_change";
             this.btn_change.Size = new System.Drawing.Size(75, 23);
             this.btn_change.TabIndex = 20;
@@ -169,7 +171,7 @@ namespace MTO
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(93, 135);
+            this.btn_delete.Location = new System.Drawing.Point(93, 155);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 19;
@@ -179,7 +181,7 @@ namespace MTO
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(12, 135);
+            this.btn_add.Location = new System.Drawing.Point(12, 155);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 18;
@@ -187,11 +189,21 @@ namespace MTO
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(565, 78);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(83, 23);
+            this.btn_resetSearch.TabIndex = 14;
+            this.btn_resetSearch.Text = "Сбросить";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
+            // 
             // FormUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 431);
+            this.ClientSize = new System.Drawing.Size(674, 451);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_change);
             this.Controls.Add(this.btn_delete);
@@ -225,5 +237,6 @@ namespace MTO
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_Unit;
+        private System.Windows.Forms.Button btn_resetSearch;
     }
 }

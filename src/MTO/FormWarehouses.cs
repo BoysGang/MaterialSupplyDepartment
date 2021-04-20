@@ -61,6 +61,14 @@ namespace MTO
             updateWarehouseTable();
         }
 
+        private void btn_resetSearch_Click(object sender, EventArgs e)
+        {
+            tb_cipher.Text = "";
+            tb_name.Text = "";
+
+            updateWarehouseTable();
+        }
+
         private void btn_delete_Click(object sender, EventArgs e)
         {
             try

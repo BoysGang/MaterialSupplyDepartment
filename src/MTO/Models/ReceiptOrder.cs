@@ -74,5 +74,16 @@ namespace MTO.Models
                     .Where(b => b.PK_ReceiptOrder == PK_ReceiptOrder)
                     .ToList();
         }
+
+        public bool checkResourceInReceiptOrder(Resource resource)
+        {
+            foreach (ReceiptOrderLine receiptOrderLine in getReceiptOrderLines())
+            {
+                if (receiptOrderLine.PK_Resource == resource.PK_Resource)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

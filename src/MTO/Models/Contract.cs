@@ -110,5 +110,15 @@ namespace MTO.Models
                     .ToList();
         }
 
+        public bool checkResourceInContract(Resource resource)
+        {
+            foreach (ContractLine contractLine in getContractLines())
+            {
+                if (contractLine.PK_Resource == resource.PK_Resource)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

@@ -46,6 +46,14 @@ namespace MTO
             updateUnitTable();
         }
 
+        private void btn_resetSearch_Click(object sender, EventArgs e)
+        {
+            tb_name.Text = "";
+            tb_cipher.Text = "";
+
+            updateUnitTable();
+        }
+
         private void FormUnit_Load(object sender, EventArgs e)
         {
             dgv_units.AutoGenerateColumns = false;

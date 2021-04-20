@@ -44,6 +44,7 @@ namespace MTO
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_change = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_warehouses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,14 +60,14 @@ namespace MTO
             this.ColumnName,
             this.PK_Warehouse});
             this.dgv_warehouses.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgv_warehouses.Location = new System.Drawing.Point(12, 164);
+            this.dgv_warehouses.Location = new System.Drawing.Point(12, 181);
             this.dgv_warehouses.MultiSelect = false;
             this.dgv_warehouses.Name = "dgv_warehouses";
             this.dgv_warehouses.ReadOnly = true;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_warehouses.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_warehouses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_warehouses.Size = new System.Drawing.Size(654, 256);
+            this.dgv_warehouses.Size = new System.Drawing.Size(654, 239);
             this.dgv_warehouses.TabIndex = 6;
             this.dgv_warehouses.SelectionChanged += new System.EventHandler(this.dgv_warehouses_SelectionChanged);
             // 
@@ -104,13 +105,13 @@ namespace MTO
             this.tb_cipher.Location = new System.Drawing.Point(9, 40);
             this.tb_cipher.MaxLength = 50;
             this.tb_cipher.Name = "tb_cipher";
-            this.tb_cipher.Size = new System.Drawing.Size(271, 20);
+            this.tb_cipher.Size = new System.Drawing.Size(315, 20);
             this.tb_cipher.TabIndex = 8;
             this.tb_cipher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cipher_KeyPress);
             // 
             // btn_find
             // 
-            this.btn_find.Location = new System.Drawing.Point(563, 38);
+            this.btn_find.Location = new System.Drawing.Point(476, 83);
             this.btn_find.Name = "btn_find";
             this.btn_find.Size = new System.Drawing.Size(83, 23);
             this.btn_find.TabIndex = 10;
@@ -130,7 +131,7 @@ namespace MTO
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(283, 24);
+            this.label3.Location = new System.Drawing.Point(327, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 12;
@@ -138,15 +139,15 @@ namespace MTO
             // 
             // tb_name
             // 
-            this.tb_name.Location = new System.Drawing.Point(286, 40);
+            this.tb_name.Location = new System.Drawing.Point(330, 40);
             this.tb_name.MaxLength = 50;
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(271, 20);
+            this.tb_name.Size = new System.Drawing.Size(318, 20);
             this.tb_name.TabIndex = 13;
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(12, 135);
+            this.btn_add.Location = new System.Drawing.Point(12, 150);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 14;
@@ -156,7 +157,7 @@ namespace MTO
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(93, 135);
+            this.btn_delete.Location = new System.Drawing.Point(93, 150);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 15;
@@ -166,7 +167,7 @@ namespace MTO
             // 
             // btn_change
             // 
-            this.btn_change.Location = new System.Drawing.Point(174, 135);
+            this.btn_change.Location = new System.Drawing.Point(174, 150);
             this.btn_change.Name = "btn_change";
             this.btn_change.Size = new System.Drawing.Size(75, 23);
             this.btn_change.TabIndex = 16;
@@ -176,6 +177,7 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_resetSearch);
             this.groupBox1.Controls.Add(this.tb_cipher);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tb_name);
@@ -183,9 +185,19 @@ namespace MTO
             this.groupBox1.Controls.Add(this.btn_find);
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(654, 85);
+            this.groupBox1.Size = new System.Drawing.Size(654, 112);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
+            // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(565, 83);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(83, 23);
+            this.btn_resetSearch.TabIndex = 14;
+            this.btn_resetSearch.Text = "Сбросить";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
             // FormWarehouses
             // 
@@ -225,5 +237,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCipher;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_Warehouse;
+        private System.Windows.Forms.Button btn_resetSearch;
     }
 }

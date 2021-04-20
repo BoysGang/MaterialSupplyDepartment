@@ -59,6 +59,19 @@ namespace MTO
             updateProvidersTable();
         }
 
+        private void btn_resetSearch_Click(object sender, EventArgs e)
+        {
+            tb_name.Text = "";
+            tb_address.Text = "";
+            tb_phoneNumber.Text = "";
+            tb_INN.Text = "";
+            tb_checkingAccount.Text = "";
+            tb_correspondentAccount.Text = "";
+            tb_BIK.Text = "";
+
+            updateProvidersTable();
+        }
+
         private void btn_change_Click(object sender, EventArgs e)
         {
             int PK_Provider = Convert.ToInt32(dgv_providers.SelectedRows[0].Cells[7].Value);

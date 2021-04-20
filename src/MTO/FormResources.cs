@@ -50,6 +50,16 @@ namespace MTO
             }
         }
 
+        private void btn_resetSearch_Click(object sender, EventArgs e)
+        {
+            tb_cipher.Text = "";
+            tb_name.Text = "";
+            cb_type.SelectedIndex = -1;
+            cb_unit.SelectedIndex = -1;
+
+            updateResourceTable();
+        }
+
         private void FormResources_Load(object sender, EventArgs e)
         {
             dgv_resources.AutoGenerateColumns = false;
