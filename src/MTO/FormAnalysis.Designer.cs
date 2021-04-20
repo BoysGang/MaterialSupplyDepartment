@@ -29,15 +29,11 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_analysis = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_header = new System.Windows.Forms.Label();
-            this.btn_export = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_totalUndeliveryCost = new System.Windows.Forms.TextBox();
             this.PK_ContractLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +49,6 @@ namespace MTO
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_analysis)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -62,14 +57,13 @@ namespace MTO
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgv_analysis, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 564);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -92,20 +86,20 @@ namespace MTO
             this.AmountUnderdelivery,
             this.UnitPrice,
             this.UnderdeliveryPrice});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_analysis.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_analysis.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_analysis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_analysis.Location = new System.Drawing.Point(3, 87);
             this.dgv_analysis.Name = "dgv_analysis";
             this.dgv_analysis.ReadOnly = true;
             this.dgv_analysis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_analysis.Size = new System.Drawing.Size(978, 417);
+            this.dgv_analysis.Size = new System.Drawing.Size(978, 474);
             this.dgv_analysis.TabIndex = 14;
             // 
             // tableLayoutPanel2
@@ -114,7 +108,6 @@ namespace MTO
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.lbl_header, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_export, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -128,49 +121,11 @@ namespace MTO
             this.lbl_header.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_header.AutoSize = true;
             this.lbl_header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_header.Location = new System.Drawing.Point(278, 29);
+            this.lbl_header.Location = new System.Drawing.Point(335, 29);
             this.lbl_header.Name = "lbl_header";
             this.lbl_header.Size = new System.Drawing.Size(308, 20);
             this.lbl_header.TabIndex = 11;
             this.lbl_header.Text = "Анализ поставок по договору № от";
-            // 
-            // btn_export
-            // 
-            this.btn_export.Location = new System.Drawing.Point(868, 3);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(107, 38);
-            this.btn_export.TabIndex = 1;
-            this.btn_export.Text = "Экспорт в Excel";
-            this.btn_export.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.tb_totalUndeliveryCost);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(781, 510);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 51);
-            this.flowLayoutPanel1.TabIndex = 16;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(155, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Общая сумма недопоставок:";
-            // 
-            // tb_totalUndeliveryCost
-            // 
-            this.tb_totalUndeliveryCost.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tb_totalUndeliveryCost.Location = new System.Drawing.Point(3, 16);
-            this.tb_totalUndeliveryCost.Name = "tb_totalUndeliveryCost";
-            this.tb_totalUndeliveryCost.ReadOnly = true;
-            this.tb_totalUndeliveryCost.Size = new System.Drawing.Size(100, 20);
-            this.tb_totalUndeliveryCost.TabIndex = 0;
             // 
             // PK_ContractLine
             // 
@@ -232,6 +187,7 @@ namespace MTO
             this.AmountUnderdelivery.HeaderText = "Недопоставка";
             this.AmountUnderdelivery.Name = "AmountUnderdelivery";
             this.AmountUnderdelivery.ReadOnly = true;
+            this.AmountUnderdelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UnitPrice
             // 
@@ -244,6 +200,7 @@ namespace MTO
             this.UnderdeliveryPrice.HeaderText = "Стоимость недопоставки";
             this.UnderdeliveryPrice.Name = "UnderdeliveryPrice";
             this.UnderdeliveryPrice.ReadOnly = true;
+            this.UnderdeliveryPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormAnalysis
             // 
@@ -258,8 +215,6 @@ namespace MTO
             ((System.ComponentModel.ISupportInitialize)(this.dgv_analysis)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,10 +225,6 @@ namespace MTO
         private System.Windows.Forms.DataGridView dgv_analysis;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lbl_header;
-        private System.Windows.Forms.Button btn_export;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_totalUndeliveryCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_ContractLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCipher;

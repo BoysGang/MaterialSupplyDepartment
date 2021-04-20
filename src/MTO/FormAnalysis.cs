@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 using MTO.Models;
 
@@ -31,9 +32,9 @@ namespace MTO
 
             int pk_contract = contract.PK_Contract;
             lines = contract.getContractLines();
-            List<ReceiptOrderLine> receiptLines = Program.db.ReceiptOrderLines
+            List<ReceiptOrderLine> receiptLines = Program.db.ReceiptOrderLines.ToList()
                                             .Where(b => b.ReceiptOrder.PK_Contract == pk_contract)
-                                            //.OrderBy(b => b.ReceiptOrder.DeliveryDate)
+                                            .OrderBy(b => b.ReceiptOrder.DeliveryDate)
                                             .ToList();
 
 
@@ -48,7 +49,7 @@ namespace MTO
 
 
                 ReceiptOrderLine thisLine = receiptLines.FindAll(b => b.PK_Resource == line.PK_Resource)
-                    .Where(b => b.ReceiptOrder.DeliveryDate < line.DeliveryDate)
+                    .Where(b => b.ReceiptOrder.DeliveryDate <= line.DeliveryDate)
                     .FirstOrDefault();
 
 
@@ -83,6 +84,23 @@ namespace MTO
                 dgv_analysis.Rows[i].Cells[5].Value = line.DeliveryDate.ToString("dd-MM-yyyy");
                 dgv_analysis.Rows[i].Cells[7].Value = line.Amount;
                 dgv_analysis.Rows[i].Cells[10].Value = line.UnitPrice;
+
+
+                float amountUnderdelivery = 0;
+                if (float.TryParse(dgv_analysis.Rows[i].Cells[9].Value.ToString(),
+                    System.Globalization.NumberStyles.Float,
+                    CultureInfo.InvariantCulture,
+                    out amountUnderdelivery))
+                {
+                    if (amountUnderdelivery < 0)
+                    {
+                        dgv_analysis.Rows[i].Cells[9].Value = "Отсутствуют";
+                        dgv_analysis.Rows[i].Cells[11].Value = "-";
+                    }
+                }
+                else
+                    MessageBox.Show(amountUnderdelivery.ToString());
+
             }
 
 
@@ -92,5 +110,6 @@ namespace MTO
         {
             dgv_analysis.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
+
     }
 }
