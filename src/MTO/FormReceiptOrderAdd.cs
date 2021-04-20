@@ -56,6 +56,7 @@ namespace MTO
                 cb_contractNumber.Text = order.Contract.ContractNumber;
                 cb_provider.Text = order.Provider.Name;
                 cb_warehouseCipher.Text = order.Warehouse.Cipher;
+                dtp_delivaryDate.Value = order.DeliveryDate;
 
                 fillLinesTable();
             }
