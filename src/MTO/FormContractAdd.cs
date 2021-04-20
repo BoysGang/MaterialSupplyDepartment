@@ -243,6 +243,7 @@ namespace MTO
                 {
                     Contract newContract = new Contract()
                     {
+                        IsOpened = true,
                         ContractNumber = tb_actNumber.Text,
                         ConclusionCity = tb_conclusionCity.Text,
 
@@ -374,15 +375,18 @@ namespace MTO
                 try
                 {
                     int PK_Resource;
-                    if (!Int32.TryParse(dgv_contractlines.Rows[currRow].Cells[1].Value.ToString(), out PK_Resource))
+                    if (dgv_contractlines.Rows[currRow].Cells[1].Value != null)
                     {
-                        MessageBox.Show("Неверный PK для ресурса!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (!Int32.TryParse(dgv_contractlines.Rows[currRow].Cells[1].Value.ToString(), out PK_Resource))
+                        {
+                            MessageBox.Show("Неверный PK для ресурса!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        Resource res = Program.db.Resources.Find(PK_Resource);
+                        dgv_contractlines.Rows[currRow].Cells[2].Value = res.Cipher;
+                        dgv_contractlines.Rows[currRow].Cells[4].Value = res.Unit.Name;
+                        dgv_contractlines.Rows[currRow].Cells[5].Value = res.Unit.Cipher;
                     }
-                    Resource res = Program.db.Resources.Find(PK_Resource);
-                    dgv_contractlines.Rows[currRow].Cells[2].Value = res.Cipher;
-                    dgv_contractlines.Rows[currRow].Cells[4].Value = res.Unit.Name;
-                    dgv_contractlines.Rows[currRow].Cells[5].Value = res.Unit.Cipher;
 
 
                 }
@@ -486,23 +490,43 @@ namespace MTO
 
         private void btn_deleteLine_Click(object sender, EventArgs e)
         {
-            if(dgv_contractlines.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Выберите строку для удаления!");
-                return;
+                if (dgv_contractlines.SelectedRows.Count == 0 
+                    || dgv_contractlines.Rows.Count - 1 == dgv_contractlines.CurrentCell.RowIndex)
+                {
+                    MessageBox.Show("Выберите строку для удаления!");
+                    return;
+                }
+                int selectedItem = dgv_contractlines.CurrentCell.RowIndex;
+
+                if (currContract != null && dgv_contractlines.Rows[selectedItem].Cells[0].Value != null)
+                    deletedLines.Add(Int32.Parse(dgv_contractlines.Rows[selectedItem].Cells[0].Value.ToString()));
+
+                dgv_contractlines.Rows.RemoveAt(selectedItem);
             }
-            int selectedItem = dgv_contractlines.CurrentCell.RowIndex;
-
-            if(currContract != null && dgv_contractlines.Rows[selectedItem].Cells[0].Value != null)
-                deletedLines.Add(Int32.Parse(dgv_contractlines.Rows[selectedItem].Cells[0].Value.ToString()));
-
-            dgv_contractlines.Rows.RemoveAt(selectedItem);
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
          }
 
         private void tb_actNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!ModifierKeys.HasFlag(Keys.Control))
                 e.Handled = !TextValidator.isNumber(e.KeyChar.ToString());
+        }
+
+        private void FormContractAdd_Load(object sender, EventArgs e)
+        {
+            dgv_contractlines.AutoGenerateColumns = false;
+            dgv_contractlines.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv_contractlines.Columns["Resource"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+
+        private void dgv_contractlines_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dtp.Visible = false;
         }
     }
 }

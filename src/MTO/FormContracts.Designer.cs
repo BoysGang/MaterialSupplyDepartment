@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cb_provider = new System.Windows.Forms.ComboBox();
@@ -38,14 +38,6 @@ namespace MTO
             this.label3 = new System.Windows.Forms.Label();
             this.dtp_expiredDate = new System.Windows.Forms.DateTimePicker();
             this.dgv_contracts = new System.Windows.Forms.DataGridView();
-            this.PK_Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_contractNumber = new System.Windows.Forms.TextBox();
             this.dtp_startDate = new System.Windows.Forms.DateTimePicker();
@@ -72,6 +64,15 @@ namespace MTO
             this.btn_analizeContract = new System.Windows.Forms.Button();
             this.btn_viewContract = new System.Windows.Forms.Button();
             this.btn_resetSearch = new System.Windows.Forms.Button();
+            this.PK_Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConclusionCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Underdelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -165,67 +166,19 @@ namespace MTO
             this.StartDate,
             this.ExpiredDate,
             this.ProviderAgent,
+            this.ConclusionCity,
             this.State,
             this.Underdelivery});
             this.dgv_contracts.Location = new System.Drawing.Point(6, 324);
             this.dgv_contracts.MultiSelect = false;
             this.dgv_contracts.Name = "dgv_contracts";
             this.dgv_contracts.ReadOnly = true;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contracts.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_contracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_contracts.Size = new System.Drawing.Size(897, 235);
             this.dgv_contracts.TabIndex = 23;
             this.dgv_contracts.SelectionChanged += new System.EventHandler(this.dgv_contracts_SelectionChanged);
-            // 
-            // PK_Contract
-            // 
-            this.PK_Contract.HeaderText = "PK_Contract";
-            this.PK_Contract.Name = "PK_Contract";
-            this.PK_Contract.ReadOnly = true;
-            this.PK_Contract.Visible = false;
-            // 
-            // ContractNumber
-            // 
-            this.ContractNumber.HeaderText = "Номер договора";
-            this.ContractNumber.Name = "ContractNumber";
-            this.ContractNumber.ReadOnly = true;
-            // 
-            // ConclusionDate
-            // 
-            this.ConclusionDate.HeaderText = "Дата заключения";
-            this.ConclusionDate.Name = "ConclusionDate";
-            this.ConclusionDate.ReadOnly = true;
-            // 
-            // StartDate
-            // 
-            this.StartDate.HeaderText = "Дата начала";
-            this.StartDate.Name = "StartDate";
-            this.StartDate.ReadOnly = true;
-            // 
-            // ExpiredDate
-            // 
-            this.ExpiredDate.HeaderText = "Дата окончания";
-            this.ExpiredDate.Name = "ExpiredDate";
-            this.ExpiredDate.ReadOnly = true;
-            // 
-            // ProviderAgent
-            // 
-            this.ProviderAgent.HeaderText = "Поставщик";
-            this.ProviderAgent.Name = "ProviderAgent";
-            this.ProviderAgent.ReadOnly = true;
-            // 
-            // State
-            // 
-            this.State.HeaderText = "Статус";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            // 
-            // Underdelivery
-            // 
-            this.Underdelivery.HeaderText = "Недопоставки";
-            this.Underdelivery.Name = "Underdelivery";
-            this.Underdelivery.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -480,6 +433,61 @@ namespace MTO
             this.btn_resetSearch.UseVisualStyleBackColor = true;
             this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
+            // PK_Contract
+            // 
+            this.PK_Contract.HeaderText = "PK_Contract";
+            this.PK_Contract.Name = "PK_Contract";
+            this.PK_Contract.ReadOnly = true;
+            this.PK_Contract.Visible = false;
+            // 
+            // ContractNumber
+            // 
+            this.ContractNumber.HeaderText = "Номер договора";
+            this.ContractNumber.Name = "ContractNumber";
+            this.ContractNumber.ReadOnly = true;
+            // 
+            // ConclusionDate
+            // 
+            this.ConclusionDate.HeaderText = "Дата заключения";
+            this.ConclusionDate.Name = "ConclusionDate";
+            this.ConclusionDate.ReadOnly = true;
+            // 
+            // StartDate
+            // 
+            this.StartDate.HeaderText = "Дата начала";
+            this.StartDate.Name = "StartDate";
+            this.StartDate.ReadOnly = true;
+            // 
+            // ExpiredDate
+            // 
+            this.ExpiredDate.HeaderText = "Дата окончания";
+            this.ExpiredDate.Name = "ExpiredDate";
+            this.ExpiredDate.ReadOnly = true;
+            // 
+            // ProviderAgent
+            // 
+            this.ProviderAgent.HeaderText = "Поставщик";
+            this.ProviderAgent.Name = "ProviderAgent";
+            this.ProviderAgent.ReadOnly = true;
+            // 
+            // ConclusionCity
+            // 
+            this.ConclusionCity.HeaderText = "Место заключения";
+            this.ConclusionCity.Name = "ConclusionCity";
+            this.ConclusionCity.ReadOnly = true;
+            // 
+            // State
+            // 
+            this.State.HeaderText = "Статус";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            // 
+            // Underdelivery
+            // 
+            this.Underdelivery.HeaderText = "Недопоставки";
+            this.Underdelivery.Name = "Underdelivery";
+            this.Underdelivery.ReadOnly = true;
+            // 
             // FormContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,16 +551,17 @@ namespace MTO
         private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_resetSearch;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
+        private System.Windows.Forms.TextBox tb_contractNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_Contract;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContractNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConclusionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpiredDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProviderAgent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConclusionCity;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn Underdelivery;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
-        private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
-        private System.Windows.Forms.TextBox tb_contractNumber;
     }
 }

@@ -29,8 +29,8 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_actNumber = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -59,6 +59,7 @@ namespace MTO
             this.tb_conclusionCity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_contractlines = new System.Windows.Forms.DataGridView();
             this.PK_Contractline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -69,13 +70,12 @@ namespace MTO
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_deleteLine = new System.Windows.Forms.Button();
             this.dtp_conclusionDate = new System.Windows.Forms.DateTimePicker();
             this.btn_AddNClose = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_cancelAdd = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_deleteLine = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -84,15 +84,15 @@ namespace MTO
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractlines)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractlines)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(114, 9);
+            this.label1.Location = new System.Drawing.Point(189, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 20);
             this.label1.TabIndex = 0;
@@ -100,7 +100,7 @@ namespace MTO
             // 
             // tb_actNumber
             // 
-            this.tb_actNumber.Location = new System.Drawing.Point(303, 11);
+            this.tb_actNumber.Location = new System.Drawing.Point(378, 11);
             this.tb_actNumber.MaxLength = 50;
             this.tb_actNumber.Name = "tb_actNumber";
             this.tb_actNumber.Size = new System.Drawing.Size(118, 20);
@@ -114,7 +114,7 @@ namespace MTO
             this.tabControl1.Location = new System.Drawing.Point(12, 71);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(745, 482);
+            this.tabControl1.Size = new System.Drawing.Size(860, 482);
             this.tabControl1.TabIndex = 75;
             // 
             // tabPage1
@@ -133,14 +133,14 @@ namespace MTO
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(737, 456);
+            this.tabPage1.Size = new System.Drawing.Size(852, 456);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Основное";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // dtp_startDate
             // 
-            this.dtp_startDate.Location = new System.Drawing.Point(545, 51);
+            this.dtp_startDate.Location = new System.Drawing.Point(618, 51);
             this.dtp_startDate.Name = "dtp_startDate";
             this.dtp_startDate.Size = new System.Drawing.Size(147, 20);
             this.dtp_startDate.TabIndex = 89;
@@ -151,7 +151,7 @@ namespace MTO
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.nud_customerPenalty);
             this.groupBox3.Controls.Add(this.nud_supplierPenalty);
-            this.groupBox3.Location = new System.Drawing.Point(54, 318);
+            this.groupBox3.Location = new System.Drawing.Point(98, 318);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(638, 90);
             this.groupBox3.TabIndex = 88;
@@ -196,7 +196,7 @@ namespace MTO
             // 
             // dtp_expiredDate
             // 
-            this.dtp_expiredDate.Location = new System.Drawing.Point(545, 101);
+            this.dtp_expiredDate.Location = new System.Drawing.Point(618, 101);
             this.dtp_expiredDate.Name = "dtp_expiredDate";
             this.dtp_expiredDate.Size = new System.Drawing.Size(147, 20);
             this.dtp_expiredDate.TabIndex = 87;
@@ -205,17 +205,17 @@ namespace MTO
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(405, 101);
+            this.label9.Location = new System.Drawing.Point(478, 101);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 13);
+            this.label9.Size = new System.Drawing.Size(89, 13);
             this.label9.TabIndex = 86;
-            this.label9.Text = "Дата истечения";
+            this.label9.Text = "Дата окончания";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(405, 54);
+            this.label7.Location = new System.Drawing.Point(478, 54);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 85;
@@ -227,9 +227,9 @@ namespace MTO
             this.groupBox2.Controls.Add(this.tb_customerAgentName);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(408, 142);
+            this.groupBox2.Location = new System.Drawing.Point(481, 142);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(284, 138);
+            this.groupBox2.Size = new System.Drawing.Size(330, 138);
             this.groupBox2.TabIndex = 84;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Представитель заказчика";
@@ -278,14 +278,14 @@ namespace MTO
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(54, 142);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(286, 138);
+            this.groupBox1.Size = new System.Drawing.Size(330, 138);
             this.groupBox1.TabIndex = 83;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Представитель поставщика";
             // 
             // tb_providerAgentRole
             // 
-            this.tb_providerAgentRole.Location = new System.Drawing.Point(79, 70);
+            this.tb_providerAgentRole.Location = new System.Drawing.Point(123, 70);
             this.tb_providerAgentRole.MaxLength = 50;
             this.tb_providerAgentRole.Name = "tb_providerAgentRole";
             this.tb_providerAgentRole.Size = new System.Drawing.Size(201, 20);
@@ -293,7 +293,7 @@ namespace MTO
             // 
             // tb_providerAgentName
             // 
-            this.tb_providerAgentName.Location = new System.Drawing.Point(79, 34);
+            this.tb_providerAgentName.Location = new System.Drawing.Point(123, 34);
             this.tb_providerAgentName.MaxLength = 125;
             this.tb_providerAgentName.Name = "tb_providerAgentName";
             this.tb_providerAgentName.Size = new System.Drawing.Size(201, 20);
@@ -326,7 +326,7 @@ namespace MTO
             this.cb_provider.FormattingEnabled = true;
             this.cb_provider.Location = new System.Drawing.Point(210, 93);
             this.cb_provider.Name = "cb_provider";
-            this.cb_provider.Size = new System.Drawing.Size(130, 21);
+            this.cb_provider.Size = new System.Drawing.Size(174, 21);
             this.cb_provider.TabIndex = 82;
             // 
             // label3
@@ -344,7 +344,7 @@ namespace MTO
             this.tb_conclusionCity.Location = new System.Drawing.Point(210, 54);
             this.tb_conclusionCity.MaxLength = 50;
             this.tb_conclusionCity.Name = "tb_conclusionCity";
-            this.tb_conclusionCity.Size = new System.Drawing.Size(130, 20);
+            this.tb_conclusionCity.Size = new System.Drawing.Size(174, 20);
             this.tb_conclusionCity.TabIndex = 80;
             // 
             // label2
@@ -363,10 +363,25 @@ namespace MTO
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(737, 456);
+            this.tabPage2.Size = new System.Drawing.Size(852, 456);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Спецификация";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dgv_contractlines, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btn_deleteLine, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(846, 450);
+            this.tableLayoutPanel1.TabIndex = 93;
             // 
             // dgv_contractlines
             // 
@@ -382,23 +397,24 @@ namespace MTO
             this.UnitPrice,
             this.TotalPrice,
             this.DeliveryDate});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_contractlines.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_contractlines.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_contractlines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_contractlines.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv_contractlines.Location = new System.Drawing.Point(3, 33);
             this.dgv_contractlines.Name = "dgv_contractlines";
-            this.dgv_contractlines.Size = new System.Drawing.Size(725, 414);
+            this.dgv_contractlines.Size = new System.Drawing.Size(840, 414);
             this.dgv_contractlines.TabIndex = 0;
             this.dgv_contractlines.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_contractlines_CellBeginEdit);
             this.dgv_contractlines.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_contractlines_CellEndEdit);
             this.dgv_contractlines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_contractlines_CellValueChanged);
+            this.dgv_contractlines.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_contractlines_ColumnHeaderMouseClick);
             this.dgv_contractlines.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_contractlines_CurrentCellDirtyStateChanged);
             this.dgv_contractlines.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_contractlines_EditingControlShowing);
             // 
@@ -451,16 +467,27 @@ namespace MTO
             // 
             // DeliveryDate
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle3.NullValue = null;
-            this.DeliveryDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle1.NullValue = null;
+            this.DeliveryDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.DeliveryDate.HeaderText = "Срок поставки";
+            this.DeliveryDate.MinimumWidth = 80;
             this.DeliveryDate.Name = "DeliveryDate";
+            // 
+            // btn_deleteLine
+            // 
+            this.btn_deleteLine.Location = new System.Drawing.Point(3, 3);
+            this.btn_deleteLine.Name = "btn_deleteLine";
+            this.btn_deleteLine.Size = new System.Drawing.Size(75, 23);
+            this.btn_deleteLine.TabIndex = 1;
+            this.btn_deleteLine.Text = "Удалить строку";
+            this.btn_deleteLine.UseVisualStyleBackColor = true;
+            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
             // 
             // dtp_conclusionDate
             // 
-            this.dtp_conclusionDate.Location = new System.Drawing.Point(481, 12);
+            this.dtp_conclusionDate.Location = new System.Drawing.Point(556, 12);
             this.dtp_conclusionDate.Name = "dtp_conclusionDate";
             this.dtp_conclusionDate.Size = new System.Drawing.Size(147, 20);
             this.dtp_conclusionDate.TabIndex = 78;
@@ -499,42 +526,17 @@ namespace MTO
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(435, 9);
+            this.label12.Location = new System.Drawing.Point(510, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 20);
             this.label12.TabIndex = 92;
             this.label12.Text = "от";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgv_contractlines, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btn_deleteLine, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(731, 450);
-            this.tableLayoutPanel1.TabIndex = 93;
-            // 
-            // btn_deleteLine
-            // 
-            this.btn_deleteLine.Location = new System.Drawing.Point(3, 3);
-            this.btn_deleteLine.Name = "btn_deleteLine";
-            this.btn_deleteLine.Size = new System.Drawing.Size(75, 23);
-            this.btn_deleteLine.TabIndex = 1;
-            this.btn_deleteLine.Text = "Удалить строку";
-            this.btn_deleteLine.UseVisualStyleBackColor = true;
-            this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
-            // 
             // FormContractAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 560);
+            this.ClientSize = new System.Drawing.Size(884, 560);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btn_cancelAdd);
             this.Controls.Add(this.btn_add);
@@ -545,6 +547,7 @@ namespace MTO
             this.Controls.Add(this.dtp_conclusionDate);
             this.Name = "FormContractAdd";
             this.Text = "Добавление договора";
+            this.Load += new System.EventHandler(this.FormContractAdd_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -557,8 +560,8 @@ namespace MTO
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractlines)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_contractlines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -600,6 +603,8 @@ namespace MTO
         private System.Windows.Forms.Button btn_cancelAdd;
         private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_deleteLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn PK_Contractline;
         private System.Windows.Forms.DataGridViewComboBoxColumn Resource;
         private System.Windows.Forms.DataGridViewTextBoxColumn CipherResource;
@@ -609,7 +614,5 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeliveryDate;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button btn_deleteLine;
     }
 }

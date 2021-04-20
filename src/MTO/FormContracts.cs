@@ -99,6 +99,7 @@ namespace MTO
             {
                 FormContractView formContractView = new FormContractView(viewingContract);
                 formContractView.ShowDialog();
+                updateContractTable();
             }
         }
 
@@ -106,12 +107,14 @@ namespace MTO
         {
             FormAnalysis form = new FormAnalysis();
             form.ShowDialog();
+            updateContractTable();
         }
 
         public void tsmi_contractCreate_Click(object sender, EventArgs e)
         {
             FormContractAdd form = new FormContractAdd();
             form.ShowDialog();
+            updateContractTable();
         }
 
         private void tsmi_dictResources_Click(object sender, EventArgs e)
@@ -162,6 +165,8 @@ namespace MTO
             dtp_expiredDate.CustomFormat = " ";
             dtp_startDate.CustomFormat = " ";
             rb_any.Checked = true;
+
+            updateContractTable();
         }
 
         private void updateContractTable()
@@ -176,7 +181,8 @@ namespace MTO
             dgv_contracts.Columns[3].DataPropertyName = "StartDateWithoutTime";
             dgv_contracts.Columns[4].DataPropertyName = "ExpiredDateWithoutTime";
             dgv_contracts.Columns[5].DataPropertyName = "Provider";
-            dgv_contracts.Columns[6].DataPropertyName = "Status";
+            dgv_contracts.Columns[6].DataPropertyName = "ConclusionCity";
+            dgv_contracts.Columns[7].DataPropertyName = "Status";
         }
 
         private void dgv_contracts_SelectionChanged(object sender, EventArgs e)

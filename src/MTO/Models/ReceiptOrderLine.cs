@@ -40,18 +40,7 @@ namespace MTO.Models
             }
         }
 
-        public decimal Price
-        {
-            get
-            { var line = ReceiptOrder.Contract.getContractLines()
-                .Find(b => b.PK_Resource == PK_Resource && b.DeliveryDate == ReceiptOrder.DeliveryDate);
-
-                if (line == null)
-                    return 0;
-
-                return line.UnitPrice; 
-            }
-        }
+        public decimal UnitPrice { get; set; }
 
         public string Resource_Cipher
         {
@@ -81,7 +70,7 @@ namespace MTO.Models
         {
             get
             {
-                return Price * (decimal)AcceptedAmount;
+                return UnitPrice * (decimal)AcceptedAmount;
             }
         }
     }
