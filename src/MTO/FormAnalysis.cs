@@ -28,15 +28,12 @@ namespace MTO
                 + contract.ConclusionDate.ToString("dd.MM.yyyy") + " ("
                 + (contract.IsOpened ? "ОТКРЫТ)" : "ЗАКРЫТ)");
 
-
-
             int pk_contract = contract.PK_Contract;
             lines = contract.getContractLines();
             List<ReceiptOrderLine> receiptLines = Program.db.ReceiptOrderLines.ToList()
                                             .Where(b => b.ReceiptOrder.PK_Contract == pk_contract)
                                             .OrderBy(b => b.ReceiptOrder.DeliveryDate)
                                             .ToList();
-
 
             int linesCount = lines.Count;
             ContractLine line;
@@ -47,11 +44,9 @@ namespace MTO
 
                 line = lines[i];
 
-
                 ReceiptOrderLine thisLine = receiptLines.FindAll(b => b.PK_Resource == line.PK_Resource)
                     .Where(b => b.ReceiptOrder.DeliveryDate <= line.DeliveryDate)
                     .FirstOrDefault();
-
 
                 if(thisLine != null)
                 {
@@ -75,7 +70,6 @@ namespace MTO
 
                 }
 
-
                 dgv_analysis.Rows[i].Cells[0].Value = line.PK_ContractLine;
                 dgv_analysis.Rows[i].Cells[1].Value = line.Resource;
                 dgv_analysis.Rows[i].Cells[2].Value = line.Resource_Cipher;
@@ -98,12 +92,7 @@ namespace MTO
                         dgv_analysis.Rows[i].Cells[11].Value = "-";
                     }
                 }
-                else
-                    MessageBox.Show(amountUnderdelivery.ToString());
-
             }
-
-
         }
 
         private void FormAnalysis_Load(object sender, EventArgs e)
