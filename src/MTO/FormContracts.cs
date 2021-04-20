@@ -290,7 +290,7 @@ namespace MTO
 
             bool statusCriterium = !rb_any.Checked;
 
-            bool hasUnderdeliveryCriterium = !cb_hasUnderdelivery.Checked;
+            bool hasUnderdeliveryCriterium = cb_hasUnderdelivery.Checked;
 
             foreach (Contract contract in Program.db.Contracts.ToList())
             {
@@ -304,6 +304,7 @@ namespace MTO
                 bool startToFound = !startToCriterium;
                 bool expiredToFound = !expiredToCriterium;
                 bool statusFound = !statusCriterium;
+                bool hasUnderdeliveryFound = !hasUnderdeliveryCriterium;
 
                 // ContractNumber criterium
                 if (contractNumberCriterium && contract.ContractNumber.Contains(contractNumber))
@@ -343,9 +344,46 @@ namespace MTO
                 if (statusCriterium && (contract.IsOpened && rb_opened.Checked) || (!contract.IsOpened && rb_closed.Checked))
                     statusFound = true;
 
+
+                // Hasundetdelivery criterium
+                if (hasUnderdeliveryCriterium)
+                {
+                    List<ContractLine> contractLines = contract.getContractLines();
+
+                    List<ReceiptOrderLine> receiptLines = Program.db.ReceiptOrderLines.ToList()
+                                .Where(b => b.ReceiptOrder.PK_Contract == contract.PK_Contract)
+                                .OrderBy(b => b.ReceiptOrder.DeliveryDate)
+                                .ToList();
+
+                    for (int i = 0; i < contractLines.Count; i++)
+                    {
+                        ContractLine line = contractLines[i];
+
+                        ReceiptOrderLine thisLine = receiptLines.FindAll(b => b.PK_Resource == line.PK_Resource)
+                                                    .Where(b => b.ReceiptOrder.DeliveryDate <= line.DeliveryDate)
+                                                    .FirstOrDefault();
+
+                        if (thisLine == null)
+                        {
+                            hasUnderdeliveryFound = true;
+
+                            break;
+                        }
+                        else
+                        {
+                            if (line.Amount - thisLine.AcceptedAmount > 0)
+                            {
+                                hasUnderdeliveryFound = true;
+
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 // Add this contract to foundContracts if it passed all criteriums
                 if (contractNumberFound && providerFound && conclusionFound &&
-                    startFromFound && expiredFromFound && statusFound && startToFound && expiredToFound && conclusionCityFound && resourceFound)
+                    startFromFound && expiredFromFound && statusFound && startToFound && expiredToFound && conclusionCityFound && resourceFound && hasUnderdeliveryFound)
                     foundContracts.Add(contract);
             }
 
