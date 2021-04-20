@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
@@ -42,13 +42,15 @@ namespace MTO
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cb_provider = new System.Windows.Forms.ComboBox();
-            this.dtp_deliveryDate = new System.Windows.Forms.DateTimePicker();
+            this.dtp_deliveryDateFrom = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_receiptOrderNumber = new System.Windows.Forms.TextBox();
             this.btn_findReceiptOrder = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tb_contractNumber = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtp_deliveryDateTo = new System.Windows.Forms.DateTimePicker();
+            this.cb_resource = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cb_warehouse = new System.Windows.Forms.ComboBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -103,15 +105,15 @@ namespace MTO
             this.Warehouse,
             this.ProviderAgent,
             this.Contract});
-            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 285);
+            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 271);
             this.dgv_receiptOrders.MultiSelect = false;
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_receiptOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 244);
+            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 258);
             this.dgv_receiptOrders.TabIndex = 36;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
             // 
@@ -159,7 +161,7 @@ namespace MTO
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(6, 22);
+            this.label7.Location = new System.Drawing.Point(6, 25);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 13);
@@ -180,26 +182,28 @@ namespace MTO
             // 
             // cb_provider
             // 
+            this.cb_provider.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_provider.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_provider.FormattingEnabled = true;
             this.cb_provider.Location = new System.Drawing.Point(112, 54);
             this.cb_provider.Name = "cb_provider";
             this.cb_provider.Size = new System.Drawing.Size(364, 21);
             this.cb_provider.TabIndex = 27;
             // 
-            // dtp_deliveryDate
+            // dtp_deliveryDateFrom
             // 
-            this.dtp_deliveryDate.CustomFormat = " ";
-            this.dtp_deliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_deliveryDate.Location = new System.Drawing.Point(112, 88);
-            this.dtp_deliveryDate.Name = "dtp_deliveryDate";
-            this.dtp_deliveryDate.Size = new System.Drawing.Size(364, 20);
-            this.dtp_deliveryDate.TabIndex = 24;
-            this.dtp_deliveryDate.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
-            this.dtp_deliveryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
+            this.dtp_deliveryDateFrom.CustomFormat = " ";
+            this.dtp_deliveryDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_deliveryDateFrom.Location = new System.Drawing.Point(112, 88);
+            this.dtp_deliveryDateFrom.Name = "dtp_deliveryDateFrom";
+            this.dtp_deliveryDateFrom.Size = new System.Drawing.Size(167, 20);
+            this.dtp_deliveryDateFrom.TabIndex = 24;
+            this.dtp_deliveryDateFrom.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            this.dtp_deliveryDateFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker3_KeyDown);
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(6, 54);
+            this.label6.Location = new System.Drawing.Point(6, 58);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
@@ -210,12 +214,12 @@ namespace MTO
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 88);
+            this.label3.Location = new System.Drawing.Point(6, 92);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 31;
-            this.label3.Text = "Дата поставки";
+            this.label3.Text = "Дата поставки c";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tb_receiptOrderNumber
@@ -239,13 +243,15 @@ namespace MTO
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tb_contractNumber);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dtp_deliveryDateTo);
+            this.groupBox1.Controls.Add(this.cb_resource);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cb_warehouse);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cb_provider);
-            this.groupBox1.Controls.Add(this.dtp_deliveryDate);
+            this.groupBox1.Controls.Add(this.dtp_deliveryDateFrom);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tb_receiptOrderNumber);
@@ -256,14 +262,37 @@ namespace MTO
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
             // 
-            // tb_contractNumber
+            // label4
             // 
-            this.tb_contractNumber.Location = new System.Drawing.Point(112, 155);
-            this.tb_contractNumber.MaxLength = 50;
-            this.tb_contractNumber.Name = "tb_contractNumber";
-            this.tb_contractNumber.Size = new System.Drawing.Size(364, 20);
-            this.tb_contractNumber.TabIndex = 34;
-            this.tb_contractNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_contract_KeyPress);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(284, 91);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "до";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dtp_deliveryDateTo
+            // 
+            this.dtp_deliveryDateTo.CustomFormat = " ";
+            this.dtp_deliveryDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_deliveryDateTo.Location = new System.Drawing.Point(309, 88);
+            this.dtp_deliveryDateTo.Name = "dtp_deliveryDateTo";
+            this.dtp_deliveryDateTo.Size = new System.Drawing.Size(167, 20);
+            this.dtp_deliveryDateTo.TabIndex = 35;
+            this.dtp_deliveryDateTo.ValueChanged += new System.EventHandler(this.dtp_deliveryDateTo_ValueChanged);
+            this.dtp_deliveryDateTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtp_deliveryDateTo_KeyDown);
+            // 
+            // cb_resource
+            // 
+            this.cb_resource.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_resource.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cb_resource.FormattingEnabled = true;
+            this.cb_resource.Location = new System.Drawing.Point(112, 155);
+            this.cb_resource.Name = "cb_resource";
+            this.cb_resource.Size = new System.Drawing.Size(364, 21);
+            this.cb_resource.TabIndex = 34;
             // 
             // label2
             // 
@@ -271,13 +300,15 @@ namespace MTO
             this.label2.Location = new System.Drawing.Point(6, 158);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 33;
-            this.label2.Text = "Номер договора";
+            this.label2.Text = "Ресурс";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_warehouse
             // 
+            this.cb_warehouse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cb_warehouse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cb_warehouse.FormattingEnabled = true;
             this.cb_warehouse.Location = new System.Drawing.Point(112, 120);
             this.cb_warehouse.Name = "cb_warehouse";
@@ -436,14 +467,12 @@ namespace MTO
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cb_provider;
-        private System.Windows.Forms.DateTimePicker dtp_deliveryDate;
+        private System.Windows.Forms.DateTimePicker dtp_deliveryDateFrom;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_receiptOrderNumber;
         private System.Windows.Forms.Button btn_findReceiptOrder;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tb_contractNumber;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cb_warehouse;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem tsmi_contracts;
@@ -465,5 +494,9 @@ namespace MTO
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderList;
         private System.Windows.Forms.ToolStripMenuItem tsmi_accountingReceiptOrderAdd;
         private System.Windows.Forms.Button btn_resetSearch;
+        private System.Windows.Forms.ComboBox cb_resource;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtp_deliveryDateTo;
     }
 }

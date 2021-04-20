@@ -24,14 +24,27 @@ namespace MTO
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
-            dtp_deliveryDate.CustomFormat = "dd/MM/yyyy";
+            dtp_deliveryDateFrom.CustomFormat = "dd/MM/yyyy";
         }
 
         private void dateTimePicker3_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
             {
-                dtp_deliveryDate.CustomFormat = " ";
+                dtp_deliveryDateFrom.CustomFormat = " ";
+            }
+        }
+
+        private void dtp_deliveryDateTo_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_deliveryDateTo.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void dtp_deliveryDateTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtp_deliveryDateTo.CustomFormat = " ";
             }
         }
 
@@ -97,13 +110,9 @@ namespace MTO
             cb_provider.DataSource = providers;
             cb_provider.SelectedIndex = -1;
 
-            List<Contract> contracts = Program.db.Contracts.ToList();
-            AutoCompleteStringCollection contractSource = new AutoCompleteStringCollection();
-            foreach (Contract contract in contracts)
-                contractSource.Add(contract.ContractNumber);
-            tb_contractNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            tb_contractNumber.AutoCompleteMode = AutoCompleteMode.Suggest;
-            tb_contractNumber.AutoCompleteCustomSource = contractSource;
+            List<Resource> resources = Program.db.Resources.ToList();
+            cb_resource.DataSource = resources;
+            cb_resource.SelectedIndex = -1;
 
             List<ReceiptOrder> receiptOrders = Program.db.ReceiptOrders.ToList();
             AutoCompleteStringCollection ordersSource = new AutoCompleteStringCollection();
@@ -186,9 +195,10 @@ namespace MTO
         {
             tb_receiptOrderNumber.Text = "";
             cb_provider.SelectedIndex = -1;
-            dtp_deliveryDate.CustomFormat = " ";
+            dtp_deliveryDateFrom.CustomFormat = " ";
+            dtp_deliveryDateTo.CustomFormat = " ";
             cb_warehouse.SelectedIndex = -1;
-            tb_contractNumber.Text = "";
+            cb_resource.SelectedIndex = -1;
 
             updateReceiptOrderTable();
         }
@@ -214,8 +224,11 @@ namespace MTO
                 PK_Provider = provider.PK_Provider;
             }
 
-            bool deliveryCriterium = dtp_deliveryDate.CustomFormat.ToString() != " ";
-            string deliveryDate = dtp_deliveryDate.Value.ToString("dd-MM-yyyy");
+            bool deliveryFromCriterium = dtp_deliveryDateFrom.CustomFormat.ToString() != " ";
+            DateTime deliveryFromDate = DateTime.Parse(dtp_deliveryDateFrom.Value.ToString("dd-MM-yyyy"));
+
+            bool deliveryToCriterium = dtp_deliveryDateTo.CustomFormat.ToString() != " ";
+            DateTime deliveryToDate = DateTime.Parse(dtp_deliveryDateTo.Value.ToString("dd-MM-yyyy"));
 
             Warehouse warehouse = (Warehouse)cb_warehouse.SelectedItem;
             bool warehouseCriterium = false;
@@ -226,16 +239,21 @@ namespace MTO
                 PK_Warehouse = warehouse.PK_Warehouse;
             }
 
-            bool contractNumberCriterium = tb_contractNumber.Text != string.Empty;
-            string contractNumber = tb_contractNumber.Text.ToLower();
+            Resource resourceSelect = (Resource)cb_resource.SelectedItem;
+            bool resourceCriterium = false;
+            if (resourceSelect != null)
+            {
+                resourceCriterium = true;
+            }
 
-            foreach (ReceiptOrder order in Program.db.ReceiptOrders)
+            foreach (ReceiptOrder order in Program.db.ReceiptOrders.ToList())
             {
                 bool orderNumberFound = !orderNumberCriterium;
                 bool providerFound = !providerCriterium;
-                bool deliveryFound = !deliveryCriterium;
+                bool deliveryFromFound = !deliveryFromCriterium;
+                bool deliveryToFound = !deliveryToCriterium;
                 bool warehouseFound = !warehouseCriterium;
-                bool contractNumberFound = !contractNumberCriterium;
+                bool resourceFound = !resourceCriterium;
 
                 if (orderNumberCriterium && order.ReceiptOrderNumber.Contains(orderNumber))
                     orderNumberFound = true;
@@ -243,17 +261,20 @@ namespace MTO
                 if (providerCriterium && order.Provider.PK_Provider == PK_Provider)
                     providerFound = true;
 
-                if (deliveryCriterium && order.DeliveryDateWithoutTime.Contains(deliveryDate))
-                    deliveryFound = true;
+                if (deliveryFromCriterium && DateTime.Compare(order.DeliveryDate, deliveryFromDate) >= 0)
+                    deliveryFromFound = true;
+
+                if (deliveryToCriterium && DateTime.Compare(order.DeliveryDate, deliveryToDate) <= 0)
+                    deliveryToFound = true;
 
                 if (warehouseCriterium && order.Warehouse.PK_Warehouse == PK_Warehouse)
                     warehouseFound = true;
 
-                if (contractNumberCriterium && order.Contract.ContractNumber.Contains(contractNumber))
-                    contractNumberFound = true;
+                if (resourceCriterium && order.checkResourceInReceiptOrder(resourceSelect))
+                    resourceFound = true;
 
-                if (orderNumberFound && providerFound && deliveryFound && 
-                    warehouseFound && contractNumberFound)
+                if (orderNumberFound && providerFound && deliveryFromFound && deliveryToFound &&
+                    warehouseFound && resourceFound)
                     foundReceiptOrders.Add(order);
             }
 
