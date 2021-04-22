@@ -122,6 +122,14 @@ namespace MTO
             tb_receiptOrderNumber.AutoCompleteMode = AutoCompleteMode.Suggest;
             tb_receiptOrderNumber.AutoCompleteCustomSource = ordersSource;
 
+            List<Contract> contracts = Program.db.Contracts.ToList();
+            AutoCompleteStringCollection contractsSource = new AutoCompleteStringCollection();
+            foreach (Contract contract in contracts)
+                contractsSource.Add(contract.ContractNumber);
+            tb_contractNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tb_contractNumber.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tb_contractNumber.AutoCompleteCustomSource = contractsSource;
+
             if (Program.user.isAccounting())
             {
                 tsmi_contracts.Visible = false;
@@ -246,6 +254,9 @@ namespace MTO
                 resourceCriterium = true;
             }
 
+            bool contractNumberCriterium = tb_contractNumber.Text != string.Empty;
+            string contractNumber = tb_contractNumber.Text.ToLower();
+
             foreach (ReceiptOrder order in Program.db.ReceiptOrders.ToList())
             {
                 bool orderNumberFound = !orderNumberCriterium;
@@ -254,6 +265,7 @@ namespace MTO
                 bool deliveryToFound = !deliveryToCriterium;
                 bool warehouseFound = !warehouseCriterium;
                 bool resourceFound = !resourceCriterium;
+                bool contractFound = !contractNumberCriterium;
 
                 if (orderNumberCriterium && order.ReceiptOrderNumber.Contains(orderNumber))
                     orderNumberFound = true;
@@ -273,8 +285,11 @@ namespace MTO
                 if (resourceCriterium && order.checkResourceInReceiptOrder(resourceSelect))
                     resourceFound = true;
 
+                if (contractNumberCriterium && order.Contract.ContractNumber.Contains(contractNumber))
+                    contractFound = true;
+
                 if (orderNumberFound && providerFound && deliveryFromFound && deliveryToFound &&
-                    warehouseFound && resourceFound)
+                    warehouseFound && resourceFound && contractFound)
                     foundReceiptOrders.Add(order);
             }
 
