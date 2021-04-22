@@ -452,6 +452,9 @@ namespace MTO
                     tb.KeyPress += new KeyPressEventHandler(floatFieldsKeyPress);
                 }
             }
+
+            e.CellStyle.BackColor = dgv_contractlines.DefaultCellStyle.BackColor;
+
         }
 
         private void floatFieldsKeyPress(object sender, KeyPressEventArgs e)
