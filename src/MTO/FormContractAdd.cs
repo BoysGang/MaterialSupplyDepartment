@@ -91,7 +91,7 @@ namespace MTO
                 dgv_contractlines.Rows[i].Cells[0].Value = lines[i].PK_ContractLine;
                 dgv_contractlines.Rows[i].Cells[1].Value = lines[i].PK_Resource;
                 dgv_contractlines.Rows[i].Cells[3].Value = lines[i].Amount;
-                dgv_contractlines.Rows[i].Cells[4].Value = lines[i].Resource.PK_Unit;
+                dgv_contractlines.Rows[i].Cells[4].Value = lines[i].Resource.Unit.Name;
                 dgv_contractlines.Rows[i].Cells[6].Value = lines[i].UnitPrice;
                 dgv_contractlines.Rows[i].Cells[8].Value = lines[i].DeliveryDate;
             }
@@ -136,6 +136,7 @@ namespace MTO
                         MessageBox.Show("Введите дату доставки!");
                         return false;
                     }
+
                 return true;
             }
         }
@@ -273,6 +274,7 @@ namespace MTO
                         if (dgv_contractlines.Rows[i].Cells["Amount"].Value != null)
                             float.TryParse(dgv_contractlines.Rows[i].Cells["Amount"].Value.ToString(),
                                 NumberStyles.Float, CultureInfo.InvariantCulture, out amount);
+                        
                         Decimal unitPrice = 0;
                         if (dgv_contractlines.Rows[i].Cells["UnitPrice"].Value != null)
                             Decimal.TryParse(dgv_contractlines.Rows[i].Cells["UnitPrice"].Value.ToString(),
@@ -331,6 +333,7 @@ namespace MTO
                     MessageBox.Show("Успешно добавлен!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Успешно изменена!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 clearData();
             }
         }
@@ -387,8 +390,6 @@ namespace MTO
                         dgv_contractlines.Rows[currRow].Cells[4].Value = res.Unit.Name;
                         dgv_contractlines.Rows[currRow].Cells[5].Value = res.Unit.Cipher;
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -478,6 +479,7 @@ namespace MTO
             {
                 dtp.Location = dgv_contractlines.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
                 dtp.Visible = true;
+                
                 if (dgv_contractlines.CurrentCell.Value != null)
                 {
                     dtp.Value = (DateTime)dgv_contractlines.CurrentCell.Value;
@@ -501,6 +503,7 @@ namespace MTO
                     MessageBox.Show("Выберите строку для удаления!");
                     return;
                 }
+
                 int selectedItem = dgv_contractlines.CurrentCell.RowIndex;
 
                 if (currContract != null && dgv_contractlines.Rows[selectedItem].Cells[0].Value != null)
