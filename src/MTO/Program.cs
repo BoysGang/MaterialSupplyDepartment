@@ -30,12 +30,19 @@ namespace MTO
 
             if (args.Length >= 1)
             {
-                switch (args[0])
+                BigDataGenerator generator = new BigDataGenerator(db);
+
+                foreach(string arg in args)
                 {
-                    case "--generateData":
-                        BigDataGenerator generator = new BigDataGenerator(db);
-                        generator.generate();
-                        break;
+                    switch (arg)
+                    {
+                        case "--generateData":
+                            generator.generate();
+                            break;
+                        case "--generateUsers":
+                            generator.generateUsers();
+                            break;
+                    }
                 }
 
                 return;
