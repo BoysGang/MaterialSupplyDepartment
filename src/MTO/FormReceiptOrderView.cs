@@ -67,8 +67,8 @@ namespace MTO
             dgv_receiptOrderLines.Columns[2].DataPropertyName = "Resource_Cipher";
             dgv_receiptOrderLines.Columns[3].DataPropertyName = "Resource_Unit";
             dgv_receiptOrderLines.Columns[4].DataPropertyName = "Resource_Unit_Cipher";
-            dgv_receiptOrderLines.Columns[5].DataPropertyName = "AcceptedAmount";
-            dgv_receiptOrderLines.Columns[6].DataPropertyName = "DocumentAmount";
+            dgv_receiptOrderLines.Columns[5].DataPropertyName = "DocumentAmount";
+            dgv_receiptOrderLines.Columns[6].DataPropertyName = "AcceptedAmount";
             dgv_receiptOrderLines.Columns[7].DataPropertyName = "UnitPrice";
             dgv_receiptOrderLines.Columns[8].DataPropertyName = "TotalPrice";
         }
