@@ -86,8 +86,6 @@ namespace MTO.Utils
                 int amountResources = PK_Resources.Count;
                 int amountProviders = PK_Providers.Count;
 
-
-
                 List<ContractLine> generatedContractLines = new List<ContractLine>();
                 DateTime conclusionDate, startDate, expiredDate;
 
@@ -114,8 +112,8 @@ namespace MTO.Utils
                         CustomerAgentName = "Оформитель_" + (i + 1).ToString(),
                         CustomerAgentRole = roles[rand.Next(amountRoles)],
 
-                        SupplierPenalty = Decimal.Parse(rand.Next(10) + rand.NextDouble().ToString()),
-                        CustomerPenalty = Decimal.Parse(rand.Next(10) + rand.NextDouble().ToString()),
+                        SupplierPenalty = Decimal.Parse((rand.Next(10) + rand.NextDouble()).ToString()),
+                        CustomerPenalty = Decimal.Parse((rand.Next(10) + rand.NextDouble()).ToString()),
                         IsOpened = expiredDate <= DateTime.Now,
                         PK_Provider = PK_Providers[rand.Next(amountProviders)],
                         PK_OrganizationDescription = description.PK_OrganizationDescription,
@@ -164,6 +162,13 @@ namespace MTO.Utils
         {
             try
             {
+                OrganizationDescription desc = db.OrganizationDescriptions.Find(1);
+                if (desc != null)
+                {
+                    db.OrganizationDescriptions.Remove(desc);
+                    db.SaveChanges();
+                }
+
                 OrganizationDescription description = new OrganizationDescription()
                 {
                     PK_OrganizationDescription = 1,
