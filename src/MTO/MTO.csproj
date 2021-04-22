@@ -395,6 +395,7 @@
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BigDataGenerator.cs" />
     <Compile Include="Utils\Hashing.cs" />
     <Compile Include="Utils\TextValidator.cs" />
     <EmbeddedResource Include="FormAnalysis.resx">

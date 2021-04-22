@@ -34,6 +34,7 @@ namespace MTO
                 {
                     case "--generateData":
                         BigDataGenerator generator = new BigDataGenerator(db);
+                        generator.generate();
                         break;
                 }
 
