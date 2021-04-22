@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
@@ -110,8 +110,8 @@ namespace MTO
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_receiptOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 258);
             this.dgv_receiptOrders.TabIndex = 36;
@@ -446,6 +446,8 @@ namespace MTO
             this.Controls.Add(this.dgv_receiptOrders);
             this.Controls.Add(this.btn_findReceiptOrder);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormReceiptOrder";
             this.Text = "Приходный ордер";
             this.Load += new System.EventHandler(this.FormReceiptOrder_Load);

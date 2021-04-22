@@ -210,6 +210,8 @@ namespace MTO
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.dgv_warehouses);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormWarehouses";
             this.Text = "Справочник \"Склады\"";
             this.Load += new System.EventHandler(this.FormWarehouses_Load);

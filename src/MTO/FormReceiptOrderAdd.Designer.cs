@@ -43,16 +43,16 @@ namespace MTO
             this.cb_provider = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgv_orderLines = new System.Windows.Forms.DataGridView();
+            this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cb_contractNumber = new System.Windows.Forms.ComboBox();
             this.btn_deleteLine = new System.Windows.Forms.Button();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DocumentAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AcceptedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resource = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.PK_ReceiptOrderLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_orderLines)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,6 +198,64 @@ namespace MTO
             this.dgv_orderLines.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_orderLines_CurrentCellDirtyStateChanged);
             this.dgv_orderLines.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv_orderLines_EditingControlShowing);
             // 
+            // PK_ReceiptOrderLine
+            // 
+            this.PK_ReceiptOrderLine.HeaderText = "PK";
+            this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
+            this.PK_ReceiptOrderLine.Visible = false;
+            // 
+            // Resource
+            // 
+            this.Resource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Resource.FillWeight = 593.4008F;
+            this.Resource.HeaderText = "Ресурс";
+            this.Resource.MinimumWidth = 110;
+            this.Resource.Name = "Resource";
+            this.Resource.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Resource.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Resource.Width = 365;
+            // 
+            // ResourceCipher
+            // 
+            this.ResourceCipher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ResourceCipher.FillWeight = 17.76649F;
+            this.ResourceCipher.HeaderText = "Шифр ресурса";
+            this.ResourceCipher.Name = "ResourceCipher";
+            this.ResourceCipher.Width = 70;
+            // 
+            // Unit
+            // 
+            this.Unit.FillWeight = 17.76649F;
+            this.Unit.HeaderText = "Ед. измерения";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // UnitCipher
+            // 
+            this.UnitCipher.FillWeight = 17.76649F;
+            this.UnitCipher.HeaderText = "Шифр ед. измерения";
+            this.UnitCipher.Name = "UnitCipher";
+            this.UnitCipher.ReadOnly = true;
+            // 
+            // AcceptedAmount
+            // 
+            this.AcceptedAmount.FillWeight = 17.76649F;
+            this.AcceptedAmount.HeaderText = "Кол-во принято";
+            this.AcceptedAmount.Name = "AcceptedAmount";
+            // 
+            // DocumentAmount
+            // 
+            this.DocumentAmount.FillWeight = 17.76649F;
+            this.DocumentAmount.HeaderText = "Кол-во по документу";
+            this.DocumentAmount.Name = "DocumentAmount";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.FillWeight = 17.76649F;
+            this.UnitPrice.HeaderText = "Цена";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
             // cb_contractNumber
             // 
             this.cb_contractNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -217,64 +275,6 @@ namespace MTO
             this.btn_deleteLine.Text = "Удалить строку";
             this.btn_deleteLine.UseVisualStyleBackColor = true;
             this.btn_deleteLine.Click += new System.EventHandler(this.btn_deleteLine_Click);
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.FillWeight = 17.76649F;
-            this.UnitPrice.HeaderText = "Цена";
-            this.UnitPrice.Name = "UnitPrice";
-            // 
-            // DocumentAmount
-            // 
-            this.DocumentAmount.FillWeight = 17.76649F;
-            this.DocumentAmount.HeaderText = "Кол-во по документу";
-            this.DocumentAmount.Name = "DocumentAmount";
-            // 
-            // AcceptedAmount
-            // 
-            this.AcceptedAmount.FillWeight = 17.76649F;
-            this.AcceptedAmount.HeaderText = "Кол-во принято";
-            this.AcceptedAmount.Name = "AcceptedAmount";
-            // 
-            // UnitCipher
-            // 
-            this.UnitCipher.FillWeight = 17.76649F;
-            this.UnitCipher.HeaderText = "Шифр ед. измерения";
-            this.UnitCipher.Name = "UnitCipher";
-            this.UnitCipher.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            this.Unit.FillWeight = 17.76649F;
-            this.Unit.HeaderText = "Ед. измерения";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            this.Unit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ResourceCipher
-            // 
-            this.ResourceCipher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ResourceCipher.FillWeight = 17.76649F;
-            this.ResourceCipher.HeaderText = "Шифр ресурса";
-            this.ResourceCipher.Name = "ResourceCipher";
-            this.ResourceCipher.Width = 70;
-            // 
-            // Resource
-            // 
-            this.Resource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Resource.FillWeight = 593.4008F;
-            this.Resource.HeaderText = "Ресурс";
-            this.Resource.MinimumWidth = 110;
-            this.Resource.Name = "Resource";
-            this.Resource.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Resource.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Resource.Width = 365;
-            // 
-            // PK_ReceiptOrderLine
-            // 
-            this.PK_ReceiptOrderLine.HeaderText = "PK";
-            this.PK_ReceiptOrderLine.Name = "PK_ReceiptOrderLine";
-            this.PK_ReceiptOrderLine.Visible = false;
             // 
             // FormReceiptOrderAdd
             // 
@@ -296,6 +296,8 @@ namespace MTO
             this.Controls.Add(this.btn_addNClose);
             this.Controls.Add(this.tb_receiptOrderNumber);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormReceiptOrderAdd";
             this.Text = "Добавление приходного ордера";
             this.Load += new System.EventHandler(this.FormReceiptOrderAdd_Load);

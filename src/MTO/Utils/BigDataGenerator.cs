@@ -14,6 +14,38 @@ namespace MTO.Utils
     {
         private MTOContext db;
 
+        private Random rand = new Random();
+
+        private string[] cities = new string[]
+        {
+            "Новоалтайск",
+            "Барнаул",
+            "Артем",
+            "Бийск",
+            "Москва",
+            "Грозный",
+            "Киров",
+            "Новочеркасск",
+            "Новосибирск",
+            "Новороссийск",
+        };
+
+        private string[] streets = new string[]
+        {
+            "ул. Ленина",
+            "пр. Карла Маркса",
+            "пр. Строителей",
+        };
+      
+        private string[] roles = new string[]
+        {
+            "директор",
+            "исп. директор",
+            "фин. директор",
+            "бухгалтер",
+            "провизор"
+        };
+
         public BigDataGenerator(MTOContext db)
         {
             this.db = db;
@@ -28,23 +60,6 @@ namespace MTO.Utils
         private DateTime startDateDefault;
         private DateTime finalDateDefault;
         private int daysRange;
-
-
-        private DateTime randomDay()
-        {
-            return startDateDefault.AddDays(rand.Next(daysRange) + 1);
-        }
-
-        private DateTime randomDay(DateTime dateFrom)
-        {
-            return dateFrom.AddDays(rand.Next((finalDateDefault - dateFrom).Days + 1));
-        }
-
-        private DateTime randomDay(DateTime dateFrom, DateTime dateTo)
-        {
-            return dateFrom.AddDays(rand.Next((dateTo - dateFrom).Days + 1));
-        }
-
 
         public bool generateContracts()
         {
@@ -144,28 +159,7 @@ namespace MTO.Utils
             return true;
         }
 
-        private string[] cities = new string[]
-        {
-            "Токио",
-            "Барнаул",
-            "Артем",
-            "Бийск",
-            "Москва",
-            "Грозный",
-            "Киров",
-            "Новочеркасск",
-            "Новосибирск",
-            "Новороссийск",
-        };
-
-        private string[] roles = new string[]
-        {
-            "директор",
-            "исп. директор",
-            "фин. директор",
-            "бухгалтер",
-            "провизор"
-        };
+        
 
         public bool generateDictionaries()
         {
@@ -176,15 +170,12 @@ namespace MTO.Utils
                     PK_OrganizationDescription = 1,
                     Name = "ООО 'Тестировщики'",
                     DirectorName = "Тестировщик А.А.",
-                    INN = rand.Next(100000, 999999).ToString() + rand.Next(100000, 999999).ToString(),
-                    PhoneNumber = "+7 (" + rand.Next(100, 999).ToString() + ") " + rand.Next(100, 999).ToString() +
-                                             "-" + rand.Next(10, 99).ToString() + "-" + rand.Next(10, 99).ToString(),
-                    CheckingAccount = rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString() +
-                                              rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString(),
-                    CorrespondentAccount = rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString() +
-                                              rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString(),
-                    Address = "г. " + cities[rand.Next(10)] + ", д. " + rand.Next(1, 1000).ToString(),
-                    BIK = rand.Next(10000, 99999).ToString() + rand.Next(1000, 9999).ToString(),
+                    INN = getINN(),
+                    PhoneNumber = getPhoneNumber(),
+                    CheckingAccount = getCheckingAccount(),
+                    CorrespondentAccount = getCorrespondentAccount(),
+                    Address = getAddress(),
+                    BIK = getBIK(),
 
                 };
                 db.OrganizationDescriptions.Add(description);
@@ -235,15 +226,12 @@ namespace MTO.Utils
                         new Provider()
                         {
                             Name = "Поставщик_" + (i+1).ToString(),
-                            INN = rand.Next(100000, 999999).ToString() + rand.Next(100000, 999999).ToString(),
-                            PhoneNumber = "+7 (" + rand.Next(100, 999).ToString() + ") " + rand.Next(100, 999).ToString() +
-                                             "-" + rand.Next(10, 99).ToString() + "-" + rand.Next(10, 99).ToString(),
-                            CheckingAccount = rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString() +
-                                              rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString(),
-                            CorrespondentAccount = rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString() +
-                                              rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString(),
-                            Address = "г. " + cities[rand.Next(10)] + ", д. " + rand.Next(1, 1000).ToString(),
-                            BIK = rand.Next(10000, 99999).ToString() + rand.Next(1000, 9999).ToString(),
+                            INN = getINN(),
+                            PhoneNumber = getPhoneNumber(),
+                            CheckingAccount = getCheckingAccount(),
+                            CorrespondentAccount = getCorrespondentAccount(),
+                            Address = getAddress(),
+                            BIK = getBIK(),
                         }
                     );
                 }
@@ -257,8 +245,7 @@ namespace MTO.Utils
                         new Resource()
                         {
                             Name = "Материал_" + (i+1).ToString(),
-                            Cipher = rand.Next(10, 99) + "." + rand.Next(10, 99) + "." +
-                                     rand.Next(10, 99) + "." + rand.Next(100, 999),
+                            Cipher = getResourcesCipher(),
                             PK_ResourceType = typeMaterial.PK_ResourceType,
                             PK_Unit = testUnit.PK_Unit,
                         }
@@ -273,9 +260,7 @@ namespace MTO.Utils
                         new Resource()
                         {
                             Name = "Оборудование_" + (i + 1).ToString(),
-                            Cipher = rand.Next(10, 99) + "." + rand.Next(10, 99) + "." +
-                                     rand.Next(10, 99) + "." + rand.Next(100, 999),
-
+                            Cipher = getResourcesCipher(),
                             PK_ResourceType = typeTool.PK_ResourceType,
                             PK_Unit = testUnit.PK_Unit,
                         }
@@ -296,6 +281,98 @@ namespace MTO.Utils
         public bool generate()
         {
             return  generateDictionaries() && generateContracts();
+        }
+
+        public bool generateUsers()
+        {
+            try
+            {
+                User admin = new User()
+                {
+                    Username = "admin",
+                    Password = "$2y$12$T1q0TXfrFI6PE4mjzlGCc.UyOMovIqGkpX8xk9DYvxh/hMqNmZjzm",
+                    Role = 0,
+                };
+
+                User accounting = new User()
+                {
+                    Username = "accounting",
+                    Password = "$2y$12$t5na4Nbj7t8AwYHdYgRPWeEkDeNIGjKcRp590ayS4hgOlYO4epXz2",
+                    Role = 2,
+                };
+
+                User contract = new User()
+                {
+                    Username = "contract",
+                    Password = "$2y$12$Omm/lPfHpYuJRRbbVNufp.xUkTffKdh8hOLnMdp6RImm9lB5DhgC.",
+                    Role = 1,
+                };
+
+                db.AddRange(admin, accounting, contract);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+
+            return true;
+        }
+
+        private string getINN()
+        {
+            return rand.Next(100000, 999999).ToString() + rand.Next(100000, 999999).ToString();
+        }
+
+        private string getPhoneNumber()
+        {
+            return "+7 (" + rand.Next(100, 999).ToString() + ") " + rand.Next(100, 999).ToString() +
+                                             "-" + rand.Next(10, 99).ToString() + "-" + rand.Next(10, 99).ToString();
+        }
+
+        private string getCheckingAccount()
+        {
+            return rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString() +
+                                              rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString();
+        }
+
+        private string getCorrespondentAccount()
+        {
+            return rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString() +
+                                              rand.Next(10000, 99999).ToString() + rand.Next(10000, 99999).ToString();
+        }
+
+        private string getAddress()
+        {
+            return "г. " + cities[rand.Next(cities.Length)] + ", " + streets[rand.Next(streets.Length)] +
+                    ", д. " + rand.Next(1, 1000).ToString();
+        }
+
+        private string getBIK()
+        {
+            return rand.Next(10000, 99999).ToString() + rand.Next(1000, 9999).ToString();
+        }
+
+        private string getResourcesCipher()
+        {
+            return rand.Next(10, 99) + "." + rand.Next(10, 99) + "." +
+                                     rand.Next(10, 99) + "." + rand.Next(100, 999);
+        }
+      
+        private DateTime randomDay()
+        {
+            return startDateDefault.AddDays(rand.Next(daysRange) + 1);
+        }
+
+        private DateTime randomDay(DateTime dateFrom)
+        {
+            return dateFrom.AddDays(rand.Next((finalDateDefault - dateFrom).Days + 1));
+        }
+
+        private DateTime randomDay(DateTime dateFrom, DateTime dateTo)
+        {
+            return dateFrom.AddDays(rand.Next((dateTo - dateFrom).Days + 1));
         }
     }
 }

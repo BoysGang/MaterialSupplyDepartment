@@ -103,6 +103,8 @@ namespace MTO
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_add);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormUnitAdd";
             this.Text = "Добавление ед. измерения";
             this.ResumeLayout(false);
