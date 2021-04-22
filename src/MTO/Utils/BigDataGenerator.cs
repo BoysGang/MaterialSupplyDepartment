@@ -71,10 +71,7 @@ namespace MTO.Utils
                     return false;
 
                 List<int> PK_Providers = new List<int>();
-                int amountProviders = PK_Providers.Count;
-
                 List<int> PK_Resources = new List<int>();
-                int amountResources = PK_Resources.Count;
 
                 foreach (var provider in db.Providers)
                 {
@@ -85,6 +82,10 @@ namespace MTO.Utils
                 {
                     PK_Resources.Add(resource.PK_Resource);
                 }
+
+                int amountResources = PK_Resources.Count;
+                int amountProviders = PK_Providers.Count;
+
 
 
                 List<ContractLine> generatedContractLines = new List<ContractLine>();
