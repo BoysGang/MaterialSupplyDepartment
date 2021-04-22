@@ -16,6 +16,10 @@ namespace MTO.Utils
 
         private Random rand = new Random();
 
+        private DateTime startDateDefault;
+        private DateTime finalDateDefault;
+        private int daysRange;
+
         private string[] cities = new string[]
         {
             "Новоалтайск",
@@ -54,12 +58,6 @@ namespace MTO.Utils
             finalDateDefault = new DateTime(DateTime.Now.Year + 1, 1, 1);
             daysRange = (finalDateDefault - startDateDefault).Days;
         }
-
-        private Random rand = new Random();
-
-        private DateTime startDateDefault;
-        private DateTime finalDateDefault;
-        private int daysRange;
 
         public bool generateContracts()
         {
