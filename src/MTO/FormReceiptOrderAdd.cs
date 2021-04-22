@@ -279,7 +279,6 @@ namespace MTO
             {
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                e.CellStyle.BackColor = dgv_orderLines.DefaultCellStyle.BackColor;
             }
 
             // Amount fields and Price field KeyPress
@@ -295,6 +294,8 @@ namespace MTO
                     tb.KeyPress += new KeyPressEventHandler(onlyFloatAllowedKeyPress);
                 }
             }
+            e.CellStyle.BackColor = dgv_orderLines.DefaultCellStyle.BackColor;
+
         }
 
         private void onlyFloatAllowedKeyPress(object sender, KeyPressEventArgs e)
