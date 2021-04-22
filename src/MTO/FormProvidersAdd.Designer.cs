@@ -207,6 +207,8 @@ namespace MTO
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormProvidersAdd";
             this.Text = "Добавление поставщика";
             this.ResumeLayout(false);

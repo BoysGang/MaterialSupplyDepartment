@@ -145,6 +145,8 @@ namespace MTO
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.Name = "FormResourcesAdd";
             this.Text = "Добавление ресурса";
             this.ResumeLayout(false);

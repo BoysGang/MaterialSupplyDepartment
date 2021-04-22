@@ -69,7 +69,7 @@ namespace MTO
             this.rtb_document.Location = new System.Drawing.Point(3, 3);
             this.rtb_document.Name = "rtb_document";
             this.rtb_document.ReadOnly = true;
-            this.rtb_document.Size = new System.Drawing.Size(464, 333);
+            this.rtb_document.Size = new System.Drawing.Size(764, 333);
             this.rtb_document.TabIndex = 0;
             this.rtb_document.Text = "";
             // 
@@ -87,7 +87,7 @@ namespace MTO
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 437);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 437);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // lbl_header
@@ -95,7 +95,7 @@ namespace MTO
             this.lbl_header.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_header.AutoSize = true;
             this.lbl_header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_header.Location = new System.Drawing.Point(150, 11);
+            this.lbl_header.Location = new System.Drawing.Point(300, 11);
             this.lbl_header.Name = "lbl_header";
             this.lbl_header.Size = new System.Drawing.Size(184, 20);
             this.lbl_header.TabIndex = 2;
@@ -109,7 +109,7 @@ namespace MTO
             this.tabControl1.Location = new System.Drawing.Point(3, 46);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(478, 365);
+            this.tabControl1.Size = new System.Drawing.Size(778, 365);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -118,7 +118,7 @@ namespace MTO
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(470, 339);
+            this.tabPage1.Size = new System.Drawing.Size(770, 339);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Главное";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@ namespace MTO
             this.pb_export.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb_export.Location = new System.Drawing.Point(3, 417);
             this.pb_export.Name = "pb_export";
-            this.pb_export.Size = new System.Drawing.Size(478, 17);
+            this.pb_export.Size = new System.Drawing.Size(778, 17);
             this.pb_export.TabIndex = 4;
             // 
             // menuStrip1
@@ -235,7 +235,7 @@ namespace MTO
             this.tsmi_edit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "ms_menuContracts";
             // 
@@ -250,7 +250,7 @@ namespace MTO
             // tsmi_fileExport
             // 
             this.tsmi_fileExport.Name = "tsmi_fileExport";
-            this.tsmi_fileExport.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_fileExport.Size = new System.Drawing.Size(119, 22);
             this.tsmi_fileExport.Text = "Экспорт";
             this.tsmi_fileExport.Click += new System.EventHandler(this.tsmi_fileExport_Click);
             // 
@@ -289,7 +289,7 @@ namespace MTO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

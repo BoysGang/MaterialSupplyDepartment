@@ -41,6 +41,7 @@ namespace MTO
             this.PK_Provider = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             this.tb_BIK = new System.Windows.Forms.MaskedTextBox();
             this.tb_correspondentAccount = new System.Windows.Forms.MaskedTextBox();
             this.tb_checkingAccount = new System.Windows.Forms.MaskedTextBox();
@@ -59,7 +60,6 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.btn_resetSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_providers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -173,6 +173,16 @@ namespace MTO
             this.groupBox1.Size = new System.Drawing.Size(665, 200);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
+            // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(565, 162);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(83, 22);
+            this.btn_resetSearch.TabIndex = 31;
+            this.btn_resetSearch.Text = "Сбросить";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
             // tb_BIK
             // 
@@ -333,16 +343,6 @@ namespace MTO
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // btn_resetSearch
-            // 
-            this.btn_resetSearch.Location = new System.Drawing.Point(565, 162);
-            this.btn_resetSearch.Name = "btn_resetSearch";
-            this.btn_resetSearch.Size = new System.Drawing.Size(83, 22);
-            this.btn_resetSearch.TabIndex = 31;
-            this.btn_resetSearch.Text = "Сбросить";
-            this.btn_resetSearch.UseVisualStyleBackColor = true;
-            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
-            // 
             // FormProviders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,6 +354,8 @@ namespace MTO
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_providers);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormProviders";
             this.Text = "Справочник \"Поставщики\"";
             this.Load += new System.EventHandler(this.FormProviders_Load);

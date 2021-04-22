@@ -29,13 +29,14 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_units = new System.Windows.Forms.DataGridView();
             this.ColumnCipher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PK_Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_resetSearch = new System.Windows.Forms.Button();
             this.tb_cipher = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@ namespace MTO
             this.btn_change = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.btn_resetSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_units)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,8 +64,8 @@ namespace MTO
             this.dgv_units.MultiSelect = false;
             this.dgv_units.Name = "dgv_units";
             this.dgv_units.ReadOnly = true;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_units.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_units.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_units.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_units.Size = new System.Drawing.Size(654, 255);
             this.dgv_units.TabIndex = 0;
@@ -113,6 +113,16 @@ namespace MTO
             this.groupBox1.Size = new System.Drawing.Size(654, 109);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
+            // 
+            // btn_resetSearch
+            // 
+            this.btn_resetSearch.Location = new System.Drawing.Point(565, 78);
+            this.btn_resetSearch.Name = "btn_resetSearch";
+            this.btn_resetSearch.Size = new System.Drawing.Size(83, 23);
+            this.btn_resetSearch.TabIndex = 14;
+            this.btn_resetSearch.Text = "Сбросить";
+            this.btn_resetSearch.UseVisualStyleBackColor = true;
+            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
             // tb_cipher
             // 
@@ -189,16 +199,6 @@ namespace MTO
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // btn_resetSearch
-            // 
-            this.btn_resetSearch.Location = new System.Drawing.Point(565, 78);
-            this.btn_resetSearch.Name = "btn_resetSearch";
-            this.btn_resetSearch.Size = new System.Drawing.Size(83, 23);
-            this.btn_resetSearch.TabIndex = 14;
-            this.btn_resetSearch.Text = "Сбросить";
-            this.btn_resetSearch.UseVisualStyleBackColor = true;
-            this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
-            // 
             // FormUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +210,8 @@ namespace MTO
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_units);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormUnit";
             this.Text = "Справочник \"Ед. измерения\"";
             this.Load += new System.EventHandler(this.FormUnit_Load);
