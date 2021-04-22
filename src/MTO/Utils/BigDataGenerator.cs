@@ -116,7 +116,7 @@ namespace MTO.Utils
 
                         SupplierPenalty = Decimal.Parse((rand.Next(10) + rand.NextDouble()).ToString()),
                         CustomerPenalty = Decimal.Parse((rand.Next(10) + rand.NextDouble()).ToString()),
-                        IsOpened = expiredDate <= DateTime.Now,
+                        IsOpened = expiredDate >= DateTime.Now,
                         PK_Provider = PK_Providers[rand.Next(amountProviders)],
                         PK_OrganizationDescription = description.PK_OrganizationDescription,
                     };
