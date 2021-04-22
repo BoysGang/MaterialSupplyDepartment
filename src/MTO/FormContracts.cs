@@ -214,9 +214,23 @@ namespace MTO
             updateContractTable();
         }
 
-        private void updateContractTable()
+        private async void updateContractTable()
         {
-            findContracts();
+            btn_analizeContract.Enabled = false;
+            btn_findContracts.Enabled = false;
+            btn_resetSearch.Enabled = false;
+            btn_viewContract.Enabled = false;
+            menuStrip.Enabled = false;
+
+            await FindContracts();
+
+            btn_analizeContract.Enabled = true;
+            btn_findContracts.Enabled = true;
+            btn_resetSearch.Enabled = true;
+            btn_viewContract.Enabled = true;
+            menuStrip.Enabled = true;
+
+            pb_updateTable.Value = 0;
 
             dgv_contracts.DataSource = contracts;
 
@@ -247,8 +261,18 @@ namespace MTO
             updateContractTable();
         }
 
+        async Task FindContracts()
+        {
+            await Task.Run(() =>
+            {
+                findContracts();
+            }
+            );
+        }
         private void findContracts()
         {
+            pb_updateTable.Value = 0;
+
             List<Contract> foundContracts = new List<Contract>();
 
             bool contractNumberCriterium = tb_contractNumber.Text != string.Empty;
@@ -292,8 +316,22 @@ namespace MTO
 
             bool hasUnderdeliveryCriterium = cb_hasUnderdelivery.Checked;
 
-            foreach (Contract contract in Program.db.Contracts.ToList())
+
+            List<Contract> cycleContracts = Program.db.Contracts.ToList();
+
+            int pb_value = (contracts.Count / 100);
+            int pb_unitValue = 0;
+
+
+            foreach (Contract contract in cycleContracts)
             {
+                pb_unitValue++;
+                if (pb_unitValue >= pb_value && pb_updateTable.Value < 100)
+                {
+                    pb_updateTable.Value += 1;
+                    pb_unitValue = 0;
+                }
+
                 bool contractNumberFound = !contractNumberCriterium;
                 bool providerFound = !providerCriterium;
                 bool resourceFound = !resourceCriterium;

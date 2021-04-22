@@ -38,6 +38,14 @@ namespace MTO
             this.label3 = new System.Windows.Forms.Label();
             this.dtp_expiredDateFrom = new System.Windows.Forms.DateTimePicker();
             this.dgv_contracts = new System.Windows.Forms.DataGridView();
+            this.PK_Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConclusionCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cb_resource = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,14 +80,7 @@ namespace MTO
             this.btn_analizeContract = new System.Windows.Forms.Button();
             this.btn_viewContract = new System.Windows.Forms.Button();
             this.btn_resetSearch = new System.Windows.Forms.Button();
-            this.PK_Contract = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContractNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConclusionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProviderAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConclusionCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pb_updateTable = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_contracts)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -184,6 +185,55 @@ namespace MTO
             this.dgv_contracts.Size = new System.Drawing.Size(897, 322);
             this.dgv_contracts.TabIndex = 23;
             this.dgv_contracts.SelectionChanged += new System.EventHandler(this.dgv_contracts_SelectionChanged);
+            // 
+            // PK_Contract
+            // 
+            this.PK_Contract.HeaderText = "PK_Contract";
+            this.PK_Contract.Name = "PK_Contract";
+            this.PK_Contract.ReadOnly = true;
+            this.PK_Contract.Visible = false;
+            // 
+            // ContractNumber
+            // 
+            this.ContractNumber.HeaderText = "Номер договора";
+            this.ContractNumber.Name = "ContractNumber";
+            this.ContractNumber.ReadOnly = true;
+            // 
+            // ConclusionDate
+            // 
+            this.ConclusionDate.HeaderText = "Дата заключения";
+            this.ConclusionDate.Name = "ConclusionDate";
+            this.ConclusionDate.ReadOnly = true;
+            // 
+            // StartDate
+            // 
+            this.StartDate.HeaderText = "Дата начала";
+            this.StartDate.Name = "StartDate";
+            this.StartDate.ReadOnly = true;
+            // 
+            // ExpiredDate
+            // 
+            this.ExpiredDate.HeaderText = "Дата окончания";
+            this.ExpiredDate.Name = "ExpiredDate";
+            this.ExpiredDate.ReadOnly = true;
+            // 
+            // ProviderAgent
+            // 
+            this.ProviderAgent.HeaderText = "Поставщик";
+            this.ProviderAgent.Name = "ProviderAgent";
+            this.ProviderAgent.ReadOnly = true;
+            // 
+            // ConclusionCity
+            // 
+            this.ConclusionCity.HeaderText = "Место заключения";
+            this.ConclusionCity.Name = "ConclusionCity";
+            this.ConclusionCity.ReadOnly = true;
+            // 
+            // State
+            // 
+            this.State.HeaderText = "Статус";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -529,60 +579,19 @@ namespace MTO
             this.btn_resetSearch.UseVisualStyleBackColor = true;
             this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
             // 
-            // PK_Contract
+            // pb_updateTable
             // 
-            this.PK_Contract.HeaderText = "PK_Contract";
-            this.PK_Contract.Name = "PK_Contract";
-            this.PK_Contract.ReadOnly = true;
-            this.PK_Contract.Visible = false;
-            // 
-            // ContractNumber
-            // 
-            this.ContractNumber.HeaderText = "Номер договора";
-            this.ContractNumber.Name = "ContractNumber";
-            this.ContractNumber.ReadOnly = true;
-            // 
-            // ConclusionDate
-            // 
-            this.ConclusionDate.HeaderText = "Дата заключения";
-            this.ConclusionDate.Name = "ConclusionDate";
-            this.ConclusionDate.ReadOnly = true;
-            // 
-            // StartDate
-            // 
-            this.StartDate.HeaderText = "Дата начала";
-            this.StartDate.Name = "StartDate";
-            this.StartDate.ReadOnly = true;
-            // 
-            // ExpiredDate
-            // 
-            this.ExpiredDate.HeaderText = "Дата окончания";
-            this.ExpiredDate.Name = "ExpiredDate";
-            this.ExpiredDate.ReadOnly = true;
-            // 
-            // ProviderAgent
-            // 
-            this.ProviderAgent.HeaderText = "Поставщик";
-            this.ProviderAgent.Name = "ProviderAgent";
-            this.ProviderAgent.ReadOnly = true;
-            // 
-            // ConclusionCity
-            // 
-            this.ConclusionCity.HeaderText = "Место заключения";
-            this.ConclusionCity.Name = "ConclusionCity";
-            this.ConclusionCity.ReadOnly = true;
-            // 
-            // State
-            // 
-            this.State.HeaderText = "Статус";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
+            this.pb_updateTable.Location = new System.Drawing.Point(6, 600);
+            this.pb_updateTable.Name = "pb_updateTable";
+            this.pb_updateTable.Size = new System.Drawing.Size(897, 24);
+            this.pb_updateTable.TabIndex = 39;
             // 
             // FormContracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 609);
+            this.ClientSize = new System.Drawing.Size(908, 626);
+            this.Controls.Add(this.pb_updateTable);
             this.Controls.Add(this.btn_resetSearch);
             this.Controls.Add(this.btn_viewContract);
             this.Controls.Add(this.btn_findContracts);
@@ -658,5 +667,6 @@ namespace MTO
         private System.Windows.Forms.DataGridViewTextBoxColumn ProviderAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConclusionCity;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.ProgressBar pb_updateTable;
     }
 }
