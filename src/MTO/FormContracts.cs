@@ -377,6 +377,8 @@ namespace MTO
 
                                 break;
                             }
+
+                            receiptLines.Remove(thisLine);
                         }
                     }
                 }

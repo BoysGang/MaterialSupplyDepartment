@@ -20,6 +20,8 @@ namespace MTO.Utils
         private DateTime finalDateDefault;
         private int daysRange;
 
+        private const int CONTRACTS_COUNT = 500;
+
         private string[] cities = new string[]
         {
             "Новоалтайск",
@@ -90,7 +92,7 @@ namespace MTO.Utils
                 DateTime conclusionDate, startDate, expiredDate;
 
                 //генерация контрактов и ордеров
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < CONTRACTS_COUNT; i++)
                 {
 
                     conclusionDate = randomDay();
@@ -125,7 +127,8 @@ namespace MTO.Utils
                     generatedContractLines.Clear();
                     int pk_contract = generatedContract.PK_Contract;
                     int amountContractLines = (rand.Next(5) + 1) * 2;
-                    for(int j = 0; j < amountContractLines; j++)
+
+                    for (int j = 0; j < amountContractLines; j++)
                     {
                         ContractLine line = new ContractLine()
                         {
@@ -154,12 +157,12 @@ namespace MTO.Utils
                     {
                         //генерация с недопоставками
                         DateTime provisionDate;
-                        for (int k = 0; k < amountReceiptOrders; k += 2)
+                        for (int k = 0; k < amountReceiptOrders; k++)
                         {
                             if (rand.Next(2) > 0)
-                                provisionDate = generatedContractLines[k].DeliveryDate;
+                                provisionDate = generatedContractLines[k * 2].DeliveryDate;
                             else
-                                provisionDate = generatedContractLines[k + 1].DeliveryDate;
+                                provisionDate = generatedContractLines[k * 2 + 1].DeliveryDate;
 
                             ReceiptOrder receiptOrder = new ReceiptOrder()
                             {
@@ -177,19 +180,19 @@ namespace MTO.Utils
                             {
                                 PK_ReceiptOrder = receiptOrder.PK_ReceiptOrder,
                                 UnitPrice = Decimal.Parse(rand.Next(1, 10000).ToString()),
-                                PK_Resource = generatedContractLines[k].PK_Resource,
-                                DocumentAmount = generatedContractLines[k].Amount + rand.Next(10),
-                                AcceptedAmount = generatedContractLines[k].Amount,
+                                PK_Resource = generatedContractLines[k * 2].PK_Resource,
+                                DocumentAmount = generatedContractLines[k * 2].Amount + rand.Next(10),
+                                AcceptedAmount = generatedContractLines[k * 2].Amount,
                             };
 
                             ReceiptOrderLine receiptLineUnderdeliveryWrong = new ReceiptOrderLine()
                             {
                                 PK_ReceiptOrder = receiptOrder.PK_ReceiptOrder,
                                 UnitPrice = Decimal.Parse(rand.Next(1, 10000).ToString()),
-                                PK_Resource = generatedContractLines[k + 1].PK_Resource,
-                                DocumentAmount = generatedContractLines[k + 1].Amount + rand.Next(10),
-                                AcceptedAmount = rand.Next(2) > 0 ? generatedContractLines[k + 1].Amount :
-                                                                    generatedContractLines[k + 1].Amount - 1,
+                                PK_Resource = generatedContractLines[k * 2 + 1].PK_Resource,
+                                DocumentAmount = generatedContractLines[k * 2 + 1].Amount + rand.Next(10),
+                                AcceptedAmount = rand.Next(2) > 0 ? generatedContractLines[k * 2 + 1].Amount :
+                                                                    generatedContractLines[k * 2 + 1].Amount - 1,
                             };
 
                             db.AddRange(receiptLineUnderdeliveryOK, receiptLineUnderdeliveryWrong);
@@ -199,7 +202,7 @@ namespace MTO.Utils
                     else
                     {
                         //без недопоставок
-                        for (int k = 0; k < amountReceiptOrders; k += 2)
+                        for (int k = 0; k < amountReceiptOrders; k++)
                         {
                             ReceiptOrder receiptOrder = new ReceiptOrder()
                             {
@@ -207,7 +210,7 @@ namespace MTO.Utils
                                 PK_Warehouse = warehouse.PK_Warehouse,
                                 PK_Provider = generatedContract.PK_Provider,
                                 PK_Contract = generatedContract.PK_Contract,
-                                DeliveryDate = generatedContractLines[k].DeliveryDate,
+                                DeliveryDate = generatedContractLines[k * 2].DeliveryDate,
                             };
 
                             db.ReceiptOrders.Add(receiptOrder);
@@ -217,18 +220,18 @@ namespace MTO.Utils
                             {
                                 PK_ReceiptOrder = receiptOrder.PK_ReceiptOrder,
                                 UnitPrice = Decimal.Parse(rand.Next(1, 10000).ToString()),
-                                PK_Resource = generatedContractLines[k].PK_Resource,
-                                DocumentAmount = generatedContractLines[k].Amount + rand.Next(10),
-                                AcceptedAmount = generatedContractLines[k].Amount,
+                                PK_Resource = generatedContractLines[k * 2].PK_Resource,
+                                DocumentAmount = generatedContractLines[k * 2].Amount + rand.Next(10),
+                                AcceptedAmount = generatedContractLines[k * 2].Amount,
                             };
 
                             ReceiptOrderLine receiptLineSecond = new ReceiptOrderLine()
                             {
                                 PK_ReceiptOrder = receiptOrder.PK_ReceiptOrder,
                                 UnitPrice = Decimal.Parse(rand.Next(1, 10000).ToString()),
-                                PK_Resource = generatedContractLines[k + 1].PK_Resource,
-                                DocumentAmount = generatedContractLines[k + 1].Amount + rand.Next(10),
-                                AcceptedAmount = generatedContractLines[k + 1].Amount,
+                                PK_Resource = generatedContractLines[k * 2 + 1].PK_Resource,
+                                DocumentAmount = generatedContractLines[k * 2 + 1].Amount + rand.Next(10),
+                                AcceptedAmount = generatedContractLines[k * 2 + 1].Amount,
                             };
 
                             db.AddRange(receiptLineFirst, receiptLineSecond);
