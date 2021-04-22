@@ -29,7 +29,7 @@ namespace MTO
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_receiptOrders = new System.Windows.Forms.DataGridView();
@@ -67,6 +67,8 @@ namespace MTO
             this.tsmi_dictWarehouses = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_viewReceiptOrder = new System.Windows.Forms.Button();
             this.btn_resetSearch = new System.Windows.Forms.Button();
+            this.tb_contractNumber = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_receiptOrders)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -87,7 +89,7 @@ namespace MTO
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(500, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 199);
+            this.groupBox2.Size = new System.Drawing.Size(410, 227);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация";
@@ -105,15 +107,15 @@ namespace MTO
             this.Warehouse,
             this.ProviderAgent,
             this.Contract});
-            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 271);
+            this.dgv_receiptOrders.Location = new System.Drawing.Point(12, 299);
             this.dgv_receiptOrders.MultiSelect = false;
             this.dgv_receiptOrders.Name = "dgv_receiptOrders";
             this.dgv_receiptOrders.ReadOnly = true;
             this.dgv_receiptOrders.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_receiptOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_receiptOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 258);
+            this.dgv_receiptOrders.Size = new System.Drawing.Size(898, 230);
             this.dgv_receiptOrders.TabIndex = 36;
             this.dgv_receiptOrders.SelectionChanged += new System.EventHandler(this.dgv_receiptOrders_SelectionChanged);
             // 
@@ -233,7 +235,7 @@ namespace MTO
             // 
             // btn_findReceiptOrder
             // 
-            this.btn_findReceiptOrder.Location = new System.Drawing.Point(12, 232);
+            this.btn_findReceiptOrder.Location = new System.Drawing.Point(12, 260);
             this.btn_findReceiptOrder.Name = "btn_findReceiptOrder";
             this.btn_findReceiptOrder.Size = new System.Drawing.Size(238, 33);
             this.btn_findReceiptOrder.TabIndex = 38;
@@ -243,6 +245,8 @@ namespace MTO
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.tb_contractNumber);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.dtp_deliveryDateTo);
             this.groupBox1.Controls.Add(this.cb_resource);
@@ -257,7 +261,7 @@ namespace MTO
             this.groupBox1.Controls.Add(this.tb_receiptOrderNumber);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(482, 199);
+            this.groupBox1.Size = new System.Drawing.Size(482, 227);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры поиска";
@@ -416,7 +420,7 @@ namespace MTO
             // 
             // btn_viewReceiptOrder
             // 
-            this.btn_viewReceiptOrder.Location = new System.Drawing.Point(500, 232);
+            this.btn_viewReceiptOrder.Location = new System.Drawing.Point(500, 260);
             this.btn_viewReceiptOrder.Name = "btn_viewReceiptOrder";
             this.btn_viewReceiptOrder.Size = new System.Drawing.Size(410, 33);
             this.btn_viewReceiptOrder.TabIndex = 41;
@@ -426,13 +430,32 @@ namespace MTO
             // 
             // btn_resetSearch
             // 
-            this.btn_resetSearch.Location = new System.Drawing.Point(256, 232);
+            this.btn_resetSearch.Location = new System.Drawing.Point(256, 260);
             this.btn_resetSearch.Name = "btn_resetSearch";
             this.btn_resetSearch.Size = new System.Drawing.Size(238, 33);
             this.btn_resetSearch.TabIndex = 42;
             this.btn_resetSearch.Text = "Сбросить фильтры";
             this.btn_resetSearch.UseVisualStyleBackColor = true;
             this.btn_resetSearch.Click += new System.EventHandler(this.btn_resetSearch_Click);
+            // 
+            // tb_contractNumber
+            // 
+            this.tb_contractNumber.Location = new System.Drawing.Point(112, 192);
+            this.tb_contractNumber.MaxLength = 50;
+            this.tb_contractNumber.Name = "tb_contractNumber";
+            this.tb_contractNumber.Size = new System.Drawing.Size(364, 20);
+            this.tb_contractNumber.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 195);
+            this.label8.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 13);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Номер договора";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormReceiptOrder
             // 
@@ -500,5 +523,7 @@ namespace MTO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtp_deliveryDateTo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tb_contractNumber;
     }
 }
